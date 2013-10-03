@@ -1,3 +1,3 @@
-class Teacher < ActiveRecord::Base
-  attr_accessor :name
+class Teacher < User
+  include Ripple::Document
 end

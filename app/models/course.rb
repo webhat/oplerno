@@ -1,2 +1,4 @@
-class Course < ActiveRecord::Base
+class Course
+  include Ripple::Document
+
 end

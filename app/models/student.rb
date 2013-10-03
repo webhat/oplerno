@@ -1,3 +1,3 @@
-class Student < ActiveRecord::Base
-  attr_accessor :name
+class Student < User
+  include Ripple::Document
 end
