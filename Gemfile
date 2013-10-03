@@ -32,6 +32,23 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'devise'
+gem 'orm_adapter', :git => 'https://github.com/webhat/orm_adapter_ripple.git', :branch => "develop" # "~> 0.4.0"
+
+
+
+gem 'minitest', '~> 4.0'
+gem 'minitest-rails'
+group :development, :test do
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+  gem 'minitest-focus'
+
+  gem 'minitest-reporters'
+  gem 'rspec-rails'
+  gem 'simplecov'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
