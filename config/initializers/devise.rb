@@ -98,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '7fafff8ab1da2dda833047df3aa42b2628922d0babe76cc0795988be065cbae59a2daa40fe9ed48f3862478961a3974bcf6241f9a67a33000968a56dbcb90622'
+  config.pepper = 'acee89d06eb371a91826db26660a0f098040a2df2bfaac8503586c5701e76b47442423258fc4386cf17fd54df25004734cc64570c2804a7c48e23faa5224a478'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -123,14 +123,14 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [ :email ]
+  config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
 
   # If true, extends the user's remember period when remembered via cookie.
-  # config.extend_remember_period = false
+  config.extend_remember_period = false
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -226,7 +226,8 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  #config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

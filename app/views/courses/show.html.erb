@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div>
+
+  <h1><%= @course.name %></h1>
+
+  <div class="row">
+    <div class="col-6 col-sm-6 col-lg-4">
+      <img width='256' height='256' src="/courses/<%= @course.key %>.jpeg"/>
+    </div>
+    <div class="col-6 col-sm-6 col-lg-8"><%= @course.description %></div>
+  </div>
+  <div class="clearfix"><br/></div>
+  <br/>
+
+  <div><%= link_to "Register", @course, {:disabled => true, :class => "btn btn-default"} %></div>
+</div>
+
+<div class="clearfix"><br/></div>
+<br/>
+<% if user_signed_in? %>
+    <%= link_to 'Edit', edit_course_path(@course), {:class => "btn btn-info pull-right"} %>
+<% end %>
+<%= link_to 'Back', courses_path, {:class => "btn btn-default"} %>

@@ -1,17 +1,30 @@
 <%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+    <% if @course.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
-      <ul>
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @course.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      <div class="pull-right">
+        <div><%= f.label "Course image" %><%= f.file_field :picture %></div>
+        <div><%= f.label :description %>
+          <br/><%= f.text_area :description, :placeholder => "Add a description here" %></div>
+      </div>
+      <div>
+        <div><%= f.label :name %>
+        <br/><%= f.text_field :name, :placeholder => "Course name" %></div>
+        <div><%= f.label :fee %>
+          <br/><%= f.text_field :price, :placeholder => "100.00" %></div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br/>
+    <%= f.submit "Create course", {:class => "btn btn-default"} %>
+    </div>
 <% end %>

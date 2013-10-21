@@ -1,25 +1,28 @@
-<h1>Listing teachers</h1>
+<h1>Teachers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div>
+  <% @teachers.each do |teacher| %>
 
-  <tbody>
-    <% @teachers.each do |teacher| %>
-      <tr>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-6 col-sm-6 col-lg-4">
+        <div>
+          <img width='256' height='256' src="/teachers/<%= teacher.key %>.jpg"/>
+        </div>
+        <div><%= teacher.title %> <%= teacher.first_name %> <%= teacher.last_name %></div>
+        <div>
+          <% if user_signed_in? %>
+              <div><%= link_to 'Edit', edit_teacher_path(teacher), {:class => "btn btn-info pull-right"} %></div>
+          <% end %>
+          <%= link_to 'View details', teacher, {:class => "btn btn-default"} %>
+        </div>
+      </div>
+      <!--
+        <td><%= link_to 'Destroy', teacher, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        -->
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Teacher', new_teacher_path %>
+<!--
+<%= link_to 'New Teacher', new_teacher_path, {:class => "btn btn-default"} %>
+-->

@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
-#  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_filter :set_course, only: [:show, :edit, :update, :destroy]
+
+  before_filter :authenticate_user!, except: [:show, :index]
 
   # GET /courses
   # GET /courses.json
@@ -10,6 +12,14 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    respond_to do |format|
+      format.html { render action: 'show' }
+      format.json { render json: [@course], status: :ok }
+      format.jpeg {
+        send_data(Base64.decode64(@course.binary_data), :type => @course.content_type, :filename => @course.filename,
+                  :disposition => 'inline') unless @course.binary_data.nil?
+      }
+    end
   end
 
   # GET /courses/new
@@ -30,6 +40,9 @@ class CoursesController < ApplicationController
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render action: 'show', status: :created, location: @course }
+        current_user.courses << @course
+        @course.teacher = current_user
+        current_user.save
       else
         format.html { render action: 'new' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
@@ -62,13 +75,13 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def course_params
-      params[:course]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def course_params
+    params[:course]
+  end
 end

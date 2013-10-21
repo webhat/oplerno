@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-#  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -61,14 +62,18 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def whoami
+    current_user
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params[:user]
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params[:user]
+  end
 end

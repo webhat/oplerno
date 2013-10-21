@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+
+
+<%= link_to 'Edit', edit_student_path(@student), {:class => "btn btn-default pull-right"} %> |
+<%= link_to 'Back', students_path, {:class => "btn btn-default"} %>

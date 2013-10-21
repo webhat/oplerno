@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @course = courses(:one)
   end
@@ -18,7 +20,7 @@ class CoursesControllerTest < ActionController::TestCase
 
   test "should create course" do
     assert_difference('Course.count') do
-      post :create, course: {  }
+      post :create, course: { name: "Advanced Stuff" }
     end
 
     assert_redirected_to course_path(assigns(:course))

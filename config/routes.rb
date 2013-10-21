@@ -1,18 +1,22 @@
 Oplerno::Application.routes.draw do
-  devise_for :users
-  resources :users
+  devise_for :users #, :controllers => {:registrations => 'registrations'}
 
-  resources :courses
+  devise_scope :user do
+    resources :courses #, except: [:edit, :destroy, :show, :update]
 
-  resources :students
+    resources :students
 
-  resources :teachers
+    resources :teachers
+  end
+
+  root :to => redirect("/courses")
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  #root :to => 'courses#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -48,7 +52,7 @@ Oplerno::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
