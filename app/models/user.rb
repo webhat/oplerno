@@ -3,7 +3,7 @@ class User < Parent
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable #, :validatable
+         :recoverable, :rememberable, :trackable, :authy_authenticatable #, :validatable
 
   #, :confirmable # enabling with ripple causes an infinite loop
 
@@ -19,7 +19,10 @@ class User < Parent
   property :description, :type => String
   property :hidden, :type => Integer, :default => 0
 
+  property :authy_id, :type => String
+  property :authy_enabled, :type => Integer, :default => "0", :presence => true
   property :encrypted_password, :type => String, :default => "", :presence => true
+
   property :current_sign_in_at, :type => String
   property :last_sign_in_at, :type => String
   property :current_sign_in_ip, :type => String
@@ -55,5 +58,9 @@ class User < Parent
 
   def self.find_by_email(_email)
     User.find(Digest::MD5.hexdigest _email)
+  end
+
+  def self.find_by_id(id)
+    User.find(id)
   end
 end
