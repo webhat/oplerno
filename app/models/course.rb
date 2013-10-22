@@ -2,7 +2,7 @@ class Course < Parent
   include Ripple::Document
   #include Ripple::EmbeddedDocument
 
-  property :name, String
+  property :name, String, :presence => true
   property :key, String
   property :price, Float
   property :description, String

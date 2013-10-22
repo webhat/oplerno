@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #gem 'rails', '4.0.0'
 gem 'rails', '3.2.14'
@@ -37,10 +42,12 @@ group :doc do
 end
 
 
-gem 'ripple', :git => 'http://github.com/basho/ripple.git'
+gem 'ripple', :git => 'https://github.com/basho/ripple.git'
 gem 'devise'
 gem 'orm_adapter', :git => 'https://github.com/webhat/orm_adapter_ripple.git', :branch => "develop" # "~> 0.4.0"
+gem 'devise-authy'
 
+gem 'json'
 
 
 gem 'minitest', '~> 4.0'
@@ -53,6 +60,18 @@ group :development, :test do
   gem 'minitest-reporters'
   gem 'rspec-rails'
   gem 'simplecov'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
