@@ -46,6 +46,10 @@ gem 'ripple', :git => 'https://github.com/basho/ripple.git'
 gem 'devise'
 gem 'orm_adapter', :git => 'https://github.com/webhat/orm_adapter_ripple.git', :branch => "develop" # "~> 0.4.0"
 gem 'devise-authy'
+gem 'activeadmin'
+gem 'mysql2'
+gem 'ruby-saml'
+gem 'ruby-saml-idp'
 
 gem 'json'
 

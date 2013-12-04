@@ -1,48 +1,49 @@
-class User < Parent
-  include Ripple::Document
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :authy_authenticatable #, :validatable
-
-  #, :confirmable # enabling with ripple causes an infinite loop
-
-  #attr_accessible :email, :username
+         :recoverable, :rememberable, :trackable, :authy_authenticatable,
+         :confirmable, :lockable # enabling with ripple causes an infinite loop
+  #, :validatable
 
   validates_presence_of :email, :encrypted_password
 
-  property :title, :type => String
-  property :first_name, :type => String
-  property :last_name, :type => String
-  property :email, :type => String, :presence => true
-  property :username, :type => String
-  property :description, :type => String
-  property :hidden, :type => Integer, :default => 0
+  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
-  property :authy_id, :type => String
-  property :authy_enabled, :type => Integer, :default => "0", :presence => true
-  property :encrypted_password, :type => String, :default => "", :presence => true
+  attr_accessible :title,
+                  :first_name,
+                  :last_name,
+                  :email,
+                  :username,
+                  :description,
+                  :hidden,
+                  :authy_id,
+                  :authy_enabled,
+                  :password,
+                  :password_confirmation,
+                  :encrypted_password,
+                  :current_sign_in_at,
+                  :last_sign_in_at,
+                  :current_sign_in_ip,
+                  :last_sign_in_ip,
+                  :sign_in_count,
+                  :confirmed_at,
+                  :confirmation_token,
+                  :confirmation_sent_at,
+                  :remember_created_at,
+                  :filename,
+                  :content_type,
+                  :binary_data
 
-  property :current_sign_in_at, :type => String
-  property :last_sign_in_at, :type => String
-  property :current_sign_in_ip, :type => String
-  property :last_sign_in_ip, :type => String
-  property :sign_in_count, :type => String
-  #  property :confirmed_at, :type => String
-  #  property :confirmation_token, :type => String
-  #  property :confirmation_sent_at, :type => String
-  property :remember_created_at, :type => String
-  property :filename, :type => String
-  property :content_type, :type => String
-  property :binary_data, :type => String
+
+  has_many :courses
 
   def picture=(input_data)
     self.filename = input_data.original_filename
     self.content_type = input_data.content_type.chomp
     self.binary_data = Base64.encode64(input_data.read)
   end
-
-  alias :id :key
 
   def key
     Digest::MD5.hexdigest email

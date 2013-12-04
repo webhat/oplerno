@@ -1,22 +1,13 @@
-class Course < Parent
-  include Ripple::Document
-  #include Ripple::EmbeddedDocument
+class Course  < ActiveRecord::Base
 
-  property :name, String, :presence => true
-  property :key, String
-  property :price, Float
-  property :description, String
-  property :teacher_key, String
-  one :teacher, :using => :stored_key
+  validates_presence_of :name
 
-  def initialize(init = {})
-    init = {} if init.nil?
-    super(init)
-  end
+  attr_accessible :name, :key, :price,
+                  :description, :teacher,
+                  :filename, :content_type,
+                  :binary_data
 
-  property :filename, :type => String
-  property :content_type, :type => String
-  property :binary_data, :type => String
+  belongs_to :teacher
 
   def picture=(input_data)
     self.filename = input_data.original_filename
