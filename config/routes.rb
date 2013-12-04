@@ -13,6 +13,9 @@ Oplerno::Application.routes.draw do
     resources :teachers
   end
 
+  get '/saml/auth' => 'saml_idp#new'
+  post '/saml/auth' => 'saml_idp#create'
+
   root :to => redirect("/courses")
 
   # The priority is based upon order of creation: first created -> highest priority.

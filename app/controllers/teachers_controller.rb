@@ -40,6 +40,7 @@ class TeachersController < ApplicationController
 
   # POST /teachers
   # POST /teachers.json
+  # comply with http://wiki.whatwg.org/wiki/Autocompletetype
   def create
     user_exists and return unless Teacher.find_by_email(teacher_params[:email]).nil?
     @teacher = Teacher.new(teacher_params)
