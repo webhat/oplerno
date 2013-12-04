@@ -1,4 +1,7 @@
 Oplerno::Application.routes.draw do
+
+  root :to => redirect("/courses")
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -17,5 +20,4 @@ Oplerno::Application.routes.draw do
   get '/saml/auth' => 'saml_idp#new'
   post '/saml/auth' => 'saml_idp#create'
 
-  root :to => redirect("/courses")
 end
