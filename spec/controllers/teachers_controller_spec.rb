@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TeachersController do
   include Devise::TestHelpers
 
-  let(:valid_attributes) { {email: 'example_teacher@oplerno.com', password: '1234567890'} }
+  let(:valid_attributes) { {email: 'example_teacher@oplerno.com', password: '1234567890', password_confirmation: '1234567890'} }
 
   let(:valid_session) { {} }
 
