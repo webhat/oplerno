@@ -1,6 +1,6 @@
 require 'rspec'
 
-describe SamlIdpControllerSpec do
+describe SamlIdpController do
 
   it 'should do something' do
 
