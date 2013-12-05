@@ -50,6 +50,8 @@ group :development, :test do
 
   gem 'minitest-reporters'
   gem 'rspec-rails'
+  gem 'rspec-expectations'
+  gem 'rspec-mocks'
   gem 'simplecov'
 end
 
