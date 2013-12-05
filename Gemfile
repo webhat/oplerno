@@ -53,10 +53,6 @@ group :development, :test do
   gem 'rspec-expectations'
   gem 'rspec-mocks'
   gem 'simplecov'
-end
-
-group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
@@ -71,6 +67,8 @@ group :test do
   gem 'launchy'
   gem 'vcr'
   gem 'fakeweb'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber'
 end
 
 # Use ActiveModel has_secure_password
