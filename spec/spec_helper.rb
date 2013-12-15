@@ -10,6 +10,9 @@ require 'factory_girl_rails'
 require 'faker'
 require 'cucumber'
 
+require 'coveralls'
+Coveralls.wear!
+
 require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter 'vendor'

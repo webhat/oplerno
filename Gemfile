@@ -27,6 +27,7 @@ gem 'sqlite3'
 gem 'ruby-saml'
 gem 'ruby-saml-idp'
 gem 'newrelic_rpm'
+gem 'coveralls', require: false
 
 gem 'json'
 
