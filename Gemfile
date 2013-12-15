@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 if RUBY_VERSION =~ /1.9/
   Encoding.default_external = Encoding::UTF_8
