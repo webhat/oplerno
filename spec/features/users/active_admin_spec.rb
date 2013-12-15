@@ -17,7 +17,7 @@ describe 'Active Admin' do
 
     visit "/admin"
     expect(page).not_to have_content "Dashboard"
-    expect(page).to have_content "Unauthorized Access!"
+    expect(page).to have_content "You need to sign in or sign up before continuing."
   end
 
 end

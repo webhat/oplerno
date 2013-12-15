@@ -49,10 +49,6 @@ class User < ActiveRecord::Base
     Digest::MD5.hexdigest email
   end
 
-  def update(updated_user)
-    p updated_user
-  end
-
   def destroy
     self.hidden = 1
   end
