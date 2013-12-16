@@ -6,7 +6,7 @@ mysql: &mysql
   adapter: mysql2
   username: root
   password:
-  database: my_app_<%= Rails.env %>
+  database: oplerno_<%= Rails.env %>
 
 defaults: &defaults
   pool: 5
