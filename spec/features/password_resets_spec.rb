@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe "PasswordResets" do
   describe "GET /users/password/new" do
-    it "works! (now write some real specs)" do
-      get '/users/password/new'
+    it "works!" do
+      visit '/users/password/new'
 
-      response.status.should be(200)
+      page.status_code.should == 200
     end
 
     it "emails user when requesting password reset" do
