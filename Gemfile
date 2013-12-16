@@ -22,6 +22,7 @@ end
 
 gem 'activeadmin'
 gem 'devise'
+gem 'devise-i18n'
 gem 'devise-authy'
 gem 'mysql2'
 gem 'sqlite3'

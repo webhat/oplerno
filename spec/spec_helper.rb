@@ -22,6 +22,7 @@ Coveralls.wear!('rails')
 
 require File.expand_path("../../config/environment", __FILE__)
 
+require 'ruby-saml'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'rspec/autorun'
@@ -62,3 +63,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
