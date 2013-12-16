@@ -81,6 +81,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
+gem 'sshkit', '~> 1.0.0', group: :development
 gem 'capistrano', group: :development
 
 # Use debugger
