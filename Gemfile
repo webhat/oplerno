@@ -7,7 +7,7 @@ if RUBY_VERSION =~ /1.9/
 end
 
 gem 'rails', '3.2.14'
-gem 'jquery-rails'
+gem "jquery-rails", "< 3.0.0"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -21,6 +21,7 @@ end
 
 
 gem 'activeadmin'
+#gem 'activemerchant'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-authy'
@@ -87,3 +88,5 @@ gem 'capistrano', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'rails-assets-jquery-ui'
