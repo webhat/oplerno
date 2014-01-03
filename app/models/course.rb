@@ -7,7 +7,7 @@ class Course  < ActiveRecord::Base
                   :filename, :content_type,
                   :binary_data
 
-  belongs_to :teacher
+  belongs_to :user
 
   def picture=(input_data)
     self.filename = input_data.original_filename
