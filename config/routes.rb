@@ -1,5 +1,11 @@
 Oplerno::Application.routes.draw do
 
+  resources :carts
+
+
+  resources :orders
+
+
   root :to => redirect("/courses")
 
   devise_for :admin_users, ActiveAdmin::Devise.config

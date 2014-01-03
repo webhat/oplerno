@@ -21,7 +21,7 @@ end
 
 
 gem 'activeadmin'
-#gem 'activemerchant'
+gem 'activemerchant'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-authy'

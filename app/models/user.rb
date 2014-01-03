@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
                   :confirmed_at,
                   :confirmation_token,
                   :confirmation_sent_at,
+                  :remember_me,
                   :remember_created_at,
                   :filename,
                   :content_type,
