@@ -9,9 +9,10 @@ describe Order do
   end
 
   it 'checks the amount' do
-    cart = FactoryGirl.create(:cart, total_price: 6.00)
-    order = FactoryGirl.create(:order, cart: cart)
+    course1 = FactoryGirl.build(:course, price: 600, name: 'course1')
+    cart = FactoryGirl.build(:cart, courses: [course1])
+    order = FactoryGirl.build(:order, cart: cart)
 
-    order.price_in_cents.should eq 600
+    order.price_in_cents.should eq 60000
   end
 end
