@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :order do
     new "MyString"
-    cart_id 1
+    cart_id { Faker::Number.digit }
     ip_address "MyString"
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }

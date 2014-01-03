@@ -17,4 +17,32 @@ class Order < ActiveRecord::Base
     (cart.total_price*100).round
   end
 
+  private
+
+  def purchase_options
+    {
+        :ip => ip_address,
+        :billing_address => {
+            :name     => "Ryan Bates",
+            :address1 => "123 Main St.",
+            :city     => "New York",
+            :state    => "NY",
+            :country  => "US",
+            :zip      => "10001"
+        }
+    }
+  end
+
+  def credit_card
+    @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
+        :brand               => "visa",
+        :number             => "4024007148673571",
+        #:number             => "4024007148673576",
+        :verification_value => "123",
+        :month              => 1,
+        :year               => Time.now.year+1,
+        :first_name         => "Ryan",
+        :last_name          => "Bates"
+    )
+  end
 end

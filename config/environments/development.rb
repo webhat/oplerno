@@ -38,5 +38,10 @@ Oplerno::Application.configure do
 
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+        :login => "webhat-facilitator@xs4all.nl",
+        :password => "1388752803",
+        :signature => "AxaiRtwbDd93bSTWNwtM4rClvVkYAT1gVgDtzex3A8mxVyzNZcUa4.AS"
+    )
   end
 end

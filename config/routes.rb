@@ -1,11 +1,4 @@
 Oplerno::Application.routes.draw do
-
-  resources :carts
-
-
-  resources :orders
-
-
   root :to => redirect("/courses")
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -21,6 +14,8 @@ Oplerno::Application.routes.draw do
     resources :courses #, except: [:edit, :destroy, :show, :update]
     resources :students
     resources :teachers
+    resources :carts
+    resources :orders
   end
 
   get '/saml/auth' => 'saml_idp#new'
