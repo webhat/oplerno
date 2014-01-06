@@ -1,18 +1,22 @@
 language: ruby
 rvm:
-  - 2.0
-  - 1.9.3
+- 2.0
+- 1.9.3
 env:
+  matrix:
   - DB=sqlite
   - DB=mysql
-script: 
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+  - secure: WE0LDyPQUqoiRU352vA5mAM+dK96k4sM+uwYt/1+alx31vFS9oeJqjkJrLP6cafcT5Xm0Ab2QEt8p0Rijn55J63EVXikiT6sAf0AoVadHCuf4ZKrB55ffNk3DRcZ8ODLl8JAOql418Yl8I+bA3ovpyOO0s+PkT9+R0dt0QT5Ra4=
+  allow_failures:
+  - env: DB=mysql
+script:
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec spec/
 before_script:
-  - mysql -e 'create database oplerno_test'
+- mysql -e 'create database oplerno_test'
 bundler_args: --binstubs=./bundler_stubs
 branches:
   only:
-    - develop
-    - master
+  - develop
+  - master

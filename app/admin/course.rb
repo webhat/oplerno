@@ -3,6 +3,7 @@ ActiveAdmin.register Course do
     column :name
     column :price
     column "Teacher" do |course|
+      p course.teacher
       teacher = User.find(course.teacher)
       "#{teacher.first_name} #{teacher.last_name} (#{teacher.id})"
     end

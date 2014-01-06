@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+AdminUser.create! :email => 'admin@example.com', :password => ENV["MY_DEV_PASSWORD"], :password_confirmation => ENV["MY_DEV_PASSWORD"]
+Teacher.create! :email => 'd.aniel.crompton@gmail.com', :password => ENV["MY_DEV_PASSWORD"], :password_confirmation => ENV["MY_DEV_PASSWORD"], :confirmed_at => Time.now, :first_name => 'Daniel', :last_name => 'Crompton'
+Course.create! :name => 'Physics 101', :price => 1000, :teacher => '1'
+Course.create! :name => 'Advanced Physics', :price => 500, :teacher => '1'
