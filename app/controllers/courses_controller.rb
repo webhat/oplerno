@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
 
   before_filter :authenticate_user!, except: [:show, :index]
 
+  helper_method :add_course_to_cart, :logged_in?
+
   # GET /courses
   # GET /courses.json
   def index
@@ -72,6 +74,16 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
+  end
+
+  def add_course_to_cart(course)
+#    p current_user
+    session[:course_id] = course.id
+    '/carts'
+  end
+
+  def logged_in?
+    current_user != nil
   end
 
   private

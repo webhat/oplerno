@@ -13,7 +13,7 @@
   <div class="clearfix"><br/></div>
   <br/>
 
-  <div><%= link_to "Register", @course, {:disabled => true, :class => "btn btn-default"} %></div>
+  <div><%= button_to "Register", add_course_to_cart(@course), {:disabled => !logged_in?, :class => "btn btn-default"} %></div>
 </div>
 
 <div class="clearfix"><br/></div>

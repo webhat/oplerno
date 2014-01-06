@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103221607) do
+ActiveRecord::Schema.define(:version => 20140105220438) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,19 +46,22 @@ ActiveRecord::Schema.define(:version => 20140103221607) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "carts", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.float    "total_price"
-    t.date     "purchased_at"
-    t.integer  "courses"
-    t.integer  "user"
+# Could not dump table "carts" because of following StandardError
+#   Unknown type 'belongs_to' for column 'user_id'
+
+  create_table "carts_courses", :force => true do |t|
+    t.integer "cart_id"
+    t.integer "course_id"
   end
+
+  add_index "carts_courses", ["cart_id"], :name => "index_carts_courses_on_cart_id"
+  add_index "carts_courses", ["course_id", "cart_id"], :name => "index_carts_courses_on_course_id_and_cart_id", :unique => true
+  add_index "carts_courses", ["course_id"], :name => "index_carts_courses_on_course_id"
 
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.string   "key"
-    t.string   "price"
+    t.integer  "price"
     t.string   "description"
     t.string   "teacher"
     t.string   "filename"

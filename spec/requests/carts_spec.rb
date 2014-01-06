@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe "Carts" do
   describe "GET /carts" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+    it "Should redirect for login" do
       get carts_path
-      response.status.should be(200)
+      response.status.should be(302)
+    end
+    it "Should redirect for login" do
+      get carts_path
+    response.should redirect_to(new_user_session_url)
     end
   end
 end

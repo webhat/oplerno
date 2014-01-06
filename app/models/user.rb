@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, :encrypted_password
 
-  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :password, presence: true, length: {minimum: 8}, on: :create
   validates :password_confirmation, presence: true, on: :create
 
   attr_accessible :title,
@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
 
 
   has_many :courses
+  has_one :cart
 
   def picture=(input_data)
     self.filename = input_data.original_filename

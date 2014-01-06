@@ -3,7 +3,7 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :name
       t.string :key
-      t.string :price
+      t.integer :price
       t.string :description
       t.string :teacher
       t.string :filename

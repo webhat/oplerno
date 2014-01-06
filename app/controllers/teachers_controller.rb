@@ -30,8 +30,6 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
-    p @teacher.key
-    p current_user.key
     unless @teacher.key == current_user.key
       redirect_to current_user, notice: 'You can only edit your own user record'
       return
