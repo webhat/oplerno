@@ -1,13 +1,6 @@
 class OrdersController < InheritedResources::Base
   def create
-    @order = current_cart.build_order(params[:order])
-    @order.user = current_user
-    @order.ip = request.remote_ip
-    if @order.save
-      purchase
-    else
-      render :action => 'new'
-    end
+    set_order
   end
 
   def confirm
@@ -28,6 +21,25 @@ class OrdersController < InheritedResources::Base
 
   private
 
+  def set_order
+    @order = current_cart.build_order(params[:order])
+    if @order.nil?
+      @order = Order.create!
+      @order.cart = cart
+      @order.save
+    end
+
+    @order.user = current_user
+    @order.ip = request.remote_ip
+
+    if @order.save
+      p @order
+      purchase
+    else
+      render :action => 'new'
+    end
+  end
+
   def purchase
     setup_response = GATEWAY.setup_purchase(
         @order.price_in_cents,
@@ -39,6 +51,8 @@ class OrdersController < InheritedResources::Base
         :allow_note => false,
         :allow_guest_checkout => false,
     )
+
+    p setup_response
 
     redirect_to GATEWAY.redirect_url_for(setup_response.token)
   end

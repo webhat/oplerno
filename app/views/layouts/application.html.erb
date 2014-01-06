@@ -65,7 +65,7 @@
         <% end %>
       </ul>
       <ul class="btn-group nav pull-right">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !Cart.find_by_user_id(current_user.id).nil? %>
             <li><%= link_to "Classes", "/carts/#{Cart.find_by_user_id(current_user.id).id}", {:class => "btn-info"} %></li>
         <% end %>
       </ul>
