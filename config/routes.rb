@@ -15,7 +15,8 @@ Oplerno::Application.routes.draw do
     resources :students
     resources :teachers
     resources :carts
-    resources :orders
+    resources :orders, except: [:edit, :destroy, :show, :update]
+    get '/orders/confirm', 'orders#confirm'
   end
 
   get '/saml/auth' => 'saml_idp#new'

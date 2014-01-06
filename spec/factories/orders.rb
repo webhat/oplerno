@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :order do
-    new "MyString"
-    cart_id { Faker::Number.digit }
-    ip_address "MyString"
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    account "MyString"
+    user nil
+    transactions []
+    cart nil
+    ip { Faker::Internet.ip_v4_address }
   end
 end
