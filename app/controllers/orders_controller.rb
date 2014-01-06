@@ -1,7 +1,7 @@
 class OrdersController < InheritedResources::Base
   def create
-    p params[:order]
     @order = current_cart.build_order(params[:order])
+    @order.user = current_user
     @order.ip = request.remote_ip
     if @order.save
       purchase
@@ -15,13 +15,15 @@ class OrdersController < InheritedResources::Base
 
     details_response = GATEWAY.details_for(params[:token])
 
+    current_cart.order.transactions.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response)
+
     if !details_response.success?
       @message = details_response.message
       render :action => 'error'
       return
     end
 
-    @address = details_response.address
+    p details_response
   end
 
   private
@@ -31,21 +33,17 @@ class OrdersController < InheritedResources::Base
         @order.price_in_cents,
         :ip => @order.ip,
         :return_url => url_for(:action => 'confirm', :only_path => false),
-        :cancel_return_url => url_for(:action => 'index', :only_path => false),
-        :email => @order.user.email,
+        :cancel_return_url => url_for(:controller => 'carts', :action => 'index', :only_path => false),
+        :email => current_user.email,
+        :description => 'Course(s) with Oplerno LLC.',
         :allow_note => false,
-        :allow_guest_checkout => true,
+        :allow_guest_checkout => false,
     )
-    p setup_response
+
     redirect_to GATEWAY.redirect_url_for(setup_response.token)
-    #transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-    #cart.update_attribute(:purchased_at, Time.now) if response.success?
-    #response.success?
   end
 
   def current_cart
-    cart_id = params[:order]['cart_id']
-
-    Cart.find(cart_id)
+    Cart.find_by_user_id(current_user.id)
   end
 end

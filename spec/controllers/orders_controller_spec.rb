@@ -31,7 +31,7 @@ describe OrdersController do
   # OrdersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  let (:valid_cart) { {total_price: 6.00} }
+  let (:valid_cart) { {total_price: 6.00, user_id: 1} }
 
   before(:all) do
     @cart = Cart.create! valid_cart
@@ -39,15 +39,6 @@ describe OrdersController do
 
   after(:all) do
     @cart.delete
-  end
-
-
-  describe "GET index" do
-    it "assigns all orders as @orders" do
-      order = FactoryGirl.create(:order, valid_attributes)
-      get :index, {}
-      assigns(:orders).should eq([order])
-    end
   end
 
   describe "GET new" do

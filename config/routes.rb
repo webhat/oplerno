@@ -15,7 +15,7 @@ Oplerno::Application.routes.draw do
     resources :students
     resources :teachers
     resources :carts
-    resources :orders, except: [:edit, :destroy, :show, :update]
+    resources :orders, except: [:edit, :destroy, :show, :update, :index]
     get '/orders/confirm', 'orders#confirm'
   end
 
