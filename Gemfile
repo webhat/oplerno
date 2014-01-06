@@ -32,6 +32,8 @@ gem 'ruby-saml-idp'
 gem 'newrelic_rpm'
 gem 'coveralls', require: false
 
+gem 'canvas-api'
+
 gem 'json'
 
 group :assets do

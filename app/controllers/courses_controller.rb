@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   before_filter :set_course, only: [:show, :edit, :update, :destroy]
-
   before_filter :authenticate_user!, except: [:show, :index]
 
   helper_method :add_course_to_cart, :logged_in?
@@ -77,13 +76,8 @@ class CoursesController < ApplicationController
   end
 
   def add_course_to_cart(course)
-#    p current_user
     session[:course_id] = course.id
     '/carts'
-  end
-
-  def logged_in?
-    current_user != nil
   end
 
   private
