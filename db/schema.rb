@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20140106134804) do
     t.integer  "user_id"
   end
 
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
+
   create_table "carts_courses", :force => true do |t|
     t.integer "cart_id"
     t.integer "course_id"
