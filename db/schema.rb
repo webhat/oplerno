@@ -46,8 +46,13 @@ ActiveRecord::Schema.define(:version => 20140105220438) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-# Could not dump table "carts" because of following StandardError
-#   Unknown type 'belongs_to' for column 'user_id'
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.float    "total_price"
+    t.date     "purchased_at"
+    t.integer  "user_id"
+  end
 
   create_table "carts_courses", :force => true do |t|
     t.integer "cart_id"

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CartsController do
   login_user
 
-  let(:valid_attributes) { { user_id: "1" } }
+  let(:valid_attributes) { {user_id: "1"} }
 
   let(:valid_course) { {name: 'The Orange Theme'} }
 
@@ -107,12 +107,8 @@ describe CartsController do
   describe "DELETE destroy" do
     it "destroys the requested cart" do
       cart = Cart.create! valid_attributes
-      p Cart.count
-      p Cart.all
       expect {
         delete :destroy, {:id => cart.to_param}
-        p Cart.count
-        p Cart.all
       }.to change(Cart, :count).by(-1)
     end
 

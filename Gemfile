@@ -69,7 +69,6 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
-  gem 'launchy'
   gem 'vcr'
   gem 'fakeweb'
   gem 'cucumber-rails', :require => false
