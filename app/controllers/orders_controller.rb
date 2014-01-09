@@ -18,10 +18,8 @@ class OrdersController < InheritedResources::Base
       return
     else
       flash[:alert] = ''
-      flash[:notice] = 'Success'
+      flash[:notice] = (I18n.t 'orders.success')
     end
-
-    p details_response
   end
 
   private
@@ -38,7 +36,6 @@ class OrdersController < InheritedResources::Base
     @order.ip = request.remote_ip
 
     if @order.save
-      p @order
       purchase
     else
       render :action => 'new'
@@ -52,18 +49,15 @@ class OrdersController < InheritedResources::Base
         :return_url => url_for(:action => 'confirm', :only_path => false),
         :cancel_return_url => url_for(:controller => 'carts', :action => 'index', :only_path => false),
         :email => current_user.email,
-        :description => 'Course(s) with Oplerno LLC.',
+        :description => (I18n.t 'payments.description'),
         :allow_note => false,
         :allow_guest_checkout => false,
     )
-
-    p setup_response
 
     redirect_to GATEWAY.redirect_url_for(setup_response.token)
   end
 
   def current_cart
-    p current_user
     Cart.find_by_user_id(current_user.id)
   end
 end

@@ -13,3 +13,7 @@ en:
   users:
     fail:
       user_record: 'You can only edit your own user record'
+  orders:
+    success: 'Success'
+  payments:
+    description: 'Course(s) with Oplerno LLC.'
