@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :courses
   has_one :cart
   has_many :orders
+  has_one :canvas_user
 
   def picture=(input_data)
     self.filename = input_data.original_filename
