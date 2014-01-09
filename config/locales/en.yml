@@ -17,3 +17,9 @@ en:
     success: 'Success'
   payments:
     description: 'Course(s) with Oplerno LLC.'
+  courses:
+    success:
+      create: 'Course was successfully created'
+      update: 'Course was successfully updated'
+    fail:
+      own_course: 'You can only edit your own courses'

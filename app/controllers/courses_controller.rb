@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    return unless current_user?
   end
 
   # POST /courses
@@ -40,7 +41,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to @course, notice: (I18n.t 'courses.success.create') }
         format.json { render action: 'show', status: :created, location: @course }
         current_user.courses << @course
         current_user.save
@@ -54,9 +55,11 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    return unless current_user?
+
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to @course, notice: (I18n.t 'courses.success.update') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,6 +71,8 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
+    return unless current_user?
+
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url }
@@ -78,6 +83,16 @@ class CoursesController < ApplicationController
   def add_course_to_cart(course)
     session[:course_id] = course.id
     '/carts'
+  end
+
+  protected
+
+  def current_user?
+    unless @course.teacher == current_user.id
+      redirect_to course_url, alert: (I18n.t 'courses.fail.own_course')
+      return false
+    end
+    return true
   end
 
   private
