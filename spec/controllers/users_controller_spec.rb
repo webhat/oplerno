@@ -8,6 +8,5 @@ describe UsersController do
   let(:valid_session) { {} }
 
   describe "there is no route to users"
-
 end
 

@@ -2,4 +2,14 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  students:
+    success:
+      create: 'Student was successfully created'
+      update: 'Student was successfully updated'
+  teachers:
+    success:
+      create: 'Teacher was successfully created'
+      update: 'Teacher was successfully updated'
+  users:
+    fail:
+      user_record: 'You can only edit your own user record'

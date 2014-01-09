@@ -5,7 +5,6 @@ FactoryGirl.define do
     f.password { Faker::Lorem.characters(8) }
     f.password_confirmation { f.password }
     f.authy_enabled { false }
-    #f.confirmed_at { Time.now }
   end
 end
 

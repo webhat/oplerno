@@ -1,4 +1,4 @@
-class TeachersController < ApplicationController
+class TeachersController < UsersController
   before_filter :set_teacher, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:edit, :update, :destroy]
 
@@ -30,10 +30,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
-    unless @teacher.key == current_user.key
-      redirect_to current_user, notice: 'You can only edit your own user record'
-      return
-    end
+    return unless current_user?
   end
 
   # POST /teachers
@@ -45,7 +42,7 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        format.html { redirect_to @teacher, notice: (I18n.t 'teachers.success.create') }
         format.json { render action: 'show', status: :created, location: @teacher }
       else
         format.html { render action: 'new' }
@@ -57,14 +54,11 @@ class TeachersController < ApplicationController
   # PATCH/PUT /teachers/1
   # PATCH/PUT /teachers/1.json
   def update
-    unless @teacher.key == current_user.key
-      redirect_to current_user, notice: 'You can only edit your own user record'
-      return
-    end
+    return unless current_user?
 
     respond_to do |format|
-      if @teacher.update(teacher_params)
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
+      if @teacher.update_attributes(teacher_params)
+        format.html { redirect_to @teacher, notice: (I18n.t 'teachers.success.update') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,11 +70,23 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
+    return unless current_user?
+
     @teacher.destroy
     respond_to do |format|
       format.html { redirect_to teachers_url }
       format.json { head :no_content }
     end
+  end
+
+  protected
+
+  def current_user?
+    unless @teacher.key == current_user.key
+      redirect_to @teacher, alert: (I18n.t 'users.fail.user_record')
+      return false
+    end
+    return true
   end
 
   private

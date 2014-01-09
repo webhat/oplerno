@@ -1,7 +1,6 @@
-class StudentsController < ApplicationController
+class StudentsController < UsersController
   before_filter :set_student, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:show, :edit, :update, :destroy]
-
 
   # GET /students
   # GET /students.json
@@ -9,18 +8,9 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  # GET /students/1
-  # GET /students/1.json
-  def show
-  end
-
   # GET /students/new
   def new
     @student = Student.new
-  end
-
-  # GET /students/1/edit
-  def edit
   end
 
   # POST /students
@@ -30,7 +20,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to @student, notice: (I18n.t 'students.success.create') }
         format.json { render action: 'show', status: :created, location: @student }
       else
         format.html { render action: 'new' }
@@ -39,12 +29,31 @@ class StudentsController < ApplicationController
     end
   end
 
+  # DELETE /students/1
+  # DELETE /students/1.json
+  def destroy
+    return unless current_user?
+
+    @student.destroy
+    respond_to do |format|
+      format.html { redirect_to students_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET /student/1/edit
+  def edit
+    return unless current_user?
+  end
+
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    return unless current_user?
+
     respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+      if @student.update_attributes(student_params)
+        format.html { redirect_to @student, notice: (I18n.t 'students.success.update') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -53,17 +62,18 @@ class StudentsController < ApplicationController
     end
   end
 
-  # DELETE /students/1
-  # DELETE /students/1.json
-  def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url }
-      format.json { head :no_content }
+  protected
+
+  def current_user?
+    unless @student.key == current_user.key
+      redirect_to student_url, alert: (I18n.t 'users.fail.user_record')
+      return false
     end
+    return true
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_student
     @student = Student.find(params[:id])
