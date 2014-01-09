@@ -12,8 +12,13 @@ class OrdersController < InheritedResources::Base
 
     if !details_response.success?
       @message = details_response.message
-      render :action => 'error'
+      flash[:alert] = @message
+      flash[:notice] = ''
+      render :action => 'confirm'
       return
+    else
+      flash[:alert] = ''
+      flash[:notice] = 'Success'
     end
 
     p details_response
@@ -58,6 +63,7 @@ class OrdersController < InheritedResources::Base
   end
 
   def current_cart
+    p current_user
     Cart.find_by_user_id(current_user.id)
   end
 end

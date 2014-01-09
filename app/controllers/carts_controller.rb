@@ -2,7 +2,7 @@ class CartsController < InheritedResources::Base
   before_filter :set_cart, only: [:create, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  helper_method :remove_course_from_cart, :logged_in?
+  helper_method :remove_course_from_cart_url,:remove_course_from_cart, :logged_in?
 
   def create
     @cart.user_id = current_user.id
@@ -19,16 +19,23 @@ class CartsController < InheritedResources::Base
     redirect_to courses_url
   end
 
-  def remove_course_from_cart(course)
-    @cart.courses.delete(course)
-    '/carts'
+  def remove_course_from_cart_url(course)
+    "/carts/#{Cart.find_by_user_id(current_user.id).id}/#{course.id}"
+  end
+
+  def remove_course_from_cart
+    p params
+    @cart = Cart.find(params[:cart])
+    @cart.courses.delete(Course.find(params[:course]))
+    redirect_to "/carts/#{@cart.id}"
+    #redirect_to "/carts/#{Cart.find_by_user_id(current_user.id).id}"
   end
 
   private
 
   def set_cart
     unless current_user.cart.nil?
-      @cart = Cart.find(current_user.cart)
+      @cart = Cart.find_by_user_id(current_user.id)
     else
       @cart = Cart.create!
     end

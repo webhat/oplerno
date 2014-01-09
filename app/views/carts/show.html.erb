@@ -7,7 +7,7 @@
         <img width='256' height='256' src="/courses/<%= course.key %>.jpeg"/>
       </div>
       <div><%= course.name %></div>
-      <div><%= button_to "Remove", (course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>    </div>
+      <div><%= button_to "Remove", remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>    </div>
 <% end unless @cart.courses.empty? %>
 <div class="clearfix"></div>
 
