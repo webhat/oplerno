@@ -18,6 +18,11 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   gem 'sdoc', require: false
 	gem 'yard', require: false
+	gem 'guard-yard'
+	gem 'guard-jasmine'
+	gem 'guard-coffeescript'
+	gem 'guard-compass'
+#gem 'guard-jslint-on-rails'
 end
 
 
