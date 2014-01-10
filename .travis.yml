@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-- 2.0
+- ruby-head
 - 1.9.3
 env:
   matrix:
@@ -16,7 +16,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: DB=mysql
-    rvm: 2.0
+    rvm: ruby-head
   - env: DB=mysql
     rvm: 1.9.3
 script:
