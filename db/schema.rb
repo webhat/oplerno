@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20140109163332) do
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
-    t.text     "avatal_url"
+    t.text     "avatar_url"
     t.integer  "canvas_id"
     t.text     "locale"
     t.text     "username"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20140109163332) do
     t.date     "purchased_at"
     t.integer  "user_id"
   end
+
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
   create_table "carts_courses", :force => true do |t|
     t.integer "cart_id"

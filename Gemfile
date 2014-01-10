@@ -6,6 +6,9 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
+gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
+gem 'growl' if /darwin/ =~ RUBY_PLATFORM
+
 gem 'rails', '3.2.14'
 gem "jquery-rails", "< 3.0.0"
 
@@ -21,7 +24,8 @@ group :doc do
 	gem 'guard-yard'
 	gem 'guard-jasmine'
 	gem 'guard-coffeescript'
-	gem 'guard-compass'
+	gem 'redcarpet'
+#gem 'guard-compass'
 #gem 'guard-jslint-on-rails'
 end
 
@@ -52,6 +56,10 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'thin'
+
+	gem 'rb-fsevent', '~> 0.9.4', :require => false
+	gem 'rb-inotify', '~> 0.9.3', :require => false
+	gem 'rb-fchange', :require => false
 end
 
 gem 'minitest', '~> 4.0'

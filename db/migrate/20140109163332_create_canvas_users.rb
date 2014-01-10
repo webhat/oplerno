@@ -2,7 +2,7 @@ class CreateCanvasUsers < ActiveRecord::Migration
   def change
     create_table :canvas_users do |t|
       t.belongs_to :user
-      t.text :avatal_url
+      t.text :avatar_url
       t.integer :canvas_id
       t.text :locale
       t.text :username

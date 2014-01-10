@@ -45,4 +45,6 @@ Oplerno::Application.configure do
         :signature => ENV['PAYPAL_SIG']
     )
   end
+
+  ::CANVAS_HOST = 'oplerno.test.instructure.com'
 end

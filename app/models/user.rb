@@ -57,10 +57,6 @@ class User < ActiveRecord::Base
     self.hidden = 1
   end
 
-  def self.find_by_email(_email)
-    User.find(Digest::MD5.hexdigest _email)
-  end
-
   def self.find_by_id(id)
     User.find(id)
   end
