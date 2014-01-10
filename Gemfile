@@ -72,7 +72,7 @@ group :test do
   gem 'poltergeist'
   gem 'timecop'
   gem 'vcr'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
 end

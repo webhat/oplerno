@@ -49,7 +49,8 @@ describe OrdersController do
   end
 
   describe "POST create" do
-    describe "with valid params" do
+    vcr_options = {:record => :new_episodes}
+    describe "with valid params", :vcr => vcr_options do
       it "creates a new Order" do
         expect {
           post :create, {:order => valid_attributes}
