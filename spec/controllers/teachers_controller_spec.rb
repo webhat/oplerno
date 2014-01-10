@@ -123,12 +123,12 @@ describe TeachersController do
 
     context 'not logged in as user' do
       it 'responds successfully with an HTTP 302 status code' do
-        put :edit, {id: @user.id}
+        put :update, {id: @user.id}
         expect(response).to_not be_success
         expect(response.status).to eq(302)
       end
       it 'responds successfully redirects to new user session' do
-        put :edit, {id: @user.id}
+        put :update, {id: @user.id}
         response.should redirect_to(new_user_session_url)
       end
     end
