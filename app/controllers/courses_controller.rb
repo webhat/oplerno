@@ -28,11 +28,6 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
-  # GET /courses/1/edit
-  def edit
-    return unless current_user?
-  end
-
   # POST /courses
   # POST /courses.json
   def create
@@ -52,13 +47,18 @@ class CoursesController < ApplicationController
     end
   end
 
+  # GET /courses/1/edit
+  def edit
+    return unless current_user?
+  end
+
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
     return unless current_user?
 
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update_attributes(course_params)
         format.html { redirect_to @course, notice: (I18n.t 'courses.success.update') }
         format.json { head :no_content }
       else
@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
   protected
 
   def current_user?
-    unless @course.teacher == current_user.id
+    unless @course.teacher.to_i == current_user.id
       redirect_to course_url, alert: (I18n.t 'courses.fail.own_course')
       return false
     end
