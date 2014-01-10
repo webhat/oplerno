@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore genarated files
+/app/assets/javascripts/*.js  
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
