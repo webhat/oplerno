@@ -6,16 +6,18 @@ env:
   matrix:
   - DB=sqlite
   - DB=mysql
-  allow_failures:
-  - env: DB=mysql
-    rvm: 2.0
-  - env: DB=mysql
-    rvm: 1.9.3
   global:
   - secure: o4OwbLqHD+jHMGtlv5/d/PPZvIMD72kGZQ/kujzyFoUurg6WF+2XjshJnlNg9LaXRTKKhofd+AtVBbl/d4di6ZoJaQw1l9FSdBotNKHAPBl2bZ578CRbEwtqCwShAhSh94oujRDDNh3kMKrQ9kIsLGnus2/oh1NIuXqK/8/SMBQ=
   - secure: P2Ma1eeSuA0EsfinQsGJceAc12bhIo2RX331tlNSdGULLYcBenfMVewxhZUk0TCaqBD7N9hkHqkYM+WRggLujvoVjWmFmFFGVLtfU0sM38WTpso3+JVfVjpSxOLrckCA2Mamp7mAKDRw4PIVX7KkBm53KTtDALVnkm8jQHezxts=
   - secure: BvNjpLpaZJxYou5FHULcaw3Pdgy+AdpXhNeOhtNGQkvc7O1H6/eZFEg4iprGgLHhZ75PDhhpZ8rCe3QeawxSK4oQSoSYHRiaTfRWa5jGKpFWcNWL1P/SIGP2DtZ51LA7F8gyHjwfqRhCtTybxI6LWvxizHV9zUoCvMxT4IPowas=
   - secure: duioFLz2DA0DAmB7t8Nps9qOWP+oR+BsqFt/f3b3+LgPJZeWJG6iLgx21rXStj7XMUye1TXE/6AqSHKsmG6x4HRMa9ZXWyvMUVfDkUaFrhf6sv30gD3qH518DK8fvw3xuVNHKLvv79rlkwDm8MevIrQBoExmYBU2RxLoWriHhAw=
+matrix:
+  fast_finish: true
+  allow_failures:
+  - env: DB=mysql
+    rvm: 2.0
+  - env: DB=mysql
+    rvm: 1.9.3
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
