@@ -98,9 +98,8 @@ end
 # Use Capistrano for deployment
 gem 'sshkit', '~> 1.2.0', group: :development
 gem 'capistrano', group: :development
-gem 'capistrano-bundler'#, git: 'git://github.com/capistrano/bundler.git'
-#gem 'rvm-capistrano'
-gem 'rvm1-capistrano3', require: false
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
