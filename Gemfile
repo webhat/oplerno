@@ -25,8 +25,6 @@ group :doc do
 	gem 'guard-jasmine'
 	gem 'guard-coffeescript'
 	gem 'redcarpet'
-#gem 'guard-compass'
-#gem 'guard-jslint-on-rails'
 end
 
 
@@ -98,8 +96,11 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'sshkit', '~> 1.0.0', group: :development
+gem 'sshkit', '~> 1.2.0', group: :development
 gem 'capistrano', group: :development
+gem 'capistrano-bundler', git: 'git://github.com/capistrano/bundler.git'
+#gem 'rvm-capistrano'
+gem 'rvm1-capistrano3', require: false
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

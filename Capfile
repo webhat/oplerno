@@ -4,6 +4,9 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
+require 'rvm1/capistrano3'
+set :rvm_ruby_string, 'ruby-1.9.3-p448'
+
 # Includes tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
