@@ -47,4 +47,4 @@ end
 #before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset, OR:
 before 'deploy', 'rvm1:install:rvm'
 before 'deploy', 'rvm1:install:ruby'
-before 'deploy', 'rvm1:install:gems'
+#before 'deploy', 'rvm1:install:gems'

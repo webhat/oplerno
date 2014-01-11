@@ -18,7 +18,6 @@
 /log/*.log
 /tmp
 .idea
-Gemfile.lock
 coverage
 bin
 doc
