@@ -1,6 +1,7 @@
 language: ruby
 rvm:
 - ruby-head
+- 2.0
 - 1.9.3
 env:
   matrix:
@@ -19,6 +20,7 @@ matrix:
     rvm: ruby-head
   - env: DB=mysql
     rvm: 1.9.3
+  - rvm: ruby-head
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
