@@ -6,8 +6,8 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
-gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
-gem 'growl' if /darwin/ =~ RUBY_PLATFORM
+gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
+gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'rb-inotify'
 
 gem 'rails', '3.2.14'
 gem "jquery-rails", "< 3.0.0"
