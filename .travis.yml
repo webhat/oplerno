@@ -17,7 +17,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: DB=mysql
-    rvm: ruby-head
+    rvm: 2.0
   - env: DB=mysql
     rvm: 1.9.3
   - rvm: ruby-head
