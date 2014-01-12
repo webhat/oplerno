@@ -7,7 +7,7 @@ if RUBY_VERSION =~ /1.9/
 end
 
 gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
-gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'rb-inotify'
+gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
 
 gem 'rails', '3.2.14'
 gem "jquery-rails", "< 3.0.0"
