@@ -393,6 +393,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activemerchant
+  bundler
   canvas-api
   capistrano
   capistrano-bundler

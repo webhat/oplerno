@@ -98,6 +98,7 @@ end
 # Use Capistrano for deployment
 gem 'sshkit', '~> 1.2.0', group: :development
 gem 'capistrano', group: :development
+gem 'bundler'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
 

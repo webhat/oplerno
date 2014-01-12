@@ -27,7 +27,7 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       within release_path do
-        execute :echo, 'cache:clear'
+        execute :rake, 'db:migrate'
       end
     end
   end
