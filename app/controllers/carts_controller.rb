@@ -2,7 +2,7 @@ class CartsController < InheritedResources::Base
   before_filter :set_cart, only: [:create, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  helper_method :remove_course_from_cart_url,:remove_course_from_cart, :logged_in?
+  helper_method :remove_course_from_cart_url, :remove_course_from_cart, :logged_in?
 
   def create
     @cart.user_id = current_user.id
@@ -10,6 +10,13 @@ class CartsController < InheritedResources::Base
     @cart.save
 
     redirect_to courses_url
+  end
+
+  def show
+    respond_to do |format|
+      format.json { render json: @cart.courses, status: :ok }
+      format.html { render action: 'show' }
+    end
   end
 
   def destroy

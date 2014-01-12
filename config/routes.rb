@@ -14,7 +14,7 @@ Oplerno::Application.routes.draw do
     resources :courses #, except: [:edit, :destroy, :show, :update]
     resources :students
     resources :teachers
-    resources :carts
+    resources :carts, except: [:index]
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
     get '/orders/confirm', 'orders#confirm'
     post '/carts/:cart/:course', to: 'carts#remove_course_from_cart'
