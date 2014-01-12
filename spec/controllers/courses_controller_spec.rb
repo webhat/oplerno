@@ -38,7 +38,6 @@ describe CoursesController do
       end
 
       it 'updates the requested course' do
-        p session['warden.user.user.key'][0][0]
         Course.any_instance.should_receive(:update_attributes).with({'name' => 'test.user'})
         put :update, {id: @course.id, :course => {:name => 'test.user'}}
       end

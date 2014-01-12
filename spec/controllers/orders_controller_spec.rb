@@ -38,7 +38,7 @@ describe OrdersController do
   end
 
   after(:all) do
-    @cart.delete
+    @cart.destroy
   end
 
   describe "GET new" do
