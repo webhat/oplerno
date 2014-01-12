@@ -1,4 +1,7 @@
 ActiveAdmin.register Cart do
+
+  #menu :parent => "Admin"
+
   index do
     column :total_price
     column :purchased_at
