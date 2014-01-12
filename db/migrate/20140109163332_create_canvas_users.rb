@@ -10,6 +10,6 @@ class CreateCanvasUsers < ActiveRecord::Migration
       t.timestamps
     end
     add_index :canvas_users, :user_id
-    add_index :canvas_users, :username
+    add_index :canvas_users, :username, :length => { :username => 64 }
   end
 end

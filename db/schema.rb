@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20140109163332) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false

@@ -24,16 +24,16 @@ describe OrdersController do
   # This should return the minimal set of attributes required to create a valid
   # Order. As you add validations to Order, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {cart_id: @cart.id, user_id: 1} }
+  let(:valid_attributes) { {cart_id: @cart.id, user_id: current_user.id} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # OrdersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  let (:valid_cart) { {total_price: 6.00, user_id: 1} }
+  let (:valid_cart) { {total_price: 6.00, user_id: current_user.id} }
 
-  before(:all) do
+  before(:each) do
     @cart = Cart.create! valid_cart
   end
 
@@ -49,7 +49,7 @@ describe OrdersController do
   end
 
   describe "POST create" do
-    vcr_options = {:record => :new_episodes}
+    vcr_options = {:record => :once}
     describe "with valid params", :vcr => vcr_options do
       it "creates a new Order" do
         expect {

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CartsController do
   login_user
 
-  let(:valid_attributes) { {user_id: "1"} }
+  let(:valid_attributes) { {user_id: current_user.id} }
 
   let(:valid_course) { {name: 'The Orange Theme'} }
 

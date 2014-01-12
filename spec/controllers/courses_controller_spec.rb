@@ -4,7 +4,7 @@ require 'spec_helper'
 describe CoursesController do
   include Devise::TestHelpers
 
-  let(:valid_attributes) { {name: 'Wine course', teacher: session['warden.user.user.key'][0][0]} }
+  let(:valid_attributes) { {name: 'Wine course', teacher: current_user.id} }
 
   let(:valid_session) { {} }
 
@@ -31,6 +31,11 @@ describe CoursesController do
 
     context 'logged in as user' do
       login_user
+
+      before do
+        @course.teacher = current_user.id
+        @course.save
+      end
 
       it 'updates the requested course' do
         p session['warden.user.user.key'][0][0]
@@ -111,6 +116,11 @@ describe CoursesController do
 
     context 'logged in as user' do
       login_user
+
+      before do
+        @course.teacher = current_user.id
+        @course.save
+      end
 
       it 'renders the edit template' do
         get :edit, {id: @course.id}
