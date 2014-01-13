@@ -10,6 +10,7 @@ class Course  < ActiveRecord::Base
   has_many :teachers
   has_many :students
   has_and_belongs_to_many :carts
+  has_one :canvas_course
 
   def picture=(input_data)
     self.filename = input_data.original_filename

@@ -31,17 +31,5 @@ describe CanvasUsers do
       pending 'Errors out on occasion'
       CanvasUsers.update_all
     end
-    it 'connects to canvas with oauth' do
-      CanvasUsers.connect_to_canvas_oauth
-    end
-    it 'connects to canvas with oauth + token' do
-      CanvasUsers.connect_to_canvas_oauth ENV['CANVAS_TOKEN']
-    end
-    it 'connects to canvas with oauth bad token' do
-      CanvasUsers.connect_to_canvas_oauth 'abcdefg'
-    end
-    it 'connects to canvas' do
-      CanvasUsers.connect_to_canvas
-    end
   end
 end

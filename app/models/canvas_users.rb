@@ -1,11 +1,11 @@
 class CanvasUsers < ActiveRecord::Base
+  extend CanvasModule
+
   belongs_to :user
   attr_accessible :avatar_url, :canvas_id, :locale, :username
 
-  @@canvas = nil
-
   def self.update(canvas_user)
-    self.connect_to_canvas_oauth if @@canvas.nil?
+    self.connect_to_canvas_oauth if canvas.nil?
     begin
       user = User.find_by_email canvas_user['login_id']
     rescue
@@ -24,28 +24,10 @@ class CanvasUsers < ActiveRecord::Base
   end
 
   def self.update_all
-    self.connect_to_canvas_oauth if @@canvas.nil?
+    self.connect_to_canvas_oauth if canvas.nil?
 
-    @@canvas.get('/api/v1/accounts/1/users').as_json.each do |canvas_user|
-      update @@canvas.get "/api/v1/users/#{canvas_user['id']}/profile"
+    canvas.get('/api/v1/accounts/1/users').as_json.each do |canvas_user|
+      update canvas.get "/api/v1/users/#{canvas_user['id']}/profile"
     end
-  end
-
-  def self.connect_to_canvas_oauth token = nil
-    token = ENV['CANVAS_TOKEN'] if token.nil?
-
-    @@canvas ||= Canvas::API.new(:host => "https://#{CANVAS_HOST}",
-                                 :token => token
-    )
-    #p @@canvas.get('/api/v1/accounts/1/users').as_json
-    #p @@canvas.get('/api/v1/users/1/profile')
-  end
-
-  def self.connect_to_canvas
-    canvas = Canvas::API.new(:host => "https://#{CANVAS_HOST}",
-                             :client_id => ENV['CANVAS_USERNAME'],
-                             :secret => ENV['CANVAS_PASSWORD']
-    )
-    canvas.oauth_url "https://localhost/oauth_success"
   end
 end
