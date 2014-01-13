@@ -6,9 +6,15 @@ class CartsController < InheritedResources::Base
 
   def create
     @cart.user_id = current_user.id
-    @cart.courses << Course.find(session[:course_id])
+    course = Course.find(session[:course_id])
+    if course.price.to_i > 0
+      @cart.courses << Course.find(session[:course_id])
+    else
+      flash[:alert] = (I18n.t 'courses.fail.inactive')
+    end
     @cart.save
 
+    session[:course_id] = nil
     redirect_to courses_url
   end
 
