@@ -1,4 +1,14 @@
 class User < ActiveRecord::Base
+
+  encrypt_with_public_key :secret,
+                          :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
+  encrypt_with_public_key :title,
+                          :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
+  encrypt_with_public_key :first_name,
+                          :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
+  encrypt_with_public_key :last_name,
+                          :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

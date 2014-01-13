@@ -351,6 +351,8 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
+    strongbox (0.7.0)
+      activerecord
     systemu (2.5.2)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -445,6 +447,7 @@ DEPENDENCIES
   simplecov
   sqlite3
   sshkit (~> 1.2.0)
+  strongbox
   thin
   timecop
   turbolinks
