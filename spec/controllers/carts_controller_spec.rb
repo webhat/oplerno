@@ -12,14 +12,6 @@ describe CartsController do
     session[:course_id] = course.id
   end
 
-  describe "GET index" do
-    it "assigns all carts as @carts" do
-      cart = Cart.create! valid_attributes
-      get :index, {}
-      assigns(:carts).should eq([cart])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested cart as @cart" do
       cart = Cart.create! valid_attributes

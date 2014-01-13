@@ -31,11 +31,9 @@ class CartsController < InheritedResources::Base
   end
 
   def remove_course_from_cart
-    p params
     @cart = Cart.find(params[:cart])
     @cart.courses.delete(Course.find(params[:course]))
     redirect_to "/carts/#{@cart.id}"
-    #redirect_to "/carts/#{Cart.find_by_user_id(current_user.id).id}"
   end
 
   private
