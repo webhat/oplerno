@@ -37,10 +37,6 @@ describe OrdersController do
     @cart = Cart.create! valid_cart
   end
 
-  after(:all) do
-    @cart.destroy
-  end
-
   describe "GET new" do
     it "assigns a new order as @order" do
       get :new, {}
