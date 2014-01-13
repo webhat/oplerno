@@ -5,6 +5,7 @@ Devise.setup do |config|
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   config.secret_key = 'f3211757debdf78f840500c4555e2fea30b0ddbbc0746aaaca05f5f92bb9f35eec0f9f3582e4559f8ae6a9a982780aa4666362ca4ab08cdb29955f8e4ca7d762'
+  config.secret_key = ENV['DEVISE_SECRET'] unless Rails.env.test? || Rails.env.development?
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -41,12 +42,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -73,7 +74,7 @@ Devise.setup do |config|
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
   # Does not affect registerable.
-  # config.paranoid = true
+  config.paranoid = true
 
   # By default Devise will store the user in session. You can skip storage for
   # :http_auth and :token_auth by adding those symbols to the array below.
@@ -99,6 +100,7 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   config.pepper = 'acee89d06eb371a91826db26660a0f098040a2df2bfaac8503586c5701e76b47442423258fc4386cf17fd54df25004734cc64570c2804a7c48e23faa5224a478'
+  config.pepper = ENV['DEVISE_PEPPER'] unless Rails.env.test? || Rails.env.development?
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -123,7 +125,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  config.confirmation_keys = [ :email ]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -134,7 +136,7 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
-  # config.rememberable_options = {}
+  config.rememberable_options = {:secure => true} # unless   Rails.env.test?
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 8..128.
