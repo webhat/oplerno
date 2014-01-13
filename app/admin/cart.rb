@@ -8,16 +8,19 @@ ActiveAdmin.register Cart do
     column :courses do |cart|
       table_for cart.courses do
         column do |course|
-          link_to course.name, [ :admin, course ]
+          link_to course.name, [:admin, course]
         end
       end
     end
     column 'User' do |cart|
-      user = User.find(cart.user_id)
-      "#{user.first_name} #{user.last_name} (#{cart.user_id})"
+      begin
+        user = User.find(cart.user_id)
+        "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
+      rescue
+      end
     end
 
-        default_actions
+    default_actions
   end
 
   filter :purchased_at

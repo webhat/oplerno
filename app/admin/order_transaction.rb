@@ -15,7 +15,7 @@ ActiveAdmin.register OrderTransaction do
     column 'User' do |order_transaction|
       cart = order_transaction.order.cart
       user = User.find(cart.user_id)
-      "#{user.first_name} #{user.last_name} (#{cart.user_id})"
+      "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
     end
   end
 end

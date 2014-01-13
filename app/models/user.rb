@@ -45,7 +45,9 @@ class User < ActiveRecord::Base
                   :remember_created_at,
                   :filename,
                   :content_type,
-                  :binary_data
+                  :binary_data,
+                  :encrypted_last_name,
+                  :encrypted_first_name
 
 
   has_many :courses
@@ -70,4 +72,30 @@ class User < ActiveRecord::Base
   def self.find_by_id(id)
     User.find(id)
   end
+
+  def encrypted_title
+    self.title.decrypt Devise.secret_key
+  end
+
+  def encrypted_title= input
+    self.title = input
+  end
+
+  def encrypted_first_name
+    self.first_name.decrypt Devise.secret_key
+  end
+
+  def encrypted_first_name= input
+    self.first_name = input
+  end
+
+  def encrypted_last_name
+    self.last_name.decrypt Devise.secret_key
+  end
+
+  def encrypted_last_name= input
+    self.last_name = input
+  end
+
+
 end

@@ -3,8 +3,12 @@ ActiveAdmin.register Course do
     column :name
     column :price
     column "Teacher" do |course|
-      teacher = User.find(course.teacher)
-      "#{teacher.first_name} #{teacher.last_name} (#{teacher.id})"
+      begin
+        teacher = User.find(course.teacher)
+        "#{teacher.first_name} #{teacher.last_name} (#{teacher.id})"
+      rescue
+        "Unknown"
+      end
     end
     default_actions
   end
@@ -14,8 +18,12 @@ ActiveAdmin.register Course do
       row :name
       row :price
       row "Teacher" do |course|
-        teacher = User.find(course.teacher)
-        link_to "#{teacher.first_name} #{teacher.last_name}", "/admin/users/#{teacher.id}"
+        begin
+          teacher = User.find(course.teacher)
+          link_to "#{teacher.encrypted_first_name} #{teacher.encrypted_last_name}", "/admin/users/#{teacher.id}"
+        rescue
+          "Unknown"
+        end
       end
     end
   end
@@ -28,7 +36,7 @@ ActiveAdmin.register Course do
       f.input :name
       f.input :price
       f.input :description
-      f.input :teacher, :collection => User.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
+      f.input :teacher, :collection => User.all.map { |x| ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id] }
     end
     f.actions
   end

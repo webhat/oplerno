@@ -11,8 +11,11 @@ ActiveAdmin.register Order do
       end
     end
     column 'User' do |cart|
-      user = User.find(cart.user_id)
-      "#{user.first_name} #{user.last_name} (#{cart.user_id})"
+      begin
+        user = User.find(cart.user_id)
+        "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
+      rescue
+      end
     end
     default_actions
   end
@@ -20,7 +23,7 @@ ActiveAdmin.register Order do
   form do |f|
     f.inputs "Course Details" do
       f.input :cart, :collection => Cart.all.map(&:id)
-      f.input :user, :collection => User.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
+      f.input :user, :collection => User.all.map { |x| ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id] }
     end
     f.actions
   end
