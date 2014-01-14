@@ -21,7 +21,8 @@ namespace :deploy do
   desc 'Restart application'
   task :start do
     on roles(:app), in: :sequence, wait: 5 do
-      execute 'unicorn_rails -c www/current/config/unicorn.rb -E production -D'
+        execute 'pwd'
+        execute "cd #{release_path} && bin/unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
     end
   end
 

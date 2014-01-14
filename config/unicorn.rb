@@ -1,5 +1,7 @@
 # unicorn_rails -c /data/github/current/config/unicorn.rb -E production -D
 
+# (c) Copyright 2013-2014 Github
+
 rails_env = ENV['RAILS_ENV'] || 'production'
 rails_root = ENV['RAILS_ROOT'] || 'www/current'
 
@@ -67,6 +69,8 @@ after_fork do |server, worker|
   # Unicorn master is started as root, which is fine, but let's
   # drop the workers to git:git
 
+
+=begin
   begin
     uid, gid = Process.euid, Process.egid
     user, group = 'git', 'git'
@@ -85,4 +89,5 @@ after_fork do |server, worker|
       raise e
     end
   end
+=end
 end
