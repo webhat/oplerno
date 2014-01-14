@@ -20,5 +20,5 @@ namespace :strongbox do
   end
 end
 
-before 'deploy:starting', 'strongbox:archive'
-after 'deploy:updated', 'strongbox:upload'
+#before 'deploy:starting', 'strongbox:archive'
+#after 'deploy:updated', 'strongbox:upload'

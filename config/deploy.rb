@@ -1,11 +1,14 @@
 set :application, 'Oplerno'
-set :rails_env, 'test'
+#set :rails_env, 'test'
 
 set :scm, :git
 set :repo_url, 'git@github.com:webhat/oplerno.git'
 set :branch, 'develop'
 
 set :deploy_to, '/home/redhat/www'
+
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system config/strongbox}
 
 set :format, :pretty
 set :log_level, :debug
@@ -14,13 +17,6 @@ set :keep_releases, 4
 
 namespace :deploy do
   before :starting, 'github:ssh'
-
-  desc 'Set Keys for Strongbox'
-  task :set_keys do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :pwd
-    end
-  end
 
   desc 'Restart application'
   task :restart do
