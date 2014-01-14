@@ -23,6 +23,8 @@ script:
 - bundle exec rspec spec/
 before_script:
 - mysql -e 'create database oplerno_test'
+- cp config/database.yml.example config/database.yml
+- mkdir cp config/strongbox && cp config/keypair.pem.example config/strongbox/keypair.pem
 bundler_args: --binstubs=./bundler_stubs
 branches:
   only:
