@@ -13,9 +13,9 @@ namespace :strongbox do
   task :upload do
     on roles(:app), in: :sequence, wait: 5 do
       upload! "config/strongbox/archive.tgz", "archive.tgz"
-      execute 'tar zxvf archive.tgz; rm archive.tgz'
-      execute "rm -f #{release_path}/config/strongbox"
-      execute "ln -s ~/strongbox/ #{release_path}/config/strongbox"
+      execute 'tar zpxvf archive.tgz; rm archive.tgz'
+      execute "rm -rf #{shared_path}/config/strongbox"
+      execute "mv -f ~/strongbox/ #{shared_path}/config/"
     end
   end
 end
