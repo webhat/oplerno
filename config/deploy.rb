@@ -1,5 +1,5 @@
 set :application, 'Oplerno'
-#set :rails_env, 'test'
+set :rails_env, 'test'
 
 set :scm, :git
 set :repo_url, 'git@github.com:webhat/oplerno.git'
@@ -19,12 +19,21 @@ namespace :deploy do
   before :starting, 'github:ssh'
 
   desc 'Restart application'
+  task :start do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute 'unicorn_rails -c www/current/config/unicorn.rb -E production -D'
+    end
+  end
+
+  desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute :rm, options = '-rf', release_path.join('tmp')
-      execute :mkdir, release_path.join('tmp')
-      execute :touch, release_path.join('tmp/restart.txt')
+      execute :touch, shared_path.join('tmp/pids/unicorn.pid')
+      begin
+        Process.kill("USR2", File.read(release_path.join('tmp/pids/unicorn.pid')).to_i)
+      rescue
+      end
     end
   end
 

@@ -37,7 +37,7 @@ gem 'mysql2'
 gem 'sqlite3'
 gem 'ruby-saml'
 gem 'ruby-saml-idp'
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 gem 'coveralls', require: false
 
 gem 'canvas-api'
@@ -104,6 +104,8 @@ gem 'capistrano-bundler', group: :development
 #gem 'capistrano-rvm', group: :development
 gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
+
+gem 'unicorn', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
