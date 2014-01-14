@@ -31,11 +31,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       execute :touch, shared_path.join('tmp/pids/unicorn.pid')
-      begin
-        Process.kill("USR2", File.read(shared_path.join('tmp/pids/unicorn.pid')).to_i)
-      rescue => e
-        p e
-      end
+      execute :kill, '-USR2', "`cat #{shared_path.join('tmp/pids/unicorn.pid')}`"
     end
   end
 

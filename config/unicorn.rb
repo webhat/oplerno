@@ -3,7 +3,7 @@
 # (c) Copyright 2013-2014 Github
 
 rails_env = ENV['RAILS_ENV'] || 'production'
-rails_root = ENV['RAILS_ROOT'] || 'www/current'
+rails_root = ENV['RAILS_ROOT'] || '.'
 
 # 16 workers and 1 master
 worker_processes (rails_env == 'production' ? 16 : 4)
@@ -20,6 +20,8 @@ timeout 30
 
 # Listen on a port
 listen 'localhost:9000'
+
+pid rails_root + '/tmp/pids/unicorn.pid'
 
 ##
 # REE
@@ -42,8 +44,10 @@ before_fork do |server, worker|
   #
   # Using this method we get 0 downtime deploys.
 
-  old_pid = rails_root + '/tmp/pids/unicorn.pid'
+  old_pid = rails_root + '/tmp/pids/unicorn.pid.oldbin'
+  p File.read(old_pid)
   if File.exists?(old_pid) && server.pid != old_pid
+    p File.read(old_pid)
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
