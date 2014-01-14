@@ -1,4 +1,5 @@
 set :application, 'Oplerno'
+set :rails_env, 'test'
 
 set :scm, :git
 set :repo_url, 'git@github.com:webhat/oplerno.git'
@@ -8,10 +9,18 @@ set :deploy_to, '/home/redhat/www'
 
 set :format, :pretty
 set :log_level, :debug
+set :pty, true
 set :keep_releases, 4
 
 namespace :deploy do
   before :starting, 'github:ssh'
+
+  desc 'Set Keys for Strongbox'
+  task :set_keys do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :pwd
+    end
+  end
 
   desc 'Restart application'
   task :restart do
@@ -27,10 +36,14 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       within release_path do
-        execute :rake, 'db:migrate'
+        # nothing
       end
     end
   end
 
+  after :updated, 'deploy:migrate'
+
+  after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
+

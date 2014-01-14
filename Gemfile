@@ -20,11 +20,11 @@ gem 'jbuilder', '~> 1.2'
 
 group :doc do
   gem 'sdoc', require: false
-	gem 'yard', require: false
-	gem 'guard-yard'
-	gem 'guard-jasmine'
-	gem 'guard-coffeescript'
-	gem 'redcarpet'
+  gem 'yard', require: false
+  gem 'guard-yard'
+  gem 'guard-jasmine'
+  gem 'guard-coffeescript'
+  gem 'redcarpet'
 end
 
 
@@ -56,9 +56,9 @@ group :development do
   gem 'quiet_assets'
   gem 'thin'
 
-	gem 'rb-fsevent', '~> 0.9.4', :require => false
-	gem 'rb-inotify', '~> 0.9.3', :require => false
-	gem 'rb-fchange', :require => false
+  gem 'rb-fsevent', '~> 0.9.4', :require => false
+  gem 'rb-inotify', '~> 0.9.3', :require => false
+  gem 'rb-fchange', :require => false
 end
 
 gem 'minitest', '~> 4.0'
@@ -97,11 +97,13 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'sshkit', '~> 1.2.0', group: :development
+gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
-gem 'capistrano-bundler'
-gem 'capistrano-rvm'
+gem 'capistrano-bundler', group: :development
+#gem 'capistrano-rvm', group: :development
+gem 'capistrano-rails', group: :development
+gem 'rvm1-capistrano3', group: :development, :require => false
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
