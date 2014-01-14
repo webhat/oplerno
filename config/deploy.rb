@@ -22,7 +22,7 @@ namespace :deploy do
   task :start do
     on roles(:app), in: :sequence, wait: 5 do
         execute 'pwd'
-        execute "cd #{release_path} && bin/unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
+        execute "cd #{release_path} && bin/unicorn_rails -c config/unicorn.rb -E development -D"
     end
   end
 
@@ -32,8 +32,9 @@ namespace :deploy do
       # Your restart mechanism here, for example:
       execute :touch, shared_path.join('tmp/pids/unicorn.pid')
       begin
-        Process.kill("USR2", File.read(release_path.join('tmp/pids/unicorn.pid')).to_i)
-      rescue
+        Process.kill("USR2", File.read(shared_path.join('tmp/pids/unicorn.pid')).to_i)
+      rescue => e
+        p e
       end
     end
   end
