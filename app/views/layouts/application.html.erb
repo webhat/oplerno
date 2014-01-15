@@ -22,11 +22,11 @@
 
   <%= csrf_meta_tags %>
 
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/magic-bootstrap.css">
-  <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+  <%= stylesheet_link_tag "normalize.css" %>
+  <%= stylesheet_link_tag "main.css" %>
+  <%= stylesheet_link_tag "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag "magic-bootstrap.css" %>
+  <%= javascript_include_tag "modernizr-2.6.2.min.js" %>
   <%= javascript_include_tag "https://www.authy.com/form.authy.min.js" %>
   <%= stylesheet_link_tag "https://www.authy.com/form.authy.min.css" %>
   <%= javascript_include_tag "devise_authy.js" %>
@@ -87,9 +87,13 @@
         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
       </p>
       <div class="jumbotron">
-        <h1 style="text-align: center;"><a href="/"><img src="/img/logo.png" width="260" alt="Oplerno"></a></h1>
+        <h1 style="text-align: center;"><a href="/"><%= image_tag 'logo.png', width: '260', alt: 'Oplerno' %></a></h1>
       </div>
-      <p id="notice"><%= notice %></p>
+      <div>
+        <p id="notice"><%= notice %></p>
+
+        <p id="alert"><%= alert %></p>
+      </div>
 
       <div class="row">
         <%= yield %>
@@ -115,8 +119,8 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="/js/plugins.js"></script>
-<script src="/js/main.js"></script>
+<%= javascript_include_tag "plugins.js" %>
+<%= javascript_include_tag "main.js" %>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
@@ -135,6 +139,6 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
 </script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<%= javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" %>
 </body>
 </html>
