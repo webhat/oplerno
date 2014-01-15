@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ruby-saml'
 
-describe 'SamlIdpController' do
+describe SamlIdpController do
   include SamlIdp::Controller
 
   def params
@@ -43,7 +43,47 @@ describe 'SamlIdpController' do
     end
   end
 
-	private
+  describe 'SAML SignIn' do
+    context 'logged in as user' do
+      login_user
+      it 'should authenticate with existing user' do
+        requested_saml_acs_url = "https://oplerno.instructure.com/"
+        params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
+        post :create, params
+
+        expect(response).to be_success
+        expect(response.status).to eq(200)
+      end
+      it 'should not authenticate with existing user from bad domain' do
+        user = FactoryGirl.build(:user, password: 'testme')
+        requested_saml_acs_url = "https://example.com/"
+        params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
+        post :create, params
+
+        expect(response).to_not be_success
+        expect(response.status).to eq(403)
+      end
+    end
+
+    context 'not logged in as user' do
+      it 'responds successfully with an HTTP 302 status code' do
+        requested_saml_acs_url = "https://oplerno.test.instructure.com/"
+        params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
+        post :create, params, {}
+        expect(response).to_not be_success
+        expect(response.status).to eq(302)
+      end
+      it 'responds successfully redirects to new user session' do
+        requested_saml_acs_url = "https://oplerno.test.instructure.com/"
+        params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
+        post :create, params, {}
+        response.should redirect_to(new_user_session_url)
+      end
+    end
+  end
+
+
+  private
 
   def make_saml_request(requested_saml_acs_url = "https://foo.oplerno.com/saml/consume")
     auth_request = Onelogin::Saml::Authrequest.new

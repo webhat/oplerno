@@ -1,8 +1,9 @@
 class SamlIdpController < SamlIdp::IdpController
+  before_filter :authenticate_user!
   before_filter :find_account
 
   def idp_authenticate(email, password)
-    user = @account.users.where(:email => params[:email]).first
+    user = User.find_by_email(params[:email])
     user && user.valid_password?(params[:password]) ? user : nil
   end
 
@@ -13,8 +14,12 @@ class SamlIdpController < SamlIdp::IdpController
   private
 
   def find_account
-    @subdomain = saml_acs_url[/https?:\/\/(.+?)\.example.com/, 1]
-    @account = Account.find_by_subdomain(@subdomain)
-    render :status => :forbidden unless @account.saml_enabled?
+    @subdomain = saml_acs_url[/https?:\/\/(.+?)\.instructure.com/, 1]
+    if @subdomain == 'oplerno'
+      @saml_response = idp_make_saml_response(current_user)
+      render :template => "saml_idp/idp/saml_post", :layout => false
+      return
+    end
+    render :create, status: :forbidden
   end
 end

@@ -18,9 +18,9 @@ Oplerno::Application.routes.draw do
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
     get '/orders/confirm', 'orders#confirm'
     post '/carts/:cart/:course', to: 'carts#remove_course_from_cart'
+    get '/saml/auth' => 'saml_idp#new'
+    post '/saml/auth' => 'saml_idp#create'
   end
 
-  get '/saml/auth' => 'saml_idp#new'
-  post '/saml/auth' => 'saml_idp#create'
 
 end
