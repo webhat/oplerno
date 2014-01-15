@@ -45,7 +45,6 @@ before_fork do |server, worker|
   # Using this method we get 0 downtime deploys.
 
   old_pid = rails_root + '/tmp/pids/unicorn.pid.oldbin'
-  p File.read(old_pid)
   if File.exists?(old_pid) && server.pid != old_pid
     p File.read(old_pid)
     begin

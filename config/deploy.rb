@@ -32,9 +32,7 @@ namespace :deploy do
   task :start do
     on roles(:app), in: :sequence, wait: 0 do
       within release_path do
-        with(fetch(:default_env)) do
-          execute "cd #{release_path} ; DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
-        end
+          execute "cd #{release_path} ; DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)}|| echo ''"
       end
     end
   end
