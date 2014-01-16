@@ -22,7 +22,9 @@ set :default_env, {
     'RAILS_ENV' => fetch(:rails_env),
     'CANVAS_USERNAME' => ENV['CANVAS_USERNAME'],
     'CANVAS_PASSWORD' => ENV['CANVAS_PASSWORD'],
-    'CANVAS_TOKEN' => ENV['CANVAS_TOKEN']
+    'CANVAS_TOKEN' => ENV['CANVAS_TOKEN'],
+    'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
+    'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN']
 }
 
 namespace :deploy do
