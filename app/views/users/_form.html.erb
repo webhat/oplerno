@@ -1,17 +1,31 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= semantic_form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.inputs class: 'list-unstyled' do %>
+        <%= f.input :encrypted_title, label: t('users.fields.title') %>
+        <%= f.input :encrypted_first_name, label: t('users.fields.first_name') %>
+        <%= f.input :encrypted_last_name, label: t('users.fields.last_name') %>
+        <%= f.input :description , label: t('users.fields.description') %>
+        <%= f.input :email , label: t('users.fields.email') %>
+        <hr/>
+        <div>
+          <h3><%= t('users.messages.extra_security') %></h3>
+        <%= f.input :hidden, as: :boolean, label: t('users.fields.hidden')  %>
+        <%= f.input :authy_enabled , label: t('users.fields.authy_enabled') %>
+        </div>
+    <% end %>
+
+    <%= f.actions class: 'list-unstyled' do %>
+        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-default'}, label:  true || i18n_lookups_by_default = true %>
+    <% end %>
 <% end %>

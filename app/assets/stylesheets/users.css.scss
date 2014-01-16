@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+fieldset.list-unstyled ol {
+  list-style: none;
+
+  li {
+    width: 100%;
+    label {
+      width: 50%;
+    }
+    input {
+      margin: 5pt 0 5pt 0;
+    }
+    input[submit] {
+
+    }
+  }
+}
+

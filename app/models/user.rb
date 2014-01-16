@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
                   :filename,
                   :content_type,
                   :binary_data,
+                  :encrypted_title,
                   :encrypted_last_name,
                   :encrypted_first_name
 
@@ -96,6 +97,4 @@ class User < ActiveRecord::Base
   def encrypted_last_name= input
     self.last_name = input
   end
-
-
 end
