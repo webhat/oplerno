@@ -88,6 +88,8 @@ group :test do
   gem 'webmock'
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
+	gem 'perftools.rb'
+  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
 # Use ActiveModel has_secure_password
