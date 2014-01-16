@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+    var authyUI = Authy.UI.instance();
+    authyUI.setTooltip("Two-Factor Authentication", "You can your token from your cellphone");
+
+    $('#authy-help').click(function (e) {
+        e.stopPropagation();
+    });
+})

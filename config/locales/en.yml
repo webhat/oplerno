@@ -13,6 +13,7 @@ en:
   users:
     messages:
       extra_security: 'Additional Security Features'
+      authy_description: 'Click <a href="%{url}" target="_new">here</a> to enter your phone number'
     fail:
       user_record: 'You can only edit your own user record'
     fields:

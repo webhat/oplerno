@@ -15,17 +15,18 @@
         <%= f.input :encrypted_title, label: t('users.fields.title') %>
         <%= f.input :encrypted_first_name, label: t('users.fields.first_name') %>
         <%= f.input :encrypted_last_name, label: t('users.fields.last_name') %>
-        <%= f.input :description , label: t('users.fields.description') %>
-        <%= f.input :email , label: t('users.fields.email') %>
+        <%= f.input :description, label: t('users.fields.description') %>
+        <%= f.input :email, label: t('users.fields.email') %>
         <hr/>
         <div>
           <h3><%= t('users.messages.extra_security') %></h3>
-        <%= f.input :hidden, as: :boolean, label: t('users.fields.hidden')  %>
-        <%= f.input :authy_enabled , label: t('users.fields.authy_enabled') %>
+          <%= f.input :hidden, as: :boolean, label: t('users.fields.hidden') %>
+          <%= f.input :authy_enabled, label: t('users.fields.authy_enabled') %>
+          <%= raw t('users.messages.authy_description', url: '/users/enable-two-factor') %>
         </div>
     <% end %>
 
     <%= f.actions class: 'list-unstyled' do %>
-        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-default'}, label:  true %>
+        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-default'}, label: true %>
     <% end %>
 <% end %>
