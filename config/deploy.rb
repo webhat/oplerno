@@ -20,11 +20,11 @@ set :default_env, {
     'DEVISE_PEPPER' => ENV['DEVISE_PEPPER'],
     'DB' => 'mysql',
     'RAILS_ENV' => fetch(:rails_env),
+    'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
+    'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN'],
     'CANVAS_USERNAME' => ENV['CANVAS_USERNAME'],
     'CANVAS_PASSWORD' => ENV['CANVAS_PASSWORD'],
     'CANVAS_TOKEN' => ENV['CANVAS_TOKEN'],
-    'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
-    'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN']
 }
 
 namespace :deploy do
@@ -34,7 +34,7 @@ namespace :deploy do
   task :start do
     on roles(:app), in: :sequence, wait: 0 do
       within release_path do
-          execute "cd #{release_path} ; DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)}|| echo ''"
+          execute "cd #{release_path} ; OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)}|| echo ''"
       end
     end
   end
