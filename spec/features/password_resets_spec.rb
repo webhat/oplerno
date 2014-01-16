@@ -13,8 +13,7 @@ describe "PasswordResets" do
       visit '/users/sign_in'
       click_link "password"
       fill_in "Email", :with => user.email
-      click_button 'Send me reset password instructions'
-      #click_button "Reset Password"
+      click_button I18n.t('devise.passwords.send')
     end
   end
 end

@@ -20,4 +20,18 @@ describe 'Active Admin' do
     expect(page).to have_content "You need to sign in or sign up before continuing."
   end
 
+  it "accepts an admin user" do
+    @user = FactoryGirl.create(:admin_user)
+
+    visit '/admin/logout'
+    visit '/admin/login'
+    fill_in I18n.t('devise.sessions.new.email'), with: @user.email
+    fill_in I18n.t('devise.sessions.new.password'), with: @user.password
+    click_button 'Login' #I18n.t('devise.sessions.new.sign_in')
+
+    visit "/admin"
+    expect(page).to have_content "Dashboard"
+    expect(page).to_not have_content "You need to sign in or sign up before continuing."
+  end
+
 end
