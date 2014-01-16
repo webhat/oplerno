@@ -13,6 +13,7 @@ env:
   - secure: BvNjpLpaZJxYou5FHULcaw3Pdgy+AdpXhNeOhtNGQkvc7O1H6/eZFEg4iprGgLHhZ75PDhhpZ8rCe3QeawxSK4oQSoSYHRiaTfRWa5jGKpFWcNWL1P/SIGP2DtZ51LA7F8gyHjwfqRhCtTybxI6LWvxizHV9zUoCvMxT4IPowas=
   - secure: duioFLz2DA0DAmB7t8Nps9qOWP+oR+BsqFt/f3b3+LgPJZeWJG6iLgx21rXStj7XMUye1TXE/6AqSHKsmG6x4HRMa9ZXWyvMUVfDkUaFrhf6sv30gD3qH518DK8fvw3xuVNHKLvv79rlkwDm8MevIrQBoExmYBU2RxLoWriHhAw=
   - secure: NMjtzMWWESEvbzilb9eUF7fU2ZTIagYKplwbOwibvWCamM9hpbFG6chtOnyErdasxJhfsmFPG/sLM9/32rrgijem2gHY8Fz9WvZFl/pH5NlykSIs7Wf0BIhtaBnZIfjyZPs/pwX6MYeLApaiVfCPSyLBfps3t7RcBl1ZwxJ07IQ=
+  - NEWRELIC_ENABLE=false
 matrix:
   fast_finish: true
   allow_failures:
