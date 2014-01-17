@@ -26,12 +26,14 @@ set :default_env, {
     'CANVAS_PASSWORD' => ENV['CANVAS_PASSWORD'],
     'CANVAS_TOKEN' => ENV['CANVAS_TOKEN'],
     'MY_DEV_PASSWORD' => ENV['MY_DEV_PASSWORD'],
+    'MYSQL_PASSWORD' => ENV['MYSQL_PASSWORD'],
     'NEWRELIC_KEY' => ENV['NEWRELIC_KEY'],
     'AUTHY_API_KEY' => ENV['AUTHY_API_KEY']
 }
 
 namespace :deploy do
   before :starting, 'github:ssh'
+  before :starting, 'db:sync'
 
   desc 'Start application'
   task :start do
