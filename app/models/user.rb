@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 8}, on: :create
   validates :password_confirmation, presence: true, on: :create
 
+  after_commit CanvasUsers
+
   attr_accessible :title,
                   :first_name,
                   :last_name,
