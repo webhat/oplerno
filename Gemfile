@@ -25,6 +25,14 @@ group :doc do
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
   gem 'redcarpet'
+
+# metrics
+	gem 'reek'
+	gem 'flog'
+	gem 'metric_fu'
+	gem 'simplecov-rcov-text'
+	gem 'churn'
+	gem 'flog'
 end
 
 
