@@ -28,7 +28,6 @@ group :doc do
 
 # metrics
 	gem 'reek'
-	gem 'flog'
 	gem 'metric_fu'
 	gem 'simplecov-rcov-text'
 	gem 'churn'
