@@ -11,7 +11,7 @@ Oplerno::Application.routes.draw do
   }
 
   devise_scope :user do
-    resources :courses #, except: [:edit, :destroy, :show, :update]
+    resources :courses
     resources :students
     resources :teachers
     resources :users, only: [:edit, :show, :update]

@@ -4,11 +4,12 @@
 <% @courses.each do |course| %>
     <div class="col-6 col-sm-6 col-lg-4">
 
-      <div>
-        <img width='256' height='256' src="/courses/<%= course.key %>.jpeg"/>
+      <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
+      <div style="background-image:url(/courses/<%= course.id %>.jpeg);height:256px;width:256px;border:1px solid black;background-position:center center;background-repeat:no-repeat;">
+
       </div>
       <div><%= course.name %></div>
-      <div><%= link_to "View", course, {:class => "btn btn-default"} %></div>
+      <div><%= link_to t('courses.view'), course, {:class => "btn btn-default"} %></div>
     </div>
 <% end unless @courses.empty? %>
 
@@ -17,5 +18,5 @@
 
 <div class="clearfix"></div>
 <% if user_signed_in? %>
-    <%= link_to 'New Course', new_course_path, {:class => "btn btn-info pull-right"} if user_signed_in? %>
+    <%= link_to t('courses.new'), new_course_path, {:class => "btn btn-info pull-right"} if user_signed_in? %>
 <% end %>

@@ -18,8 +18,13 @@ class CoursesController < ApplicationController
       format.html { render action: 'show' }
       format.json { render json: [@course], status: :ok }
       format.jpeg {
-        send_data(Base64.decode64(@course.binary_data), :type => @course.content_type, :filename => @course.filename,
-                  :disposition => 'inline') unless @course.binary_data.nil?
+        unless @course.binary_data.nil?
+          send_data(Base64.decode64(@course.binary_data), :type => @course.content_type, :filename => @course.filename,
+                    :disposition => 'inline')
+        else
+          p 'xxx'
+          redirect_to '/assets/course.jpeg'
+        end
       }
     end
   end

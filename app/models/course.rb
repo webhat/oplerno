@@ -1,12 +1,12 @@
 #
-class Course  < ActiveRecord::Base
+class Course < ActiveRecord::Base
 
   validates_presence_of :name
 
   attr_accessible :name, :key, :price,
                   :description, :teacher,
                   :filename, :content_type,
-                  :binary_data
+                  :binary_data, :picture
 
   default_scope :order => 'created_at DESC'
 

@@ -5,20 +5,20 @@
   <h1><%= @course.name %></h1>
 
   <div class="row">
-    <div class="col-6 col-sm-6 col-lg-4">
-      <img width='256' height='256' src="/courses/<%= @course.key %>.jpeg"/>
+    <div class="col-6 col-sm-6 col-lg-4" style="background-image:url(/courses/<%= @course.id %>.jpeg);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;">
+
     </div>
     <div class="col-6 col-sm-6 col-lg-8"><%= @course.description %></div>
   </div>
   <div class="clearfix"><br/></div>
   <br/>
 
-  <div><%= button_to "Register", add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-default"} %></div>
+  <div><%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-default"} %></div>
 </div>
 
 <div class="clearfix"><br/></div>
 <br/>
 <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_course_path(@course), {:class => "btn btn-info pull-right"} %>
+    <%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info pull-right"} %>
 <% end %>
-<%= link_to 'Back', courses_path, {:class => "btn btn-default"} %>
+<%= link_to t('generic.back'), courses_path, {:class => "btn btn-default"} %>
