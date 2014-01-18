@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'
 require 'simplecov-rcov-text'
@@ -24,7 +24,7 @@ end
 
 Coveralls.wear!('rails')
 
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 
 require 'ruby-saml'
 require 'rspec/rails'
@@ -37,7 +37,7 @@ require 'cucumber'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -65,13 +65,13 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
 
   config.before :suite do
-    PerfTools::CpuProfiler.start("/tmp/rspec_profile")
+    PerfTools::CpuProfiler.start('/tmp/rspec_profile')
   end
 
   config.after :suite do

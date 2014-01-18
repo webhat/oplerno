@@ -1,13 +1,13 @@
 Oplerno::Application.routes.draw do
-  root :to => redirect("/courses")
+  root :to => redirect('/courses')
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   devise_for :users, :path_names => {
-      :verify_authy => "/verify-token",
-      :enable_authy => "/enable-two-factor",
-      :verify_authy_installation => "/verify-installation"
+      :verify_authy => '/verify-token',
+      :enable_authy => '/enable-two-factor',
+      :verify_authy_installation => '/verify-installation'
   }
 
   devise_scope :user do

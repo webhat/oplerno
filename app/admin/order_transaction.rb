@@ -2,7 +2,7 @@ ActiveAdmin.register OrderTransaction do
   index do
     column :success
     column 'Order Value' do |order_transaction|
-      Cart.find(order_transaction.order.cart_id).total_price
+      Cart.find(order_transaction.order_cart_id).total_price
     end
     column :message
     column :courses do |order_transaction|

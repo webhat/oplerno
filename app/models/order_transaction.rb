@@ -1,4 +1,4 @@
-
+# Stores the transactions for each order.
 class OrderTransaction < ActiveRecord::Base
   encrypt_with_public_key :params,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
@@ -6,7 +6,7 @@ class OrderTransaction < ActiveRecord::Base
   attr_accessible :action, :amount, :authorization, :message, :order_id, :params, :success, :response
 
   belongs_to :order
-  #serialize :params
+  delegate :cart_id, :to => :order, :prefix => true
 
   def response=(response)
     self.success = response.success?

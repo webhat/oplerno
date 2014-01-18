@@ -34,7 +34,7 @@ module Oplerno
     # config.i18n.default_locale = :de
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -67,7 +67,7 @@ module Oplerno
                        :routing_specs => false,
                        :controller_specs => true,
                        :request_specs => true
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
   end
 end

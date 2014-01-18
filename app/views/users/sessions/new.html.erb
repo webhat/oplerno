@@ -1,6 +1,7 @@
-<h2>Sign in</h2>
+<h2><%= t('devise.sessions.new.sign_in') %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= #noinspection RailsParamDefResolve
+    form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
@@ -12,7 +13,7 @@
   <% end -%>
     <%= csrf_meta_tag %>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div><%= f.submit t('devise.sessions.new.sign_in') %></div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render 'users/shared/links' %>

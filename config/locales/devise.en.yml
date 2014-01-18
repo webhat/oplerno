@@ -7,6 +7,7 @@ en:
       confirmed_and_signed_in: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      resend_confirm: "Resend confirmation instructions"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -20,6 +21,8 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        instructions: "You can confirm your account email through the link below:"
+        confirm: "Confirm my account"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
@@ -34,6 +37,12 @@ en:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
       send: "Send me reset password instructions"
+      forgot: "Forgot your password?"
+      new:
+        password: "New password"
+        confirm: "Confirm new password"
+        button: "Change my password"
+        change: "Change your password"
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -42,6 +51,8 @@ en:
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
+      cancel: "Cancel my account"
+      update: "Update"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
@@ -54,6 +65,10 @@ en:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      resend_unlock: "Resend unlock instructions"
+
+    user:
+      sign_up: "Sign up"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

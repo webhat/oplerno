@@ -17,7 +17,7 @@ ActiveAdmin.register User do
   filter :email
 
   form do |f|
-    f.inputs "User Details" do
+    f.inputs 'User Details' do
       f.input :encrypted_first_name, label: 'First Name'
       f.input :encrypted_last_name, label: 'Last Name'
 

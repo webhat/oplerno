@@ -22,4 +22,4 @@ $(document).ready(function () {
     $('#authy-help').click(function (e) {
         e.stopPropagation();
     });
-})
+});

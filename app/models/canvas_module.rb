@@ -6,7 +6,7 @@ module CanvasModule
     @canvas
   end
 
-  def connect_to_canvas_oauth token = nil
+  def connect_to_canvas_oauth(token = nil)
     token = ENV['CANVAS_TOKEN'] if token.nil?
 
     @canvas ||= Canvas::API.new(:host => "https://#{CANVAS_HOST}",
@@ -19,6 +19,6 @@ module CanvasModule
                              :client_id => ENV['CANVAS_USERNAME'],
                              :secret => ENV['CANVAS_PASSWORD']
     )
-    @canvas.oauth_url "https://localhost/oauth_success"
+    @canvas.oauth_url 'https://localhost/oauth_success'
   end
 end

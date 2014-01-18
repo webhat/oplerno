@@ -30,3 +30,6 @@ en:
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
+
+  generic:
+    back: "Back"
