@@ -1,5 +1,6 @@
 require 'sshkit/dsl'
 
+# Run `cap strongbox:archive` when you re-key, otherwise `cap strongbox:upload` to deploy keys.
 namespace :strongbox do
   desc 'Create strongbox archive'
   task :archive do

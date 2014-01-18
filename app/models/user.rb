@@ -1,3 +1,5 @@
+# Handles the User and ensures that it is linked to Canvas by way of a #CanvasUsers
+# #Student and #Teacher are aliases for this class
 class User < ActiveRecord::Base
 
   encrypt_with_public_key :secret,

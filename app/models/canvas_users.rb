@@ -1,3 +1,5 @@
+# Synchronizes with Canvas and is the link between it and the #User
+# See #User
 class CanvasUsers < ActiveRecord::Base
   extend CanvasModule
 
@@ -16,7 +18,7 @@ class CanvasUsers < ActiveRecord::Base
     begin
       user = User.find_by_email canvas_user['login_id']
     rescue
-      # Handle error
+      puts $!.inspect, $@
     else
       this_canvas_user = CanvasUsers.new
       this_canvas_user.user = user
@@ -52,6 +54,7 @@ class CanvasUsers < ActiveRecord::Base
       user = CanvasUsers.canvas.post('/api/v1/accounts/1/users', {'pseudonym[unique_id]' => username, 'communication_channel[address]' => username, 'communication_channel[type]' => 'email'})
     rescue => e
       # FIXME: Need to update this user here...
+      puts $!.inspect, $@
     else
       CanvasUsers.update user
     end

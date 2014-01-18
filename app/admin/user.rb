@@ -1,7 +1,12 @@
 ActiveAdmin.register User do
   index do
-    column 'First Name', :encrypted_first_name
-    column 'Last Name', :encrypted_last_name
+    begin
+      column 'First Name', :encrypted_first_name
+      column 'Last Name', :encrypted_last_name
+    rescue
+      column 'First Name', '*encrypted*'
+      column 'Last Name', '*encrypted*'
+    end
     column :email
     column :current_sign_in_at
     column :last_sign_in_at

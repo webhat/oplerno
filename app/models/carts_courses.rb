@@ -1,3 +1,4 @@
+# The link between #Course and #Cart
 class CartsCourses < ActiveRecord::Base
   validates_uniqueness_of :cart_id, :scope => :course_id
 

@@ -1,3 +1,4 @@
+#
 class Cart < ActiveRecord::Base
   has_one :order
   belongs_to :user

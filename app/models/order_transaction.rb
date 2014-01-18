@@ -1,3 +1,4 @@
+
 class OrderTransaction < ActiveRecord::Base
   encrypt_with_public_key :params,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')

@@ -1,3 +1,6 @@
+# Maintains the #Cart, each #Cart is tied to only one user. And once paid for it is transfered to Instructure.
+#
+# Links to #Courses using #CartsCourses
 class CartsController < InheritedResources::Base
   before_filter :set_cart, only: [:create, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!

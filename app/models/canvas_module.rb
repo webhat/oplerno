@@ -1,3 +1,5 @@
+# Wrapper for #Canvas::API, handles the connection to Instructure's Canvas.
+# @abstract
 module CanvasModule
 
   def canvas

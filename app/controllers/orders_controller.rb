@@ -1,3 +1,4 @@
+# Relies on #Cart and #OrderTransaction to process the #Order requests.
 class OrdersController < InheritedResources::Base
   def create
     set_order

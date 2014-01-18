@@ -1,3 +1,5 @@
+# Synchronizes with Canvas and is the link between it and the #Course
+# See #Course
 class CanvasCourses < ActiveRecord::Base
   extend CanvasModule
 

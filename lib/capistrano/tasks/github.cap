@@ -1,3 +1,4 @@
+# Run with `cap github:ssh`
 namespace :github do
 	desc 'Add Github to known hosts'
 	task :ssh do

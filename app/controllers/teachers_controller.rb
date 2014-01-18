@@ -1,3 +1,5 @@
+# {include:UserController}
+# See #UserController
 class TeachersController < UsersController
   before_filter :set_teacher, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:edit, :update, :destroy]

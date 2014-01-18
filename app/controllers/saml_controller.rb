@@ -1,4 +1,4 @@
-  # This controller expects you to use the URLs /saml/init and /saml/consume in your OneLogin application.
+# This controller expects you to use the URLs /saml/init and /saml/consume in your OneLogin application.
 class SamlController < ApplicationController
 	def init
 		request = Onelogin::Saml::Authrequest.new

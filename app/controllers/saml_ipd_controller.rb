@@ -1,3 +1,4 @@
+# This class only accepts SAML requests from Instructure if you are already authenticated
 class SamlIdpController < SamlIdp::IdpController
   before_filter :authenticate_user!
   before_filter :find_account
@@ -13,6 +14,7 @@ class SamlIdpController < SamlIdp::IdpController
 
   private
 
+  # find_account ensures that if you are coming from *HOST.instructure.com* you can authenticate with SAML
   def find_account
     @subdomain = saml_acs_url[/https?:\/\/(.+?)\.instructure.com/, 1]
     if @subdomain == 'oplerno'
