@@ -17,20 +17,20 @@ Oplerno::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates
   config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment
-  config.action_controller.allow_forgery_protection    = false
+  config.action_controller.allow_forgery_protection = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
@@ -44,7 +44,11 @@ Oplerno::Application.configure do
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login => "webhat-facilitator_api1.xs4all.nl",
         :password => "1388752803",
-        :signature => ENV['PAYPAL_SIG']
+        :signature => ENV['PAYPAL_SIG'],
+        # FIXME: Public Test URL here
+        :ipn_notification_url => 'https://www.oplerno.com/orders/ipn',
+        :return_url => 'https://www.oplerno.com/orders/confirm',
+        :cancel_url => 'https://www.oplerno.com/orders/cancel',
     )
   end
 

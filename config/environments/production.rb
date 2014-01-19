@@ -67,4 +67,17 @@ Oplerno::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   ::CANVAS_HOST = 'oplerno.instructure.com'
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
+        :login => "webhat-facilitator_api1.xs4all.nl",
+        :password => "1388752803",
+        :signature => ENV['PAYPAL_SIG'],
+        # TODO: Public URL here
+        :ipn_notification_url => 'https://www.oplerno.com/orders/ipn',
+        :return_url => 'https://www.oplerno.com/orders/confirm',
+        :cancel_url => 'https://www.oplerno.com/orders/cancel',
+    )
+  end
 end

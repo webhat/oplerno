@@ -9,6 +9,10 @@ class Cart < ActiveRecord::Base
   attr_accessible :total_price, :purchased_at, :courses, :user_id
 
   def total_price
-   courses.compact.map(&:price).inject(0, &:+)
+    courses.compact.map(&:price).inject(0, &:+)
+  end
+
+  def courses_to_user
+    courses.each { |course| user.courses << course }
   end
 end

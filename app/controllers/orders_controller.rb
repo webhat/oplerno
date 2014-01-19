@@ -9,17 +9,28 @@ class OrdersController < InheritedResources::Base
 
     details_response = GATEWAY.details_for(params[:token])
 
-    current_cart.order.transactions.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response)
-
     if !details_response.success?
       @message = details_response.message
+      current_cart.order.transactions.create!(:action => "error", :amount => current_cart.order.price_in_cents, :response => details_response)
       flash[:alert] = @message
       flash[:notice] = ''
       render :action => 'confirm'
       return
     else
+      current_cart.order.transactions.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response)
+      current_cart.courses_to_user
       flash[:alert] = ''
       flash[:notice] = (I18n.t 'orders.success')
+    end
+  end
+
+  def paypal_ipn
+    notify = Paypal::Notification.new(@request.raw_post)
+    if notify.acknowledge
+      OrderTransaction.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response) if notify.complete?
+    else
+      logger.info(@request)
+      OrderTransaction.create!(:action => "error", :amount => current_cart.order.price_in_cents, :response => details_response)
     end
   end
 
@@ -61,4 +72,5 @@ class OrdersController < InheritedResources::Base
   def current_cart
     Cart.find_by_user_id(current_user.id)
   end
+
 end

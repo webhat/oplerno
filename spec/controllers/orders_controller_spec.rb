@@ -81,4 +81,36 @@ describe OrdersController do
       end
     end
   end
+
+  describe 'GET confirm' do
+    let(:valid_params) { {:token => 'EC-59R59009BF276314F', :PayerID => "H7E8K2LT573UN"} }
+
+    vcr_options = {:record => :once}
+    context 'Something', vcr: vcr_options do
+      before :each do
+        Order.any_instance.stub(:price_in_cents).and_return(1000*100)
+        @cart = Cart.create!
+        order = @cart.build_order
+        order.save
+        #OrdersController.should_receive(:current_cart).at_least(:once)
+        OrdersController.any_instance.stub(:current_cart).and_return(@cart)
+      end
+      it 'create any error state' do
+        err = ActiveMerchant::Billing::PaypalExpressResponse.new false, 'Error'
+        ActiveMerchant::Billing::PaypalExpressGateway.any_instance.stub(:details_for).and_return(err)
+        get :confirm, valid_params
+        @cart.reload
+        expect(@cart.order).to be_a Order
+        expect(@cart.order.transactions[0]).to be_a OrderTransaction
+        expect(@cart.order.transactions[0].success).to eq false
+      end
+      it 'succeeds' do
+        get :confirm, valid_params
+        @cart.reload
+        expect(@cart.order).to be_a Order
+        expect(@cart.order.transactions[0]).to be_a OrderTransaction
+        expect(@cart.order.transactions[0].success).to eq true
+      end
+    end
+  end
 end

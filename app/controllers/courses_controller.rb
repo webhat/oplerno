@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
 
   def add_course_to_cart(course)
     session[:course_id] = course.id
-    '/carts/mycart'
+    '/carts/'
   end
 
   protected

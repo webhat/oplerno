@@ -10,12 +10,12 @@ Oplerno::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -41,7 +41,11 @@ Oplerno::Application.configure do
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login => "webhat-facilitator_api1.xs4all.nl",
         :password => "1388752803",
-        :signature => ENV['PAYPAL_SIG']
+        :signature => ENV['PAYPAL_SIG'],
+        # FIXME: Public Test URL here
+        :ipn_notification_url => 'https://www.oplerno.com/orders/ipn',
+        :return_url => 'https://www.oplerno.com/orders/confirm',
+        :cancel_url => 'https://www.oplerno.com/orders/cancel',
     )
   end
 
