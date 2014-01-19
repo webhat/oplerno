@@ -63,8 +63,8 @@ When /I press (\w+)/ do |op|
   @result = @object.send op
 end
 
-When /I place my Order/ do
-  pending 'stub'
+When /I placed my Order/ do
+  @object.courses_to_student
 end
 
 Then /I get an error/ do
@@ -76,6 +76,5 @@ Then /It succeeds/ do
 end
 
 Then /I am enrolled in '(.*)'/ do |course_name|
-  pending 'stub'
   @user.courses[0].name.should eq course_name
 end

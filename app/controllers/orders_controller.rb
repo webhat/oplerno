@@ -18,7 +18,7 @@ class OrdersController < InheritedResources::Base
       return
     else
       current_cart.order.transactions.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response)
-      current_cart.courses_to_user
+      current_cart.courses_to_student
       flash[:alert] = ''
       flash[:notice] = (I18n.t 'orders.success')
     end
@@ -72,5 +72,4 @@ class OrdersController < InheritedResources::Base
   def current_cart
     Cart.find_by_user_id(current_user.id)
   end
-
 end
