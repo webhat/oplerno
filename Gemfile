@@ -24,6 +24,7 @@ group :doc do
   gem 'guard-yard'
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
+	gem 'guard-cucumber'
   gem 'redcarpet'
 
 # metrics
@@ -95,6 +96,7 @@ group :test do
   gem 'webmock'
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
+  gem 'database_cleaner'
 	gem 'perftools.rb'
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end

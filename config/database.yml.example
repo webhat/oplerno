@@ -24,3 +24,6 @@ production:
   <<: *defaults
 
 
+
+cucumber:
+  <<: *test
