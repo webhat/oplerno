@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                   :encrypted_first_name
 
 
-  has_many :courses
+  has_and_belongs_to_many :courses
   has_one :cart
   has_many :orders
   has_one :canvas_user

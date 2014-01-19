@@ -90,9 +90,9 @@ describe OrdersController do
       before :each do
         Order.any_instance.stub(:price_in_cents).and_return(1000*100)
         @cart = Cart.create!
+        @cart.user = FactoryGirl.create(:user)
         order = @cart.build_order
         order.save
-        #OrdersController.should_receive(:current_cart).at_least(:once)
         OrdersController.any_instance.stub(:current_cart).and_return(@cart)
       end
       it 'create any error state' do

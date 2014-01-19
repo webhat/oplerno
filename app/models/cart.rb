@@ -12,7 +12,9 @@ class Cart < ActiveRecord::Base
     courses.compact.map(&:price).inject(0, &:+)
   end
 
-  def courses_to_user
-    courses.each { |course| user.courses << course }
+  def courses_to_student
+    student = Student.find(user.id)
+
+    courses.each { |course| student.courses << course }
   end
 end
