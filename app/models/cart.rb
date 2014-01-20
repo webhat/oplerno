@@ -15,6 +15,11 @@ class Cart < ActiveRecord::Base
   def courses_to_student
     student = Student.find(user.id)
 
-    courses.each { |course| student.courses << course }
+    courses.each { |course|
+      student.courses << course
+
+      canvas_courses = CanvasCourses.find_by_course_id(course.id)
+      canvas_courses.add_user(user) unless canvas_courses.nil?
+    }
   end
 end
