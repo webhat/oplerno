@@ -82,6 +82,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'simplecov'
   gem 'factory_girl_rails'
+	gem 'jasmine'
 end
 
 group :test do
