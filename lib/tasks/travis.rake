@@ -1,5 +1,6 @@
 require 'coveralls/rake/task'
 Coveralls::RakeTask.new
+=begin
 task :travis do
   # TODO: Add "rake jasmine:ci"
   ['rspec spec/', 'rake cucumber'].each do |cmd|
@@ -8,5 +9,6 @@ task :travis do
     raise "#{cmd} failed!" unless $?.exitstatus == 0
   end
 end
+=end
 
-task :travis => ['coveralls:push']
+task :travis => [:spec, :features, 'coveralls:push']
