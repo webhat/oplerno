@@ -21,8 +21,7 @@ matrix:
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
-- bundle exec rspec spec/
-- rake travis
+- bundle exec rake travis
 before_script:
 - mysql -e 'create database oplerno_test'
 - cp config/database.yml.example config/database.yml

@@ -7,7 +7,8 @@ require 'coveralls'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::RcovTextFormatter
+    SimpleCov::Formatter::RcovTextFormatter,
+    Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start 'rails' do
   add_filter '/spec/'
