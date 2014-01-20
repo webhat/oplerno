@@ -28,7 +28,8 @@ set :default_env, {
     'MY_DEV_PASSWORD' => ENV['MY_DEV_PASSWORD'],
     'MYSQL_PASSWORD' => ENV['MYSQL_PASSWORD'],
     'NEWRELIC_KEY' => ENV['NEWRELIC_KEY'],
-    'AUTHY_API_KEY' => ENV['AUTHY_API_KEY']
+    'AUTHY_API_KEY' => ENV['AUTHY_API_KEY'],
+    'MAIL_PASSWORD' => ENV['MAIL_PASSWORD']
 }
 
 namespace :deploy do
@@ -39,7 +40,7 @@ namespace :deploy do
   task :start do
     on roles(:app), in: :sequence, wait: 0 do
       within release_path do
-        execute "cd #{release_path} ; AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
+        execute "cd #{release_path} ; MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
       end
     end
   end
