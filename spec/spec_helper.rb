@@ -23,7 +23,7 @@ SimpleCov.start 'rails' do
   add_group 'Views', 'app/views'
 end
 
-Coveralls.wear!('rails')
+Coveralls.wear_merged!('rails')
 
 require File.expand_path('../../config/environment', __FILE__)
 
