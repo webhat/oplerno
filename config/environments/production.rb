@@ -50,7 +50,7 @@ Oplerno::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => 'oplerno.com'}
+  config.action_mailer.default_url_options = {:host => 'marketplace.oplerno.com'}
 
   # Enable threaded mode
   # config.threadsafe!
@@ -68,8 +68,8 @@ Oplerno::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address: 'mail.oplerno.com',
-      port: 995, #587,
+      address: 'smtp.mandrillapp.com',
+      port: 587,
       domain: 'oplerno.com',
       user_name: 'webmaster@oplerno.com',
       password: ENV['MAIL_PASSWORD'],

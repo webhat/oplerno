@@ -14,8 +14,9 @@ Oplerno::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = false
+  config.action_mailer.default_url_options = {:host => 'marketplace.oplerno.com'}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -37,6 +38,18 @@ Oplerno::Application.configure do
   config.assets.debug = true
 
   config.after_initialize do
+    ActionMailer::Base.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+        address: 'smtp.mandrillapp.com',
+        port: 587,
+        domain: 'oplerno.com',
+        user_name: 'webmaster@oplerno.com',
+        password: ENV['MAIL_PASSWORD'],
+        authentication: 'plain',
+        enable_starttls_auto: true,
+        openssl_verify_mode: 'none'
+    }
+
     ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login => "webhat-facilitator_api1.xs4all.nl",
