@@ -30,6 +30,7 @@ class CanvasUsers < ActiveRecord::Base
         this_canvas_user.save
       end unless this_canvas_user.nil?
     end
+    this_canvas_user
   end
 
   def self.update_all
@@ -58,6 +59,5 @@ class CanvasUsers < ActiveRecord::Base
     else
       CanvasUsers.update user
     end
-
   end
 end
