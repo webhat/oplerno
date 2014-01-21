@@ -20,13 +20,13 @@ en:
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Oplerno: Confirmation instructions"
         instructions: "You can confirm your account email through the link below:"
         confirm: "Confirm my account"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Oplerno: Reset password instructions"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Oplerno: Unlock Instructions"
       broken_link: 'Link not working? Copy and paste the one below into your browser:'
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."

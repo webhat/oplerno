@@ -59,6 +59,10 @@ module Oplerno
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.to_prepare do
+      Devise::Mailer.layout "email" # email.haml or email.erb
+    end
+
     config.generators do |g|
       g.test_framework :rspec,
                        :fixtures => true,
