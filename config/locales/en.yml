@@ -21,6 +21,8 @@ en:
       hidden: 'Hide user from view and search'
   orders:
     success: 'Success'
+  cart:
+    remove: 'Removed %{course} from Order'
   payments:
     description: 'Course(s) with Oplerno LLC.'
   courses:

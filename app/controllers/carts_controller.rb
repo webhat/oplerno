@@ -41,7 +41,9 @@ class CartsController < InheritedResources::Base
 
   def remove_course_from_cart
     @cart = Cart.find(params[:cart])
-    @cart.courses.delete(Course.find(params[:course]))
+    course = Course.find(params[:course])
+    @cart.courses.delete(course)
+    flash[:notice] = (I18n.t 'cart.remove', {course: course.name})
     redirect_to "/carts/#{@cart.id}"
   end
 

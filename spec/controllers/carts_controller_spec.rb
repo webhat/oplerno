@@ -111,4 +111,16 @@ describe CartsController do
     end
   end
 
+  describe 'post Remove from cart' do
+    it 'remove' do
+      cart = Cart.create! valid_attributes
+      course = cart.courses.create! valid_course
+      expect {
+        post :remove_course_from_cart, {cart: cart.id, course: course.id}
+      }.to change(cart.courses, :count).by(-1)
+      response.should redirect_to(cart)
+      flash[:notice].should eq (I18n.t 'cart.remove', {course: course.name})
+    end
+  end
+
 end
