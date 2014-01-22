@@ -16,7 +16,7 @@ ActiveAdmin.register Order do
         "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
       rescue
         puts $!.inspect, $@
-        '*encrypted*'
+        "*encrypted* (#{cart.user_id})"
       end
     end
     default_actions

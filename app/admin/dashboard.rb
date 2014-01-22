@@ -9,7 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             table_for Order.all(limit: 10).map do
               column do |order|
-                link_to(order.cart_id, (order))
+                link_to order.cart_id, [:admin, order.cart]
               end
             end
           end
@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             table_for Cart.all(limit: 10).map do
               column do |cart|
-                link_to(cart.total_price, (cart))
+                link_to cart.total_price, [:admin, cart]
               end
             end
           end
