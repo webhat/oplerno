@@ -90,6 +90,9 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chardinjs-rails (0.1.2)
+      sass-rails (>= 3.2)
+      thor (~> 0.14)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -345,7 +348,7 @@ GEM
       bundler (~> 1.0)
       railties (= 3.2.14)
     rails-assets-angular (1.2.9)
-    rails-assets-bootstrap (3.0.3)
+    rails-assets-bootstrap-sass (3.0.2)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.0.3)
     rails-assets-jquery-ui (1.10.3)
@@ -502,6 +505,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capybara
+  chardinjs-rails
   churn
   coffee-rails (~> 3.2.1)
   coveralls
@@ -541,7 +545,7 @@ DEPENDENCIES
   rack-perftools_profiler
   rails (= 3.2.14)
   rails-assets-angular
-  rails-assets-bootstrap
+  rails-assets-bootstrap-sass
   rails-assets-jquery-ui
   rb-fchange
   rb-fsevent (~> 0.9.4)
