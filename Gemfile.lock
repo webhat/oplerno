@@ -344,6 +344,9 @@ GEM
       activesupport (= 3.2.14)
       bundler (~> 1.0)
       railties (= 3.2.14)
+    rails-assets-angular (1.2.9)
+    rails-assets-bootstrap (3.0.3)
+      rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.0.3)
     rails-assets-jquery-ui (1.10.3)
       rails-assets-jquery (>= 1.6)
@@ -537,6 +540,8 @@ DEPENDENCIES
   quiet_assets
   rack-perftools_profiler
   rails (= 3.2.14)
+  rails-assets-angular
+  rails-assets-bootstrap
   rails-assets-jquery-ui
   rb-fchange
   rb-fsevent (~> 0.9.4)

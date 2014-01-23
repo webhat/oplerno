@@ -24,15 +24,15 @@ group :doc do
   gem 'guard-yard'
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
-	gem 'guard-cucumber'
+  gem 'guard-cucumber'
   gem 'redcarpet'
 
 # metrics
-	gem 'reek'
-	gem 'metric_fu'
-	gem 'simplecov-rcov-text'
-	gem 'churn'
-	gem 'flog'
+  gem 'reek'
+  gem 'metric_fu'
+  gem 'simplecov-rcov-text'
+  gem 'churn'
+  gem 'flog'
 end
 
 
@@ -57,8 +57,10 @@ group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'rails-assets-jquery-ui'
 end
+gem 'rails-assets-jquery-ui'
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-angular'
 
 group :development do
   gem 'quiet_assets'
@@ -82,7 +84,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'simplecov'
   gem 'factory_girl_rails'
-	gem 'jasmine'
+  gem 'jasmine'
 end
 
 group :test do
@@ -98,7 +100,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
   gem 'database_cleaner'
-	gem 'perftools.rb'
+  gem 'perftools.rb'
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
