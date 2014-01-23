@@ -7,6 +7,10 @@ class CartsController < InheritedResources::Base
 
   helper_method :remove_course_from_cart_url, :remove_course_from_cart, :logged_in?
 
+  def index
+    redirect_to "/carts/mycart"
+  end
+
   def create
     @cart.user_id = current_user.id
     course = Course.find(session[:course_id])
