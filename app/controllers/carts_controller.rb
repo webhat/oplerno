@@ -54,10 +54,14 @@ class CartsController < InheritedResources::Base
   private
 
   def set_cart
+    if current_user.nil?
+      return @cart = nil
+    end
+
     unless current_user.cart.nil?
       @cart = Cart.find_by_user_id(current_user.id)
     else
-      @cart = Cart.create!
+      @cart = current_user.build_cart
     end
   end
 
