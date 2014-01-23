@@ -2,11 +2,3 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  $(document).ready ->
-    callback = (response) -> cart_count response
-    $.get '/carts/mycart.json', {}, callback, 'json'
-
-cart_count = (response) ->
-  $('#cartcount').text response.length
-  console.log response
