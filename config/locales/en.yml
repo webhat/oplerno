@@ -19,6 +19,12 @@ en:
     fields:
       authy_enabled: 'Enable Two Factor Authentication'
       hidden: 'Hide user from view and search'
+      avatar: "Avatar"
+      title: "Title"
+      first_name: "First Name"
+      last_name: "Last Name"
+      description: "Description"
+      email: "Email"
   orders:
     success: 'Success'
   cart:
@@ -38,3 +44,8 @@ en:
   generic:
     back: 'Back'
     edit: 'Edit'
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Welcome"
+      call_to_action: "Come and look around!"
