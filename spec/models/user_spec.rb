@@ -11,10 +11,6 @@ describe User do
   it "is invalid without a password" do
     FactoryGirl.build(:user, password: nil).should_not be_valid
   end
-  it "returns a contact's key as a hash" do
-    user = FactoryGirl.create(:user)
-    user.key.should eq Digest::MD5.hexdigest user.email
-  end
 
   describe 'Strongbox' do
     it 'encrypts secret' do

@@ -55,7 +55,7 @@ describe CartsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Cart.any_instance.stub(:save).and_return(false)
         post :create, {:cart => {}}
-        assigns(:cart).should_not be_a_new(Cart)
+        assigns(:cart).should be_a(Cart)
       end
     end
   end

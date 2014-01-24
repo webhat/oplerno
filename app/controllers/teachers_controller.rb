@@ -84,7 +84,7 @@ class TeachersController < UsersController
   protected
 
   def current_user?
-    unless @teacher.key == current_user.key
+    unless @teacher.id == current_user.id
       redirect_to @teacher, alert: (I18n.t 'users.fail.user_record')
       return false
     end

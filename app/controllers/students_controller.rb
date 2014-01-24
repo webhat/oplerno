@@ -67,7 +67,7 @@ class StudentsController < UsersController
   protected
 
   def current_user?
-    unless @student.key == current_user.key
+    unless @student.id == current_user.id
       redirect_to student_url, alert: (I18n.t 'users.fail.user_record')
       return false
     end
