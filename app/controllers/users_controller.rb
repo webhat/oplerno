@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   protected
 
   def current_user?
-    unless @user.key == current_user.key
+    unless @user.id == current_user.id
       redirect_to student_url, notice: 'You can only edit your own user record'
       return false
     end
