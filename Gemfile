@@ -52,6 +52,7 @@ gem 'canvas-api'
 
 gem 'json'
 gem 'strongbox'
+gem 'paperclip', '~> 3.0'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

@@ -1,19 +1,20 @@
-<p id="notice"><%= notice %></p>
-
 <div>
 
   <h1><%= @course.name %></h1>
 
   <div class="row">
-    <div class="col-6 col-sm-6 col-lg-4" style="background-image:url(/courses/<%= @course.id %>.jpeg);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;">
+    <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= @course.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+    <!--div class="xs-visible" style="background-image:url(<%= @course.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div-->
+
+    <div class="col-1 col-sm-6 col-lg-6"><%= @course.description %></div>
+    <div class="col-1 col-sm-1 col-lg-2" style="background-image:url(<%= User.find(@course.teacher).avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;">
 
     </div>
-    <div class="col-6 col-sm-6 col-lg-8"><%= @course.description %></div>
   </div>
   <div class="clearfix"><br/></div>
   <br/>
 
-  <div><%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-default"} %></div>
+  <div><%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger"} %></div>
 </div>
 
 <div class="clearfix"><br/></div>

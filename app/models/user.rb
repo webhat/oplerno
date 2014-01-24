@@ -1,6 +1,8 @@
 # Handles the User and ensures that it is linked to Canvas by way of a #CanvasUsers
 # #Student and #Teacher are aliases for this class
 class User < ActiveRecord::Base
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
@@ -54,21 +56,10 @@ class User < ActiveRecord::Base
                   :encrypted_last_name,
                   :encrypted_first_name
 
-
   has_and_belongs_to_many :courses
   has_one :cart
   has_many :orders
   has_one :canvas_user
-
-  def picture=(input_data)
-    self.filename = input_data.original_filename
-    self.content_type = input_data.content_type.chomp
-    self.binary_data = Base64.encode64(input_data.read)
-  end
-
-  def key
-    Digest::MD5.hexdigest email
-  end
 
   def destroy
     self.hidden = 1

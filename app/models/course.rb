@@ -1,5 +1,7 @@
 #
 class Course < ActiveRecord::Base
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :medium => "265x265>", :thumb => "100x100>" }
 
   validates_presence_of :name
 
@@ -14,12 +16,6 @@ class Course < ActiveRecord::Base
   has_many :students
   has_and_belongs_to_many :carts
   has_one :canvas_course
-
-  def picture=(input_data)
-    self.filename = input_data.original_filename
-    self.content_type = input_data.content_type.chomp
-    self.binary_data = Base64.encode64(input_data.read)
-  end
 
   def active?
     self.price.to_f > 0
