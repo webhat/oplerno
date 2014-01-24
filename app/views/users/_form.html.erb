@@ -12,6 +12,18 @@
     <% end %>
 
     <%= f.inputs class: 'list-unstyled' do %>
+        <li>
+          <div class="pull-right">
+            <ul>
+              <li>
+                <lable><%= t('users.fields.avatar') %></lable><%= f.file_field :avatar %>
+              </li>
+              <li>
+                <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= @user.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+              </li>
+            </ul>
+          </div>
+        </li>
         <%= f.input :encrypted_title, label: t('users.fields.title') %>
         <%= f.input :encrypted_first_name, label: t('users.fields.first_name') %>
         <%= f.input :encrypted_last_name, label: t('users.fields.last_name') %>
@@ -27,6 +39,6 @@
     <% end %>
 
     <%= f.actions class: 'list-unstyled' do %>
-        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-default'}, label: true %>
+        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-danger'}, label: true %>
     <% end %>
 <% end %>
