@@ -14,12 +14,15 @@
     <%= f.inputs class: 'list-unstyled' do %>
         <li>
           <div class="pull-right">
-            <ul>
-              <li>
-                <lable><%= t('users.fields.avatar') %></lable><%= f.file_field :avatar %>
+            <ul class="list-unstyled">
+              <li class="optional">
+                <label class="label"><%= t('users.fields.avatar') %></label>
               </li>
               <li>
-                <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= @user.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+                <div class="xs-hidden col-sm-2 col-lg-4 avatar" style="background-image:url(<%= @user.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+              </li>
+              <li>
+                <%= f.file_field :avatar %>
               </li>
             </ul>
           </div>
