@@ -1,13 +1,11 @@
-<h1>Courses</h1>
+<h1><%= t('courses.title')%></h1>
 
 
 <% @courses.each do |course| %>
-    <div class="col-6 col-sm-6 col-lg-4">
+    <div class="col-6 col-sm-6 col-lg-4 top10">
 
       <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
-      <div style="background-image:url(/courses/<%= course.id %>.jpeg);height:256px;width:256px;border:1px solid black;background-position:center center;background-repeat:no-repeat;">
-
-      </div>
+      <div style="background-image:url(<%= course.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
       <div><%= course.name %></div>
       <div><%= link_to t('courses.view'), course, {:class => "btn btn-default"} %></div>
     </div>

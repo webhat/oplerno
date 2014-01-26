@@ -32,6 +32,7 @@ en:
   payments:
     description: 'Course(s) with Oplerno LLC.'
   courses:
+    title: 'Courses'
     register: 'Register'
     view: 'View'
     new: 'New Course'
