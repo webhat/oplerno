@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/assets/:style/missing.png"
+                    :default_url => "/assets/:style/avatar.png"
 
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')

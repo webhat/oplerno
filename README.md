@@ -13,3 +13,12 @@ Master:
 Development: 
 [![Coverage Status](https://coveralls.io/repos/webhat/oplerno/badge.png?branch=develop)](https://coveralls.io/r/webhat/oplerno?branch=develop)
 [![Build Status](https://travis-ci.org/webhat/oplerno.png?branch=develop)](https://travis-ci.org/webhat/oplerno)
+
+
+Attribution
+============
+
+Stock Images:
+
+[jetheriot](http://www.flickr.com/photos/jetheriot/7940996488)
+[StutterHacks](http://www.flickr.com/photos/shutterhacks/4474421855)
