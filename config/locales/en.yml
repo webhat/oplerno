@@ -50,3 +50,9 @@ en:
     dashboard_welcome:
       welcome: "Welcome"
       call_to_action: "Come and look around!"
+  modal:
+    popup:
+      sure: "Are you sure?"
+      discard: "Do you want to discard changes?"
+      ok: "OK"
+      cancel: "Cancel"
