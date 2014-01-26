@@ -1,13 +1,19 @@
 <div>
   <h1><%= @course.name %></h1>
+
   <div class="row">
     <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= @course.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
     <!--div class="xs-visible" style="background-image:url(<%= @course.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div-->
-    <%- teacher = User.find(@course.teacher) %>
     <div class="col-1 col-sm-6 col-lg-6"><%= @course.description %></div>
-    <div class="col-1 col-sm-1 col-lg-2" style="background-image:url(<%= teacher.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;">
+    <%- teacher = User.find(@course.teacher) unless @course.teacher.nil? %>
+    <%- unless teacher.nil? %>
+        <div class="col-1 col-sm-1 col-lg-2">
+          <div style="background-image:url(<%= teacher.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+          <div class="top5"><%= teacher.title %> <%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %></div>
+          <div><%= link_to "View", teacher, {:class => "btn btn-info top5"} %></div>
+        </div>
+    <%- end %>
 
-    </div>
   </div>
   <div class="clearfix"><br/></div>
   <br/>
@@ -17,7 +23,7 @@
 
 <div class="clearfix"><br/></div>
 <br/>
-<% if user_signed_in? && teacher.id == current_user.id %>
+<% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
     <%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info pull-right"} %>
 <% end %>
 <%= link_to t('generic.back'), courses_path, {:class => "btn btn-default"} %>

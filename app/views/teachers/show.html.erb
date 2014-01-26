@@ -12,7 +12,7 @@
           <div class="col-1 col-sm-4 col-lg-3"> <!-- class="xs-hidden col-sm-2 col-lg-4" -->
             <div style="background-image:url(<%= course.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
             <div><%= course.name %></div>
-            <div><%= link_to "Register", course, {:class => "btn btn-danger"} %></div>
+            <div><%= link_to "View", course, {:class => "btn btn-info"} %></div>
           </div>
       <% end unless @teacher.courses.empty? %>
     </div>
