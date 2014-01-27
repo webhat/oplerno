@@ -28,7 +28,7 @@ class CanvasCourses < ActiveRecord::Base
   def self.update_all
     self.connect_to_canvas_oauth if canvas.nil?
 
-    canvas.get('/api/v1/accounts/1/courses').as_json.each do |canvas_course|
+    canvas.get('/api/v1/accounts/1/courses?per_page=100').as_json.each do |canvas_course|
       update canvas_course
     end
   end
