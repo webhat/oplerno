@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <% @cart.courses.each do |course| %>
     <div class="col-6 col-sm-6 col-lg-4">
 
       <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= course.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
       <div><%= course.name %></div>
-      <div><%= button_to "Remove", remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
+      <div><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
     </div>
 <% end unless @cart.courses.empty? %>
 <div class="clearfix"></div>

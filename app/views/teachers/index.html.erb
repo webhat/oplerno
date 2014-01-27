@@ -5,17 +5,22 @@
 
       <div class="col-6 col-sm-6 col-lg-4 top10">
         <div style="background-image:url(<%= teacher.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
-        <div class="top5"><%= teacher.title %> <%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %></div>
+        <div class="top5">
+          <%= teacher.title %>
+          <%- unless teacher.encrypted_first_name.nil? %>
+              <%= teacher.encrypted_first_name.force_encoding("UTF-8") %>
+          <%- end %>
+          <%- unless teacher.encrypted_first_name.nil? %>
+              <%= teacher.encrypted_last_name.force_encoding("UTF-8") %>
+          <%- end %>
+        </div>
         <div class="top5">
           <% if user_signed_in? && teacher.id == current_user.id %>
               <div><%= link_to 'Edit', edit_teacher_path(teacher), {:class => "btn btn-info pull-right"} %></div>
           <% end %>
-          <%= link_to 'View details', teacher, {:class => "btn btn-default"} %>
+          <%= link_to t('users.view'), teacher, {:class => "btn btn-default"} %>
         </div>
       </div>
-      <!--
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        -->
   <% end %>
 </div>
 

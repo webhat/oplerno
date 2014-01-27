@@ -119,7 +119,7 @@ describe CartsController do
         post :remove_course_from_cart, {cart: cart.id, course: course.id}
       }.to change(cart.courses, :count).by(-1)
       response.should redirect_to(cart)
-      flash[:notice].should eq (I18n.t 'cart.remove', {course: course.name})
+      flash[:notice].should eq (I18n.t 'cart.removed', {course: course.name})
     end
   end
 

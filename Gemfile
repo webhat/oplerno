@@ -35,7 +35,6 @@ group :doc do
   gem 'flog'
 end
 
-
 gem 'activeadmin'
 gem 'activemerchant'
 gem 'devise'
