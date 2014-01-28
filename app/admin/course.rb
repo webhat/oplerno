@@ -5,7 +5,7 @@ ActiveAdmin.register Course do
     column "Teacher" do |course|
       begin
         teacher = User.find(course.teacher)
-        "#{teacher.first_name} #{teacher.last_name} (#{teacher.id})"
+        "#{teacher.encrypted_first_name} #{teacher.encrypted_last_name} (#{teacher.id})"
       rescue
         "Unknown"
       end
@@ -20,6 +20,7 @@ ActiveAdmin.register Course do
       row "Teacher" do |course|
         begin
           teacher = User.find(course.teacher)
+          teacher.courses << course
           link_to "#{teacher.encrypted_first_name} #{teacher.encrypted_last_name}", "/admin/users/#{teacher.id}"
         rescue
           "Unknown"

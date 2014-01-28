@@ -1,11 +1,11 @@
 ActiveAdmin.register User do
   index do
-    begin
-    #  column 'First Name', :encrypted_first_name
-    #  column 'Last Name', :encrypted_last_name
-    #rescue
-      #column 'First Name', '*encrypted*'
-      #column 'Last Name', '*encrypted*'
+    column 'Name' do |user|
+      begin
+          "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{user.id})"
+      rescue
+        'Unknown'
+      end
     end
     column :email
     column :current_sign_in_at
