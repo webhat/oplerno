@@ -86,6 +86,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'jasmine'
+  gem 'jasmine-jquery-rails'
 end
 
 group :test do

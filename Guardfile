@@ -1,7 +1,14 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'coffeescript', :input => 'app/assets/javascripts', :noop => true, :hide_success => true
+guard 'coffeescript', :output => 'public/javascripts/compiled', :input => 'app/assets/javascripts', :hide_success => true do
+#, :noop => true
+  watch(%r{app/assets/javascripts/(.*)\.(js\.coffee|coffee)/})
+end
+
+guard 'coffeescript', :output => 'spec/javascripts/compiled', :input => 'spec/javascripts', :hide_success => true do
+  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|coffee)$/})
+end
 
 guard :jasmine do
   watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
