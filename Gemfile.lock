@@ -362,6 +362,9 @@ GEM
     rails-assets-jquery (2.0.3)
     rails-assets-jquery-ui (1.10.3)
       rails-assets-jquery (>= 1.6)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_best_practices (1.14.4)
       activesupport
       awesome_print
@@ -371,6 +374,8 @@ GEM
       i18n
       require_all
       ruby-progressbar
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.14)
       actionpack (= 3.2.14)
       activesupport (= 3.2.14)
@@ -557,6 +562,7 @@ DEPENDENCIES
   rails-assets-angular
   rails-assets-bootstrap-sass
   rails-assets-jquery-ui
+  rails_12factor
   rb-fchange
   rb-fsevent (~> 0.9.4)
   rb-inotify (~> 0.9.3)
