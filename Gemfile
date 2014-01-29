@@ -41,7 +41,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-authy'
 gem 'mysql2'
-gem 'sqlite3'
 gem 'ruby-saml'
 gem 'ruby-saml-idp'
 gem 'newrelic_rpm'
@@ -78,6 +77,8 @@ group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
   gem 'minitest-focus'
+
+  gem 'sqlite3'
 
   gem 'minitest-reporters'
   gem 'rspec-rails'
