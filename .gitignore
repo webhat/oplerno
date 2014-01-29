@@ -21,3 +21,5 @@
 coverage
 bin
 doc
+
+node_modules/

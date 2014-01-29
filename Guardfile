@@ -10,7 +10,7 @@ guard 'coffeescript', :output => 'spec/javascripts/compiled', :input => 'spec/ja
   watch(%r{spec/javascripts/.+_spec\.(js\.coffee|coffee)$/})
 end
 
-guard :jasmine do
+guard :jasmine, coverage: true do
   watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
   watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
   watch(%r{spec/javascripts/fixtures/.+$})
