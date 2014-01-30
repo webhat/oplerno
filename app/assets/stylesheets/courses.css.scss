@@ -18,19 +18,15 @@
 
 .course_image {
   @include respond-to(handhelds) {
-    height: 100px;
-    width: 100px;
+    @include avatar(150px);
   }
   @include respond-to(small-screens) {
-    height: 150px;
-    width: 150px;
+    @include avatar(100px);
   }
   @include respond-to(medium-screens) {
-    height: 150px;
-    width: 150px;
+    @include avatar(100px);
   }
-  height: 200px;
-  width: 200px;
+  @include avatar(56px);
   border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;

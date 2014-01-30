@@ -17,3 +17,11 @@ $break-large: 1200px;
     @media only screen and (min-width: $break-large) { @content; }
   }
 }
+
+$image-size: 250px;
+
+@mixin avatar($reduce) {
+  height: $image-size - $reduce;
+  width: $image-size - $reduce;
+  background-size: $image-size - $reduce;
+}
