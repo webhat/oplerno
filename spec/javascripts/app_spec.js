@@ -2,23 +2,16 @@ describe('propagation', function () {
     it('should not propagate a click down', function () {
         var event = {type: 'click', stopPropagation: function () {
             }},
-            a = $("<a/>"),
+            a = $("<a id='authy-help'/>"),
             spy = spyOn(event, "stopPropagation");
 
-        a.on('click', function (e) {
-            e.stopPropagation();
-        });
+        $('body').append(a);
 
-        a.addClass('dropdown-menu');
-
-        //drop_down_ready();
+        window.authy_help();
 
         a.trigger('click', event);
         a.trigger(event);
 
-        console.debug("post click");
-
-        //expect(e.preventDefault).toHaveBeenCalled();
         expect(spy).toHaveBeenCalled();
     });
 });

@@ -13,5 +13,8 @@ $ ->
     authyUI = Authy.UI.instance
     authyUI.setTooltip("Two-Factor Authentication", "You can your token from your cellphone");
 
-    $('#authy-help').click ->
-      e.stopPropagation();
+    window.authy_help
+
+window.authy_help = () ->
+  $('#authy-help').click (e) ->
+    e.stopPropagation();
