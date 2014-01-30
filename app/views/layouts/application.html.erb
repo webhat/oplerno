@@ -40,7 +40,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Oplerno</a>
+      <a href="/">
+        <div class="logo"></div>
+      </a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="btn-group nav navbar-nav">
@@ -77,17 +79,13 @@
 <div class="container">
 
   <div class="row row-offcanvas row-offcanvas-right">
-    <div class="col-xs-12 col-sm-9">
-      <div class="jumbotron">
-        <h1 style="text-align: center;"><a href="/"><%= image_tag 'logo.png', width: '260', alt: 'Oplerno' %></a></h1>
-      </div>
-      <div>
-        <p id="notice"><%= notice %></p>
-
-        <p id="alert"><%= alert %></p>
+    <div class="col-xs-12 col-sm-12 col-lg-12 top30">
+      <div class="col-6">
+        <span id="notice" class="alert"><%= notice %></span>
+        <span id="alert" class="alert"><%= alert %></span>
       </div>
 
-      <div class="row">
+      <div class="row-fluid">
         <%= yield %>
       </div>
       <!--/row-->
