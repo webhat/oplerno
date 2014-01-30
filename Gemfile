@@ -74,6 +74,7 @@ end
 
 gem 'minitest', '~> 4.0'
 gem 'minitest-rails'
+
 group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
@@ -86,6 +87,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'jasmine'
+  gem 'jasmine-jquery-rails'
 end
 
 group :test do

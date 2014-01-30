@@ -11,4 +11,4 @@ task :travis do
 end
 =end
 
-task :travis => [:spec, :features, 'coveralls:push']
+task :travis => [:spec, :features, 'jasmine:ci', 'coveralls:push']

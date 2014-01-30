@@ -1,4 +1,4 @@
-# src_files
+  # src_files
 #
 # Return an array of filepaths relative to src_dir to include before jasmine specs.
 # Default: []
@@ -11,7 +11,9 @@
 #   - dist/**/*.js
 #
 src_files:
+  - assets/**/*.js
   - assets/application.js
+  - public/javascripts/compiled/*.js
 
 # stylesheets
 #
@@ -51,7 +53,7 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
-  - '**/*[sS]pec.js'
+  - '**/*[sS]pec.{js,coffee,js.coffee}'
 
 # src_dir
 #
