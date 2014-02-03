@@ -1,4 +1,5 @@
-<h2><%= @teacher.title %> <%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h2>
+<h2><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h2>
+<h3><%= @teacher.encrypted_title %></h3>
 <div>
   <div>
 
@@ -7,14 +8,8 @@
       <div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
     </div>
     <hr/>
-    <div class="row-fluid">
-      <% @teacher.courses.each do |course| %>
-          <div class="col-1 col-sm-4 col-lg-3"> <!-- class="xs-hidden col-sm-2 col-lg-4" -->
-            <div style="background-image:url(<%= course.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
-            <div><%= course.name %></div>
-            <div><%= link_to "View", course, {:class => "btn btn-info"} %></div>
-          </div>
-      <% end unless @teacher.courses.empty? %>
+    <div class="row-fluid teacher">
+      <%= render @teacher.courses %>
     </div>
 
   </div>
