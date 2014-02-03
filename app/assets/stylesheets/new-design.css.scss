@@ -61,6 +61,10 @@ $grey: #eee;
   h1 {
     margin-left: 20px;
   }
+  .row-fluid {
+    @include respond-to(handhelds) {margin-left: -80px;}
+    @include respond-to(small-screens) {margin-left: -80px;}
+  }
   div {
     @include respond-to(handhelds) {margin-left: 20px;}
     @include respond-to(small-screens) {margin-left: 20px;}
