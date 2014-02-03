@@ -16,6 +16,14 @@
   max-height: 70px;
 }
 
+.show .course .btn {
+	display:none;
+}
+
+div.course_name {
+	width: 140px;
+}
+
 .course_image {
   @include respond-to(handhelds) {
     @include avatar(150px);
@@ -44,5 +52,5 @@
 }
 
 form .btn {
-  margin-left: 50px;
+  // margin-left: 50px;
 }
