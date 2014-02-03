@@ -1,23 +1,13 @@
-<h2><%= @teacher.title %> <%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h2>
-<div>
-  <div>
+<h1 class='teacher_name'><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h1>
+<h2 class='teacher_title'><%= @teacher.encrypted_title %></h2>
 
-    <div class="row">
-      <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= @teacher.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
-      <div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
-    </div>
-    <hr/>
-    <div class="row-fluid">
-      <% @teacher.courses.each do |course| %>
-          <div class="col-1 col-sm-4 col-lg-3"> <!-- class="xs-hidden col-sm-2 col-lg-4" -->
-            <div style="background-image:url(<%= course.avatar.url(:thumb) %>);height:100px;width:100px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
-            <div><%= course.name %></div>
-            <div><%= link_to "View", course, {:class => "btn btn-info"} %></div>
-          </div>
-      <% end unless @teacher.courses.empty? %>
-    </div>
+<%= render @teacher %>
 
-  </div>
+<div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
+<div class="clearfix"></div>
+<hr/>
+<div class="row-fluid small">
+	<%= render @teacher.courses %>
 </div>
 
 <div class="clearfix"></div>

@@ -10,6 +10,7 @@ en:
     success:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
+    view: 'View'
   users:
     view: 'View details'
     messages:

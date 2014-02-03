@@ -2,13 +2,7 @@
 
 
 <% @courses.each do |course| %>
-    <div class="col-6 col-sm-6 col-lg-4 top10">
-
-      <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
-      <div class='course_image' style="background-image:url(<%= course.avatar.url(:medium) %>);"></div>
-      <div class='course_name'><%= course.name %></div>
-      <div><%= link_to t('courses.view'), course, {:class => "btn btn-default"} %></div>
-    </div>
+	<%= render course %>
 <% end unless @courses.empty? %>
 
 

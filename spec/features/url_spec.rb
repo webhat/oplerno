@@ -20,6 +20,7 @@ describe 'Visiting URLs' do
 			fill_in I18n.t('devise.sessions.new.password'), with: 'testtest'
 			click_button I18n.t('devise.sessions.new.sign_in')
       @course = Course.create! valid_course
+			@user.courses << @course
     end
 
     after (:each) do
@@ -54,8 +55,8 @@ describe 'Visiting URLs' do
       find(:xpath, "(//a[text()='#{I18n.t('courses.view')}'])[1]").click
 
       # View Teacher
-      expect(page).to have_content I18n.t('courses.view')
-      click_link I18n.t('courses.view')
+			expect(page).to have_content @user.encrypted_first_name
+			find("div.teacher_image_small").click
 
       expect(page).to have_content @user.encrypted_first_name
       expect(page).to have_content @user.encrypted_last_name

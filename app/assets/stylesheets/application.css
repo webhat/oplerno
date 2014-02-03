@@ -11,19 +11,12 @@
  *= require_self
  *= require chardinjs
  *= require bootstrap-sass
+ *= require new-design
  *= require_tree .
  */
 
 .btn-info .active {
     color: #fff;
-}
-
-.row {
-    margin-left: -15px !important;
-}
-
-.row-fluid {
-    margin-left: -15px;
 }
 
 .row form div {
