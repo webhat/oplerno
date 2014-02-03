@@ -1,36 +1,5 @@
 <h1>Teachers</h1>
 
-<div>
-  <% @teachers.each do |teacher| %>
-
-      <div class="col-4 col-xs-4 col-sm-2 col-md-2 col-lg-3 top10">
-        <div class="teacher_image" style="background-image:url(<%= teacher.avatar.url(:medium) %>);"></div>
-        <div class="teacher_name top5">
-          <div class="hidden-sm hidden-xs">
-
-          <%- unless teacher.encrypted_title.nil? %>
-              <%= teacher.encrypted_title.force_encoding("UTF-8") %>
-          <%- end %>
-          </div>
-          <%- unless teacher.encrypted_first_name.nil? %>
-              <%= teacher.encrypted_first_name.force_encoding("UTF-8") %>
-          <%- end %>
-          <%- unless teacher.encrypted_last_name.nil? %>
-              <%= teacher.encrypted_last_name.force_encoding("UTF-8") %>
-          <%- end %>
-        </div>
-        <div class="top5">
-          <% if user_signed_in? && teacher.id == current_user.id %>
-              <div><%= link_to 'Edit', edit_teacher_path(teacher), {:class => "btn btn-info pull-right"} %></div>
-          <% end %>
-          <%= link_to t('users.view'), teacher, {:class => "btn btn-default"} %>
-        </div>
-      </div>
-  <% end %>
+<div class='row-fluid'>
+	<%= render @teachers %>
 </div>
-
-<br>
-
-<!--
-<%= link_to 'New Teacher', new_teacher_path, {:class => "btn btn-default"} %>
--->

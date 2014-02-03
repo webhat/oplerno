@@ -33,6 +33,16 @@
   background-repeat: no-repeat;
 }
 
+.small .course_image {
+  @include respond-to(handhelds) {
+    @include avatar(200px);
+  }
+  @include avatar(150px);
+  border: 1px solid black;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
 form .btn {
   margin-left: 50px;
 }
