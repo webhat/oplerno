@@ -19,6 +19,10 @@
   max-height: 70px;
 }
 
+div.teacher_name {
+	width: 240px;
+}
+
 .teacher_image {
   @include respond-to(handhelds) {
     @include avatar(150px);

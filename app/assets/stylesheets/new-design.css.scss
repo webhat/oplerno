@@ -4,6 +4,16 @@
   width: 100% !important;
 }
 
+body > .container {
+  @include respond-to(handhelds) {
+	}
+  @include respond-to(small-screens) {
+  margin-left: 0px !important;
+	}
+  //margin-left: 70px !important;
+}
+
+
 $grey: #eee;
 
 .navbar-inverse {
@@ -54,7 +64,9 @@ $grey: #eee;
 #alert { color: red; }
 
 .row-fluid {
-  h1 {
+  h1, h2 {
+    @include respond-to(handhelds) {margin-left: 0px;}
+    @include respond-to(small-screens) {margin-left: 0px;}
     margin-left: 20px;
   }
   .row-fluid {

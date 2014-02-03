@@ -21,10 +21,10 @@
 }
 
 div.course_name {
-	width: 140px;
+  border: 1px solid white !important;
 }
 
-.course_image {
+div.course_name, .course_image {
   @include respond-to(handhelds) {
     @include avatar(150px);
   }
