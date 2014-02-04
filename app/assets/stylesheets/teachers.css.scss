@@ -1,9 +1,3 @@
-// Place all the styles related to the teachers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-// Place all the styles related to the courses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "base";
 
 .teacher_name {
@@ -48,4 +42,8 @@ div.teacher_name, .teacher_image {
   border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;
+}
+
+.hide_name .hide_name {
+	display:none;
 }

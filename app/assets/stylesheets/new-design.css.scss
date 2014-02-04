@@ -55,34 +55,34 @@ $grey: #eee;
 
 .alert {
   font-weight: bold;
-  @include respond-to(handhelds) { font-size: 1.4em;}
-  @include respond-to(small-screens) { font-size: 1.4em;}
-  @include respond-to(medium-screens) { font-size: 1.4em;}
-  @include respond-to(wide-screens) { font-size: 1.6em;}
+  @include respond-to(handhelds)       { font-size: 1.4em;}
+  @include respond-to(small-screens)   { font-size: 1.4em;}
+  @include respond-to(medium-screens)  { font-size: 1.4em;}
+  @include respond-to(wide-screens)    { font-size: 1.6em;}
 }
 #notice { color: green; }
 #alert { color: red; }
 
 .row-fluid {
   h1, h2 {
-    @include respond-to(handhelds) {margin-left: 0px;}
-    @include respond-to(small-screens) {margin-left: 0px;}
+    @include respond-to(handhelds)      { margin-left: 0px;}
+    @include respond-to(small-screens)  { margin-left: 0px;}
     margin-left: 20px;
   }
   .row-fluid {
-    @include respond-to(handhelds) {margin-left: -80px;}
-    @include respond-to(small-screens) {margin-left: -80px;}
+    @include respond-to(handhelds)      { margin-left: -80px;}
+    @include respond-to(small-screens)  { margin-left: -80px;}
   }
   div {
-    @include respond-to(handhelds) {margin-left: -10px;}
+    @include respond-to(handhelds)      { margin-left: -10px;}
   }
 }
 
 .top-fluid {
-  //@include respond-to(handheld) { margin-top: 50px;}
-  @include respond-to(small-screens) { font-size: 1.4em;}
-  @include respond-to(medium-screens) { font-size: 1.4em;}
-  @include respond-to(wide-screens) { font-size: 1.6em;}
+  //@include respond-to(handheld)      { margin-top: 50px;}
+  @include respond-to(small-screens)   { font-size: 1.4em;}
+  @include respond-to(medium-screens)  { font-size: 1.4em;}
+  @include respond-to(wide-screens)    { font-size: 1.6em;}
 }
 
 .navbar-fixed-top, .navbar-fixed-bottom {

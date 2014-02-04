@@ -1,7 +1,9 @@
 <h1 class='teacher_name'><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h1>
 <h2 class='teacher_title'><%= @teacher.encrypted_title %></h2>
 
-<%= render @teacher %>
+<div class='hide_name'>
+	<%= render @teacher %>
+</div>
 
 <div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
 <div class="clearfix"></div>
