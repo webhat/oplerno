@@ -1,0 +1,7 @@
+<div class="col-4 col-xs-4 col-sm-2 col-md-2 col-lg-2 top10 course">
+	<!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
+	<%= link_to course do %>
+		<div class='course_image' style="background-image:url(<%= course.avatar.url(:medium) %>);"></div>
+	<%- end %>
+	<div class='course_name'><%= course.name %></div>
+</div>
