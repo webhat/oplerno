@@ -26,6 +26,7 @@ div.teacher_name {
 div.teacher_name, .teacher_image {
   @include respond-to(handhelds) {
     @include avatar(150px);
+		margin-left: 30px!important;
   }
   @include respond-to(small-screens) {
     @include avatar(100px);
