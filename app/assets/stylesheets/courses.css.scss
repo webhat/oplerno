@@ -34,7 +34,6 @@ div.course_name, .course_image {
   @include respond-to(medium-screens) {
     @include avatar(100px);
   }
-  //margin-left: 50px;
   @include avatar(56px);
   border: 1px solid black;
   background-position: center top;
@@ -49,8 +48,4 @@ div.course_name, .course_image {
   border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;
-}
-
-form .btn {
-  // margin-left: 50px;
 }

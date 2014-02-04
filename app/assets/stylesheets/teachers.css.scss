@@ -20,10 +20,10 @@
 }
 
 div.teacher_name {
-	width: 240px;
+	border: 1px solid white !important;
 }
 
-.teacher_image {
+div.teacher_name, .teacher_image {
   @include respond-to(handhelds) {
     @include avatar(150px);
   }
@@ -33,7 +33,7 @@ div.teacher_name {
   @include respond-to(medium-screens) {
     @include avatar(100px);
   }
-  @include avatar(0);
+  @include avatar(56px);
   border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;

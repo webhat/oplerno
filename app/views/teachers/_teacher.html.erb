@@ -3,6 +3,6 @@
 		<div class="teacher_image" style="background-image:url(<%= teacher.avatar.url(:medium) %>);"></div>
 	<% end %>
 	<div class="teacher_name top5">
-		<span class="hidden-sm hidden-xs"><%= teacher.encrypted_title %> </span><%= teacher.encrypted_first_name %>&nbsp;<%= teacher.encrypted_last_name %>
+		<span class="hidden-sm hidden-xs"><%= teacher.encrypted_title %> </span><%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
 	</div>
 </div>
