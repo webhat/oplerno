@@ -1,0 +1,43 @@
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/">
+        <div class="logo"></div>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="btn-group nav navbar-nav">
+        <li><a href="#about">About</a></li>
+        <li><a target="_blank" href="http://oplerno.com/faculty-recruitment/">Register</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://<%= CANVAS_HOST %>/" class="btn-warning nav">Canvas</a></li>
+      </ul>
+
+      <ul class="btn-group nav navbar-nav pull-right">
+        <% if user_signed_in? && !Cart.find_by_user_id(current_user.id).nil? %>
+            <li>
+              <%= link_to "/carts/mycart", {class: "btn-danger active", style: "height:45px;color:#fff;"} do %>
+                  <span class="glyphicon glyphicon-shopping-cart"></span> <i id="cartcount">0</i>
+              <% end %>
+            </li>
+        <% end %>
+        <li>&nbsp;</li>
+        <% if user_signed_in? %>
+            <li><%= link_to t('devise.sessions.new.sign_out'), destroy_user_session_path, {:class => "btn-info active", style: "height:45px;color:#fff;"} %></li>
+        <% else %>
+            <li><%= link_to t('devise.sessions.new.sign_in'), user_session_path, {:class => "btn-info active", style: "height:45px;color:#fff;"} %></li>
+        <% end %>
+        <li>&nbsp;</li>
+        <li><a href="#help">Help</a></li>
+      </ul>
+    </div>
+    <!-- /.nav-collapse -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.navbar -->
