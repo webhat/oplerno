@@ -8,10 +8,8 @@ en:
     country: 'Enter you country'
     request_sms: 'Request SMS'
     remember_device: 'Remember Device'
-
     authy_verify_installation_title: "Verify your account"
     enable_my_account: 'Enable my account'
-
     devise_authy:
       user:
         enabled: 'Two factor authentication was enabled'
@@ -19,14 +17,14 @@ en:
         signed_in: 'Signed in with Authy successfully.'
         already_enabled: "Two factor authentication is already enabled."
         invalid_token: 'The entered token is invalid'
-  authy:
-    submit_token: "Submit Token"
-    register:
-      title: "Register your Authy"
-    verify_installation:
-      title: "Verify Authy"
-    submit:
-      token_title: "Authy Token"
-    enable: "Enable Authy"
-    enable_my_account: "Enable Authy"
-    remember_device: "Remember your Authy Device"
+    authy:
+      submit_token: "Submit Token"
+      register:
+        title: "Register your Authy"
+      verify_installation:
+        title: "Verify Authy"
+      submit:
+        token_title: "Authy Token"
+      enable: "Enable Authy"
+      enable_my_account: "Enable Authy"
+      remember_device: "Remember your Authy Device"
