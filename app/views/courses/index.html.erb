@@ -1,10 +1,18 @@
 <h1><%= t('courses.title')%></h1>
 
+<div class='pull-right'>
+	<%= paginate @courses %>
+</div>
+<div class="clearfix"></div>
 
 <% @courses.each do |course| %>
 	<%= render course %>
 <% end unless @courses.empty? %>
 
+<div class="clearfix"></div>
+<div class='pull-right'>
+	<%= paginate @courses %>
+</div>
 
 <br>
 

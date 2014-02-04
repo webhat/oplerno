@@ -46,6 +46,7 @@ gem 'ruby-saml'
 gem 'ruby-saml-idp'
 gem 'newrelic_rpm'
 gem 'coveralls', require: false
+gem 'kaminari'
 
 gem 'canvas-api'
 
@@ -107,13 +108,6 @@ group :test do
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
@@ -124,7 +118,4 @@ gem 'rvm1-capistrano3', group: :development, :require => false
 
 gem 'unicorn' #, group: :production
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
