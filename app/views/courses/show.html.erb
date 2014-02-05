@@ -18,7 +18,7 @@
 <% end %>
 
 <div class="clearfix"></div>
-<div class="row top5">
+<div class="clearfix top5">
   <div class="col-xs-4">
     <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger"} %>
   </div>
