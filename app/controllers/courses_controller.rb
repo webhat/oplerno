@@ -8,8 +8,13 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    #@courses = Course.all
-		@courses = Course.page params[:page]
+    respond_to do |format|
+        format.html { @courses = Course.page params[:page] }
+        format.json {
+					@courses = Course.all
+					render json: @courses
+				}
+		end
   end
 
   # GET /courses/1
