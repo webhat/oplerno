@@ -63,6 +63,7 @@ gem 'chardinjs-rails'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-bootstrap-sass'
 gem 'rails-assets-angular'
+gem 'rails-assets-normalize-css'
 
 group :development do
   gem 'quiet_assets'
