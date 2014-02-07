@@ -16,7 +16,20 @@
         <li><a target="_blank" href="http://oplerno.com/faculty-recruitment/">Register</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://<%= CANVAS_HOST %>/" class="btn-warning nav">Canvas</a></li>
+				<li class="dropdown">
+				  <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+						Browse
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/subject">By Subject</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/courses">By Course Title</a></li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/teachers">By Instructor</a></li>
+					</ul>
+				</li>
       </ul>
+
 
       <ul class="btn-group nav navbar-nav pull-right">
         <% if user_signed_in? && !Cart.find_by_user_id(current_user.id).nil? %>
