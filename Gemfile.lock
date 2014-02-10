@@ -363,6 +363,7 @@ GEM
     rails-assets-jquery (2.0.3)
     rails-assets-jquery-ui (1.10.3)
       rails-assets-jquery (>= 1.6)
+    rails-assets-normalize-css (3.0.0)
     rails_best_practices (1.14.4)
       activesupport
       awesome_print
@@ -560,6 +561,7 @@ DEPENDENCIES
   rails-assets-angular
   rails-assets-bootstrap-sass
   rails-assets-jquery-ui
+  rails-assets-normalize-css
   rb-fchange
   rb-fsevent (~> 0.9.4)
   rb-inotify (~> 0.9.3)
