@@ -15,6 +15,7 @@ Oplerno::Application.routes.draw do
     resources :students
     resources :teachers
     resources :users, only: [:edit, :show, :update]
+		resources :subjects, only: [:index, :show]
     resources :carts
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
 
