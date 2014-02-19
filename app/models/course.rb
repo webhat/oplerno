@@ -20,6 +20,8 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :carts
   has_one :canvas_course
 
+	has_and_belongs_to_many :subjects
+
   def active?
     self.price.to_f > 0
   end

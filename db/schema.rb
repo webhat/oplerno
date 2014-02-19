@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140217123928) do
+ActiveRecord::Schema.define(:version => 20140217123929) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(:version => 20140217123928) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "courses_subjects", :force => true do |t|
+    t.integer "subject_id"
+    t.integer "course_id"
+  end
+
+  add_index "courses_subjects", ["course_id"], :name => "index_courses_subjects_on_course_id"
+  add_index "courses_subjects", ["subject_id"], :name => "index_courses_subjects_on_subject_id"
+
   create_table "courses_users", :force => true do |t|
     t.integer "user_id"
     t.integer "course_id"
@@ -150,16 +158,6 @@ ActiveRecord::Schema.define(:version => 20140217123928) do
   end
 
   add_index "subjects", ["subject"], :name => "index_subjects_on_subject", :unique => true
-
-  create_table "subjects_courses", :force => true do |t|
-    t.integer  "subjects_id"
-    t.integer  "courses_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "subjects_courses", ["courses_id"], :name => "index_subjects_courses_on_courses_id"
-  add_index "subjects_courses", ["subjects_id"], :name => "index_subjects_courses_on_subjects_id"
 
   create_table "teachers", :force => true do |t|
     t.datetime "created_at", :null => false
