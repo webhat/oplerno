@@ -1,5 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+notification :tmux, display_message: true
 
 guard 'coffeescript', :output => 'public/javascripts/compiled', :input => 'app/assets/javascripts', :hide_success => true do
 #, :noop => true
