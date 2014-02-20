@@ -23,3 +23,7 @@ bin
 doc
 
 node_modules/
+.vagrant/
+.yardoc/
+TAGS
+public/system/
