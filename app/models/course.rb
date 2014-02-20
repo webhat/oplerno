@@ -27,8 +27,9 @@ class Course < ActiveRecord::Base
     self.price.to_f > 0
   end
 
-	def subject=(v)
-		subjects << Subject.find(v)
+	def subject=(_subject)
+		v = Subject.find(_subject)
+		subjects << v unless subjects.include?(v)
 	end
 
 	def subject

@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140217123929) do
     t.integer "course_id"
   end
 
+  add_index "courses_subjects", ["course_id", "subject_id"], :name => "index_courses_subjects_on_course_id_and_subject_id", :unique => true
   add_index "courses_subjects", ["course_id"], :name => "index_courses_subjects_on_course_id"
   add_index "courses_subjects", ["subject_id"], :name => "index_courses_subjects_on_subject_id"
 
