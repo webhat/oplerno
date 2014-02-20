@@ -9,7 +9,7 @@ describe 'Visiting URLs' do
 	let(:valid_course) {{ name: 'Course Name', price: '1010' }}
   
 	context 'while logged in' do
-    before (:each) do
+    before do
 			@user = User.create! valid_user
 			@user.confirm!
 
@@ -22,7 +22,7 @@ describe 'Visiting URLs' do
 			click_button I18n.t('devise.sessions.new.sign_in')
     end
 
-    after (:each) do
+    after do
       Course.all.each { |course|
 				course.delete
 			}
@@ -36,7 +36,18 @@ describe 'Visiting URLs' do
 
 			click_button I18n.t('courses.update')
 		end
-		it 'should see subjects added to course'
+		it 'should see subjects added to course' do
+			visit '/courses/new'
+			fill_in I18n.t('name'), with: valid_course[:name]
+			fill_in 'course_price', with: valid_course[:price]
+			select @subject.subject, from: 'course_subject'
+
+			click_button I18n.t('courses.update')
+
+			visit '/subjects'
+
+      expect(page).to have_content valid_course[:name]
+		end
 		it 'should create a new subject'
 	end
 end
