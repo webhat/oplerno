@@ -1,6 +1,6 @@
 #
 class Course < ActiveRecord::Base
-	paginates_per 25
+	paginates_per 24
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => {:medium => "265x265>", :thumb => "100x100>"},

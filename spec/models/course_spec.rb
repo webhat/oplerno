@@ -24,6 +24,6 @@ describe Course do
 		subject = FactoryGirl.create(:subject)
 
 		course.subjects << subject
-		expect(course.subjects[0]).should eq subject
+		expect(course.subjects[0]).to eq subject
 	end
 end

@@ -23,7 +23,7 @@ describe Subject do
 		end
 		it 'can have a course attached' do
 			@subject.courses << @course
-			expect(@subject.courses[0]).should eq @course
+			expect(@subject.courses[0]).to eq @course
 		end
 		it 'can have a course attached' do
 			expect {
