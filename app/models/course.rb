@@ -11,7 +11,8 @@ class Course < ActiveRecord::Base
   attr_accessible :name, :key, :price,
                   :description, :teacher,
                   :filename, :content_type,
-                  :binary_data, :picture
+                  :binary_data, :picture,
+									:subjects, :subject
 
   default_scope :order => 'created_at DESC'
 
@@ -25,4 +26,12 @@ class Course < ActiveRecord::Base
   def active?
     self.price.to_f > 0
   end
+
+	def subject=(v)
+		subjects << Subject.find(v)
+	end
+
+	def subject
+		subjects[0]
+	end
 end

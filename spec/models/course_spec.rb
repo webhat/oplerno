@@ -11,4 +11,19 @@ describe Course do
   it 'can be updated'
   it 'can be hidden'
   it 'can be unhidden'
+	it 'should add a subject' do
+		course = FactoryGirl.create(:course)
+		subject = FactoryGirl.create(:subject)
+
+		expect {
+			course.subjects << subject
+		}.to change(course.subjects, :count).by(1)
+	end
+	it 'should have the subject' do
+		course = FactoryGirl.create(:course)
+		subject = FactoryGirl.create(:subject)
+
+		course.subjects << subject
+		expect(course.subjects[0]).should eq subject
+	end
 end

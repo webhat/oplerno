@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  name: 'Name'
+  price: 'Fee'
   students:
     success:
       create: 'Student was successfully created'
@@ -39,6 +41,8 @@ en:
     register: 'Register'
     view: 'View'
     new: 'New Course'
+    update: 'Update Course'
+    subject: 'Subjects'
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'

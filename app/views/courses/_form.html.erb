@@ -23,8 +23,13 @@
         <div><%= f.label :fee %>
           <br/><%= f.text_field :price, :placeholder => "100.00" %></div>
       </div>
+			<div>
+        <div><%= f.label :subject %>
+				<br/><%= collection_select('course', 'subject', Subject.all, :id, :subject, :prompt => true) %>
+				</div>
+			</div>
     </div>
     <br/>
-    <%= f.submit "Create course", {:class => "btn btn-default"} %>
+    <%= f.submit t('courses.update'), {:class => "btn btn-default"} %>
     </div>
 <% end %>
