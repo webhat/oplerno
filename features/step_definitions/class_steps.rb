@@ -42,6 +42,14 @@ Given /The (\w+) with (\w+): '(.*)' has (\w+): (\d+)/ do |clazz, search_attribut
   object.save
 end
 
+#		* I add the Subject 'Test'
+Given /I add the (\w+): '(.*)'/ do |clazz, value|
+	object = Object.const_get(clazz).new
+	object.send("#{clazz.downcase}=", value)
+	@object.send("#{clazz.downcase}s").send('push', object)
+  object.save
+end
+
 Given /I have a (\w+)/ do |clazz|
   @object = Object.const_get(clazz).new
 end
