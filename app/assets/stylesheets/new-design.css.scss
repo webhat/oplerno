@@ -10,7 +10,6 @@ body > .container {
   @include respond-to(small-screens) {
   margin-left: 0px !important;
 	}
-  //margin-left: 70px !important;
 }
 
 
@@ -93,4 +92,50 @@ $grey: #eee;
 .navbar-toggle {
   background-color: #333333;
   margin-right: 20px;
+}
+
+.nav-bar-browse {
+  //@include respond-to(handheld)      { margin-top: 50px;}
+  @include respond-to(small-screens)  { margin-top: 0px;margin-left:15px !important}
+  @include respond-to(medium-screens)  { margin-top: 20px;}
+	margin-top: 45px;
+	margin-left: 45px !important;
+}
+
+$nav-shadow: 2px;
+
+.nav-bar-settings {
+	border: 1px black solid;
+	border-top: 0px;
+	border-radius: 0 0 3% 3% / 30%;
+	padding: 0px 15px;
+	right: 200px;
+	position:fixed;
+	height: 35px;
+	box-shadow: $nav-shadow $nav-shadow 0 0 #ccc;
+	top: -$nav-shadow;
+	li {
+		a {
+			padding: 5px;
+			padding-top: 2px + $nav-shadow;
+			@include respond-to(small-screens)  { font-size:smaller;}
+			@include respond-to(medium-screens)  { font-size:smaller;}
+			font-size: small;
+		}
+		@include respond-to(small-screens)  { font-size:smaller;}
+		@include respond-to(medium-screens)  { font-size:smaller;}
+		font-size: small;
+	}
+	@include respond-to(small-screens)  { height:30px;right:150px;}
+	@include respond-to(medium-screens)  { height:30px;right:175px;}
+}
+
+.cart-button, .cart-button:hover {
+	height: 50px;
+	color: #fff !important;
+	width: 95px;
+	background-color: #d2322d !important;
+	font-size: large;
+	padding-left: 25px !important;
+	padding-right: 25px !important;
 }

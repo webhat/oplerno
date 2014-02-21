@@ -18,3 +18,14 @@ $ ->
 window.authy_help = () ->
   $('#authy-help').click (e) ->
     e.stopPropagation();
+
+visible = true;
+
+$(window).scroll ->
+	st = $(this).scrollTop();
+	if(st > 190 && visible)
+		$('#settings').hide();
+		visible = false
+	if(st < 190 && !visible)
+		$('#settings').show();
+		visible = true
