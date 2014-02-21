@@ -1,0 +1,47 @@
+<%= semantic_form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.inputs class: 'list-unstyled' do %>
+        <li>
+          <div class="pull-right">
+            <ul class="list-unstyled">
+              <li class="optional">
+                <label class="label"><%= t('users.fields.avatar') %></label>
+              </li>
+              <li>
+                <div class="xs-hidden col-sm-2 col-lg-4 avatar" style="background-image:url(<%= @user.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+              </li>
+              <li>
+                <%= f.file_field :avatar %>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <%= f.input :encrypted_title, label: t('users.fields.title') %>
+        <%= f.input :encrypted_first_name, label: t('users.fields.first_name') %>
+        <%= f.input :encrypted_last_name, label: t('users.fields.last_name') %>
+        <%= f.input :description, label: t('users.fields.description') %>
+        <%= f.input :email, label: t('users.fields.email') %>
+        <hr/>
+        <div>
+          <h3><%= t('users.messages.extra_security') %></h3>
+          <%= f.input :hidden, as: :boolean, label: t('users.fields.hidden') %>
+          <%= f.input :authy_enabled, label: t('users.fields.authy_enabled') %>
+          <%= raw t('users.messages.authy_description', url: '/users/enable-two-factor') %>
+        </div>
+    <% end %>
+
+    <%= f.actions class: 'list-unstyled' do %>
+        <%= f.action :submit, :as => :input, button_html: {class: 'btn btn-danger'}, label: true %>
+    <% end %>
+<% end %>

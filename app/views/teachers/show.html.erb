@@ -1,0 +1,23 @@
+<h1 class='teacher_name'><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h1>
+<h2 class='teacher_title'><%= @teacher.encrypted_title %></h2>
+
+<div class='hide_name'>
+	<%= render @teacher %>
+</div>
+
+<div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
+<div class="clearfix"></div>
+<hr/>
+<div class="row-fluid small">
+	<%= render @teacher.courses %>
+</div>
+
+<div class="clearfix"></div>
+
+<br/>
+<% if user_signed_in? && @teacher.id == current_user.id %>
+    <%= link_to 'Edit', edit_teacher_path(@teacher), {:class => "btn btn-default pull-right"} %>
+    <%= link_to 'New Course', new_course_path, {:class => "btn btn-info pull-right"} %>
+<% end %>
+
+<%= link_to 'Back', teachers_path, {:class => "btn btn-default"} %>

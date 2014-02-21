@@ -1,0 +1,34 @@
+<div class="clearfix">
+	<h1 class="course_name"><%= @course.name %></h1>
+</div>
+
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 show hide_name top30">
+	<%= render @course %>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><%= @course.description %></div>
+<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
+<%- unless teacher.nil? %>
+    <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
+			<h2><%= t('teachers.teacher') %></h2>
+			<div class='pull-right'>
+				<%= render teacher %>
+			</div>
+			<div class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %></div>
+    </div>
+<% end %>
+
+<div class="clearfix"></div>
+<div class="clearfix top5">
+  <div class="col-xs-4">
+    <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger"} %>
+  </div>
+  <div class="col-xs-4">
+    <%= link_to t('generic.back'), courses_path, {:class => "btn btn-default"} %>
+  </div>
+  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
+      <div class="col-xs-4">
+        <%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info"} %>
+      </div>
+  <% end %>
+</div>
+

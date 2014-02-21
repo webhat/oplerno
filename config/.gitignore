@@ -1,0 +1,9 @@
+database.yml
+strongbox
+
+# keys
+localhost.cert.conf
+*pem
+*key
+*crt
+*ssl

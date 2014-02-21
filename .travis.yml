@@ -1,0 +1,34 @@
+language: ruby
+rvm:
+- ruby-head
+- 2.0
+- 1.9.3
+env:
+  matrix:
+  - DB=sqlite
+  - DB=mysql
+  global:
+  - secure: o4OwbLqHD+jHMGtlv5/d/PPZvIMD72kGZQ/kujzyFoUurg6WF+2XjshJnlNg9LaXRTKKhofd+AtVBbl/d4di6ZoJaQw1l9FSdBotNKHAPBl2bZ578CRbEwtqCwShAhSh94oujRDDNh3kMKrQ9kIsLGnus2/oh1NIuXqK/8/SMBQ=
+  - secure: P2Ma1eeSuA0EsfinQsGJceAc12bhIo2RX331tlNSdGULLYcBenfMVewxhZUk0TCaqBD7N9hkHqkYM+WRggLujvoVjWmFmFFGVLtfU0sM38WTpso3+JVfVjpSxOLrckCA2Mamp7mAKDRw4PIVX7KkBm53KTtDALVnkm8jQHezxts=
+  - secure: BvNjpLpaZJxYou5FHULcaw3Pdgy+AdpXhNeOhtNGQkvc7O1H6/eZFEg4iprGgLHhZ75PDhhpZ8rCe3QeawxSK4oQSoSYHRiaTfRWa5jGKpFWcNWL1P/SIGP2DtZ51LA7F8gyHjwfqRhCtTybxI6LWvxizHV9zUoCvMxT4IPowas=
+  - secure: duioFLz2DA0DAmB7t8Nps9qOWP+oR+BsqFt/f3b3+LgPJZeWJG6iLgx21rXStj7XMUye1TXE/6AqSHKsmG6x4HRMa9ZXWyvMUVfDkUaFrhf6sv30gD3qH518DK8fvw3xuVNHKLvv79rlkwDm8MevIrQBoExmYBU2RxLoWriHhAw=
+  - secure: NMjtzMWWESEvbzilb9eUF7fU2ZTIagYKplwbOwibvWCamM9hpbFG6chtOnyErdasxJhfsmFPG/sLM9/32rrgijem2gHY8Fz9WvZFl/pH5NlykSIs7Wf0BIhtaBnZIfjyZPs/pwX6MYeLApaiVfCPSyLBfps3t7RcBl1ZwxJ07IQ=
+  - DEVISE_SECRET=f3211757debdf78f840500c4555e2fea30b0ddbbc0746aaaca05f5f92bb9f35eec0f9f3582e4559f8ae6a9a982780aa4666362ca4ab08cdb29955f8e4ca7d762
+  - NEWRELIC_ENABLE=false
+matrix:
+  fast_finish: true
+  allow_failures:
+  - rvm: ruby-head
+script:
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake travis
+before_script:
+- mysql -e 'create database oplerno_test'
+- cp config/database.yml.example config/database.yml
+- mkdir cp config/strongbox && cp config/keypair.pem.example config/strongbox/keypair.pem
+bundler_args: --binstubs=./bundler_stubs
+branches:
+  only:
+  - develop
+  - master

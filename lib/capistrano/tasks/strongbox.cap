@@ -1,0 +1,25 @@
+require 'sshkit/dsl'
+
+# Run `cap strongbox:archive` when you re-key, otherwise `cap strongbox:upload` to deploy keys.
+namespace :strongbox do
+  desc 'Create strongbox archive'
+  task :archive do
+    sh 'touch archive.tgz && rm archive.tgz'
+    sh 'touch config/strongbox/archive.tgz && rm config/strongbox/archive.tgz'
+    sh 'tar zcvf archive.tgz -C config/ ./strongbox/'
+    sh 'mv archive.tgz config/strongbox/'
+  end
+
+  desc 'Upload strongbox keys'
+  task :upload do
+    on roles(:app), in: :sequence, wait: 5 do
+      upload! "config/strongbox/archive.tgz", "archive.tgz"
+      execute 'tar zpxvf archive.tgz; rm archive.tgz'
+      execute "rm -rf #{shared_path}/config/strongbox"
+      execute "mv -f ~/strongbox/ #{shared_path}/config/"
+    end
+  end
+end
+
+#before 'deploy:starting', 'strongbox:archive'
+#after 'deploy:updated', 'strongbox:upload'

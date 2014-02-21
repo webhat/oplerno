@@ -1,0 +1,22 @@
+<h1><%= t('courses.title')%></h1>
+
+<div class='pull-right'>
+	<%= paginate @courses %>
+</div>
+<div class="clearfix"></div>
+
+<% @courses.each do |course| %>
+	<%= render course %>
+<% end unless @courses.empty? %>
+
+<div class="clearfix"></div>
+<div class='pull-right'>
+	<%= paginate @courses %>
+</div>
+
+<br>
+
+<div class="clearfix"></div>
+<% if user_signed_in? %>
+    <%= link_to t('courses.new'), new_course_path, {:class => "btn btn-info pull-right"} if user_signed_in? %>
+<% end %>

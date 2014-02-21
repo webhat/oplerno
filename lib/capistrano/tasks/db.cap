@@ -1,0 +1,30 @@
+# Remote database credentials. Change to your username and database name. Don't fill the password field!
+set :db_remote_user, 'root'
+set :db_remote_password, ENV['MYSQL_PASSWORD']
+set :db_remote_name, 'oplerno_production'
+# Local database credentials. Change to your username and database name. Don't fill the password field!
+set :db_local_user, 'root'
+set :db_local_password, ''
+set :db_local_name, 'oplerno_development'
+# A place where you'd like to save your database dumps
+set :local_dump_dir, 'db/dumps'
+set :sql_dump, "#{fetch(:db_remote_name)}_#{Time.now.to_i}.sql"
+
+# Run with `cap db:sync`
+namespace :db do
+  desc 'Dump remote database, copy to local machine and source it on local db server.'
+  task :sync do
+    # This assumes that you have properly configured deploy.rb
+    current_host = 'www.oplerno.com'
+
+
+    on roles(:db), in: :sequence, wait: 5 do
+      execute "mysqldump -u #{fetch(:db_remote_user)} --password=#{fetch(:db_remote_password)} #{fetch(:db_remote_name)} > #{fetch(:db_remote_name)}.sql"
+
+      download! "#{fetch(:db_remote_name)}.sql", "#{fetch(:local_dump_dir)}/#{fetch(:sql_dump)}"
+
+
+    end
+    sh "mysql5 -u #{fetch(:db_local_user)} #{fetch(:db_local_name)} <<< 'source #{fetch(:local_dump_dir)}/#{fetch(:sql_dump)};'"
+  end
+end

@@ -1,0 +1,52 @@
+// Place all the styles related to the courses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "base";
+
+.course_name {
+  @include respond-to(handhelds) {
+    min-height: 70px;
+    margin-left: -10px;
+    margin-right: 40px;
+  }
+  @include respond-to(medium-screens) {
+    min-height: 70px;
+  }
+  min-height: 60px;
+  max-height: 70px;
+}
+
+.show .course .btn {
+	display:none;
+}
+
+div.course_name {
+  border: 1px solid white !important;
+}
+
+div.course_name, .course_image {
+  @include respond-to(handhelds) {
+    @include avatar(150px);
+  }
+  @include respond-to(small-screens) {
+    @include avatar(100px);
+  }
+  @include respond-to(medium-screens) {
+    @include avatar(100px);
+  }
+  @include avatar(56px);
+  border: 1px solid black;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.small .course_image {
+  @include respond-to(handhelds) {
+    @include avatar(200px);
+		margin-left: 30px;
+  }
+  @include avatar(150px);
+  border: 1px solid black;
+  background-position: center top;
+  background-repeat: no-repeat;
+}

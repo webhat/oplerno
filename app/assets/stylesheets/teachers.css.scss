@@ -1,0 +1,49 @@
+@import "base";
+
+.teacher_name {
+  @include respond-to(handhelds) {
+    min-height: 70px;
+    margin-left: -10px;
+    margin-right: 40px;
+  }
+  @include respond-to(medium-screens) {
+    min-height: 70px;
+  }
+  min-height: 60px;
+  max-height: 70px;
+}
+
+div.teacher_name {
+	border: 1px solid white !important;
+}
+
+div.teacher_name, .teacher_image {
+  @include respond-to(handhelds) {
+    @include avatar(150px);
+		margin-left: 30px!important;
+  }
+  @include respond-to(small-screens) {
+    @include avatar(100px);
+  }
+  @include respond-to(medium-screens) {
+    @include avatar(100px);
+  }
+  @include avatar(56px);
+  border: 1px solid black;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.small .teacher_image {
+  @include respond-to(handhelds) {
+    @include avatar(200px);
+  }
+  @include avatar(150px);
+  border: 1px solid black;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.hide_name .hide_name {
+	display:none;
+}
