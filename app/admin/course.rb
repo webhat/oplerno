@@ -5,7 +5,7 @@ ActiveAdmin.register Course do
     column "Teacher" do |course|
       begin
         teacher = User.find(course.teacher)
-        "#{teacher.encrypted_first_name} #{teacher.encrypted_last_name} (#{teacher.id})"
+				"#{teacher.encrypted_first_name.force_encoding("UTF-8")} #{teacher.encrypted_last_name.force_encoding("UTF-8")} (#{teacher.id})"
       rescue
         "Unknown"
       end
