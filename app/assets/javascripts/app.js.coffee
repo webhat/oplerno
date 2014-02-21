@@ -29,3 +29,4 @@ $(window).scroll ->
 	if(st < 190 && !visible)
 		$('#settings').show();
 		visible = true
+
