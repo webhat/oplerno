@@ -18,16 +18,16 @@
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="/subjects">By Subject</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="/courses">By Course Title</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/subjects"><%= t('browse.by_subject') %></a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/courses"><%= t('browse.by_course_title') %></a></li>
 						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="/teachers">By Instructor</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/teachers"><%= t('browse.by_instructor') %></a></li>
 					</ul>
 				</li>
-        <li><a class="btn" href="#about">About</a></li>
-        <li><a class="btn" href="#contact">Contact</a></li>
-        <li><a class="btn" target="_blank" href="http://oplerno.com/faculty-recruitment/">Register</a></li>
-        <li><a class="btn" href="https://<%= CANVAS_HOST %>/" class="btn-warning nav">Canvas</a></li>
+				<li><a class="btn" href="#about"><%= t('browse.about') %></a></li>
+				<li><a class="btn" href="#contact"><%= t('browse.contact') %></a></li>
+        <li><a class="btn" target="_blank" href="http://oplerno.com/faculty-recruitment/"><%= t('browse.register') %></a></li>
+				<li><a class="btn" href="https://<%= CANVAS_HOST %>/" class="btn-warning nav"><%= t('browse.canvas') %></a></li>
       </ul>
 
 
@@ -43,13 +43,13 @@
 			<ul id='settings' class="btn-group nav navbar-nav nav-bar-settings">
         <% if user_signed_in? %>
 					<li><a class="btn btn-mini" href="#inbox"><%= current_user.encrypted_first_name %></a></li>
-					<li><a class="btn btn-mini" href="#inbox"><%= t('inbox') %></a></li>
-					<li><a class="btn btn-mini" href="#settings"><%= t('settings') %></a></li>
+					<li><a class="btn btn-mini" href="#inbox"><%= t('browse.nav.inbox') %></a></li>
+					<li><a class="btn btn-mini" href="#settings"><%= t('browse.nav.settings') %></a></li>
 					<li><%= link_to t('devise.sessions.new.sign_out'), destroy_user_session_path, {:class => "btn btn-mini active"} %></li>
         <% else %>
             <li><%= link_to t('devise.sessions.new.sign_in'), user_session_path, {:class => "btn btn-mini"} %></li>
         <% end %>
-				<li><a class="btn btn-mini" href="#help"><%= t('help') %></a></li>
+				<li><a class="btn btn-mini" href="#help"><%= t('browse.nav.help') %></a></li>
 			</ul>
     </div>
     <!-- /.nav-collapse -->

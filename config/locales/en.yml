@@ -63,3 +63,15 @@ en:
       discard: "Do you want to discard changes?"
       ok: "OK"
       cancel: "Cancel"
+  browse:
+    by_subject: "By Subject"
+    by_course_title: "Course Title"
+    by_instructor: "By Instructor"
+    about: "About"
+    contact: "Contact"
+    register: "Register"
+    canvas: "Canvas"
+    nav:
+      inbox: "Inbox"
+      settings: "Settings"
+      help: "Help"
