@@ -15,7 +15,7 @@ Development:
 [![Build Status](https://travis-ci.org/webhat/oplerno.png?branch=develop)](https://travis-ci.org/webhat/oplerno)
 
 
-Attribution
+Attributions
 ============
 
 Stock Images:
