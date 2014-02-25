@@ -1,23 +1,24 @@
 require 'spec_helper'
 
-
 describe Admin::OrdersController do
   render_views
   login_admin
 
-  before(:each) do
-    @user = FactoryGirl.create(:user)
+  before do
     @cart = FactoryGirl.create(:cart)
+		@cart.user = FactoryGirl.create(:user)
+		@cart.save
   end
 
   describe 'Get orders' do
-    let(:valid_attributes) { {cart_id: @cart.id, user_id: @user.id} }
+    let(:valid_order) { {} }
 
-    before(:each) do
-      @order = Order.create! valid_attributes
+    before do
+			@order = @cart.build_order(valid_order)
+			@order.save
     end
 
-    after(:each) do
+		after do
       @order.destroy
     end
 
@@ -27,7 +28,7 @@ describe Admin::OrdersController do
     end
 
     it "shows the record" do
-      get :show, :id => @order.id
+      get :show, { :id => @order.to_param }
       assigns(:order).should eq(@order)
     end
   end
