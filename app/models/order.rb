@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
-  attr_accessible :ip, :transactions, :cart_id, :user_id
+  attr_accessible :ip, :transactions #, :cart_id, :user_id
 
   def price_in_cents
     (cart.total_price*100).round

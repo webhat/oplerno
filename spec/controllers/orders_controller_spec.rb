@@ -24,17 +24,22 @@ describe OrdersController do
   # This should return the minimal set of attributes required to create a valid
   # Order. As you add validations to Order, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {cart_id: @cart.id, user_id: current_user.id} }
+  let(:valid_attributes) { {} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # OrdersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  let (:valid_cart) { {total_price: 6.00, user_id: current_user.id} }
+  let (:valid_cart) { { total_price: 6.00 } }
 
   before(:each) do
     @cart = Cart.create! valid_cart
+		@cart.user = current_user
+		@cart.save
+
+		# valid_attributes[:user] = current_user
+		# valid_attributes[:cart] = @cart
   end
 
   describe "GET new" do
@@ -69,14 +74,14 @@ describe OrdersController do
       it "assigns a newly created but unsaved order as @order" do
         # Trigger the behavior that occurs when invalid params are submitted
         Order.any_instance.stub(:save).and_return(false)
-        post :create, {:order => {cart_id: @cart.id}}
+        post :create, {:order => {}}
         assigns(:order).should be_a_new(Order)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Order.any_instance.stub(:save).and_return(false)
-        post :create, {:order => {cart_id: @cart.id}}
+        post :create, {:order => {}}
         response.should render_template("new")
       end
     end

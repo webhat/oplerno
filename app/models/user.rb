@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
                   :username,
                   :description,
                   :hidden,
-                  :authy_id,
+                  #:authy_id,
                   :authy_enabled,
                   :password,
                   :password_confirmation,

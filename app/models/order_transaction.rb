@@ -3,7 +3,7 @@ class OrderTransaction < ActiveRecord::Base
   encrypt_with_public_key :params,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
 
-  attr_accessible :action, :amount, :authorization, :message, :order_id, :params, :success, :response, :txn_id
+  attr_accessible :action, :amount, :authorization, :message, :params, :success, :response, :txn_id #, :order_id
 
   belongs_to :order
   delegate :cart_id, :to => :order, :prefix => true

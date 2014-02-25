@@ -6,7 +6,7 @@ class CanvasUsers < ActiveRecord::Base
   after_save :canvas_sync
 
   belongs_to :user
-  attr_accessible :avatar_url, :canvas_id, :locale, :username
+  attr_accessible :avatar_url, :locale, :username # :canvas_id
 
   def self.after_commit(record)
     canvas_user = CanvasUsers.find_by_username(record.email)

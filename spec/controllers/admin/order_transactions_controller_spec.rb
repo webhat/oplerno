@@ -13,10 +13,10 @@ describe Admin::OrderTransactionsController do
   end
 
   describe 'Get order_transactions' do
-    let(:valid_attributes) { {order_id: @order.id} }
+    let(:valid_order_transaction) {{ }}
 
     before(:each) do
-      @order_transaction = OrderTransaction.create! valid_attributes
+      @order_transaction = OrderTransaction.create! valid_order_transaction
       @order_transaction.order = @order
       @order_transaction.save
     end
@@ -25,14 +25,23 @@ describe Admin::OrderTransactionsController do
       @order_transaction.destroy
     end
 
-    it "gets the index" do
-      get :index
-      assigns(:order_transactions).should_not eq nil
-    end
+		context 'index' do
+			it "gets the index" do
+				get :index
+				assigns(:order_transactions).should_not eq nil
+			end
+		end
 
-    it "shows the record" do
-      get :show, :id => @order_transaction.id
-      assigns(:order_transaction).should eq(@order_transaction)
-    end
+		context 'show' do
+			it "shows the record" do
+				get :show, :id => @order_transaction.id
+				assigns(:order_transaction).should eq(@order_transaction)
+			end
+
+			it "verifies the record has an order" do
+				get :show, :id => @order_transaction.id
+				assigns(:order_transaction).order.should eq(@order)
+			end
+		end
   end
 end
