@@ -10,10 +10,11 @@ describe Admin::CartsController do
   end
 
   describe 'Get carts' do
-    let(:valid_attributes) { {user_id: @user.id} }
+    let(:valid_attributes) { {} }
 
     before(:each) do
       @cart = Cart.create! valid_attributes
+			@cart.user = @user
     end
 
     after(:each) do
