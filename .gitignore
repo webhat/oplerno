@@ -1,0 +1,14 @@
+.idea/
+.vagrant/
+.yardoc/
+app/
+bin/
+config/
+coverage/
+db/
+doc/
+node_modules/
+public/
+script/
+tags
+tmp/
