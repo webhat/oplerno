@@ -27,3 +27,4 @@ node_modules/
 .yardoc/
 TAGS
 public/system/
+config/gemnasium.yml
