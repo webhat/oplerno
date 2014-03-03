@@ -25,9 +25,9 @@
         <div><%= f.label :title %>
           <br/><%= f.select :title, ["", "Dr.", "Prof."] %></div>
         <div><%= f.label :first_name %>
-          <br/><%= f.text_field :first_name, :placeholder => "First name" %></div>
+          <br/><%= f.text_field :encrypted_first_name, :placeholder => "First name" %></div>
         <div><%= f.label :last_name %>
-          <br/><%= f.text_field :last_name, :placeholder => "Last Name" %></div>
+          <br/><%= f.text_field :encrypted_last_name, :placeholder => "Last Name" %></div>
       </div>
       <div><br/><%= f.submit "Create account", {:class => "btn btn-default"} %></div>
     </div>

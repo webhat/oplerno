@@ -27,3 +27,6 @@ node_modules/
 .yardoc/
 TAGS
 public/system/
+
+# Gemnasium gem configuration file
+config/gemnasium.yml
