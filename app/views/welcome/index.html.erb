@@ -8,8 +8,8 @@
 	<div id="intro">
 		<div class="story">
 	    	<div class="float-left">
-			<h2>(Almost) Static Background</h2>
-	        <p>This section has a background that moves slightly slower than the user scrolls. This is achieved by changing the top position of the background for every pixel the page is scrolled.</p>
+					<h2><%= t('frontpage.intro.title') %></h2>
+					<p><%= t('frontpage.intro.body') %></p>
 	        </div>
 	    </div> <!--.story-->
 	</div> <!--#intro-->
@@ -17,9 +17,8 @@
 	<div id="second">
 		<div class="story"><div class="bg"></div>
 	    	<div class="float-right">
-	            <h2>Multiple Backgrounds</h2>
-	            <p>The multiple backgrounds applied to this section are moved in a similar way to the first section -- every time the user scrolls down the page by a pixel, the positions of the backgrounds are changed.</p>
-	            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio. Donec egestas aliquet facilisis. Nunc eu nunc eget neque ornare fringilla. Nam vel sodales lectus. Nulla in pellentesque eros. Donec ultricies, enim vitae varius cursus, risus mauris iaculis neque, euismod sollicitudin metus erat vitae sapien. Sed pulvinar.</p>
+					<h2><%= t('frontpage.second.title') %></h2>
+					<p><%= t('frontpage.second.body') %></p>
 	        </div>
 	    </div> <!--.story-->
 
@@ -28,13 +27,16 @@
 	<div id="third">
 		<div class="story">
 	    	<div class="float-left">
-	        	<h2>What Happens When JavaScript is Disabled?</h2>
-	            <p>The user gets a slap! Actually, all that jQuery does is moves the backgrounds relative to the position of the scrollbar. Without it, the backgrounds simply stay put and the user would never know they are missing out on the awesome! CSS2 does a good enough job to still make the effect look cool.</p>
+					<h2><%= t('frontpage.third.title') %></h2>
+					<p><%= t('frontpage.third.body') %></p>
 	        </div>
 	    </div> <!--.story-->
 	</div> <!--#third-->
 
 	<div id="fifth">
 		<div class="story">
+			<div class="float-left">
+				<h2><%= t('frontpage.fifth.title') %></h2>
+			</div>
 		</div> <!--.story-->
 	</div> <!--#fifth-->

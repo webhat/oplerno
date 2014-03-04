@@ -1,3 +1,6 @@
+.row-fluid ul#nav {
+}
+
 #nav{
 	list-style: none;
 	position: fixed;
@@ -15,13 +18,13 @@
 #intro{
 	background:url(/assets/BG1.jpg) 50% 0 no-repeat fixed;
 	color: white;
-	height: 600px;
+	height: 1000px;
 	margin: 0 auto;
 	padding: 0;
 }
 
 #second{
-	background: url(/assets/BG2.jpg) 50% 0 no-repeat fixed;
+	background: url(/assets/BG5.jpg) 50% 0 no-repeat fixed;
 	color: white;
 	height: 1300px;
 	margin: 0 auto;
@@ -40,15 +43,15 @@
 }
 
 #third{
-	background: url(/assets/BG5.jpg) 50% 0 no-repeat fixed;
+	background: url(/assets/BG2.jpg) 50% 0 no-repeat fixed;
 	color: white;
 	height: 650px;
 	padding: 100px 0 0 0;	
 }
 
 #fifth{
-	background: url(/assets/BG3.jpg) 50% 0 no-repeat fixed;
-	height: 800px;
+	background: url(/assets/BG3.jpg) 50% 1000px no-repeat fixed;
+	height: 1500px;
 	margin: 0 auto;
 	padding: 40px 0 0 0;
 }
