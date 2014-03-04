@@ -18,7 +18,7 @@
 #intro{
 	background:url(/assets/BG1.jpg) 50% 0 no-repeat fixed;
 	color: white;
-	height: 1000px;
+	height: 900px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -40,6 +40,15 @@
 	position: absolute;
 	width: 900px;
 	z-index: 200;
+}
+
+#intro > div,
+#second > div,
+#third > div,
+#fourth > div,
+#fifth > div {
+	opacity: 0.9;
+	text-shadow: 3px 3px 3px rgba(150, 150, 150, 1);
 }
 
 #third{

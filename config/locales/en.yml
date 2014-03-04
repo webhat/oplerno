@@ -1,68 +1,68 @@
 ---
-en: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-  active_admin: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+en:
+  active_admin:
     dashboard: Dashboard
-    dashboard_welcome: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    dashboard_welcome:
       call_to_action: Come and look around!
       welcome: Welcome
-  browse: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  browse:
     about: About
     by_course_title: By Course Title
     by_instructor: By Instructor
     by_subject: By Subject
     canvas: Canvas
     contact: Contact
-    nav: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    nav:
       help: Help
       inbox: Inbox
       settings: Settings
     register: Register
-  cart: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  cart:
     remove: Remove
     removed: Removed %{course} from Order
-  courses: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    fail: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  courses:
+    fail:
       inactive: This course can not be added
       own_course: You can only edit your own courses
     new: New Course
     register: Register
     subject: Subjects
-    success: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    success:
       create: Course was successfully created
       update: Course was successfully updated
     title: Courses
     update: Update Course
     view: View
-  generic: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  generic:
     back: Back
     edit: Edit
-  modal: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    popup: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  modal:
+    popup:
       cancel: Cancel
       discard: Do you want to discard changes?
       ok: OK
       sure: Are you sure?
   name: Name
-  orders: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  orders:
     success: Success
-  payments: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  payments:
     description: Course(s) with Oplerno LLC.
   price: Fee
-  students: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    success: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  students:
+    success:
       create: Student was successfully created
       update: Student was successfully updated
-  teachers: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    success: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  teachers:
+    success:
       create: Teacher was successfully created
       update: Teacher was successfully updated
     teacher: !binary |-
       VGVhY2hlcg==
     view: View
-  users: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    fail: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  users:
+    fail:
       user_record: You can only edit your own user record
-    fields: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    fields:
       authy_enabled: Enable Two Factor Authentication
       avatar: Avatar
       description: Description
@@ -71,8 +71,20 @@ en: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
       hidden: Hide user from view and search
       last_name: Last Name
       title: Title
-    messages: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    messages:
       authy_description: Click <a href="%{url}" target="_new">here</a> to enter your
         phone number
       extra_security: Additional Security Features
     view: View details
+  frontpage:
+    intro:
+      body: The summer holidays are around the corner, you might be thinking about what you want to in the summer. Or thinking about which college you will be visiting after the summer.
+      title: Psst, what are you doing?
+    second:
+      body: We are thinking about what you will be doing after the summer.
+      title: What we are doing?
+    third:
+      body: While you are on the beach, or hiking in the mountains we are building an institute of higher learning that you can access from any place in the world.
+      title: Really?
+    fifth:
+      title: Why not come in and see what's on offer
