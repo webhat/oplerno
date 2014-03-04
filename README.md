@@ -24,3 +24,9 @@ Stock Images:
 
 [jetheriot](http://www.flickr.com/photos/jetheriot/7940996488)
 [StutterHacks](http://www.flickr.com/photos/shutterhacks/4474421855)
+
+http://www.flickr.com/photos/mxmora/9550437827
+http://www.flickr.com/photos/rdmarsh/5302003738
+http://www.flickr.com/photos/sanchom/2746142352
+http://www.flickr.com/photos/salforduniversity/4347833515
+http://www.flickr.com/photos/jeaneeem/967073310

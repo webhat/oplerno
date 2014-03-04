@@ -17,5 +17,8 @@
 //= require chardinjs
 //= require angular
 //= require app
+//= require jquery.parallax-1.1.3
+//= require jquery.localscroll-1.2.7-min
+//= require jquery.scrollTo-1.4.2-min
 //= require_tree .
 
