@@ -4,7 +4,7 @@
 en:
   search:
     term: 'Search Term'
-    not_found: 'Not Found'
+    not_found: 'Not Found: "%{term}"'
   name: 'Name'
   price: 'Fee'
   students:
