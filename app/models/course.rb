@@ -1,5 +1,6 @@
 #
 class Course < ActiveRecord::Base
+	searchkick
 	paginates_per 24
 
   attr_accessible :avatar

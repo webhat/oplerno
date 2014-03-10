@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140221090828) do
+ActiveRecord::Schema.define(:version => 20140310111437) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -149,6 +149,12 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
 
   add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+
+  create_table "searches", :force => true do |t|
+    t.text     "term"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "students", :force => true do |t|
     t.datetime "created_at", :null => false

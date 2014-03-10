@@ -18,6 +18,7 @@ Oplerno::Application.routes.draw do
 		resources :subjects, only: [:index, :show]
     resources :carts
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
+		resources :searches, only: [:index, :create]
 
     get '/orders/confirm', 'orders#confirm'
     get '/orders/ipn', 'orders#paypal_ipn'

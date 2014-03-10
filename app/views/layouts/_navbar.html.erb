@@ -28,6 +28,11 @@
 				<li><a class="btn" href="#contact"><%= t('browse.contact') %></a></li>
         <li><a class="btn" target="_blank" href="http://oplerno.com/faculty-recruitment/"><%= t('browse.register') %></a></li>
 				<li><a class="btn" href="https://<%= CANVAS_HOST %>/" class="btn-warning nav"><%= t('browse.canvas') %></a></li>
+					<li>
+				<%= semantic_form_for Search.new do |f| %>
+					<%= f.text_field :term, :label => t("search.term"), :hint => t("search.term") %>
+				<% end %>
+					</li>
       </ul>
 
 
