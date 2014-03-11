@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -174,23 +174,23 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
   end
 
   create_table "users", :force => true do |t|
-    t.binary   "title"
-    t.binary   "first_name"
-    t.binary   "last_name"
+    t.binary   "title",                   :limit => 255
+    t.binary   "first_name",              :limit => 255
+    t.binary   "last_name",               :limit => 255
     t.string   "username"
     t.string   "description"
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "email",                   :default => "",    :null => false
-    t.binary   "encrypted_password",                         :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.string   "email",                                  :default => "",    :null => false
+    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           :default => 0,     :null => false
+    t.integer  "sign_in_count",                          :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -199,12 +199,12 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",         :default => 0,     :null => false
+    t.integer  "failed_attempts",                        :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",           :default => false
+    t.boolean  "authy_enabled",                          :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"

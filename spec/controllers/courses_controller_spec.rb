@@ -4,7 +4,7 @@ require 'spec_helper'
 describe CoursesController do
   include Devise::TestHelpers
 
-  let(:valid_attributes) { {name: 'Wine course', teacher: current_user.id} }
+  let(:valid_attributes) { {name: 'Wine course', teacher: current_user.id, subject: ""} }
 
   let(:valid_session) { {} }
 
@@ -21,6 +21,14 @@ describe CoursesController do
     end
   end
 
+  describe 'POST create' do
+		login_user
+		it 'can create a course with an empty subject' do
+			post :create, valid_attributes
+			expect(response).to be_success
+			assigns(:course).should be_a(Course)
+		end
+	end
 
   describe 'PUT edit' do
     before do

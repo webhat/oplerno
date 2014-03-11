@@ -30,6 +30,7 @@ class Course < ActiveRecord::Base
   end
 
 	def subject=(_subject)
+		return if _subject.empty?
 		v = Subject.find(_subject)
 		subjects << v unless subjects.include?(v)
 	end
