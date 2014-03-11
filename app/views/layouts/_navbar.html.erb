@@ -47,14 +47,14 @@
       </ul>
 			<ul id='settings' class="btn-group nav navbar-nav nav-bar-settings">
         <% if user_signed_in? %>
-					<li><a class="btn btn-mini" href="#inbox"><%= current_user.encrypted_first_name %></a></li>
-					<li><a class="btn btn-mini" href="#inbox"><%= t('browse.nav.inbox') %></a></li>
-					<li><a class="btn btn-mini" href="#settings"><%= t('browse.nav.settings') %></a></li>
-					<li><%= link_to t('devise.sessions.new.sign_out'), destroy_user_session_path, {:class => "btn btn-mini active"} %></li>
+					<li><a class="btn" href="#inbox"><%= current_user.encrypted_first_name %></a></li>
+					<li><a class="btn" href="#inbox"><%= t('browse.nav.inbox') %></a></li>
+					<li><a class="btn" href="#settings"><%= t('browse.nav.settings') %></a></li>
+					<li><%= link_to t('devise.sessions.new.sign_out'), destroy_user_session_path, {:class => "btn active"} %></li>
         <% else %>
-            <li><%= link_to t('devise.sessions.new.sign_in'), user_session_path, {:class => "btn btn-mini"} %></li>
+            <li><%= link_to t('devise.sessions.new.sign_in'), user_session_path, {:class => "btn"} %></li>
         <% end %>
-				<li><a class="btn btn-mini" href="#help"><%= t('browse.nav.help') %></a></li>
+				<li><a class="btn" href="#help"><%= t('browse.nav.help') %></a></li>
 			</ul>
     </div>
     <!-- /.nav-collapse -->

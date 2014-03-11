@@ -7,6 +7,9 @@
       <div class='course_name'><%= course.name.force_encoding("binary") %></div>
   <% rescue e %>
   <%- end %>
+	<% unless @cart.nil? %>
+		<div><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
+  <%- end %>
 </div>
 <div class="hidden-sm hidden-md hidden-lg col-xs-12 top5 course">
   <div class='col-xs-3'>
@@ -15,9 +18,10 @@
     <%- end %>
   </div>
   <div class='col-xs-6 pull-right hide_name'>
-    <% begin %>
-        <div class='course_name'><%= course.name.force_encoding("binary") %></div>
-    <% rescue e %>
-    <%- end %>
+		<div class='course_name'><%= course.name.force_encoding("binary") %>
+		<% unless @cart.nil? %>
+			<%= button_to 'x', remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-warning btn-mini"} %>
+		<%- end %>
+	</div>
   </div>
 </div>
