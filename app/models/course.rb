@@ -14,7 +14,7 @@ class Course < ActiveRecord::Base
                   :filename, :content_type,
                   :binary_data, :picture,
 									:subjects, :subject,
-									:start_date
+									:start_date, :subject_list
 
   default_scope :order => 'created_at DESC'
 
@@ -37,5 +37,9 @@ class Course < ActiveRecord::Base
 
 	def subject
 		subjects[0]
+	end
+
+	def subject_list= list
+		self.subjects = list.map{|x| Subject.find(x)}
 	end
 end

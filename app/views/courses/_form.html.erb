@@ -33,8 +33,11 @@
           <br/><%= f.text_field :price, :placeholder => "100.00" %></div>
       </div>
 			<div>
-        <div><%= f.label :subject %>
-				<br/><%= collection_select('course', 'subject', Subject.all, :id, :subject, :prompt => true) %>
+				<div>
+					<% Subject.all.each do |x| %>
+						<%= check_box_tag 'course[subject_list][]',  x.id, @course.subjects.include?(x), { id: "subject_list_#{x.id}" } %>
+						<label for="<%= "subject_list_#{x.id}" %>"><%= h(x.subject) %></label>
+					<% end %>
 				</div>
 			</div>
     </div>
