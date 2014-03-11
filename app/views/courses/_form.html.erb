@@ -20,6 +20,15 @@
       <div>
         <div><%= f.label :name %>
         <br/><%= f.text_field :name, :placeholder => "Course name" %></div>
+				<div class="form-group" style='width:200px;'>
+					<div class='input-group date' id='datetimepicker1'>
+						<span class="input-group-addon">
+						<%= f.text_field :start_date, :as => :datepicker %>
+						<span class="glyphicon glyphicon-calendar">
+						</span>
+						</span>
+					</div>
+				</div>
         <div><%= f.label :fee %>
           <br/><%= f.text_field :price, :placeholder => "100.00" %></div>
       </div>

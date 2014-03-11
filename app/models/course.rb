@@ -13,7 +13,8 @@ class Course < ActiveRecord::Base
                   :description, :teacher,
                   :filename, :content_type,
                   :binary_data, :picture,
-									:subjects, :subject
+									:subjects, :subject,
+									:start_date
 
   default_scope :order => 'created_at DESC'
 
