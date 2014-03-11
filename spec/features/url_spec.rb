@@ -92,11 +92,9 @@ describe 'Visiting URLs' do
 
 			visit '/carts/mycart'
       expect(page).to have_content valid_course[:name]
-			page.all('.col-6').count.should eq 2
 
 			click_button I18n.t('cart.remove')
 			expect(page).to have_content I18n.t('cart.removed', {course: valid_course[:name]})
-			page.all('.col-6').count.should eq 1
 		end
   end
 end

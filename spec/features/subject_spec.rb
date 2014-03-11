@@ -32,7 +32,8 @@ describe 'Visiting URLs' do
 			visit '/courses/new'
 			fill_in I18n.t('name'), with: valid_course[:name]
 			fill_in 'course_price', with: valid_course[:price]
-			select @subject.subject, from: 'course_subject'
+			#select @subject.subject, from: 'course_subject'
+			find(:css, "#subject_list_#{@subject.id}").set(true)
 
 			click_button I18n.t('courses.update')
 		end
@@ -40,7 +41,7 @@ describe 'Visiting URLs' do
 			visit '/courses/new'
 			fill_in I18n.t('name'), with: valid_course[:name]
 			fill_in 'course_price', with: valid_course[:price]
-			select @subject.subject, from: 'course_subject'
+			find(:css, "#subject_list_#{@subject.id}").set(true)
 
 			click_button I18n.t('courses.update')
 
