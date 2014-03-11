@@ -49,6 +49,7 @@ en:
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
+      add_to_cart: 'Course was added to cart'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'

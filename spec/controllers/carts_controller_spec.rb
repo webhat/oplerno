@@ -5,7 +5,7 @@ describe CartsController do
 
   let(:valid_attributes) { {user_id: current_user.id} }
 
-  let(:valid_course) { {name: 'The Orange Theme'} }
+  let(:valid_course) { {name: 'The Orange Theme', price: '1'} }
 
   before(:each) do
     course = Course.create! valid_course
@@ -48,6 +48,34 @@ describe CartsController do
         assigns(:cart).should be_a(Cart)
         assigns(:cart).should be_persisted
       end
+
+			it 'should add the course to the cart' do
+				@course = Course.create! valid_course
+
+				def valid_session
+					mysession = { course_id: @course.id }
+					session.to_hash.merge mysession
+				end
+					
+				post :create, {}, valid_session
+
+				session[:course_id].should be(nil)
+			end
+
+			it 'shouldn\'t add the course to the cart twice' do
+				@course = Course.create! valid_course
+
+				def valid_session
+					mysession = { course_id: @course.id }
+					session.to_hash.merge mysession
+				end
+					
+				post :create, {}, valid_session
+				session[:course_id].should be(nil)
+
+				post :create, {}, valid_session
+				session[:course_id].should be(nil)
+			end
     end
 
     describe "with invalid params" do
