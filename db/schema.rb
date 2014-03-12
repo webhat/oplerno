@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140311201920) do
+ActiveRecord::Schema.define(:version => 20140312123656) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
     t.date     "start_date"
   end
 
+  create_table "courses_skills", :force => true do |t|
+    t.integer  "skill_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "courses_skills", ["course_id"], :name => "index_courses_skills_on_course_id"
+  add_index "courses_skills", ["skill_id"], :name => "index_courses_skills_on_skill_id"
+
   create_table "courses_subjects", :force => true do |t|
     t.integer "subject_id"
     t.integer "course_id"
@@ -153,6 +163,12 @@ ActiveRecord::Schema.define(:version => 20140311201920) do
 
   create_table "searches", :force => true do |t|
     t.text     "term"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "skills", :force => true do |t|
+    t.string   "skill"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

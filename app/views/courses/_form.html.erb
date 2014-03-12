@@ -33,11 +33,24 @@
           <br/><%= f.text_field :price, :placeholder => "100.00" %></div>
       </div>
 			<div>
-				<div>
+				<%= f.label :subjects %>
+				<div class='well' style='width:400px;'>
 					<% Subject.all.each do |x| %>
 						<%= check_box_tag 'course[subject_list][]',  x.id, @course.subjects.include?(x), { id: "subject_list_#{x.id}" } %>
 						<label for="<%= "subject_list_#{x.id}" %>"><%= h(x.subject) %></label>
 					<% end %>
+				</div>
+			</div>
+			<div>
+				<%= f.label :skills %>
+				<div class='well' style='width:400px;'>
+					<% Skill.all.each do |x| %>
+						<%= check_box_tag 'course[skill_list][]',  x.id, @course.skills.include?(x), { id: "skill_list_#{x.id}" } %>
+						<label for="<%= "skill_list_#{x.id}" %>"><%= h(x.skill) %></label>
+					<% end %>
+					<br/>
+					<%= f.label :other_skills %>
+					<br/><%= f.text_field :skill, :placeholder => "Core skill" %>
 				</div>
 			</div>
     </div>

@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   gem 'sdoc', require: false
   gem 'yard', require: false
+  gem 'guard-rspec'
   gem 'guard-yard'
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
@@ -98,7 +99,6 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'

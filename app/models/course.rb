@@ -14,13 +14,15 @@ class Course < ActiveRecord::Base
                   :filename, :content_type,
                   :binary_data, :picture,
 									:subjects, :subject,
-									:start_date, :subject_list
+									:start_date, :subject_list,
+									:skills, :skill, :skill_list
 
   default_scope :order => 'created_at DESC'
 
   has_many :teachers
   has_many :students
   has_and_belongs_to_many :carts
+  has_and_belongs_to_many :skills
   has_one :canvas_course
 
 	has_and_belongs_to_many :subjects
@@ -41,5 +43,19 @@ class Course < ActiveRecord::Base
 
 	def subject_list= list
 		self.subjects = list.map{|x| Subject.find(x)}
+	end
+
+	def skill_list= list
+		self.skills = list.map{|x| Skill.find(x)}
+	end
+
+	def skill
+		''
+	end
+
+	def skill= name
+		return if name.empty?
+		_skill = Skill.new skill: name 
+		self.skills << _skill
 	end
 end
