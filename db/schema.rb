@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140312123656) do
+ActiveRecord::Schema.define(:version => 20140312131223) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20140312123656) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.date     "start_date"
+    t.string   "type"
   end
 
   create_table "courses_skills", :force => true do |t|

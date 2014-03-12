@@ -15,7 +15,8 @@ class Course < ActiveRecord::Base
                   :binary_data, :picture,
 									:subjects, :subject,
 									:start_date, :subject_list,
-									:skills, :skill, :skill_list
+									:skills, :skill, :skill_list,
+									:type
 
   default_scope :order => 'created_at DESC'
 
