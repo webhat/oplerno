@@ -19,10 +19,10 @@
                 <label class="label"><%= t('users.fields.avatar') %></label>
               </li>
               <li>
-                <div class="xs-hidden col-sm-2 col-lg-4 avatar" style="background-image:url(<%= @user.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+                <%= f.file_field :avatar %>
               </li>
               <li>
-                <%= f.file_field :avatar %>
+							<div class="xs-hidden col-sm-2 col-lg-4 avatar" style="background-image:url('<%= url_prefix request %><%= @user.avatar.url(:medium) %>');height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
               </li>
             </ul>
           </div>
