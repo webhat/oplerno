@@ -20,6 +20,7 @@ set :default_env, {
     'DEVISE_PEPPER' => ENV['DEVISE_PEPPER'],
     'DB' => 'mysql',
     'RAILS_ENV' => fetch(:rails_env),
+    'PAYPAL_SIG' => ENV['PAYPAL_SIG'],
     'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
     'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN'],
     'CANVAS_USERNAME' => ENV['CANVAS_USERNAME'],
