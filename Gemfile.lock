@@ -551,6 +551,7 @@ DEPENDENCIES
   devise-authy
   devise-i18n
   elasticsearch
+  execjs
   factory_girl_rails
   faker
   flog
