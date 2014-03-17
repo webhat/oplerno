@@ -86,5 +86,7 @@ namespace :deploy do
 
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
+#	before 'deploy', 'rvm1:install:rvm'
+#	before 'deploy', 'rvm1:install:ruby'
 end
 
