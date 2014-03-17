@@ -37,15 +37,6 @@ namespace :deploy do
   before :starting, 'github:ssh'
   before :starting, 'db:sync'
 
-  desc 'Start application'
-  task :start do
-    on roles(:app), in: :sequence, wait: 0 do
-      within release_path do
-        execute "cd #{release_path} ; MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
-      end
-    end
-  end
-
   desc 'Seed Admin User'
   task :seed do
     on roles(:db), in: :sequence, wait: 5 do
@@ -64,6 +55,23 @@ namespace :deploy do
     end
   end
 
+  after :updated, 'deploy:migrate'
+
+  after :publishing, 'app:restart'
+  after :finishing, 'deploy:cleanup'
+#	before 'deploy', 'rvm1:install:rvm'
+#	before 'deploy', 'rvm1:install:ruby'
+end
+
+namespace :app do
+  desc 'Start application'
+  task :start do
+    on roles(:app), in: :sequence, wait: 0 do
+      within release_path do
+        execute "cd #{release_path} ; DB=#{fetch(:default_env)['DB']} PAYPAL_SIG=#{fetch(:default_env)['PAYPAL_SIG']} MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
+      end
+    end
+  end
 
   desc 'Restart application'
   task :restart do
@@ -83,11 +91,12 @@ namespace :deploy do
     end
   end
 
-  after :updated, 'deploy:migrate'
-
-  after :publishing, 'deploy:restart'
-  after :finishing, 'deploy:cleanup'
-#	before 'deploy', 'rvm1:install:rvm'
-#	before 'deploy', 'rvm1:install:ruby'
+  desc 'Stop application'
+  task :stop do
+    on roles(:app), in: :sequence, wait: 0 do
+      # Your restart mechanism here, for example:
+      execute :touch, shared_path.join('tmp/pids/unicorn.pid')
+      execute "kill -9 `cat #{shared_path.join('tmp/pids/unicorn.pid')}` || echo ''"
+    end
+  end
 end
-
