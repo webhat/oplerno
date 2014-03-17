@@ -121,6 +121,3 @@ gem 'rvm1-capistrano3', group: :development, :require => false
 
 gem 'unicorn' #, group: :production
 
-gem 'execjs'
-
-
