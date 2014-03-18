@@ -1,7 +1,7 @@
 <div class="col-4 hidden-xs col-sm-3 col-md-2 col-lg-2 top10 course">
   <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
   <%= link_to course do %>
-      <div class='course_image' style="background-image:url('<%= "#{request.protocol}#{request.host_with_port}" %><%= course.avatar.url(:medium) %>');"></div>
+		<div class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
   <%- end %>
   <% begin %>
       <div class='course_name'><%= course.name.force_encoding("binary") %></div>
@@ -14,7 +14,7 @@
 <div class="hidden-sm hidden-md hidden-lg col-xs-12 top5 course">
   <div class='col-xs-3'>
     <%= link_to course do %>
-        <div class='course_image' style="background-image:url('<%= "#{request.protocol}#{request.host_with_port}" %><%= course.avatar.url(:thumb) %>');"></div>
+			<div class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:thumb) %>');"></div>
     <%- end %>
   </div>
   <div class='col-xs-6 pull-right hide_name'>
