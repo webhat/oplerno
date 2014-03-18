@@ -111,6 +111,7 @@ group :test do
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
+gem 'redis'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
@@ -120,4 +121,6 @@ gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
 
 gem 'unicorn' #, group: :production
+
+gem 'paperclip_redis', path: 'lib/paperclip_redis'
 
