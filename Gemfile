@@ -124,6 +124,6 @@ gem 'unicorn' #, group: :production
 
 
 group :test, :production do
-	gem 'paperclip_redis', git: 'git@github.com:webhat/paperclip_redis.git'
+	gem 'paperclip_redis', git: 'https://github.com/webhat/paperclip_redis.git'
 end
 
