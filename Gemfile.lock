@@ -1,5 +1,6 @@
-PATH
-  remote: lib/paperclip_redis
+GIT
+  remote: git@github.com:webhat/paperclip_redis.git
+  revision: d959e09b89eef200276daf53fcbc19c6b3d95326
   specs:
     paperclip_redis (0.0.6)
       paperclip (>= 3.1, < 5)

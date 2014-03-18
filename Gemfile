@@ -122,5 +122,8 @@ gem 'rvm1-capistrano3', group: :development, :require => false
 
 gem 'unicorn' #, group: :production
 
-gem 'paperclip_redis', path: 'lib/paperclip_redis'
+
+group :test, :production do
+	gem 'paperclip_redis', git: 'git@github.com:webhat/paperclip_redis.git'
+end
 
