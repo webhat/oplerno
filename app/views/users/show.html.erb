@@ -1,7 +1,20 @@
-<p id="notice"><%= notice %></p>
+<h1 class='teacher_name'><%= @user.encrypted_first_name %> <%= @user.encrypted_last_name %></h1>
+<h2 class='teacher_title'><%= @user.encrypted_title %></h2>
 
-<%= @user.email %>
+<div class='hide_name'>
+	<%= render @user %>
+</div>
 
+<div class="col-6 col-sm-6 col-lg-8"><%= @user.description %></div>
+<div class="clearfix"></div>
+<hr/>
 
-<%= link_to 'Edit', edit_user_path(@user), {class: 'btn btn-danger'} %> |
+<div class="clearfix"></div>
+
+<br/>
+<% if user_signed_in? && @user.id == current_user.id %>
+    <%= link_to 'Edit', edit_user_path(@user), {:class => "btn btn-default pull-right"} %>
+<% end %>
+
 <%= link_to 'Back', '/', {class: 'btn btn-danger'} %>
+

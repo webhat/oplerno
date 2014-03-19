@@ -57,6 +57,11 @@ namespace :deploy do
 
   after :updated, 'deploy:migrate'
 
+	# Stub :restart
+  task :restart do
+
+	end
+
   after :publishing, 'app:restart'
   after :finishing, 'deploy:cleanup'
 #	before 'deploy', 'rvm1:install:rvm'
