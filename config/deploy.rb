@@ -13,7 +13,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :format, :pretty
 set :log_level, :debug
 set :pty, true
-set :keep_releases, 4
+set :keep_releases, 10
 
 set :default_env, {
     'DEVISE_SECRET' => ENV['DEVISE_SECRET'],
