@@ -76,3 +76,6 @@ en:
       inbox: "Inbox"
       settings: "Settings"
       help: "Help"
+  login:
+    canvas_html: "Login with your Marketplace credentials"
+    canvas_info_html: "If you are coming from Canvas and only have an account on Canvas please use <a href='%{link}'>direct login</a>."
