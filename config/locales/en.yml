@@ -9,6 +9,7 @@ en:
       create: 'Student was successfully created'
       update: 'Student was successfully updated'
   teachers:
+    teachers: 'Instructors'
     success:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
