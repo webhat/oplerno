@@ -1,7 +1,11 @@
 @import "base";
 
-.container {
+.navbar .container {
   width: 100% !important;
+}
+
+body .container {
+	margin: 0 auto;
 }
 
 body > .container {

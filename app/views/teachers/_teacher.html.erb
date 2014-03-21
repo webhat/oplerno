@@ -1,4 +1,4 @@
-<div class="col-4 hidden-xs col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2 top10 teacher">
+<div class="col-4 hidden-xs col-sm-2 col-sm-offset-1 col-md-3 col-md-offset-0 col-lg-3 top10 teacher">
 	<%= link_to(teacher) do %>
 		<div class="teacher_image" style="background-image:url('<%= url_prefix request %><%= teacher.avatar.url(:medium) %>');"></div>
 	<% end %>
@@ -15,12 +15,14 @@
 			<div class="teacher_image" style="background-image:url('<%= url_prefix request %><%= teacher.avatar.url(:thumb) %>');"></div>
 		<% end %>
 	</div>
-	<div class='col-xs-4 pull-right hide_name'>
-		<span>
-			<%= teacher.encrypted_title %>
-		</span>
-		<span>
-			<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
-		</span>
+	<div class='col-xs-6 pull-right hide_name'>
+		<div>
+			<div>
+				<%= teacher.encrypted_title %>
+			</div>
+			<div>
+				<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
+			</div>
+		</div>
 	</div>
 </div>

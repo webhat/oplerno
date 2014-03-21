@@ -30,3 +30,4 @@ public/system/
 
 # Gemnasium gem configuration file
 config/gemnasium.yml
+vendor/
