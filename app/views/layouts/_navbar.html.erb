@@ -30,7 +30,7 @@
 				<li><a class="btn" href="https://<%= CANVAS_HOST %>/" class="btn-warning nav"><%= t('browse.canvas') %></a></li>
 					<li>
 				<%= semantic_form_for Search.new do |f| %>
-					<%= f.text_field :term, :label => t("search.term"), :hint => t("search.term") %>
+					<%= f.text_field :term, label: t("search.term"), hint: t("search.term"), placeholder: t("search.term") %>
 				<% end %>
 					</li>
       </ul>
