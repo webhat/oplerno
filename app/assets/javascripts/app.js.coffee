@@ -33,3 +33,9 @@ $(window).scroll ->
 delay = (ms, func) -> setTimeout func, ms
 
 $(document).on('page:load', load_cart)
+
+$(document).on 'page:change', ->
+	if window._gaq?
+		_gaq.push ['_trackPageview']
+	else if window.pageTracker?
+		pageTracker._trackPageview()
