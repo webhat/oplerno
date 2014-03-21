@@ -2,6 +2,8 @@
 
 # (c) Copyright 2013-2014 Github
 
+require 'socket'
+
 rails_env = ENV['RAILS_ENV'] || 'production'
 rails_root = ENV['RAILS_ROOT'] || '.'
 
@@ -20,6 +22,8 @@ timeout 30
 
 # Listen on a port
 listen 'localhost:9000'
+myip = Socket::getaddrinfo(Socket.gethostname,'echo',Socket::AF_INET)[2][2]
+listen "#{myip}:9000"
 
 pid rails_root + '/tmp/pids/unicorn.pid'
 
