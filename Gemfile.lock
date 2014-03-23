@@ -160,6 +160,11 @@ GEM
       authy
       devise
     devise-i18n (0.10.2)
+    devise_google_authenticator (0.3.9)
+      actionmailer (>= 3.2.12)
+      devise (>= 3.2.0)
+      railties (>= 3.0)
+      rotp (~> 1.4.0)
     diff-lcs (1.2.5)
     docile (1.1.2)
     elasticsearch (1.0.1)
@@ -424,6 +429,7 @@ GEM
       mime-types (>= 1.16)
     roodi (3.3.1)
       ruby_parser (~> 3.2, >= 3.2.2)
+    rotp (1.4.6)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -561,6 +567,7 @@ DEPENDENCIES
   devise
   devise-authy
   devise-i18n
+  devise_google_authenticator (>= 0.3.8)
   elasticsearch
   factory_girl_rails
   faker

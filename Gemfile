@@ -39,9 +39,12 @@ end
 
 gem 'activeadmin'
 gem 'activemerchant'
+
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-authy'
+gem 'devise_google_authenticator', '>= 0.3.8'
+
 gem 'mysql2'
 gem 'sqlite3'
 gem 'elasticsearch'

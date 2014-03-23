@@ -1,7 +1,8 @@
 # Handles the User and ensures that it is linked to Canvas by way of a #CanvasUsers
 # #Student and #Teacher are aliases for this class
 class User < ActiveRecord::Base
-  attr_accessible :avatar
+	attr_accessor :gauth_token
+  attr_accessible :gauth_enabled, :gauth_tmp, :gauth_tmp_datetime, :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "/assets/:style/avatar.png", :storage => :redis
 
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :google_authenticatable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :authy_authenticatable,
          :confirmable, :lockable # enabling with ripple causes an infinite loop
   #, :validatable
@@ -28,7 +29,10 @@ class User < ActiveRecord::Base
 
   after_commit CanvasUsers
 
-  attr_accessible :title,
+  attr_accessible :gauth_enabled,
+									:gauth_tmp,
+									:gauth_tmp_datetime,
+									:title,
                   :first_name,
                   :last_name,
                   :email,
