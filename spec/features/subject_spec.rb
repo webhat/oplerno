@@ -35,7 +35,7 @@ describe 'Visiting URLs' do
 			#select @subject.subject, from: 'course_subject'
 			find(:css, "#subject_list_#{@subject.id}").set(true)
 
-			click_button I18n.t('courses.update')
+			first(:button, I18n.t('courses.update')).click
 		end
 		it 'should see subjects added to course' do
 			visit '/courses/new'
@@ -43,7 +43,7 @@ describe 'Visiting URLs' do
 			fill_in 'course_price', with: valid_course[:price]
 			find(:css, "#subject_list_#{@subject.id}").set(true)
 
-			click_button I18n.t('courses.update')
+			first(:button, I18n.t('courses.update')).click
 
 			visit '/subjects'
 

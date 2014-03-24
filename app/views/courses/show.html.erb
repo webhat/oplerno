@@ -11,12 +11,12 @@
 		<%= render @course %>
 	</div>
 	<div class='hidden-lg hidden-md col-sm-6 col-xs-11'>
-		<%= @course.description %>
+		<%= simple_format @course.description %>
 	</div>
 	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-6'>
 		<h2>Syllabus</h2>
 		<span>
-			<%= @course.syllabus %>
+			<%= simple_format @course.syllabus %>
 		</span>
 	</div>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>

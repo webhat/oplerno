@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140324015739) do
+ActiveRecord::Schema.define(:version => 20140324142636) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -92,13 +92,13 @@ ActiveRecord::Schema.define(:version => 20140324015739) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.string   "description"
+    t.text     "description",         :limit => 255
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(:version => 20140324015739) do
     t.binary   "first_name",              :limit => 255
     t.binary   "last_name",               :limit => 255
     t.string   "username"
-    t.string   "description"
+    t.text     "description",             :limit => 255
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"

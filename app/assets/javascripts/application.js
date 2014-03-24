@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require tinymce
 //= require bootstrap-sass
 //= require chardinjs
 //= require angular

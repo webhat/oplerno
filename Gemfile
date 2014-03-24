@@ -57,6 +57,7 @@ gem 'canvas-api'
 gem 'json'
 gem 'strongbox'
 gem 'paperclip', '~> 3.0'
+gem 'tinymce-rails'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
