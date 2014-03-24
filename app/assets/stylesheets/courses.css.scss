@@ -42,10 +42,9 @@ div.course_name, .course_image {
 
 .small .course_image {
   @include respond-to(handhelds) {
-    @include avatar(200px);
-		margin-left: 30px;
+    @include avatar(150px);
+		margin-left: -10px;
   }
-  @include avatar(150px);
   border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;
