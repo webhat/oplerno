@@ -34,7 +34,11 @@
 	</div>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.date.start') %></h2>
+		<% begin %>
 		<span><%= l(@course.start_date, format: :default) %></span>
+		<% rescue %>
+			<%= t('courses.date.not_set') %>
+		<% end %>
 	</div>
 </div>
 

@@ -49,6 +49,7 @@ en:
     date:
       start: 'Start Date'
       end: 'End Date'
+      not_set: 'Coming soon'
     new: 'New Course'
     update: 'Update Course'
     subject: 'Subjects'

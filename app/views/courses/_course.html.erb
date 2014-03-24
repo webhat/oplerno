@@ -1,4 +1,4 @@
-<div class="col-4 hidden-xs col-sm-3 col-md-3 col-lg-3 top10 course">
+<div class="course">
   <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
   <%= link_to course do %>
 		<div class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
@@ -8,20 +8,7 @@
   <% rescue e %>
   <%- end %>
 	<% unless @cart.nil? %>
-		<div><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
+		<div class='hidden-sm hidden-xs'><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
+		<div class='hidden-lg hidden-md'><%= button_to 'x', remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-warning btn-mini"} %></div>
   <%- end %>
-</div>
-<div class="hidden-sm hidden-md hidden-lg col-xs-12 top5 course">
-  <div class='col-xs-3'>
-    <%= link_to course do %>
-			<div class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:thumb) %>');"></div>
-    <%- end %>
-  </div>
-  <div class='col-xs-8 pull-right hide_name'>
-		<div class='course_name_wide'><%= course.name.force_encoding("binary") %>
-		<% unless @cart.nil? %>
-			<%= button_to 'x', remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-warning btn-mini"} %>
-		<%- end %>
-	</div>
-  </div>
 </div>

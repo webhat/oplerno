@@ -1,23 +1,32 @@
-<h1 class='teacher_name'><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h1>
-<h2 class='teacher_title'><%= @teacher.encrypted_title %></h2>
 
-<div class='hide_name'>
-	<%= render @teacher %>
-</div>
-
-<div class="col-6 col-sm-6 col-lg-8"><%= @teacher.description %></div>
-<div class="clearfix"></div>
-<hr/>
-<div class="row-fluid small">
-	<%= render @teacher.courses %>
+<div class="hide_name col-3 col-lg-3 col-sm-4 col-xs-12"><%= render @teacher %> </div>
+<div class="col-9 col-lg-9 col-sm-8 col-xs-12">
+	<h1 class='teacher_name'><%= @teacher.encrypted_first_name %> <%= @teacher.encrypted_last_name %></h1>
+	<h2 class='teacher_title hidden-xs'><%= @teacher.encrypted_title %></h2>
 </div>
 
 <div class="clearfix"></div>
 
+<div class="col-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+	<h2><%= t('teacher.about') %></h2>
+	<span>
+		<%= @teacher.description %>
+	</span>
+</div>
+<div class="col-3 col-lg-3 col-md-3 col-sm-4 col-xs-8 well">
+	<h2><%= t('courses.courses') %></h2>
+	<div class='col-lg-12 col-xs-12'>
+		<%- @teacher.courses.each { |course| %>
+			<div class='col-lg-12 col-md-12 col-sm-12 col-xs-6'>
+			<%= render course %>
+			</div>
+		<%- } %>
+	</div>
+</div>
+<div class="clearfix"></div>
 <br/>
 <% if user_signed_in? && @teacher.id == current_user.id %>
     <%= link_to 'Edit', edit_teacher_path(@teacher), {:class => "btn btn-default pull-right"} %>
-    <%= link_to 'New Course', new_course_path, {:class => "btn btn-info pull-right"} %>
 <% end %>
 
 <%= link_to 'Back', teachers_path, {:class => "btn btn-default"} %>
