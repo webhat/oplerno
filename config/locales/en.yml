@@ -1,4 +1,7 @@
 en:
+  date:
+    formats:
+      default: "%d %B %Y"
   search:
     term: 'Search Term'
     not_found: 'Not Found: "%{term}"'
@@ -10,6 +13,7 @@ en:
       update: 'Student was successfully updated'
   teachers:
     teachers: 'Instructors'
+    teacher: 'Instructor'
     success:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
@@ -42,6 +46,9 @@ en:
     title: 'Courses'
     register: 'Register'
     view: 'View'
+    date:
+      start: 'Start Date'
+      end: 'End Date'
     new: 'New Course'
     update: 'Update Course'
     subject: 'Subjects'

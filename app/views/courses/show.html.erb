@@ -1,21 +1,42 @@
-<div class="clearfix">
-	<h1 class="course_name"><%= @course.name %></h1>
-</div>
-
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 show hide_name top30">
-	<%= render @course %>
-</div>
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><%= @course.description %></div>
+<div class='clearfix'>
+	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-12' style='display: inline-block'>
+		<div>
+			<h1 class="course_name"><%= @course.name %></h1>
+		</div>
+		<div class='hidden-sm hidden-xs'>
+			<%= @course.description %>
+		</div>
+	</div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-7 well hide_name magic_course'>
+		<%= render @course %>
+	</div>
+	<div class='hidden-lg hidden-md col-sm-6 col-xs-11'>
+		<%= @course.description %>
+	</div>
+	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-6'>
+		<h2>Syllabus</h2>
+		<span>
+			<%= @course.syllabus %>
+		</span>
+	</div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
 <%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
 <%- unless teacher.nil? %>
     <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
 			<h2><%= t('teachers.teacher') %></h2>
-			<div class='pull-right'>
 				<%= render teacher %>
-			</div>
-			<div class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %></div>
+			<div class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.encrypted_first_name %>&nbsp;<%= teacher.encrypted_last_name %></div>
     </div>
 <% end %>
+	</div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+		<h2><%=  %></h2>
+	</div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
+		<h2><%= t('courses.date.start') %></h2>
+		<span><%= l(@course.start_date, format: :default) %></span>
+	</div>
+</div>
 
 <div class="clearfix"></div>
 <div class="clearfix top5">

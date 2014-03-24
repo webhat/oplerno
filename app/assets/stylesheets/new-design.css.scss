@@ -144,3 +144,14 @@ $nav-shadow: 2px;
 	padding-left: 25px !important;
 	padding-right: 25px !important;
 }
+
+// Fixing course with hacks
+h1 {
+	@include respond-to(handhelds)  {font-size:x-large;}
+}
+h2 {
+	@include respond-to(handhelds)  {font-size:large;}
+}
+.magic_course {
+	@include respond-to(handhelds)  {width:200px;}
+}

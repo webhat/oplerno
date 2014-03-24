@@ -16,7 +16,7 @@ class Course < ActiveRecord::Base
 									:subjects, :subject,
 									:start_date, :subject_list,
 									:skills, :skill, :skill_list,
-									:type
+									:type, :syllabus
 
   default_scope :order => 'created_at DESC'
 
