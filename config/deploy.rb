@@ -64,44 +64,5 @@ namespace :deploy do
 
   after :publishing, 'app:restart'
   after :finishing, 'deploy:cleanup'
-#	before 'deploy', 'rvm1:install:rvm'
-#	before 'deploy', 'rvm1:install:ruby'
 end
 
-namespace :app do
-  desc 'Start application'
-  task :start do
-    on roles(:app), in: :sequence, wait: 0 do
-      within release_path do
-        execute "cd #{release_path} ; DB=#{fetch(:default_env)['DB']} PAYPAL_SIG=#{fetch(:default_env)['PAYPAL_SIG']} MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bin/unicorn_rails -c config/unicorn.rb -E #{fetch(:rails_env)} -D|| echo ''"
-      end
-    end
-  end
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 0 do
-      # Your restart mechanism here, for example:
-      execute :touch, shared_path.join('tmp/pids/unicorn.pid')
-      execute "kill -USR2 `cat #{shared_path.join('tmp/pids/unicorn.pid')}` || echo ''"
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 1 do
-      # Here we can do anything such as:
-      within release_path do
-        # nothing
-      end
-    end
-  end
-
-  desc 'Stop application'
-  task :stop do
-    on roles(:app), in: :sequence, wait: 0 do
-      # Your restart mechanism here, for example:
-      execute :touch, shared_path.join('tmp/pids/unicorn.pid')
-      execute "kill -9 `cat #{shared_path.join('tmp/pids/unicorn.pid')}` || echo ''"
-    end
-  end
-end
