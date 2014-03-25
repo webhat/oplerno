@@ -3,10 +3,10 @@
 		<div class="teacher_image" style="background-image:url('<%= url_prefix request %><%= teacher.avatar.url(:medium) %>');"></div>
 	<% end %>
 	<div class="teacher_name top5">
-		<span class="hidden-sm hidden-xs"><%= teacher.encrypted_title %></span>
 		<span>
 			<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
 		</span>
+		<span class="hidden-sm hidden-xs"><%= teacher.encrypted_title %></span>
 	</div>
 </div>
 <div class="hidden-sm hidden-md hidden-lg col-xs-12 top5 teacher">
@@ -18,11 +18,9 @@
 	<div class='col-xs-6 pull-right hide_name'>
 		<div>
 			<div>
-				<%= teacher.encrypted_title %>
-			</div>
-			<div>
 				<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
 			</div>
+			<div><%= teacher.encrypted_title %></div>
 		</div>
 	</div>
 </div>
