@@ -3,9 +3,9 @@ set :stage, :production
 set :branch, 'develop'
 set :deploy_to, '/home/deploy/www'
 
-role :app, %w{deploy@app01 deploy@app02 deploy@db01}
-role :web, %w{deploy@web01 deploy@web02}
-role :db, %w{deploy@db01}
+server 'app01', user: 'deploy', roles: [:web, :app]
+server 'app02', user: 'deploy', roles: [:web, :app]
+server 'db01', user: 'deploy', roles: [:db]
 
 set :ssh_options, {
     keys: %w(~/.ssh/id_rsa),
