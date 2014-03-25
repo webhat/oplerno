@@ -3,6 +3,8 @@
 class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+										:path => "users/:attachment/:id_partition/:style/:filename",
+										:url => "/system/users/avatars/:id_partition/:style/:basename.:extension",
                     :default_url => "/assets/:style/avatar.png", :storage => :redis
 
   encrypt_with_public_key :secret,

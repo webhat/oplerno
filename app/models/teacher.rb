@@ -4,6 +4,7 @@
 class Teacher < User
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "/assets/:style/avatar.png",
+										:path => "users/:attachment/:id_partition/:style/:filename",
 										:url => "/system/users/avatars/:id_partition/:style/:basename.:extension",
 										:storage => :redis
 	searchkick
