@@ -40,12 +40,11 @@ describe 'Visiting URLs' do
       visit '/courses'
 			page.first(".course > a").click
     end
-    it 'should be able to visit the courses and register a course' do
+    it 'should be able to visit the courses and register for a course' do
       visit '/courses'
 			find('.course > a').click
 
       # Register Page
-      expect(page).to have_content I18n.t('courses.register')
 			find(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
 
 			visit '/carts/mycart'
@@ -87,7 +86,6 @@ describe 'Visiting URLs' do
 
       # Register Page
       expect(page).to have_content valid_course[:name]
-      expect(page).to have_content I18n.t('courses.register')
 			find(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
 
 			visit '/carts/mycart'
