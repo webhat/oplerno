@@ -7,21 +7,22 @@
 			<%= @course.description %>
 		</div>
 	</div>
-	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-7 well hide_name magic_course'>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6 well hide_name magic_course'>
 		<%= render @course %>
 	</div>
-	<div class='hidden-lg hidden-md col-sm-6 col-xs-11'>
+	<div class='hidden-lg hidden-md col-sm-6 col-xs-6'>
 		<%= simple_format @course.description %>
 	</div>
-	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-6'>
+	<div class='clearfix'></div>
+	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-6 syllabus'>
 		<h2>Syllabus</h2>
 		<span>
 			<%= simple_format @course.syllabus %>
 		</span>
 	</div>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
-<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
-<%- unless teacher.nil? %>
+		<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
+		<%- unless teacher.nil? %>
     <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
 			<h2><%= t('teachers.teacher') %></h2>
 				<%= render teacher %>
@@ -29,15 +30,40 @@
     </div>
 <% end %>
 	</div>
-	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>
-		<h2><%=  %></h2>
-	</div>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.date.start') %></h2>
 		<% begin %>
 		<span><%= l(@course.start_date, format: :default) %></span>
 		<% rescue %>
 			<%= t('courses.date.not_set') %>
+		<% end %>
+	</div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
+		<h2><%= t('courses.price') %></h2>
+		<% begin %>
+		<span> $<%= @course.price %></span>
+		<% rescue %>
+			<%= t('courses.price.not_set') %>
+		<% end %>
+	</div>
+	<div class='col-lg-5 col-md-5 col-sm-5 col-xs-11 well'>
+		<h2><%= t('courses.subjects') %></h2>
+		<% begin %>
+			<% @course.subjects.each { |subject| %>
+				<span> <%= subject.subject %></span>
+			<% } %>
+		<% rescue %>
+			<%= t('courses.subjects.not_set') %>
+		<% end %>
+	</div>
+	<div class='col-lg-5 col-md-5 col-sm-5 col-xs-11 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 well'>
+		<h2><%= t('courses.skills') %></h2>
+		<% begin %>
+			<% @course.skills.each { |skill| %>
+				<span> <%= skill.skill %></span>
+			<% } %>
+		<% rescue %>
+			<%= t('courses.skills.not_set') %>
 		<% end %>
 	</div>
 </div>
