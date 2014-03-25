@@ -68,6 +68,7 @@ GEM
     builder (3.0.4)
     cane (2.6.1)
       parallel
+    canonix (0.1.1)
     canvas-api (1.0)
       json
       multipart-post
@@ -443,8 +444,9 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-progressbar (1.4.2)
-    ruby-saml (0.8.1)
-      nokogiri (>= 1.5.0)
+    ruby-saml (0.7.2)
+      canonix (= 0.1.1)
+      nokogiri
       uuid (~> 2.3)
     ruby-saml-idp (0.3.2)
       uuid
@@ -604,7 +606,7 @@ DEPENDENCIES
   rspec-expectations
   rspec-mocks
   rspec-rails
-  ruby-saml (>= 0.8.1)
+  ruby-saml (~> 0.7.2)
   ruby-saml-idp
   rvm1-capistrano3
   sass-rails (~> 3.2.3)

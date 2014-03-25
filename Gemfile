@@ -46,7 +46,7 @@ gem 'mysql2', '>= 0.3.15'
 gem 'sqlite3', '>= 1.3.9'
 gem 'elasticsearch'
 gem 'searchkick', '>= 0.6.0'
-gem 'ruby-saml', '>= 0.8.1'
+gem 'ruby-saml', '~> 0.7.2'
 gem 'ruby-saml-idp'
 gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
