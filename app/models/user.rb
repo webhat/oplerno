@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 										:url => "/system/users/avatars/:id_partition/:style/:basename.:extension",
                     :default_url => "/assets/:style/avatar.png", :storage => :redis
 
+	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
+
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
   encrypt_with_public_key :title,

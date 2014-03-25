@@ -7,6 +7,8 @@ class Course < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:medium => "265x265>", :thumb => "100x100>"},
                     :default_url => "/assets/:style/missing.png", :storage => :redis
 
+	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
+
   validates_presence_of :name
 
   attr_accessible :name, :key, :price,
