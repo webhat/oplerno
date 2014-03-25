@@ -12,7 +12,6 @@ Oplerno::Application.routes.draw do
 
   devise_scope :user do
     resources :courses
-    resources :students
     resources :teachers
     resources :users, only: [:edit, :show, :update]
 		resources :subjects, only: [:index, :show]
