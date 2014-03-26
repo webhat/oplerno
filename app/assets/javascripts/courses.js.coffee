@@ -6,9 +6,16 @@
 window.switchButtons = ->
 	$('.switch-wrapper input').switchButton({
 		on_label: "Undergraduate",
-		off_label: "Graduate" })
-	$('input[id^="skill_list_"]').switchButton()
-	$('input[id^="subject_list_"]').switchButton()
+		off_label: "Graduate"
+	})
+
+	labelled_button = (i,but) ->
+		$(but).switchButton({ labels_placement: 'both', on_label: but.previousElementSibling.innerText, off_label: '' })
+		$(but.previousElementSibling).hide();
+
+	$('input[id^="skill_list_"]').each labelled_button
+	$('input[id^="subject_list_"]').each labelled_button
+
 
 
 $(document).on('page:change', window.switchButtons)

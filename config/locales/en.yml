@@ -52,7 +52,15 @@ en:
       not_set: 'Coming soon'
     new: 'New Course'
     update: 'Update Course'
-    subject: 'Subjects'
+    skill:
+      name: 'Skill'
+      hint: 'Please select the skills that your course offers:'
+    subject:
+      name: 'Discipline'
+      hint: 'Please select the most appropriate discipline under which your course should be listed:'
+    graduate:
+      name: 'Level'
+      hint: 'Please select if your course is at the graduate or undergraduate level:'
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'

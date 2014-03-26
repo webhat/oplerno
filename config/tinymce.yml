@@ -1,5 +1,6 @@
-width: 600px;
-height: 300px;
+height: 300px
+menubar: false
+statusbar: false
 theme_advanced_toolbar_location: top
 theme_advanced_toolbar_align: left
 theme_advanced_statusbar_location: bottom
