@@ -236,10 +236,6 @@ ActiveRecord::Schema.define(:version => 20140324142636) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "gauth_secret"
-    t.string   "gauth_enabled",                          :default => "f"
-    t.string   "gauth_tmp"
-    t.datetime "gauth_tmp_datetime"
   end
 
   add_index "users", ["authy_id"], :name => "index_users_on_authy_id"

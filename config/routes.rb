@@ -12,11 +12,11 @@ Oplerno::Application.routes.draw do
   }
 
   devise_scope :user do
-    resources :courses
+    resources :courses, except: [:new]
     resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
 		resources :subjects, only: [:index, :show]
-    resources :carts
+    resources :carts, only: [:index, :show, :create, :destroy]
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
 		resources :searches, only: [:index, :create]
 

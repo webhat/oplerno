@@ -40,4 +40,4 @@ ActiveAdmin.register Order do
     end
     f.actions
   end
-end                                   
+end

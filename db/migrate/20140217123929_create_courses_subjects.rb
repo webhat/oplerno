@@ -7,5 +7,5 @@ class CreateCoursesSubjects < ActiveRecord::Migration
     add_index :courses_subjects, :subject_id
     add_index :courses_subjects, :course_id
     add_index :courses_subjects, [:course_id, :subject_id], :unique => true
-  end          
+  end
 end

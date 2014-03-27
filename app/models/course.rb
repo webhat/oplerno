@@ -58,7 +58,7 @@ class Course < ActiveRecord::Base
 
 	def skill= name
 		return if name.empty?
-		_skill = Skill.new skill: name 
+		_skill = Skill.new skill: name
 		self.skills << _skill
 	end
 end

@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :filename
       t.string :content_type
       t.string :binary_data
-      
+
       t.timestamps
     end
   end

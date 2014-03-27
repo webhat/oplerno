@@ -25,4 +25,4 @@ ActiveAdmin.register Cart do
   end
 
   filter :purchased_at
-end                                   
+end
