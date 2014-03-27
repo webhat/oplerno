@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/2.0/
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><env:Header><RequesterCredentials
+        xmlns=\"urn:ebay:api:PayPalAPI\" xmlns:n1=\"urn:ebay:apis:eBLBaseComponents\"
+        env:mustUnderstand=\"0\"><n1:Credentials><n1:Username>webhat-facilitator_api1.xs4all.nl</n1:Username><n1:Password>1388752803</n1:Password><n1:Subject/><n1:Signature>AxaiRtwbDd93bSTWNwtM4rClvVkYAT1gVgDtzex3A8mxVyzNZcUa4.AS</n1:Signature></n1:Credentials></RequesterCredentials></env:Header><env:Body><SetExpressCheckoutReq
+        xmlns=\"urn:ebay:api:PayPalAPI\">\n  <SetExpressCheckoutRequest xmlns:n2=\"urn:ebay:apis:eBLBaseComponents\">\n
+        \   <n2:Version>72</n2:Version>\n    <n2:SetExpressCheckoutRequestDetails>\n
+        \     <n2:ReturnURL>http://test.host/orders/confirm</n2:ReturnURL>\n      <n2:CancelURL>http://test.host/carts</n2:CancelURL>\n
+        \     <n2:NoShipping>0</n2:NoShipping>\n      <n2:AddressOverride>0</n2:AddressOverride>\n
+        \     <n2:BuyerEmail>gene@hotmail.com</n2:BuyerEmail>\n      <n2:AllowNote>0</n2:AllowNote>\n
+        \     <n2:PaymentDetails>\n        <n2:OrderTotal currencyID=\"USD\">0.00</n2:OrderTotal>\n
+        \       <n2:OrderDescription>Course(s) with Oplerno LLC.</n2:OrderDescription>\n
+        \       <n2:ButtonSource>ActiveMerchant</n2:ButtonSource>\n        <n2:PaymentAction>Sale</n2:PaymentAction>\n
+        \     </n2:PaymentDetails>\n    </n2:SetExpressCheckoutRequestDetails>\n  </SetExpressCheckoutRequest>\n</SetExpressCheckoutReq>\n</env:Body></env:Envelope>"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache
+      Content-Length:
+      - '2100'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Dc:
+      - origin2-api-3t.sandbox.paypal.com
+      Date:
+      - Thu, 27 Mar 2014 12:54:03 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - DC=origin2-api-3t.sandbox.paypal.com; secure
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:cc="urn:ebay:apis:CoreComponentTypes" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility"
+        xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+        xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:ed="urn:ebay:apis:EnhancedDataTypes"
+        xmlns:ebl="urn:ebay:apis:eBLBaseComponents" xmlns:ns="urn:ebay:api:PayPalAPI"><SOAP-ENV:Header><Security
+        xmlns="http://schemas.xmlsoap.org/ws/2002/12/secext" xsi:type="wsse:SecurityType"></Security><RequesterCredentials
+        xmlns="urn:ebay:api:PayPalAPI" xsi:type="ebl:CustomSecurityHeaderType"><Credentials
+        xmlns="urn:ebay:apis:eBLBaseComponents" xsi:type="ebl:UserIdPasswordType"><Username
+        xsi:type="xs:string"></Username><Password xsi:type="xs:string"></Password><Signature
+        xsi:type="xs:string"></Signature><Subject xsi:type="xs:string"></Subject></Credentials></RequesterCredentials></SOAP-ENV:Header><SOAP-ENV:Body
+        id="_0"><SetExpressCheckoutResponse xmlns="urn:ebay:api:PayPalAPI"><Timestamp
+        xmlns="urn:ebay:apis:eBLBaseComponents">2014-03-27T12:54:03Z</Timestamp><Ack
+        xmlns="urn:ebay:apis:eBLBaseComponents">Failure</Ack><CorrelationID xmlns="urn:ebay:apis:eBLBaseComponents">1b2233e1d792a</CorrelationID><Errors
+        xmlns="urn:ebay:apis:eBLBaseComponents" xsi:type="ebl:ErrorType"><ShortMessage
+        xsi:type="xs:string">Invalid Data</ShortMessage><LongMessage xsi:type="xs:string">This
+        transaction cannot be processed. The amount to be charged is zero.</LongMessage><ErrorCode
+        xsi:type="xs:token">10525</ErrorCode><SeverityCode xmlns="urn:ebay:apis:eBLBaseComponents">Error</SeverityCode></Errors><Version
+        xmlns="urn:ebay:apis:eBLBaseComponents">72</Version><Build xmlns="urn:ebay:apis:eBLBaseComponents">10277387</Build></SetExpressCheckoutResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+    http_version: 
+  recorded_at: Thu, 27 Mar 2014 12:54:03 GMT
+recorded_with: VCR 2.8.0

@@ -113,4 +113,33 @@ describe OrdersController do
       end
     end
   end
+
+	describe 'Set order' do
+    vcr_options = {:record => :once}
+    context 'with vcr and', vcr: vcr_options do
+			it 'should set a cart without params' do
+				OrdersController.any_instance.stub(:purchase).and_return()
+				controller.send(:set_order)
+				assigns(:order).should be_a Order
+			end
+			it 'should set a cart with params' do
+				OrdersController.any_instance.stub(:purchase).and_return()
+				controller.params[:order] = {  }
+				controller.send(:set_order)
+				assigns(:order).should be_a Order
+			end
+			it 'should not set a cart based on current_cart is nil' do
+				OrdersController.any_instance.stub(:current_cart).and_return(nil)
+				OrdersController.any_instance.stub(:purchase).and_return()
+				expect {
+					controller.send(:set_order)
+				}.to raise_error
+			end
+			it 'should set the current_user' do
+				OrdersController.any_instance.stub(:purchase).and_return()
+				controller.send(:set_order)
+				assigns(:order).user.should eq current_user
+			end
+		end
+	end
 end
