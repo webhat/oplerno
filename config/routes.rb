@@ -1,5 +1,6 @@
 Oplerno::Application.routes.draw do
-  root :to => redirect('/courses')
+  root :to => 'welcome#index'
+  #root :to => proc { [404, {}, ['']] }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
