@@ -17,10 +17,6 @@ class TeachersController < UsersController
     respond_to do |format|
       format.html { render action: 'show' }
       format.json { render json: [current_user], status: :ok }
-      format.jpeg {
-        send_data(Base64.decode64(@teacher.binary_data), :type => @teacher.content_type, :filename => @teacher.filename,
-                  :disposition => 'inline') unless @teacher.binary_data.nil?
-      }
     end
   end
 
