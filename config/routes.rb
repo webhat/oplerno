@@ -13,7 +13,7 @@ Oplerno::Application.routes.draw do
 
   devise_scope :user do
     resources :courses
-    resources :teachers
+    resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
 		resources :subjects, only: [:index, :show]
     resources :carts
