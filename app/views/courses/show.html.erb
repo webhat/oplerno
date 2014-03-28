@@ -41,7 +41,7 @@
 	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.price') %></h2>
 		<% begin %>
-		<span itemprop="price" class='p-price'> $<%= @course.price %></span>
+		<span itemprop="price" class='p-price price'> $<%= @course.price %></span>
 		<% rescue %>
 			<%= t('courses.price.not_set') %>
 		<% end %>
