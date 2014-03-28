@@ -33,7 +33,7 @@ namespace :deploy do
 
       tag_name = "#{fetch :stage }-#{fetch :release_name}"
       execute :git, %(tag #{tag_name} #{fetch :current_revision} -m "#{tag_msg}")
-      execute :git, "push --tags origin"
+      execute :git, "push --tags origin #{fetch :branch}"
     end
   end
 end
