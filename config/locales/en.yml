@@ -2,6 +2,7 @@ en:
   date:
     formats:
       default: "%d %B %Y"
+      google: "%Y-%m-%d"
   search:
     term: 'Search Term'
     not_found: 'Not Found: "%{term}"'

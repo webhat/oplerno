@@ -1,9 +1,9 @@
-<div class='clearfix'>
+<div itemscope itemtype="http://schema.org/Product" class='clearfix h-product hproduct'>
 	<div class='col-lg-8 col-md-8 col-sm-7 col-xs-12' style='display: inline-block'>
 		<div>
-			<h1 class="course_name"><%= @course.name %></h1>
+			<h1 itemprop="name" class="course_name p-name fn"><%= @course.name %></h1>
 		</div>
-		<div class='hidden-sm hidden-xs'>
+		<div itemprop="description" class='hidden-sm hidden-xs e-description description'>
 			<%= @course.description %>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 			<%= simple_format @course.syllabus %>
 		</span>
 	</div>
-	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
+	<div itemprop='performer' class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
 		<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
 		<%- unless teacher.nil? %>
 			<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
@@ -33,15 +33,15 @@
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.date.start') %></h2>
 		<% begin %>
-		<span><%= l(@course.start_date, format: :default) %></span>
+		<span itemprop="startDate" content="<%= l(@course.start_date, format: :google) %>"><%= l(@course.start_date, format: :default) %></span>
 		<% rescue %>
 			<%= t('courses.date.not_set') %>
 		<% end %>
 	</div>
-	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
+	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.price') %></h2>
 		<% begin %>
-		<span> $<%= @course.price %></span>
+		<span itemprop="price" class='p-price'> $<%= @course.price %></span>
 		<% rescue %>
 			<%= t('courses.price.not_set') %>
 		<% end %>

@@ -1,11 +1,15 @@
-<div class="course">
+<div itemscope itemtype="http://schema.org/Event" class="course vevent h-event">
   <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
   <%= link_to course do %>
-		<div class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
+		<div itemprop="image" class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
   <%- end %>
   <% begin %>
-      <div class='course_name'><%= course.name.force_encoding("binary") %></div>
+      <div class='course_name summary p-name'><%= course.name.force_encoding("binary") %></div>
   <% rescue e %>
+  <%- end %>
+	<% begin %>
+		<span  itemprop="startDate" content="<%= l(@course.start_date, format: :google) %>" class='hidden dtstart dt-start'><%= l(course.start_date, format: :google) %></span>
+	<% rescue %>
   <%- end %>
 	<% unless @cart.nil? %>
 		<div class='hidden-sm hidden-xs'><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
