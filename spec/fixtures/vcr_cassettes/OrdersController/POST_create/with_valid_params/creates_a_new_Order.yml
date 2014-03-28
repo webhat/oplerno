@@ -13,7 +13,7 @@ http_interactions:
         \   <n2:Version>72</n2:Version>\n    <n2:SetExpressCheckoutRequestDetails>\n
         \     <n2:ReturnURL>http://test.host/orders/confirm</n2:ReturnURL>\n      <n2:CancelURL>http://test.host/carts</n2:CancelURL>\n
         \     <n2:NoShipping>0</n2:NoShipping>\n      <n2:AddressOverride>0</n2:AddressOverride>\n
-        \     <n2:BuyerEmail>leslie@gmail.com</n2:BuyerEmail>\n      <n2:AllowNote>0</n2:AllowNote>\n
+        \     <n2:BuyerEmail>katrina@yahoo.com</n2:BuyerEmail>\n      <n2:AllowNote>0</n2:AllowNote>\n
         \     <n2:PaymentDetails>\n        <n2:OrderTotal currencyID=\"USD\">0.00</n2:OrderTotal>\n
         \       <n2:OrderDescription>Course(s) with Oplerno LLC.</n2:OrderDescription>\n
         \       <n2:ButtonSource>ActiveMerchant</n2:ButtonSource>\n        <n2:PaymentAction>Sale</n2:PaymentAction>\n
@@ -37,13 +37,13 @@ http_interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Dc:
-      - origin2-api-3t.sandbox.paypal.com
+      - origin1-api-3t.sandbox.paypal.com
       Date:
-      - Fri, 10 Jan 2014 10:03:20 GMT
+      - Tue, 25 Feb 2014 10:32:40 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - DC=origin2-api-3t.sandbox.paypal.com; secure
+      - DC=origin1-api-3t.sandbox.paypal.com; secure
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
@@ -59,13 +59,13 @@ http_interactions:
         xsi:type="xs:string"></Username><Password xsi:type="xs:string"></Password><Signature
         xsi:type="xs:string"></Signature><Subject xsi:type="xs:string"></Subject></Credentials></RequesterCredentials></SOAP-ENV:Header><SOAP-ENV:Body
         id="_0"><SetExpressCheckoutResponse xmlns="urn:ebay:api:PayPalAPI"><Timestamp
-        xmlns="urn:ebay:apis:eBLBaseComponents">2014-01-10T10:03:20Z</Timestamp><Ack
-        xmlns="urn:ebay:apis:eBLBaseComponents">Failure</Ack><CorrelationID xmlns="urn:ebay:apis:eBLBaseComponents">b456b16ef2cda</CorrelationID><Errors
+        xmlns="urn:ebay:apis:eBLBaseComponents">2014-02-25T10:32:40Z</Timestamp><Ack
+        xmlns="urn:ebay:apis:eBLBaseComponents">Failure</Ack><CorrelationID xmlns="urn:ebay:apis:eBLBaseComponents">b0f6b545e7dd5</CorrelationID><Errors
         xmlns="urn:ebay:apis:eBLBaseComponents" xsi:type="ebl:ErrorType"><ShortMessage
         xsi:type="xs:string">Invalid Data</ShortMessage><LongMessage xsi:type="xs:string">This
         transaction cannot be processed. The amount to be charged is zero.</LongMessage><ErrorCode
         xsi:type="xs:token">10525</ErrorCode><SeverityCode xmlns="urn:ebay:apis:eBLBaseComponents">Error</SeverityCode></Errors><Version
-        xmlns="urn:ebay:apis:eBLBaseComponents">72</Version><Build xmlns="urn:ebay:apis:eBLBaseComponents">9187650</Build></SetExpressCheckoutResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+        xmlns="urn:ebay:apis:eBLBaseComponents">72</Version><Build xmlns="urn:ebay:apis:eBLBaseComponents">9720069</Build></SetExpressCheckoutResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
     http_version: 
-  recorded_at: Fri, 10 Jan 2014 10:03:20 GMT
+  recorded_at: Tue, 25 Feb 2014 10:32:40 GMT
 recorded_with: VCR 2.8.0

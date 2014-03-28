@@ -1,7 +1,11 @@
 @import "base";
 
-.container {
+.navbar .container {
   width: 100% !important;
+}
+
+body .container {
+	margin: 0 auto;
 }
 
 body > .container {
@@ -105,6 +109,7 @@ $grey: #eee;
 $nav-shadow: 2px;
 
 .nav-bar-settings {
+	background-color: #ededed;
 	border: 1px black solid;
 	border-top: 0px;
 	border-radius: 0 0 3% 3% / 30%;
@@ -138,4 +143,15 @@ $nav-shadow: 2px;
 	font-size: large;
 	padding-left: 25px !important;
 	padding-right: 25px !important;
+}
+
+// Fixing course with hacks
+h1 {
+	@include respond-to(handhelds)  {font-size:x-large;}
+}
+h2 {
+	@include respond-to(handhelds)  {font-size:large;}
+}
+.magic_course {
+	@include respond-to(handhelds)  {width:200px;}
 }

@@ -5,19 +5,19 @@ class OrdersController < InheritedResources::Base
   end
 
   def confirm
-    redirect_to :action => 'index' unless params[:token]
+		redirect_to :action => 'index' unless token_params 
 
-    details_response = GATEWAY.details_for(params[:token])
+    details_response = GATEWAY.details_for(token_params)
 
     if !details_response.success?
       @message = details_response.message
-      current_cart.order.transactions.create!(:action => "error", :amount => current_cart.order.price_in_cents, :response => details_response)
+			transactions.create!(:action => "error", :amount => price_in_cents, :response => details_response)
       flash[:alert] = @message
       flash[:notice] = ''
       render :action => 'confirm'
       return
     else
-      current_cart.order.transactions.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response)
+      transactions.create!(:action => "purchase", :amount => price_in_cents, :response => details_response)
       current_cart.courses_to_student
       flash[:alert] = ''
       flash[:notice] = (I18n.t 'orders.success')
@@ -27,22 +27,33 @@ class OrdersController < InheritedResources::Base
   def paypal_ipn
     notify = Paypal::Notification.new(@request.raw_post)
     if notify.acknowledge
-      OrderTransaction.create!(:action => "purchase", :amount => current_cart.order.price_in_cents, :response => details_response) if notify.complete?
+      OrderTransaction.create!(:action => "purchase", :amount => price_in_cents, :response => details_response) if notify.complete?
     else
       logger.info(@request)
-      OrderTransaction.create!(:action => "error", :amount => current_cart.order.price_in_cents, :response => details_response)
+      OrderTransaction.create!(:action => "error", :amount => price_in_cents, :response => details_response)
     end
   end
 
   private
 
+	def order
+		current_cart.order
+	end
+
+	def price_in_cents
+		order.price_in_cents
+	end
+
+	def transactions
+		order.transactions
+	end
+
+	def token_params
+		params[:token]
+	end
+
   def set_order
     @order = current_cart.build_order(params[:order])
-    if @order.nil?
-      @order = Order.create!
-      @order.cart = cart
-      @order.save
-    end
 
     @order.user = current_user
     @order.ip = request.remote_ip
@@ -58,7 +69,7 @@ class OrdersController < InheritedResources::Base
     setup_response = GATEWAY.setup_purchase(
         @order.price_in_cents,
         :ip => @order.ip,
-        :return_url => url_for(:action => 'confirm', :only_path => false),
+        :return_url => url_for(controller: 'orders', action: 'confirm', only_path: false),
         :cancel_return_url => url_for(:controller => 'carts', :action => 'index', :only_path => false),
         :email => current_user.email,
         :description => (I18n.t 'payments.description'),
@@ -70,6 +81,6 @@ class OrdersController < InheritedResources::Base
   end
 
   def current_cart
-    Cart.find_by_user_id(current_user.id)
+		current_user.cart
   end
 end

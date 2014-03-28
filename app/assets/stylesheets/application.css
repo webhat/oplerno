@@ -11,7 +11,7 @@
  *= require_self
  *= require chardinjs
  *= require bootstrap-sass
- *= require new-design
+ *= require jquery-ui
  *= require_tree .
  */
 

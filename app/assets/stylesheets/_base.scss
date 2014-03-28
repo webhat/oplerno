@@ -25,3 +25,11 @@ $image-size: 250px;
   width: $image-size - $reduce;
   background-size: $image-size - $reduce;
 }
+
+input {
+	-webkit-border-radius: 5px; //For Safari, etc.
+	-moz-border-radius: 5px; //For Mozilla, etc.
+	border-radius: 5px; //CSS3 Feature
+	height: 35px;
+}
+

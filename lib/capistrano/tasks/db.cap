@@ -27,4 +27,13 @@ namespace :db do
     end
     sh "mysql5 -u #{fetch(:db_local_user)} #{fetch(:db_local_name)} <<< 'source #{fetch(:local_dump_dir)}/#{fetch(:sql_dump)};'"
   end
+
+	desc 'Index elasticsearch'
+	task :reindex do
+    on roles(:db), in: :sequence, wait: 5 do
+      within release_path do
+				execute "cd #{release_path} ; RAILS_ENV=production DB=#{fetch(:default_env)['DB']} PAYPAL_SIG=#{fetch(:default_env)['PAYPAL_SIG']} DEVISE_SECRET=xxx /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bundle exec rake searchkick:reindex CLASS=Course"
+			end
+		end
+	end
 end

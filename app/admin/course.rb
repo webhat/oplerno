@@ -2,7 +2,7 @@ ActiveAdmin.register Course do
   index do
     column :name
     column :price
-    column "Teacher" do |course|
+    column "Instructor" do |course|
       begin
         teacher = User.find(course.teacher)
 				"#{teacher.encrypted_first_name.force_encoding("UTF-8")} #{teacher.encrypted_last_name.force_encoding("UTF-8")} (#{teacher.id})"
@@ -17,7 +17,7 @@ ActiveAdmin.register Course do
     attributes_table do
       row :name
       row :price
-      row "Teacher" do |course|
+      row "Instructor" do |course|
         begin
           teacher = User.find(course.teacher)
           teacher.courses << course

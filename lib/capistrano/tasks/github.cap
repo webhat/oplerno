@@ -7,4 +7,3 @@ namespace :github do
 		end
 	end
 end
-

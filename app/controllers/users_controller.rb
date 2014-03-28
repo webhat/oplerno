@@ -18,6 +18,11 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
       end
     end
   end
+	#
+  # GET /users/1/edit
+  def edit
+    return unless current_user?
+  end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -55,7 +60,7 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
 
   def current_user?
     unless @user.id == current_user.id
-      redirect_to student_url, notice: 'You can only edit your own user record'
+      redirect_to @user, alert: (I18n.t 'users.fail.user_record')
       return false
     end
     return true

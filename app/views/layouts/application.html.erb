@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+IP:       <%= request.ip %>
+HOSTNAME: <%= Socket.gethostname %>
+-->
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
@@ -15,6 +19,7 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://microformats.org/profile/hcalendar">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
@@ -43,7 +48,7 @@
         <span id="alert" class="alert"><%= alert %></span>
       </div>
 
-      <div class="row-fluid">
+			<div class="row"> <!-- was row-fluid -->
         <%= yield %>
       </div>
       <!--/row-->
@@ -59,7 +64,8 @@
   <hr>
   <footer>
     <div class="container navbar navbar-bottom">
-      <p class="text-muted credit">&copy; Oplerno LLC. 2013-2014</p>
+      <span class="text-muted credit">&copy; Oplerno LLC. 2013-2014</span>
+			<span class="text-muted">&nbsp;|&nbsp;<a href="https://plus.google.com/+Oplerno" rel="publisher">Google+</a></span>
     </div>
   </footer>
 
@@ -79,7 +85,7 @@
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-41537918-3', 'oplerno.com');
+    ga('create', 'UA-41537918-3', 'marketplace.oplerno.com');
     ga('send', 'pageview');
 </script>
 </body>

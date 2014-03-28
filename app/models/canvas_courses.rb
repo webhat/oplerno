@@ -4,7 +4,7 @@ class CanvasCourses < ActiveRecord::Base
   extend CanvasModule
 
   belongs_to :course
-  attr_accessible :canvas_id, :name #, :course_id
+  attr_accessible :name # :canvas_id #, :course_id
 
   def self.update canvas_course
     self.connect_to_canvas_oauth if canvas.nil?
