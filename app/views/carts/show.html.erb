@@ -1,12 +1,14 @@
+<div class="col-12 col-lg-12 col-sm-12 col-xs-12">
+	<h1><%= t('cart.mycart') %></h1>
+</div>
 <% @cart.courses.each do |course| %>
-    <div class="col-6 col-sm-6 col-lg-4">
-
-      <div class="xs-hidden col-sm-2 col-lg-4" style="background-image:url(<%= course.avatar.url(:medium) %>);height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
-      <div><%= course.name %></div>
-      <div><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
-    </div>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-4 small'><%= render course %></div>
 <% end unless @cart.courses.empty? %>
 <div class="clearfix"></div>
 
-<%= button_to 'Pay', orders_path, {:class => "btn btn-info pull-left", :action => :create, :method => :post} %>
-<%= link_to 'Back', carts_path, {:class => "btn btn-info pull-right"} %>
+<div class="col-12 col-lg-12 col-sm-12 col-xs-12">
+	<%= button_to 'Pay', orders_path, {:class => "btn btn-info pull-left", :action => :create, :method => :post} %>
+	<div >
+		<%= link_to 'Back', carts_path, {:class => "btn btn-info pull-right", style: 'margin-top:8px;'} %>
+	</div>
+</div>

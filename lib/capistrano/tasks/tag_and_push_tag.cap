@@ -1,0 +1,39 @@
+# Copyright 2014 (c) Rhett Sutphin
+# https://gist.github.com/rsutphin/9010923
+
+require 'capistrano/git'
+namespace :git do
+  after :create_release, :write_revision do
+    on roles :all do
+      with fetch(:git_environmental_variables) do
+        within repo_path do
+          execute :git, :log, '-1', '--format=%H', '>', release_path.join('REVISION')
+        end
+      end
+    end
+  end
+end
+
+namespace :deploy do
+  after :finishing, :tag_and_push_tag do
+    on roles(:app) do
+      within release_path do
+        set(:current_revision, capture(:cat, 'REVISION'))
+
+        # release path may be resolved already or not
+        resolved_release_path = capture(:pwd, "-P")
+        set(:release_name, resolved_release_path.split('/').last)
+      end
+    end
+
+    run_locally do
+      user = capture(:git, "config --get user.name")
+      email = capture(:git, "config --get user.email")
+      tag_msg = "Deployed by #{user} <#{email}> to #{fetch :stage} as #{fetch :release_name}"
+
+      tag_name = "#{fetch :stage }-#{fetch :release_name}"
+      execute :git, %(tag #{tag_name} #{fetch :current_revision} -m "#{tag_msg}")
+      execute :git, "push --tags origin #{fetch :branch}"
+    end
+  end
+end

@@ -1,13 +1,24 @@
 ActiveAdmin.register Order do
   index do
+		column 'Order ID' do |order|
+			order.id
+		end
     column 'Order Value' do |order|
-      Cart.find(order.cart_id).total_price
+      begin
+				order.cart.total_price
+      rescue
+				'NA'
+      end
     end
     column :courses do |order|
-      table_for order.cart.courses do
-        column do |course|
-          link_to course.name, [:admin, course]
-        end
+      begin
+				table_for order.cart.courses do
+					column do |course|
+						link_to course.name, [:admin, course]
+					end
+				end
+      rescue
+				'NA'
       end
     end
     column 'User' do |cart|
@@ -29,4 +40,4 @@ ActiveAdmin.register Order do
     end
     f.actions
   end
-end                                   
+end

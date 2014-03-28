@@ -1,5 +1,6 @@
 Oplerno::Application.routes.draw do
-  root :to => redirect('/courses')
+  root :to => 'welcome#index'
+  #root :to => proc { [404, {}, ['']] }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -11,13 +12,13 @@ Oplerno::Application.routes.draw do
   }
 
   devise_scope :user do
-    resources :courses
-    resources :students
-    resources :teachers
+    resources :courses, except: [:new]
+    resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
 		resources :subjects, only: [:index, :show]
-    resources :carts
+    resources :carts, only: [:index, :show, :create, :destroy]
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
+		resources :searches, only: [:index, :create]
 
     get '/orders/confirm', 'orders#confirm'
     get '/orders/ipn', 'orders#paypal_ipn'
@@ -28,4 +29,6 @@ Oplerno::Application.routes.draw do
     get '/saml/auth' => 'saml_idp#new'
     post '/saml/auth' => 'saml_idp#create'
   end
+
+	mount Paperclip::Storage::Redis::App.new => "/dynamic"
 end

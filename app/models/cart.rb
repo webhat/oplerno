@@ -2,7 +2,7 @@
 class Cart < ActiveRecord::Base
   has_one :order
   belongs_to :user
-  has_and_belongs_to_many :courses
+  has_and_belongs_to_many :courses, uniq: true
 
   default_scope :order => 'created_at DESC'
 

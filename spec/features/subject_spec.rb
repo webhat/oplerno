@@ -9,11 +9,14 @@ describe 'Visiting URLs' do
 	let(:valid_course) {{ name: 'Course Name', price: '1010' }}
   
 	context 'while logged in' do
-    before do
+    before(:each) do
 			@user = User.create! valid_user
 			@user.confirm!
 
 			@subject = Subject.create! subject: 'Test'
+			@course = Course.new valid_course
+			@course.teacher = @user.id
+			@course.save
 
 			visit '/users/sign_out'
 			visit '/users/sign_in'
@@ -22,27 +25,30 @@ describe 'Visiting URLs' do
 			click_button I18n.t('devise.sessions.new.sign_in')
     end
 
-    after do
-      Course.all.each { |course|
-				course.delete
+		after(:each) do
+			@course.destroy
+			Course.all.each { |course|
+				course.destroy
 			}
 			@user.destroy
-    end
+		end
+
 		it 'should add subject to course' do
-			visit '/courses/new'
+			visit "/courses/#{@course.id}/edit"
 			fill_in I18n.t('name'), with: valid_course[:name]
 			fill_in 'course_price', with: valid_course[:price]
-			select @subject.subject, from: 'course_subject'
+			find(:css, "#subject_list_#{@subject.id}").set(true)
 
-			click_button I18n.t('courses.update')
+			first(:button, I18n.t('courses.update')).click
 		end
 		it 'should see subjects added to course' do
-			visit '/courses/new'
-			fill_in I18n.t('name'), with: valid_course[:name]
+			visit "/courses/#{@course.id}"
+			first(:link, 'Edit').click
+			fill_in 'course_name', with: valid_course[:name]
 			fill_in 'course_price', with: valid_course[:price]
-			select @subject.subject, from: 'course_subject'
+			find(:css, "#subject_list_#{@subject.id}").set(true)
 
-			click_button I18n.t('courses.update')
+			first(:button, I18n.t('courses.update')).click
 
 			visit '/subjects'
 

@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Gemnasium gem configuration file
+config/gemnasium.yml
+
 # Ignore genarated files
 /app/assets/javascripts/*.js  
 
@@ -27,4 +30,6 @@ node_modules/
 .yardoc/
 TAGS
 public/system/
-config/gemnasium.yml
+
+vendor/
+lib/paperclip_redis

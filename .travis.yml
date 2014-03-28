@@ -32,3 +32,6 @@ branches:
   only:
   - develop
   - master
+notifications:
+  hipchat:
+    secure: S42f2ZHfWVRUDENLD0Q3CyJOa1WLR68ZmDcRQv17ZcKdGga2k8DJ/7Ax6llVl/Y9ck827pWhSiQCJMgAeQOI/rIyxlxhnH4h6RlTY3ml2qZvPcoTcKLnlrWdcXgJVUii2HVVfL3/2ETZakvxuHbAleeUxZCRigNNfp2AYnS2iuI=

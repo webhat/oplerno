@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140221090828) do
+ActiveRecord::Schema.define(:version => 20140324142636) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -92,18 +92,31 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.string   "description"
+    t.text     "description",         :limit => 255
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.date     "start_date"
+    t.string   "type"
+    t.text     "syllabus"
   end
+
+  create_table "courses_skills", :force => true do |t|
+    t.integer  "skill_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "courses_skills", ["course_id"], :name => "index_courses_skills_on_course_id"
+  add_index "courses_skills", ["skill_id"], :name => "index_courses_skills_on_skill_id"
 
   create_table "courses_subjects", :force => true do |t|
     t.integer "subject_id"
@@ -150,6 +163,18 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
   add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
+  create_table "searches", :force => true do |t|
+    t.text     "term"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "skills", :force => true do |t|
+    t.string   "skill"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -167,23 +192,23 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
   end
 
   create_table "users", :force => true do |t|
-    t.binary   "title"
-    t.binary   "first_name"
-    t.binary   "last_name"
+    t.binary   "title",                   :limit => 255
+    t.binary   "first_name",              :limit => 255
+    t.binary   "last_name",               :limit => 255
     t.string   "username"
-    t.string   "description"
+    t.text     "description",             :limit => 255
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "email",                   :default => "",    :null => false
-    t.binary   "encrypted_password",                         :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.string   "email",                                  :default => "",    :null => false
+    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           :default => 0,     :null => false
+    t.integer  "sign_in_count",                          :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -192,12 +217,12 @@ ActiveRecord::Schema.define(:version => 20140221090828) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",         :default => 0,     :null => false
+    t.integer  "failed_attempts",                        :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",           :default => false
+    t.boolean  "authy_enabled",                          :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"

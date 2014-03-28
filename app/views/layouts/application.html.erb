@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+IP:       <%= request.ip %>
+HOSTNAME: <%= Socket.gethostname %>
+-->
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
@@ -43,7 +47,7 @@
         <span id="alert" class="alert"><%= alert %></span>
       </div>
 
-      <div class="row-fluid">
+			<div class="row"> <!-- was row-fluid -->
         <%= yield %>
       </div>
       <!--/row-->
@@ -79,7 +83,7 @@
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-41537918-3', 'oplerno.com');
+    ga('create', 'UA-41537918-3', 'marketplace.oplerno.com');
     ga('send', 'pageview');
 </script>
 </body>

@@ -3,7 +3,11 @@
 class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/assets/:style/avatar.png"
+										:path => "users/:attachment/:id_partition/:style/:filename",
+										:url => "/dynamic/users/avatars/:id_partition/:style/:basename.:extension",
+                    :default_url => "/assets/:style/avatar.png", :storage => :redis
+
+	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')

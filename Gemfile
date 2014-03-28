@@ -9,18 +9,20 @@ end
 gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '3.2.14'
-gem "jquery-rails", "< 3.0.0"
+gem 'rails', '3.2.15'
+gem 'jquery-rails', '< 3.0.0' #, '>= 3.1.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '>= 2.2.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.0.5'
+gem 'jpbuilder'
 
 group :doc do
   gem 'sdoc', require: false
   gem 'yard', require: false
+  gem 'guard-rspec'
   gem 'guard-yard'
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
@@ -35,31 +37,34 @@ group :doc do
   gem 'flog'
 end
 
-gem 'activeadmin'
-gem 'activemerchant'
-gem 'devise'
-gem 'devise-i18n'
-gem 'devise-authy'
-gem 'mysql2'
-gem 'sqlite3'
-gem 'ruby-saml'
+gem 'activeadmin', '>= 0.6.3'
+gem 'activemerchant', '>= 1.42.7'
+gem 'devise', '>= 3.2.4'
+gem 'devise-i18n', '>= 0.10.3'
+gem 'devise-authy', '>= 1.5.0'
+gem 'mysql2', '>= 0.3.15'
+gem 'sqlite3', '>= 1.3.9'
+gem 'elasticsearch'
+gem 'searchkick', '>= 0.6.0'
+gem 'ruby-saml', '~> 0.7.2'
 gem 'ruby-saml-idp'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
-gem 'kaminari'
+gem 'kaminari', '>= 0.15.1'
 
-gem 'canvas-api'
+gem 'canvas-api', '>= 1.0'
 
 gem 'json'
-gem 'strongbox'
-gem 'paperclip', '~> 3.0'
+gem 'strongbox', '~> 0.7.0'
+gem 'paperclip', '>= 4.1.1'
+gem 'tinymce-rails'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'chardinjs-rails'
+gem 'chardinjs-rails', '>= 0.1.3'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-bootstrap-sass'
 gem 'rails-assets-angular'
@@ -74,8 +79,8 @@ group :development do
   gem 'rb-fchange', :require => false
 end
 
-gem 'minitest', '~> 4.0'
-gem 'minitest-rails'
+gem 'minitest', '~> 4.7'
+gem 'minitest-rails', '>= 0.9.2'
 
 group :development, :test do
   gem 'minitest-rails-capybara'
@@ -96,7 +101,6 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
@@ -109,6 +113,7 @@ group :test do
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
+gem 'redis'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
@@ -117,6 +122,11 @@ gem 'capistrano-bundler', group: :development
 gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
 
-gem 'unicorn' #, group: :production
+gem 'unicorn', '>= 4.8.2' #, group: :production
 
+
+group :test, :production do
+	gem 'paperclip_redis'
+	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
+end
 

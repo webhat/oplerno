@@ -75,6 +75,11 @@ Options -MultiViews
 # http://httpd.apache.org/docs/current/mod/core.html#errordocument), e.g.:
 
 ErrorDocument 404 /404.html
+ErrorDocument 408 /408.html
+ErrorDocument 422 /422.html
+ErrorDocument 500 /500.html
+ErrorDocument 502 /502.html
+ErrorDocument 504 /504.html
 
 
 # ##############################################################################

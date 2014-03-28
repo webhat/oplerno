@@ -1,7 +1,10 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  date:
+    formats:
+      default: "%d %B %Y"
+  search:
+    term: 'Search Term'
+    not_found: 'Not Found: "%{term}"'
   name: 'Name'
   price: 'Fee'
   students:
@@ -9,6 +12,8 @@ en:
       create: 'Student was successfully created'
       update: 'Student was successfully updated'
   teachers:
+    teachers: 'Instructors'
+    teacher: 'Instructor'
     success:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
@@ -34,18 +39,32 @@ en:
   cart:
     removed: 'Removed %{course} from Order'
     remove: 'Remove'
+    mycart: 'My Cart'
   payments:
     description: 'Course(s) with Oplerno LLC.'
   courses:
     title: 'Courses'
     register: 'Register'
     view: 'View'
+    date:
+      start: 'Start Date'
+      end: 'End Date'
+      not_set: 'Coming soon'
     new: 'New Course'
     update: 'Update Course'
-    subject: 'Subjects'
+    skill:
+      name: 'Skill'
+      hint: 'Please select the skills that your course offers:'
+    subject:
+      name: 'Discipline'
+      hint: 'Please select the most appropriate discipline under which your course should be listed:'
+    graduate:
+      name: 'Level'
+      hint: 'Please select if your course is at the graduate or undergraduate level:'
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
+      add_to_cart: 'Course was added to cart'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
@@ -65,7 +84,7 @@ en:
       cancel: "Cancel"
   browse:
     by_subject: "By Subject"
-    by_course_title: "Course Title"
+    by_course_title: "By Course Title"
     by_instructor: "By Instructor"
     about: "About"
     contact: "Contact"
@@ -75,3 +94,9 @@ en:
       inbox: "Inbox"
       settings: "Settings"
       help: "Help"
+  login:
+    canvas_html: "Login with your Marketplace credentials"
+    canvas_info_html: "If you are coming from Canvas and only have an account on Canvas please use <a href='%{link}'>direct login</a>."
+    canvas:
+      fail: "Cannot login in to Canvas using the Marketplace"
+      fail_info: "If you have a Canvas account you can login in directly below"

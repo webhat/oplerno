@@ -75,7 +75,7 @@ describe CanvasCourses do
       canvas_user.save!
       canvas_user.user.save!
 
-      $stdout.should_receive(:puts)
+      #$stdout.should_receive(:puts)
       canvas_course.add_user canvas_user.user
     end
     it 'should log an error if it fails' do
@@ -91,7 +91,7 @@ describe CanvasCourses do
       canvas_user.save!
       canvas_user.user.save!
 
-      $stdout.should_receive(:puts)
+      #$stdout.should_receive(:puts)
       canvas_course.add_user canvas_user.user
     end
   end
