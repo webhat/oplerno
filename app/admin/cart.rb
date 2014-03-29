@@ -17,7 +17,7 @@ ActiveAdmin.register Cart do
         user = User.find(cart.user_id)
         "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
       rescue
-        puts $!.inspect, $@
+     #   puts $!.inspect, $@
       end
     end
 
