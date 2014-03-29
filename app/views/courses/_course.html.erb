@@ -11,7 +11,7 @@
 	</div>
 	<% begin %>
 		<% iso_date = l(course.start_date, format: :google) %>
-		<span itemprop="startDate" class='hidden dtstart dt-start' content=""><%= iso_date %></span>
+		<span itemprop="startDate" class='hidden dtstart dt-start' content="<%= iso_date %>"><%= iso_date %></span>
 	<% rescue %>
   <%- end %>
 	<% unless @cart.nil? %>
