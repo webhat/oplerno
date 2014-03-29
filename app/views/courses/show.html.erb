@@ -4,7 +4,7 @@
 			<h1 itemprop="name" class="course_name p-name fn"><%= @course.name %></h1>
 		</div>
 		<div itemprop="description" class='hidden-sm hidden-xs e-description description'>
-			<%= @course.description %>
+			<%= simple_format @course.description %>
 		</div>
 	</div>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-6 well hide_name magic_course'>
@@ -20,13 +20,13 @@
 			<%= simple_format @course.syllabus %>
 		</span>
 	</div>
-	<div itemprop='performer' class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
+	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
 		<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
 		<%- unless teacher.nil? %>
 			<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
 				<h2><%= t('teachers.teacher') %></h2>
 					<%= render teacher %>
-				<div class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.encrypted_first_name %>&nbsp;<%= teacher.encrypted_last_name %></div>
+				<div itemprop='performer' class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.encrypted_first_name %>&nbsp;<%= teacher.encrypted_last_name %></div>
 			</div>
 		<% end %>
 	</div>
