@@ -20,12 +20,18 @@ en:
       update: 'Teacher was successfully updated'
     view: 'View'
   users:
+    update: 'Update User'
     view: 'View details'
     messages:
       extra_security: 'Additional Security Features'
       authy_description: 'Click <a href="%{url}" target="_new">here</a> to enter your phone number'
+    links: 'Links'
+    link:
+      name: 'Link Description'
+      url: 'URL'
     fail:
       user_record: 'You can only edit your own user record'
+      no_description: 'You need to provide a description for your links'
     fields:
       authy_enabled: 'Enable Two Factor Authentication'
       hidden: 'Hide user from view and search'

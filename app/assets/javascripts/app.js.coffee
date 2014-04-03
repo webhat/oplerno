@@ -11,7 +11,8 @@ cart_count = (response) ->
 
 $ ->
 	authyUI = Authy.UI.instance
-	authyUI.setTooltip("Two-Factor Authentication", "You can your token from your cellphone");
+	if(typeof authyUI.setTooltip == 'function')
+		authyUI.setTooltip("Two-Factor Authentication", "You can your token from your cellphone");
 
 	window.authy_help
 

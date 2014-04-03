@@ -215,6 +215,13 @@ GEM
     guard-yard (2.1.0)
       guard (>= 1.1.0)
       yard (>= 0.7.0)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -568,6 +575,7 @@ DEPENDENCIES
   guard-jasmine
   guard-rspec
   guard-yard
+  haml-rails (~> 0.4)
   jasmine
   jasmine-jquery-rails
   jbuilder (~> 2.0.5)

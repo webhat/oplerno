@@ -9,6 +9,15 @@ class User < ActiveRecord::Base
 
 	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 
+	serialize :links
+
+	# initialization callback
+	def after_initialize
+	  self.links ||= {} 
+	end
+
+	validates_with UserValidator, fields: [:links]
+
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
   encrypt_with_public_key :title,
@@ -57,9 +66,8 @@ class User < ActiveRecord::Base
                   :filename,
                   :content_type,
                   :binary_data,
-                  :encrypted_title,
-                  :encrypted_last_name,
-                  :encrypted_first_name
+                  :encrypted_title, :encrypted_last_name, :encrypted_first_name,
+									:links
 
   has_and_belongs_to_many :courses
   has_one :cart
@@ -97,4 +105,25 @@ class User < ActiveRecord::Base
   def encrypted_last_name= input
     self.last_name = input
   end
+
+	def self.create_virtual_attributes (*args)
+		args.each do |method_name|
+			6.times do |key|
+				key = key.to_s
+				['name', 'url'].each do |field|
+					define_method "#{method_name}_#{field}_#{key}" do
+						self.links[key][field] unless self.links.nil? or self.links[key].nil? or self.links[key][field].nil?
+					end
+					define_method "#{method_name}_#{field}_#{key}=" do |value|
+						puts "XXXX: #{value}"
+						return if value.empty?
+						self.links ||= {}
+						self.links[key] ||= {}
+						self.links[key][field] = value
+					end
+				end
+			end
+		end
+	end
+	create_virtual_attributes :links
 end

@@ -49,6 +49,9 @@
           <%= f.input :authy_enabled, label: t('users.fields.authy_enabled') %>
           <%= raw t('users.messages.authy_description', url: '/users/enable-two-factor') %>
         </div>
+				<div>
+					<%= render partial: 'users/links/links', locals: { f: f } %>
+				</div>
     <% end %>
 
     <%= f.actions class: 'list-unstyled' do %>

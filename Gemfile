@@ -60,6 +60,7 @@ gem 'paperclip', '>= 4.1.1'
 gem 'tinymce-rails'
 
 group :assets do
+	gem 'haml-rails', '~> 0.4'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
@@ -101,6 +102,8 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'database_cleaner'
+	gem 'poltergeist'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
