@@ -59,6 +59,7 @@ gem 'strongbox', '~> 0.7.0'
 gem 'paperclip', '>= 4.1.1'
 gem 'tinymce-rails'
 
+gem 'haml'
 gem 'haml-rails', '~> 0.4'
 
 group :assets do
