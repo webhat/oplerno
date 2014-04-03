@@ -575,6 +575,7 @@ DEPENDENCIES
   guard-jasmine
   guard-rspec
   guard-yard
+  haml
   haml-rails (~> 0.4)
   jasmine
   jasmine-jquery-rails
