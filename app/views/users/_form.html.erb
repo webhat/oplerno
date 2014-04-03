@@ -50,7 +50,7 @@
           <%= raw t('users.messages.authy_description', url: '/users/enable-two-factor') %>
         </div>
 				<div>
-					<%= render partial: 'users/links/links', locals: { f: f } %>
+					<%= render partial: 'users/links/links', :handlers => [:haml], locals: { f: f } %>
 				</div>
     <% end %>
 
