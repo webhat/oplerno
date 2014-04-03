@@ -1,0 +1,11 @@
+.col-lg-6
+  %h3
+    = t('users.links')
+  .box
+    = f.semantic_fields_for :links do |builder|
+      - unless @user.links.nil?
+        - @user.links.each_with_index do |elem,i|
+          = render :partial => 'users/links/link', locals: { f: builder, elem: elem, i: i }
+        = render :partial => 'users/links/link', locals: { f: builder, elem: nil, i: @user.links.length } unless @user.links.length > 5
+      - else
+        = render :partial => 'users/links/link', locals: { f: builder, elem: nil, i: 0 }

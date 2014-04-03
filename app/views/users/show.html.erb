@@ -12,6 +12,8 @@
     <%= link_to 'Edit', edit_user_path(@user), {:class => "btn btn-default pull-right"} %>
 <% end %>
 
+<%= render partial: 'users/links/show', locals: { links: @user.links } %>
+
 <%= link_to 'Back', '/', {class: 'btn btn-danger'} %>
 </div>
 

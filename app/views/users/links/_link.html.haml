@@ -1,0 +1,3 @@
+.nested-fields
+    = f.input "#{i}][name", :required => false, input_html: { value: @user.send("links_name_#{i}") }, label: t('users.link.name')
+    = f.input "#{i}][url", :required => false,  input_html: { value: @user.send("links_url_#{i}") },  label: t('users.link.url')

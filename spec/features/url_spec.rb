@@ -33,7 +33,6 @@ describe 'Visiting URLs' do
       Course.all.each { |course|
 				course.delete
 			}
-			@user.destroy
     end
 
     it 'should be able to visit the courses and pick a course' do
