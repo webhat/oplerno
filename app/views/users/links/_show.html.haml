@@ -1,5 +1,6 @@
 .col-gt-6
-  - @user.links.each do |it, link|
-    .link
-      - @link_url = link['url'].index(/^http[s]?:\/\//).nil? ? "http://#{link['url']}" : link['url']
-      %a(rel='me' href="#{@link_url}") #{link['name']}
+  - unless @user.links.nil?
+    - @user.links.each do |it, link|
+      .link
+        - @link_url = link['url'].index(/^http[s]?:\/\//).nil? ? "http://#{link['url']}" : link['url']
+        %a(rel='me' href="#{@link_url}") #{link['name']}
