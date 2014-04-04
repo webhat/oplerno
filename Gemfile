@@ -76,6 +76,8 @@ gem 'rails-assets-normalize-css'
 group :development do
   gem 'quiet_assets'
   gem 'thin'
+	gem 'hpricot'
+	gem 'ruby_parser'
 
   gem 'rb-fsevent', '~> 0.9.4', :require => false
   gem 'rb-inotify', '~> 0.9.3', :require => false
