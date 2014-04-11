@@ -9,8 +9,12 @@ describe Course do
   end
   it 'has a reference to a teacher'
   it 'can be updated'
-  it 'can be hidden'
-  it 'can be unhidden'
+  it 'can be hidden' do
+    FactoryGirl.build(:course, hidden: true).should be_valid
+	end
+  it 'can be unhidden' do
+    FactoryGirl.build(:course, hidden: false).should be_valid
+	end
 	it 'should add a subject' do
 		course = FactoryGirl.create(:course)
 		subject = FactoryGirl.create(:subject)

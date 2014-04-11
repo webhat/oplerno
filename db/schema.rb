@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329162007) do
+ActiveRecord::Schema.define(:version => 20140411220911) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20140329162007) do
     t.date     "start_date"
     t.string   "type"
     t.text     "syllabus"
+    t.boolean  "hidden"
   end
 
   create_table "courses_skills", :force => true do |t|

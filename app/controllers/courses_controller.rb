@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     respond_to do |format|
-        format.html { @courses = Course.page params[:page] }
+			format.html { @courses = Course.order(:name).where(:hidden => false).page params[:page] }
         format.json {
 					@courses = Course.all
 					render json: @courses
