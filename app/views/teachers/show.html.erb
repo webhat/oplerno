@@ -12,6 +12,7 @@
 	<span>
 		<%= simple_format @teacher.description %>
 	</span>
+	<%= render partial: 'users/links/show', :handlers => [:haml], locals: { links: @user.links } %>
 </div>
 <div class="col-3 col-lg-3 col-md-3 col-sm-4 col-xs-8 well">
 	<h2><%= t('courses.courses') %></h2>
