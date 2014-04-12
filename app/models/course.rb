@@ -57,7 +57,13 @@ class Course < ActiveRecord::Base
 
 	def skill= name
 		return if name.empty?
-		_skill = Skill.new skill: name
-		self.skills << _skill
+		Course.split(name).each { |_name|
+			_skill = Skill.new skill: _name
+			self.skills << _skill unless skills.include?(_skill)
+		}
+	end
+
+	def self.split skills
+		skills.split(',').map { |str| str.strip or str }
 	end
 end

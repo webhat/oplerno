@@ -5,7 +5,7 @@ describe 'Visiting URLs' do
     I18n.locale = :en
   end
 
-  let(:valid_course) { {name: 'A course that cant be confused', price: '101'} }
+  let(:valid_course) { {name: 'A course that cant be confused', price: '101', hidden: false} }
 	let(:valid_user) { { title: 'King Maker', first_name: 'Check', last_name: 'Me', password: 'testtest', password_confirmation: 'testtest', email: 'teacher@oplerno.com' } }
 
   context 'while logged in' do
@@ -29,6 +29,9 @@ describe 'Visiting URLs' do
     after (:each) do
       Cart.all.each { |cart|
 				cart.courses.clear
+			}
+      User.all.each { |user|
+				user.delete
 			}
       Course.all.each { |course|
 				course.delete
