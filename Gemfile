@@ -133,7 +133,7 @@ gem 'unicorn', '>= 4.8.2' #, group: :production
 
 
 group :test, :production do
-	gem 'paperclip_redis'
+	gem 'paperclip_redis', '> 0.0.8'
 	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
 end
 
