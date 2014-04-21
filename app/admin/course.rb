@@ -37,6 +37,7 @@ ActiveAdmin.register Course do
       f.input :name
       f.input :price
       f.input :description
+			f.input :hidden
       f.input :teacher, :collection => User.all.map { |x| ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id] }
     end
     f.actions
