@@ -72,7 +72,7 @@ class OrdersController < InheritedResources::Base
         :return_url => url_for(controller: 'orders', action: 'confirm', only_path: false),
         :cancel_return_url => url_for(:controller => 'carts', :action => 'index', :only_path => false),
         :email => current_user.email,
-        :description => (I18n.t 'payments.description'),
+        :description => (I18n.t 'payments.description', { courses: all_courses}),
         :allow_note => false,
         :allow_guest_checkout => false,
     )
@@ -83,4 +83,9 @@ class OrdersController < InheritedResources::Base
   def current_cart
 		current_user.cart
   end
+
+	private
+	def all_courses
+		current_cart.courses.map(&:name)
+	end
 end
