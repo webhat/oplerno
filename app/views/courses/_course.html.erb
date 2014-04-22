@@ -5,7 +5,7 @@
   <%- end %>
 	<div itemprop='name' class='course_name summary p-name'>
 		<% begin %>
-				<%= course.name.force_encoding("binary") %>
+				<%= course.name.force_encoding('UTF-8') %>
 		<% rescue e %>
   <%- end %>
 	</div>

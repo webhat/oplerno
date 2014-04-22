@@ -82,37 +82,27 @@ class User < ActiveRecord::Base
     User.find(id)
   end
 
-  def encrypted_title
-    self.title.decrypt Devise.secret_key
-  end
-
-  def encrypted_title= input
-    self.title = input
-  end
-
-  def encrypted_first_name
-    self.first_name.decrypt Devise.secret_key
-  end
-
-  def encrypted_first_name= input
-    self.first_name = input
-  end
-
-  def encrypted_last_name
-    self.last_name.decrypt Devise.secret_key
-  end
-
-  def encrypted_last_name= input
-    self.last_name = input
-  end
-
 	def display_name
 		begin
-			"#{self.encrypted_first_name.force_encoding("UTF-8")} #{self.encrypted_last_name.force_encoding("UTF-8")}"
+			"#{self.encrypted_first_name.force_encoding("binary")} #{self.encrypted_last_name.force_encoding("binary")}"
 		rescue
 			"Unknown"
 		end
 	end
+
+
+	def self.create_encrypted_attributes (*args)
+		args.each do |method_name|
+			define_method "encrypted_#{method_name}" do
+				self.send(method_name).decrypt Devise.secret_key
+			end
+			define_method "encrypted_#{method_name}=" do |input|
+				self.send("#{method_name}=", input)
+			end
+		end
+	end
+
+	create_encrypted_attributes :last_name, :first_name, :title
 
 	def self.create_virtual_attributes (*args)
 		args.each do |method_name|
