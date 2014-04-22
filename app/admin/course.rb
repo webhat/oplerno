@@ -3,8 +3,12 @@ ActiveAdmin.register Course do
     column :name
     column :price
     column "Instructor" do |course|
-			teacher = User.find(course.teacher)
-			teacher.display_name
+			begin
+				teacher = User.find(course.teacher)
+				teacher.display_name
+			rescue
+				"Unknown"
+			end
     end
     default_actions
   end
