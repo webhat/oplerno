@@ -4,7 +4,7 @@
 	<% end %>
 	<div class="teacher_name top5 p-name p-author fn">
 		<span itemprop="name">
-			<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
+			<%= teacher.display_name %>
 		</span>
 		<span itemprop="jobTitle" class="hidden-sm hidden-xs honorific-prefix"><%= teacher.encrypted_title %></span>
 	</div>
@@ -18,7 +18,7 @@
 	<div class='col-xs-6 pull-right hide_name'>
 		<div>
 			<div>
-				<%= teacher.encrypted_first_name %> <%= teacher.encrypted_last_name %>
+				<%= teacher.display_name %>
 			</div>
 			<div><%= teacher.encrypted_title %></div>
 		</div>

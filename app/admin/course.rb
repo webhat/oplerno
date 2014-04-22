@@ -3,12 +3,8 @@ ActiveAdmin.register Course do
     column :name
     column :price
     column "Instructor" do |course|
-      begin
-        teacher = User.find(course.teacher)
-				"#{teacher.encrypted_first_name.force_encoding("UTF-8")} #{teacher.encrypted_last_name.force_encoding("UTF-8")} (#{teacher.id})"
-      rescue
-        "Unknown"
-      end
+			teacher = User.find(course.teacher)
+			teacher.display_name
     end
     default_actions
   end
@@ -38,7 +34,8 @@ ActiveAdmin.register Course do
       f.input :price
       f.input :description
 			f.input :hidden
-      f.input :teacher, :collection => User.all.map { |x| ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id] }
+			f.input :start_date
+			f.input :teacher, :collection => User.all.map { |x| [x.display_name, x.id] }
     end
     f.actions
   end

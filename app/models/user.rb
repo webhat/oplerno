@@ -106,6 +106,14 @@ class User < ActiveRecord::Base
     self.last_name = input
   end
 
+	def display_name
+		begin
+			"#{self.encrypted_first_name.force_encoding("UTF-8")} #{self.encrypted_last_name.force_encoding("UTF-8")}"
+		rescue
+			"Unknown"
+		end
+	end
+
 	def self.create_virtual_attributes (*args)
 		args.each do |method_name|
 			6.times do |key|
