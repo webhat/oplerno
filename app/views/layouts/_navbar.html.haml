@@ -28,9 +28,14 @@
               %a(role='menuitem' tabindex='-1' href='/teachers')
                 = t('browse.by_instructor')
         %li
-          %a(href='http://www.oplerno.com/')
-            %div
-              = t('browse.about')
+          - unless user_signed_in?
+            %a(href='http://www.oplerno.com/')
+              %div
+                = t('browse.about')
+          - else
+            = link_to edit_user_path(current_user), {} do
+              %div
+                = t('browse.settings')
         %li
           %a(href='https:/#{CANVAS_HOST}/')
             %div
