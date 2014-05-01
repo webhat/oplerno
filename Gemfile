@@ -59,8 +59,10 @@ gem 'strongbox', '~> 0.7.0'
 gem 'paperclip', '>= 4.1.1'
 gem 'tinymce-rails'
 
+gem 'haml'
+gem 'haml-rails', '~> 0.4'
+
 group :assets do
-	gem 'haml-rails', '~> 0.4'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
@@ -74,6 +76,8 @@ gem 'rails-assets-normalize-css'
 group :development do
   gem 'quiet_assets'
   gem 'thin'
+	gem 'hpricot'
+	gem 'ruby_parser'
 
   gem 'rb-fsevent', '~> 0.9.4', :require => false
   gem 'rb-inotify', '~> 0.9.3', :require => false
@@ -129,7 +133,7 @@ gem 'unicorn', '>= 4.8.2' #, group: :production
 
 
 group :test, :production do
-	gem 'paperclip_redis'
+	gem 'paperclip_redis', '> 0.0.8'
 	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
 end
 

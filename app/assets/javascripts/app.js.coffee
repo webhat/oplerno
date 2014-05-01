@@ -5,7 +5,7 @@ load_cart = () ->
 	$.get '/carts/mycart.json', {}, callback, 'json'
 
 cart_count = (response) ->
-  $('#cartcount').text response.length
+  $('.cartcount').text response.length
   console.log response
 
 

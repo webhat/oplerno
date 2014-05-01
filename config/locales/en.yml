@@ -48,7 +48,7 @@ en:
     remove: 'Remove'
     mycart: 'My Cart'
   payments:
-    description: 'Course(s) with Oplerno LLC.'
+    description: 'Course(s) with Oplerno LLC. %{courses}'
   courses:
     title: 'Courses'
     register: 'Register'
