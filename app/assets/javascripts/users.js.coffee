@@ -14,3 +14,4 @@ window.should_have_new_link = (elem,e) ->
 
 $ ->
 	set_link()
+$(document).on('page:load', set_link)
