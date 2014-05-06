@@ -52,13 +52,12 @@ Oplerno::Application.configure do
 
     ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
-        :login => "webhat-facilitator_api1.xs4all.nl",
-        :password => "1388752803",
-        :signature => ENV['PAYPAL_SIG'],
-        # FIXME: Public Test URL here
-        :ipn_notification_url => 'https://www.oplerno.com/orders/ipn',
-        :return_url => 'https://www.oplerno.com/orders/confirm',
-        :cancel_url => 'https://www.oplerno.com/orders/cancel',
+        :login      => ENV['PAYPAL_USER'],
+        :password   => ENV['PAYPAL_PASS'],
+        :signature  => ENV['PAYPAL_SIG'],
+        :ipn_notification_url => 'https://marketplace.oplerno.com/orders/ipn',
+        :return_url           => 'https://marketplace.oplerno.com/orders/confirm',
+        :cancel_url           => 'https://marketplace.oplerno.com/orders/cancel',
     )
   end
 

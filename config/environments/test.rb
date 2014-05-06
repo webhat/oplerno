@@ -7,7 +7,7 @@ Oplerno::Application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
-  config.middleware.use ::Rack::PerftoolsProfiler, default_printer: 'gif', bundler: true
+  #config.middleware.use ::Rack::PerftoolsProfiler, default_printer: 'gif', bundler: true
 
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true
