@@ -84,6 +84,7 @@ end
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
 
+=begin
   config.before :suite do
     PerfTools::CpuProfiler.start('/tmp/rspec_profile')
   end
@@ -91,6 +92,7 @@ end
   config.after :suite do
     PerfTools::CpuProfiler.stop
   end
+=end
 end
 
 
