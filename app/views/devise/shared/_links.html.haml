@@ -1,5 +1,5 @@
 .row-fluid
-  - if controller_name != 'sessions'
+  - if controller_name != 'sessions' && controller_name != 'welcome'
     %a.btn.btn-primary.top10(href="#{new_session_path(resource_name)}")
       %div
         = t('devise.sessions.new.sign_in')

@@ -62,13 +62,8 @@ HOSTNAME: <%= Socket.gethostname %>
 
 
   <!--%= render :partial => 'layouts/popup' %-->
-  <hr>
-  <footer>
-    <div class="container navbar navbar-bottom">
-      <span class="text-muted credit">&copy; Oplerno LLC. 2013-2014</span>
-			<span class="text-muted">&nbsp;|&nbsp;<a href="https://plus.google.com/+Oplerno" rel="publisher">Google+</a></span>
-    </div>
-  </footer>
+
+	<%= render 'layouts/footer' %>
 
 </div>
 <!--/.container-->
@@ -80,7 +75,7 @@ HOSTNAME: <%= Socket.gethostname %>
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+        m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
@@ -89,6 +84,7 @@ HOSTNAME: <%= Socket.gethostname %>
     ga('create', 'UA-41537918-3', 'marketplace.oplerno.com');
     ga('send', 'pageview');
 </script>
+
 <script type="text/javascript">var _kmq = _kmq || [];
 	var _kmk = _kmk || '4f219116dec87ba34eca0fa3c21fa3f4bf1b93ed';
 	function _kms(u){
