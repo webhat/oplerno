@@ -2,7 +2,11 @@ class WelcomeController < ApplicationController
 	helper_method :resource, :resource_name, :resource_class, :devise_mapping
 
 	def index
-		render 'welcome/index', layout: false
+		if current_user
+			redirect_to courses_url
+		else
+			render 'welcome/index', layout: false
+		end
 	end
 
 	def resource
