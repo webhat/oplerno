@@ -5,7 +5,10 @@ class Course < ActiveRecord::Base
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => {:medium => "265x265>", :thumb => "100x100>"},
-                    :default_url => "/assets/:style/missing.png", :storage => :redis
+                    :default_url => "/assets/:style/missing.png",
+										:path => "courses/:attachment/:id_partition/:style/:filename",
+										:url => "/dynamic/courses/avatars/:id_partition/:style/:basename.:extension",
+										:storage => :redis
 
 	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 
