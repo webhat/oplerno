@@ -38,6 +38,7 @@ group :doc do
 end
 
 gem 'activeadmin', '>= 0.6.3'
+gem 'paper_trail'
 gem 'activemerchant', '>= 1.42.7'
 gem 'devise', '>= 3.2.4'
 gem 'devise-i18n', '>= 0.10.3'
@@ -106,8 +107,6 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'database_cleaner'
-	gem 'poltergeist'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
 	serialize :links
 
+	has_paper_trail
+
 	# initialization callback
 	def after_initialize
 	  self.links ||= {} 

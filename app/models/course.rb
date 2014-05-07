@@ -24,6 +24,8 @@ class Course < ActiveRecord::Base
 									:type, :syllabus,
 									:hidden
 
+	has_paper_trail
+
   has_many :teachers
   has_many :students
   has_and_belongs_to_many :carts
@@ -68,5 +70,9 @@ class Course < ActiveRecord::Base
 
 	def self.split skills
 		skills.split(',').map { |str| str.strip or str }
+	end
+
+	def display_name
+		self.name
 	end
 end
