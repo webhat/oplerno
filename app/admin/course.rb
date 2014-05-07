@@ -5,7 +5,7 @@ ActiveAdmin.register Course do
     column "Instructor" do |course|
 			begin
 				teacher = User.find(course.teacher)
-				teacher.display_name
+				teacher.display_name.force_encoding('UTF-8')
 			rescue
 				"Unknown"
 			end
@@ -21,7 +21,7 @@ ActiveAdmin.register Course do
         begin
           teacher = User.find(course.teacher)
           teacher.courses << course
-          link_to "#{teacher.encrypted_first_name} #{teacher.encrypted_last_name}", "/admin/users/#{teacher.id}"
+          link_to teacher.display_name.force_encoding('UTF-8'), "/admin/users/#{teacher.id}"
         rescue
           "Unknown"
         end
