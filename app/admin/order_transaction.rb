@@ -1,4 +1,5 @@
 ActiveAdmin.register OrderTransaction do
+	actions :all, :except => [:destroy]
   index do
     column :success
     column 'Order Value' do |order_transaction|

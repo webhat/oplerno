@@ -1,4 +1,5 @@
 ActiveAdmin.register Order do
+	actions :all, :except => [:destroy]
   index do
 		column 'Order ID' do |order|
 			order.id

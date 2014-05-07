@@ -1,4 +1,5 @@
 ActiveAdmin.register Course do
+	actions :all, :except => [:destroy]
   index do
     column :name
     column :price
@@ -12,6 +13,23 @@ ActiveAdmin.register Course do
     end
     default_actions
   end
+
+	action_item only: :show, if: proc{ current_admin_user.id == 3 } do
+		link_to "/admin/courses/#{params[:id]}/hide" do 
+			unless Course.find(params[:id]).hidden
+				'Hide Course'
+			else
+				'Show Course'
+			end
+		end
+	end
+
+	member_action :hide, :method => :get do
+		course = Course.find(params[:id])
+		course.hidden = !course.hidden
+		course.save
+		redirect_to :action => :show, :notice => "Locked!"
+	end
 
   show do
     attributes_table do
