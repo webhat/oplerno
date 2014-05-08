@@ -34,7 +34,7 @@ ActiveAdmin.register User do
 	member_action :unlock, :method => :get do
 		user = User.find(params[:id])
 		user.unlock_access!
-		redirect_to :action => :show, :notice => "Locked!"
+		redirect_to :action => :show, :notice => "Unlocked!"
 	end
 
 	action_item only: :show, if: proc{ current_admin_user.id == 3 } do
