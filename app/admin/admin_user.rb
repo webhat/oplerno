@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+	actions :all, :except => [:destroy]
   index do
     column :email
     column :current_sign_in_at
