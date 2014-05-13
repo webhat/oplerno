@@ -7,7 +7,7 @@ class TeachersController < UsersController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+		@teachers = Teacher.where("email like ?", "%oplerno.com%")
   end
 
   # GET /teachers/1
