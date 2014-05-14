@@ -16,5 +16,22 @@
 	<div class='pull-right'>
 		<%= paginate @courses %>
 	</div>
+	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
+		<h1><%= t('courses.under_development')%></h1>
+	</div>
+
+	<div class='pull-right'>
+		<%= paginate @courses_underdev %>
+	</div>
+	<div class="clearfix"></div>
+
+	<% @courses_underdev.each do |course| %>
+		<div class='col-lg-3 col-md-3 col-sm-4 col-xs-4 small'><%= render course %></div>
+	<% end unless @courses_underdev.empty? %>
+
+	<div class="clearfix"></div>
+	<div class='pull-right'>
+		<%= paginate @courses_underdev %>
+	</div>
 </div>
 
