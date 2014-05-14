@@ -1,5 +1,4 @@
 Oplerno::Application.routes.draw do
-  #root :to => 'welcome#index'
   root :to => 'courses#index'
   #root :to => proc { [404, {}, ['']] }
 
