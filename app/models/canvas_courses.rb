@@ -6,20 +6,17 @@ class CanvasCourses < ActiveRecord::Base
   belongs_to :course
   attr_accessible :name # :canvas_id #, :course_id
 
-  def self.update canvas_course
+	def self.update canvas_course
     self.connect_to_canvas_oauth if canvas.nil?
     begin
-      this_canvas_course = CanvasCourses.find_by_canvas_id (canvas_course['id'])
-      course = this_canvas_course.course
-			if canvas_course['workflow_state'] == "available"
-				course.hidden = false
-			else
-				course.hidden = true
-			end
-			course.save
-    rescue
+      this_canvas_course = CanvasCourses.find_by_canvas_id(canvas_course['id'])
+			course = this_canvas_course.update_course(canvas_course)
+		rescue
       this_canvas_course = CanvasCourses.new
-      course = Course.create! name: canvas_course['name'], hidden: true
+			course = Course.create! name: canvas_course['name'],
+				hidden: true,
+				syllabus: canvas_course['syllabus_body'],
+				description: canvas_course['public_description']
     ensure
       begin
         this_canvas_course.course = course
@@ -30,7 +27,7 @@ class CanvasCourses < ActiveRecord::Base
       end unless this_canvas_course.nil?
     end
     this_canvas_course
-  end
+	end
 
   def self.update_all
     self.connect_to_canvas_oauth if canvas.nil?
@@ -44,6 +41,17 @@ class CanvasCourses < ActiveRecord::Base
     canvas_add_user CanvasUsers.find_by_user_id(user.id)
   end
 
+	def update_course(canvas_course)
+		course = self.course
+		p "#{course.id} - #{course.name}"
+		if canvas_course['workflow_state'] == "available"
+			course.hidden = false
+		else
+			course.hidden = true
+		end
+		course.save
+		course
+	end
 
   private
   def canvas_add_user(user)
