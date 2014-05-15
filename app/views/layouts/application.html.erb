@@ -22,6 +22,8 @@ HOSTNAME: <%= Socket.gethostname %>
 	<link rel="profile" href="http://microformats.org/profile/hcalendar">
 	<link rel="profile" href="http://microformats.org/profile/hcard">
 
+	<%= render 'layouts/meta' %>
+
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -61,7 +63,7 @@ HOSTNAME: <%= Socket.gethostname %>
   <!--/row-->
 
 
-  <!--%= render :partial => 'layouts/popup' %-->
+  <%= render :partial => 'layouts/popup' %>
 
 	<%= render 'layouts/footer' %>
 

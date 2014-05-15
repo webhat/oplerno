@@ -18,4 +18,7 @@
 		<div class='hidden-sm hidden-xs'><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
 		<div class='hidden-lg hidden-md'><%= button_to 'x', remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-warning btn-mini"} %></div>
   <%- end %>
+	<% unless @course.nil? %>
+    <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-success oplerno-cta btn-lg"} %>
+  <%- end %>
 </div>

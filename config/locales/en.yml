@@ -47,11 +47,12 @@ en:
     removed: 'Removed %{course} from Order'
     remove: 'Remove'
     mycart: 'My Cart'
+    pay: 'Complete Purchase'
   payments:
     description: 'Course(s) with Oplerno LLC. %{courses}'
   courses:
     title: 'Courses'
-    register: 'Register'
+    register: 'Take This Course'
     view: 'View'
     date:
       start: 'Start Date'

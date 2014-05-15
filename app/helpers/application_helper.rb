@@ -8,4 +8,11 @@ module ApplicationHelper
 		return URI(request.referer).host == ::CANVAS_HOST unless request.referer.nil?
 		false
 	end
+
+	def avatar num
+		course = @courses[num]
+		unless course.nil?
+			course.avatar.url(:medium)
+		end
+	end
 end

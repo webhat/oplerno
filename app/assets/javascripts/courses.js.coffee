@@ -17,5 +17,24 @@ window.switchButtons = ->
 	$('input[id^="subject_list_"]').each labelled_button
 
 
+cta_sign_up = ->
+	$( "#modal-dialog" ).dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "explode",
+			duration: 1000
+		}
+	});
+	$('#modal-dialog').dialog 'open'
+
+$(document).on 'click', '.oplerno-cta', (e) ->
+	alert 'test'
+	e.stopPropagation();
+	cta_sign_up()
+
 
 $(document).on('page:change', window.switchButtons)

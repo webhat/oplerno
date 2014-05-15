@@ -1,0 +1,27 @@
+%link(rel='canonical' href='#{url_prefix request}#{request.fullpath}')
+%meta(property='og:url' content='#{url_prefix request}#{request.fullpath}?utm_source=facebook&utm_medium=social&utm_campaign=ab#{Date.today.yday()%1}')
+%meta(name='twitter:url' content='#{url_prefix request}#{request.fullpath}?utm_source=twitter&utm_medium=social&utm_campaign=ab#{Date.today.yday()%1}')
+%meta(property='og:site_name' content='Oplerno - Open Learning Organization')
+%meta(name='twitter:site' content='@oplerno')
+%meta(name='twitter:creator' content='@oplerno')
+%meta(name='twitter:domain' content='#{request.host}')
+- unless defined?(@course).nil?
+  - if (Date.today.yday()%2) == 0
+    %meta(name='twitter:card' content='photo')
+  - else
+    %meta(name='twitter:card' content='summary')
+    %meta(name='twitter:description' content='#{strip_tags @course.description}')
+  %meta(name='twitter:title' content='#{@course.name}')
+  %meta(name='twitter:image:src' content='#{url_prefix request}#{@course.avatar.url(:medium)}')
+  %meta(property='og:title' content='#{@course.name}')
+  %meta(property='og:image' content='#{url_prefix request}#{@course.avatar.url(:medium)}')
+  %meta(property='og:description' content='#{strip_tags @course.description}')
+- unless defined?(@courses).nil?
+  %meta(name='twitter:card' content='gallery')
+  %meta(name='twitter:title' content='#{ t("social.top_courses")}')
+  %meta(name='twitter:description' content='#{ t("social.top_courses_description")}')
+  %meta(name='twitter:image0:src' content='#{url_prefix request}#{avatar 0}')
+  %meta(name='twitter:image1:src' content='#{url_prefix request}#{avatar 1}')
+  %meta(name='twitter:image2:src' content='#{url_prefix request}#{avatar 2}')
+  %meta(name='twitter:image3:src' content='#{url_prefix request}#{avatar 3}')
+
