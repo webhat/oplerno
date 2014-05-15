@@ -11,14 +11,21 @@ class CanvasCourses < ActiveRecord::Base
     begin
       this_canvas_course = CanvasCourses.find_by_canvas_id (canvas_course['id'])
       course = this_canvas_course.course
+			if canvas_course['workflow_state'] == "available"
+				course.hidden = false
+			else
+				course.hidden = true
+			end
+			course.save
     rescue
       this_canvas_course = CanvasCourses.new
-      course = Course.create! name: canvas_course['name']
+      course = Course.create! name: canvas_course['name'], hidden: true
     ensure
       begin
         this_canvas_course.course = course
         this_canvas_course.canvas_id = canvas_course['id']
         this_canvas_course.name = canvas_course['name']
+        this_canvas_course.syllabus = canvas_course['syllabus_body']
         this_canvas_course.save
       end unless this_canvas_course.nil?
     end
