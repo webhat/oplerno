@@ -9,7 +9,7 @@ end
 gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.18'
 gem 'jquery-rails', '< 3.0.0' #, '>= 3.1.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -119,6 +119,7 @@ group :test do
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
+gem 'nokogiri', '~> 1.6'
 gem 'redis'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
