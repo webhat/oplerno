@@ -78,6 +78,7 @@ en:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
       already_in: 'You are already taking this course'
+      too_many: 'This course has reached its limit'
   generic:
     back: 'Back'
     edit: 'Edit'

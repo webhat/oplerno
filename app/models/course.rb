@@ -22,12 +22,14 @@ class Course < ActiveRecord::Base
 									:start_date, :subject_list,
 									:skills, :skill, :skill_list,
 									:type, :syllabus,
-									:hidden
+									:hidden,
+									:max, :min
 
 	has_paper_trail
 
   has_many :teachers
   has_many :students
+  has_and_belongs_to_many :users
   has_and_belongs_to_many :carts
   has_and_belongs_to_many :skills
   has_one :canvas_course
