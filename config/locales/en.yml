@@ -77,6 +77,7 @@ en:
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
+      already_in: 'You are already taking this course'
   generic:
     back: 'Back'
     edit: 'Edit'

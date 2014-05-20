@@ -15,8 +15,13 @@ class CartsController < InheritedResources::Base
     @cart.user_id = current_user.id
     course = Course.find(session[:course_id])
     if course.price.to_i > 0
-      @cart.courses << course unless @cart.courses.include?(course)
-			flash[:notice] = (I18n.t 'courses.success.add_to_cart')
+			p current_user.courses
+			unless current_user.courses.include?(course)
+				@cart.courses << course unless @cart.courses.include?(course)
+				flash[:notice] = (I18n.t 'courses.success.add_to_cart')
+			else
+				flash[:alert] = (I18n.t 'courses.fail.already_in')
+			end
     else
       flash[:alert] = (I18n.t 'courses.fail.inactive')
     end
