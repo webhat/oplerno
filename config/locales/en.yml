@@ -4,6 +4,7 @@ en:
       default: "%d %B %Y"
       google: "%Y-%m-%d"
   search:
+    search: 'Search'
     term: 'Search Term'
     not_found: 'Not Found: "%{term}"'
   name: 'Name'

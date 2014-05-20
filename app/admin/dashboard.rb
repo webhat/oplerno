@@ -35,6 +35,15 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
+        panel "Recent Searches (#{Search.all.count})" do
+          table_for Search.all(limit: 10) do
+            column do |search|
+							search.term
+            end
+          end
+        end
+      end
+      column do
         panel "Info" do
           para "Welcome to ActiveAdmin."
         end
