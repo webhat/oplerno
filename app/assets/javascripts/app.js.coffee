@@ -33,6 +33,19 @@ $(window).scroll ->
 
 delay = (ms, func) -> setTimeout func, ms
 
+close = (e) ->
+  console.log 'close'
+  console.log e
+  e.stopPropagation();
+  e.currentTarget.parentNode.style.display = 'none'
+
+close_button = ->
+  console.log 'close_button'
+  $('.close').click (e) ->
+    close e
+
+$(document).on('page:load', close_button)
+$(document).on('page:change', close_button)
 $(document).on('page:load', load_cart)
 
 $(document).on 'page:change', ->

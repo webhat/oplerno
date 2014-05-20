@@ -46,9 +46,21 @@ HOSTNAME: <%= Socket.gethostname %>
 
   <div class="row row-offcanvas row-offcanvas-right">
     <div class="col-xs-12 col-sm-12 col-lg-12 top30">
-      <div class="col-6">
-        <span id="notice" class="alert"><%= notice %></span>
-        <span id="alert" class="alert"><%= alert %></span>
+      <div class="col-6 alerts">
+				<% unless notice.nil? %>
+					<div class="success alert-message">
+						<a class="close" href="#">×</a>
+						<span><%= notice %></span>
+					</div>
+				<% end %>
+				<% unless alert.nil? %>
+					<div class="error alert-message">
+						<a class="close" href="#">×</a>
+						<span>
+							<%= alert %>
+						</span>
+					</div>
+				<% end %>
       </div>
 
 			<div class="row"> <!-- was row-fluid -->
