@@ -90,7 +90,7 @@ describe 'Visiting URLs' do
 			page.first(".course > a").click
 
       # Register Page
-			expect(page.current_path).to eq '/courses/1'
+			expect(page.current_path).to eq "/courses/#{@course.id}"
       expect(page).to have_content valid_course[:name]
 			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
 			expect(page.current_path).to eq '/courses'
@@ -104,7 +104,7 @@ describe 'Visiting URLs' do
 			page.first(".course > a").click
 
       # Register Page
-			expect(page.current_path).to eq '/courses/1'
+			expect(page.current_path).to eq "/courses/#{@course.id}"
       expect(page).to have_content valid_course[:name]
 			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
 			expect(page.current_path).to eq '/courses'
@@ -116,7 +116,7 @@ describe 'Visiting URLs' do
 			page.first(".course > a").click
 
       # Register Page
-			expect(page.current_path).to eq '/courses/1'
+			expect(page.current_path).to eq "/courses/#{@course.id}"
       expect(page).to have_content valid_course[:name]
 			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
 			expect(page.current_path).to eq '/courses'
