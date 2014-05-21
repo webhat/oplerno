@@ -45,7 +45,7 @@ en:
   orders:
     success: 'Success'
   cart:
-    removed: 'Removed %{course} from Order'
+    removed: 'Removed "%{course}" from Order'
     remove: 'Remove'
     mycart: 'My Cart'
     pay: 'Complete Purchase'
@@ -73,7 +73,7 @@ en:
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
-      add_to_cart: 'Course was added to cart'
+      add_to_cart: 'Course was added to cart <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Checkout Now</a>'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'

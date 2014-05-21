@@ -21,7 +21,6 @@ describe 'Visiting URLs' do
 			fill_in I18n.t('devise.sessions.new.password'), with: 'testtest'
 			click_button I18n.t('devise.sessions.new.sign_in')
       @course = Course.create! valid_course
-			@user.courses << @course
 
 			@user.save
     end
@@ -64,6 +63,7 @@ describe 'Visiting URLs' do
       expect(page).to have_content @user.encrypted_last_name
     end
     it 'should be able to visit the teachers and pick a course' do
+			@user.courses << @course
       visit '/teachers'
 			page.first('.teacher > a').click
 
@@ -82,13 +82,44 @@ describe 'Visiting URLs' do
       expect(page).to have_content @user.encrypted_first_name
       expect(page).to have_content @user.encrypted_last_name
 		end
+		it 'shouldn\'t be able to take course when full' do
+			@course.max = 0
+			@course.save
+
+      visit '/courses'
+			page.first(".course > a").click
+
+      # Register Page
+			expect(page.current_path).to eq '/courses/1'
+      expect(page).to have_content valid_course[:name]
+			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
+			expect(page.current_path).to eq '/courses'
+
+			expect(page).to have_content I18n.t('courses.fail.too_many')
+		end
+    it 'shouldn\'t be able to take course again' do
+			@user.courses << @course
+
+      visit '/courses'
+			page.first(".course > a").click
+
+      # Register Page
+			expect(page.current_path).to eq '/courses/1'
+      expect(page).to have_content valid_course[:name]
+			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
+			expect(page.current_path).to eq '/courses'
+
+			expect(page).to have_content I18n.t('courses.fail.already_in')
+		end
     it 'should be able to visit the cart and remove a course' do
       visit '/courses'
 			page.first(".course > a").click
 
       # Register Page
+			expect(page.current_path).to eq '/courses/1'
       expect(page).to have_content valid_course[:name]
-			first(:xpath, "//*[@value='#{I18n.t('courses.register')}'][1]").click
+			first(:xpath, "//*[@value='#{I18n.t('courses.register')}']").click
+			expect(page.current_path).to eq '/courses'
 
 			visit '/carts/mycart'
       expect(page).to have_content valid_course[:name]
