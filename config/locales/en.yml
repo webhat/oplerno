@@ -101,9 +101,9 @@ en:
     contact: "Contact"
     register: "Register"
     canvas: "Canvas"
+    settings: "Settings"
     nav:
       inbox: "Inbox"
-      settings: "Settings"
       help: "Help"
   login:
     canvas_html: "Login with your Marketplace credentials"
