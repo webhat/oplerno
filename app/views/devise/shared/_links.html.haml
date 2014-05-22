@@ -4,7 +4,7 @@
       %div
         = t('devise.sessions.new.sign_in')
   - if controller_name != 'registrotions'
-    %a.btn.btn-primary.top10(href="#{new_user_registration_path(resource_name)}")
+    %a.btn.btn-primary.top10(href="#{new_registration_path(resource_name)}")
       %div
         = t('devise.sessions.new.sign_up')
 .row-fluid.top10
