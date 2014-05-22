@@ -1,4 +1,7 @@
 en:
+  social:
+    top_courses: 'Popular Courses'
+    top_courses_description: "Today's most visited courses"
   date:
     formats:
       default: "%d %B %Y"
