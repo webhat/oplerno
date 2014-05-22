@@ -88,9 +88,9 @@ Oplerno::Application.configure do
         :login      => ENV['PAYPAL_USER'],
         :password   => ENV['PAYPAL_PASS'],
         :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://marketplace.oplerno.com/orders/ipn',
-        :return_url           => 'https://marketplace.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://marketplace.oplerno.com/orders/cancel',
+        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 end

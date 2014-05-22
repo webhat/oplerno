@@ -50,14 +50,14 @@ Oplerno::Application.configure do
         openssl_verify_mode: 'none'
     }
 
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login      => ENV['PAYPAL_USER'],
         :password   => ENV['PAYPAL_PASS'],
         :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://marketplace.oplerno.com/orders/ipn',
-        :return_url           => 'https://marketplace.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://marketplace.oplerno.com/orders/cancel',
+        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 

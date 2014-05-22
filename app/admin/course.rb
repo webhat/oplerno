@@ -57,7 +57,7 @@ ActiveAdmin.register Course do
       f.input :description
 			f.input :hidden
 			f.input :start_date
-			f.input :teacher, :collection => User.all.map { |x| [x.display_name, x.id] }
+			f.input :teacher, :collection => User.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
     end
     f.actions
   end
