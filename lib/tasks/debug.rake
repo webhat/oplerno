@@ -11,7 +11,7 @@ namespace :debug do
 		p pp_txn['token']
 		p pp_txn
 
-		setup = GATEWAY.purchase(100, token: pp_txn['token'], payer_id: @txn.txn_id)
-		p setup
+#		setup = GATEWAY.purchase(100, token: pp_txn['token'], payer_id: @txn.txn_id)
+#		p setup
 	end
 end

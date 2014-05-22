@@ -17,9 +17,12 @@ class OrderTransaction < ActiveRecord::Base
     self.message = response.message
     self.txn_id = response.params['payer_id']
     self.params = response.params.to_json
-		completed = GATEWAY.purchase(response.params['order_total'], token: response.params['token'], payer_id: response.params['payer_id'])
-		self.params_completed = completed.params
+		if response.success?
+			completed = GATEWAY.purchase((response.params['order_total'].to_f*100).round, token: response.params['token'], payer_id: response.params['payer_id'])
+			self.params_completed = completed.params.to_json
+		end
   rescue ActiveMerchant::ActiveMerchantError => e
+		p e
     self.success = false
     self.authorization = nil
     self.message = e.message
