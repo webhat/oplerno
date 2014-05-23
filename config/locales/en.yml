@@ -47,6 +47,8 @@ en:
       email: "Email"
   orders:
     success: 'Success'
+    summary: 'Courses Summary'
+    total: 'Total'
   cart:
     removed: 'Removed "%{course}" from Order'
     remove: 'Remove'
