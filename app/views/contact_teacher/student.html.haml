@@ -1,0 +1,9 @@
+#main
+  %p Dear #{@message[:display_name]},
+  %p One of your future students has a question for you.
+  %p
+    %i From: #{@message[:from]}
+    %i #{@message[:question]}
+  %p Kind regards,
+  %p The Team at Oplerno
+= render 'hively'
