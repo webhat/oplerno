@@ -46,10 +46,10 @@
 		<h2><%= t('courses.price') %></h2>
 		<span itemprop="price" class='p-price price'>
 			<% begin %>
-				<%- unless @course.price.empty? %>
-					$<%= @course.price %>
-				<%- else %>
+				<%- if @course.price.nil? or @course.price <= 0 %>
 					<%= t('courses.price.not_set') %>
+				<%- else %>
+					$<%= @course.price %>
 				<%- end %>
 			<% rescue %>
 				<%= t('courses.price.not_set') %>
