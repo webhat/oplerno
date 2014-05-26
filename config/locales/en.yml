@@ -60,6 +60,7 @@ en:
     title: 'Courses'
     register: 'Take This Course'
     view: 'View'
+    contact: 'Contact Instructor'
     date:
       start: 'Start Date'
       end: 'End Date'
