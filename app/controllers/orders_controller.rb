@@ -9,13 +9,15 @@ class OrdersController < InheritedResources::Base
 
 		details_response = GATEWAY.details_for(token_params)
 
-		if !details_response.success?
+		unless details_response.success?
 			@message = details_response.message
 			transactions.create!(:action => "error", :amount => price_in_cents, :response => details_response)
 			flash[:alert] = @message
 		else
 			transactions.create!(:action => "purchase", :amount => price_in_cents, :response => details_response)
 			current_cart.courses_to_student
+			current_user.cart = Cart.create!
+			current_user.save
 			flash[:notice] = (I18n.t 'orders.success')
 		end
 	end
@@ -77,7 +79,7 @@ class OrdersController < InheritedResources::Base
 	end
 
 	def current_cart
-		current_user.cart
+		@cart ||= current_user.cart
 	end
 
 	private
