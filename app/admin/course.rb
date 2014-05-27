@@ -35,6 +35,8 @@ ActiveAdmin.register Course do
     attributes_table do
       row :name
       row :price
+      row :description
+      row :syllabus
       row "Instructor" do |course|
         begin
           teacher = User.find(course.teacher)
@@ -55,6 +57,7 @@ ActiveAdmin.register Course do
       f.input :name
       f.input :price
       f.input :description
+      f.input :syllabus
 			f.input :hidden
 			f.input :start_date
 			f.input :teacher, :collection => User.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
