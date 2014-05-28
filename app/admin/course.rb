@@ -37,6 +37,14 @@ ActiveAdmin.register Course do
       row :price
       row :description
       row :syllabus
+			row 'Canvas ID' do |course|
+				canvas_course = CanvasCourses.find_by_course_id(course.id)
+				unless canvas_course.nil?
+					link_to canvas_course.canvas_id, "https://oplerno.instructure.com/courses/#{canvas_course.canvas_id}"
+				else
+					'??'
+				end
+			end
       row "Instructor" do |course|
         begin
           teacher = User.find(course.teacher)
