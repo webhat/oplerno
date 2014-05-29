@@ -36,6 +36,12 @@ class Course < ActiveRecord::Base
 
 	has_and_belongs_to_many :subjects
 
+	def name
+		_name = read_attribute(:name)
+		nbsp = Nokogiri::HTML("&nbsp;").text
+		_name.gsub(nbsp, " ")
+	end
+
   def active?
     self.price.to_f > 0
   end
