@@ -31,7 +31,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Recent Courses (#{Course.all.count})" do
-          table_for Course.all(limit: 10) do
+          table_for Course.all(limit: 10, order: 'created_at DESC') do
             column do |course|
               link_to course.name, [:admin, course]
             end
@@ -40,7 +40,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Recent Searches (#{Search.all.count})" do
-          table_for Search.all(limit: 10) do
+          table_for Search.all(limit: 10, order: 'created_at DESC') do
             column do |search|
 							search.term
             end
