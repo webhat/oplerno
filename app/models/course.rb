@@ -38,6 +38,7 @@ class Course < ActiveRecord::Base
 
 	def name
 		_name = read_attribute(:name)
+		return if _name.nil?
 		nbsp = Nokogiri::HTML("&nbsp;").text
 		_name.gsub(nbsp, " ")
 	end
