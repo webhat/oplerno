@@ -147,11 +147,13 @@
         <%= yield %>
         <tr>
           <td width="100" valign="top"></td>
-          <td width="500"><p>Thanks,</p><p>Dani&#235;l</p></td>
+					<td width="500"><p>Kind regards,</p><p>The Team at Oplerno</p></td>
         </tr>
   <tr>
     <td width="200" valign="top"></td>
-    <td width="400"><%= render 'hively'%></td>
+		<td width="400">
+			<%= render 'devise/mailer/hively' %>
+		</td>
   </tr>
       </table>
     </td>

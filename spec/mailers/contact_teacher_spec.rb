@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe ContactTeacher do
-	let(:valid_question) { { email: 'crompton@oplerno.com', course: 'Introduction to Indroducing Introductions', display_name: 'Professor Albright', question: 'I want to participate, what are the prerequisites?\r\nDaniël', from: 'Daniël <crompton@oplerno.com>'} }
+	let(:valid_question) { { email: 'crompton@oplerno.com', course: { name: 'Introduction to Indroducing Introductions' }, display_name: 'Professor Albright', question: 'I want to participate, what are the prerequisites?\r\nDaniël', from: 'Daniël <crompton@oplerno.com>'} }
 
 	before do
 	end
