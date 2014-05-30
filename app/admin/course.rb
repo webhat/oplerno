@@ -1,7 +1,9 @@
 ActiveAdmin.register Course do
 	actions :all, :except => [:destroy]
   index do
-    column :name
+    column :name do |course|
+			"#{course.name} (#{course.id})"
+		end
     column :price
     column "Instructor" do |course|
 			begin
