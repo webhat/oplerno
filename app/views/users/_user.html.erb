@@ -5,7 +5,7 @@
 	<div class="teacher_name top5">
 		<span class="hidden-sm hidden-xs"><%= user.encrypted_title %></span>
 		<span>
-			<%= user.encrypted_first_name %> <%= user.encrypted_last_name %>
+			<%= user.display_name.force_encoding('UTF-8') %>
 		</span>
 	</div>
 </div>
@@ -20,7 +20,7 @@
 			<%= user.encrypted_title %>
 		</span>
 		<span>
-			<%= user.encrypted_first_name %> <%= user.encrypted_last_name %>
+			<%= user.display_name.force_encoding('UTF-8') %>
 		</span>
 	</div>
 </div>
