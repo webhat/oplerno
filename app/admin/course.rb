@@ -1,6 +1,9 @@
 ActiveAdmin.register Course do
 	actions :all, :except => [:destroy]
   index do
+		column :avatar do |course|
+			image_tag(course.avatar.url(:thumb))
+		end
     column :name do |course|
 			"#{course.name} (#{course.id})"
 		end
@@ -35,6 +38,9 @@ ActiveAdmin.register Course do
 
   show do
     attributes_table do
+			row :avatar do |course|
+				image_tag(course.avatar.url(:thumb))
+			end
       row :name
       row :price
       row :description
@@ -71,6 +77,7 @@ ActiveAdmin.register Course do
 			f.input :hidden
 			f.input :start_date
 			f.input :teacher, :collection => User.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
+			f.input :avatar, :as => :file, :required => false
     end
     f.actions
   end

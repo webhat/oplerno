@@ -1,7 +1,7 @@
 <div itemscope itemtype="http://schema.org/Event" class="course vevent h-event">
   <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
 	<%= link_to course, class: 'url' do %>
-		<div itemprop="image" class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
+		<div itemprop="image" class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');background-size:auto 194px;"></div>
   <%- end %>
 	<div itemprop='name' class='course_name summary p-name'>
 		<% begin %>
