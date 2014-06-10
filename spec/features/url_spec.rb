@@ -42,6 +42,9 @@ describe 'Visiting URLs' do
 			page.first(".course > a").click
     end
     it 'should be able to visit the courses and register for a course' do
+			@course.teacher = nil
+			@course.save
+
       visit '/courses'
 			find('.course > a').click
 
@@ -86,6 +89,9 @@ describe 'Visiting URLs' do
 			@course.max = 0
 			@course.save
 
+			@course.teacher = nil
+			@course.save
+
       visit '/courses'
 			page.first(".course > a").click
 
@@ -100,6 +106,9 @@ describe 'Visiting URLs' do
     it 'shouldn\'t be able to take course again' do
 			@user.courses << @course
 
+			@course.teacher = nil
+			@course.save
+
       visit '/courses'
 			page.first(".course > a").click
 
@@ -112,6 +121,9 @@ describe 'Visiting URLs' do
 			expect(page).to have_content I18n.t('courses.fail.already_in')
 		end
     it 'should be able to visit the cart and remove a course' do
+			@course.teacher = nil
+			@course.save
+
       visit '/courses'
 			page.first(".course > a").click
 

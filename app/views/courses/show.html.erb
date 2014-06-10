@@ -81,15 +81,14 @@
 <div class="clearfix"></div>
 <div class="clearfix top5">
   <div class="col-xs-4">
+  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
+		<%= button_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg"} %>
+	<% else %>
     <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger oplerno-cta btn-lg"} %>
+  <% end %>
   </div>
   <div class="col-xs-4">
     <%= link_to t('generic.back'), courses_path, {:class => "btn btn-default pull-right"} %>
   </div>
-  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
-      <div class="col-xs-4">
-        <%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info"} %>
-      </div>
-  <% end %>
 </div>
 
