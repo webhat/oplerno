@@ -121,6 +121,7 @@ end
 
 gem 'nokogiri', '~> 1.6'
 gem 'redis'
+gem 'sitemap'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
