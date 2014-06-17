@@ -9,7 +9,7 @@ Master:
 [![Code Climate](https://codeclimate.com/github/webhat/oplerno.png)](https://codeclimate.com/github/webhat/oplerno)
 [![Dependency Status](https://gemnasium.com/webhat/oplerno.png)](https://gemnasium.com/webhat/oplerno)
 [ ![Codeship Status for webhat/oplerno](https://www.codeship.io/projects/0d62b070-69a0-0131-5777-3ade9668166e/status?branch=master)](https://www.codeship.io/projects/12818)
-[![Inline docs](http://inch-pages.github.io/github/webhat/oplerno.png)](http://inch-pages.github.io/github/webhat/oplerno)
+[![Inline docs](http://inch-ci.org/github/webhat/oplerno.png)](http://inch-ci.org/github/webhat/oplerno)
 
 
 Development: 
