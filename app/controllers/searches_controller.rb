@@ -1,11 +1,12 @@
 class SearchesController < ApplicationController
 	def index
-		@searches = Course.search '*'
+		@searches = Course.search '*', per_page: 24
 	end
 
 	def create
 		@search = params[:search][:term]
-		@searches = Course.search @search
+		Search.create! params[:search]
+		@searches = Course.search @search, per_page: 24
 		not_found
 	end
 

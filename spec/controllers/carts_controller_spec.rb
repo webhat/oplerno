@@ -60,7 +60,7 @@ describe CartsController do
 				session[:course_id].should be(nil)
 			end
 
-			it 'shouldn\'t add the course to the cart twice' do
+			it 'can add the course to the cart twice' do
 				@course = Course.create! valid_course
 
 				def valid_session
@@ -70,9 +70,43 @@ describe CartsController do
 					
 				post :create, {}, valid_session
 				session[:course_id].should be(nil)
+				flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
+				flash[:alert].should be nil
 
 				post :create, {}, valid_session
 				session[:course_id].should be(nil)
+				flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
+				flash[:alert].should be nil
+			end
+
+			it 'can\'t add the course to the cart if you are taking it' do
+				@course = Course.create! valid_course
+
+				def valid_session
+					mysession = { course_id: @course.id }
+					session.to_hash.merge mysession
+				end
+
+				current_user.courses << @course
+
+				post :create, {}, valid_session
+				flash[:notice].should be nil
+				flash[:alert].should eq (I18n.t 'courses.fail.already_in')
+			end
+
+			it 'can\'t add the course to the cart if the class is full' do
+				@course = Course.create! valid_course
+				@course.max = 0
+				@course.save
+
+				def valid_session
+					mysession = { course_id: @course.id }
+					session.to_hash.merge mysession
+				end
+
+				post :create, {}, valid_session
+				flash[:notice].should be nil
+				flash[:alert].should eq (I18n.t 'courses.fail.too_many')
 			end
     end
 

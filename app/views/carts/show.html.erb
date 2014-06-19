@@ -7,8 +7,8 @@
 <div class="clearfix"></div>
 
 <div class="col-12 col-lg-12 col-sm-12 col-xs-12">
-	<%= button_to 'Pay', orders_path, {:class => "btn btn-info pull-left", :action => :create, :method => :post} %>
+	<%= button_to t('cart.pay'), orders_path, {:class => "btn btn-lg btn-success pull-left oplerno-cta", :action => :create, :method => :post} %>
 	<div >
-		<%= link_to 'Back', carts_path, {:class => "btn btn-info pull-right", style: 'margin-top:8px;'} %>
+		<%= link_to t('generic.back'), carts_path, {:class => "btn btn-info pull-right", style: 'margin-top:8px;'} %>
 	</div>
 </div>

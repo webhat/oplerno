@@ -142,16 +142,18 @@
       <table cellpadding="0" cellspacing="0" border="0" align="center">
         <tr>
           <th width="260"></th>
-          <th width="340"><img class="image_fix" src="https://marketplace.oplerno.com/assets/logo-3619c9da3e0de2bbc45b4fbda90ff988.png" alt="Oplerno" title="Oplerno Marketplace" width="260" height="82" /></th>
+          <th width="340"><img class="image_fix" src="https://enroll.oplerno.com/assets/logo-3619c9da3e0de2bbc45b4fbda90ff988.png" alt="Oplerno" title="Oplerno Marketplace" width="260" height="82" /></th>
         </tr>
         <%= yield %>
         <tr>
           <td width="100" valign="top"></td>
-          <td width="500"><p>Thanks,</p><p>Dani&#235;l</p></td>
+					<td width="500"><p>Kind regards,</p><p>The Team at Oplerno</p></td>
         </tr>
   <tr>
     <td width="200" valign="top"></td>
-    <td width="400"><%= render 'hively'%></td>
+		<td width="400">
+			<%= render 'devise/mailer/hively' %>
+		</td>
   </tr>
       </table>
     </td>

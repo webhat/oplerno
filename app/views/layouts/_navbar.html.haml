@@ -37,16 +37,27 @@
               %div
                 = t('browse.settings')
         %li
-          %a(href='https:/#{CANVAS_HOST}/')
+          %a(href='https://#{CANVAS_HOST}/')
             %div
               = t('browse.canvas')
-      %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
         %li
-          - unless user_signed_in?
+          = semantic_form_for Search.new do |f|
+            = f.inputs :searches do
+              .left-inner-addon
+                = f.input :term, require: true, placeholder: t('search.term'), label: false, as: :string, input_html: { class: 'form-control' }
+                %i.glyphicon.glyphicon-search
+      %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
+        - unless user_signed_in?
+          %li
             = link_to user_session_path, {:class => 'btn active login btn-danger'} do
               .ph
                 = t('devise.sessions.new.sign_in')
-          - else
+          %li
+            = link_to new_user_registration_path, {:class => 'btn active login btn-info'} do
+              .ph
+                = t('devise.sessions.new.sign_up')
+        - else
+          %li
             = link_to destroy_user_session_path, {:class => 'btn active login btn-danger'} do
               .ph
                 = t('devise.sessions.new.sign_out')

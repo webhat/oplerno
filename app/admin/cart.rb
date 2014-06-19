@@ -1,4 +1,5 @@
 ActiveAdmin.register Cart do
+	actions :all, :except => [:destroy]
 
   #menu :parent => "Admin"
 

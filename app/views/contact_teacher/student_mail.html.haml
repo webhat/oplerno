@@ -1,0 +1,14 @@
+%tr
+  %td(width='260' valign='top')
+  %td(width='340')
+    %p Dear #{@message[:email]},
+%tr
+  %td(width='260' valign='top')
+  %td(width='340')
+    %p One of your future students has a question for you.
+%tr
+  %td(width='260' valign='top')
+  %td(width='340')
+    %p
+      %i From: #{@message[:from]}
+      %i #{@message[:question]}

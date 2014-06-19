@@ -33,3 +33,21 @@ input {
 	height: 35px;
 }
 
+.oplerno-cta, .btn-lg {
+	min-height: 50px;
+}
+
+.left-inner-addon {
+	position: relative;
+}
+.left-inner-addon input {
+	padding-left: 30px;    
+}
+.left-inner-addon li {
+	list-style-type: none;
+}
+.left-inner-addon i {
+	position: absolute;
+	padding: 10px 12px;
+	pointer-events: none;
+}

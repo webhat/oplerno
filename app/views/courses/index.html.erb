@@ -1,4 +1,12 @@
 <div class='clearfix'>
+	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+		<div class=''>
+			<h4>
+			Oplerno is a growing open learning organization. &nbsp;Courses are listed for enrollment as they are completed by the faculty member and approved by Oplerno. &nbsp;If you are interested in adding to our course catalog as a faculty member and instructor, please <a href="http://oplerno.com/faculty">read through our faculty page</a>. Students may view admissions policies and procedures at our <a href="http://oplerno.com/admissions">admissions page</a>.
+		</h4>
+		</div>
+	</div>
+
 	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
 		<h1><%= t('courses.title')%></h1>
 	</div>
@@ -15,6 +23,23 @@
 	<div class="clearfix"></div>
 	<div class='pull-right'>
 		<%= paginate @courses %>
+	</div>
+	<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
+		<h1><%= t('courses.under_development')%></h1>
+	</div>
+
+	<div class='pull-right'>
+		<%= paginate @courses_underdev %>
+	</div>
+	<div class="clearfix"></div>
+
+	<% @courses_underdev.each do |course| %>
+		<div class='col-lg-3 col-md-3 col-sm-4 col-xs-4 small'><%= render course %></div>
+	<% end unless @courses_underdev.empty? %>
+
+	<div class="clearfix"></div>
+	<div class='pull-right'>
+		<%= paginate @courses_underdev %>
 	</div>
 </div>
 

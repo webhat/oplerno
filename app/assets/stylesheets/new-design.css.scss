@@ -57,16 +57,6 @@ $grey: #eee;
   }
 }
 
-.alert {
-  font-weight: bold;
-  @include respond-to(handhelds)       { font-size: 1.4em;}
-  @include respond-to(small-screens)   { font-size: 1.4em;}
-  @include respond-to(medium-screens)  { font-size: 1.4em;}
-  @include respond-to(wide-screens)    { font-size: 1.6em;}
-}
-#notice { color: green; }
-#alert { color: red; }
-
 .row-fluid {
   h1, h2 {
     @include respond-to(handhelds)      { margin-left: 0px;}

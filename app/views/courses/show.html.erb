@@ -20,16 +20,17 @@
 			<%= simple_format @course.syllabus %>
 		</span>
 	</div>
-	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
-		<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? %>
-		<%- unless teacher.nil? %>
+	<%- teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? or @course.teacher.empty? %>
+	<%- unless teacher.nil? %>
+		<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 col-xs-offset-0 well'>
 			<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 small hide_name">
 				<h2><%= t('teachers.teacher') %></h2>
 				<%= render teacher %>
 				<div itemprop='performer' class="hidden-sm hidden-md hidden-lg col-xs-12"><%= teacher.display_name.force_encoding('UTF-8') %></div>
+				<div><a class='btn btn-success' onClick="ga('send', 'event', 'button', 'click', 'mail instructor', 4);" href='mailto:<%= teacher.email %>?cc=admissions@oplerno.com&amp;subject=<%= URI::encode @course.name %>'><%= t 'courses.contact' %></a></div>
 			</div>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 	<div class='col-lg-3 col-md-3 col-sm-4 col-xs-5 well'>
 		<h2><%= t('courses.date.start') %></h2>
 		<% begin %>
@@ -45,7 +46,11 @@
 		<h2><%= t('courses.price') %></h2>
 		<span itemprop="price" class='p-price price'>
 			<% begin %>
+				<%- if @course.price.nil? or @course.price <= 0 %>
+					<%= t('courses.price.not_set') %>
+				<%- else %>
 					$<%= @course.price %>
+				<%- end %>
 			<% rescue %>
 				<%= t('courses.price.not_set') %>
 			<% end %>
@@ -76,15 +81,14 @@
 <div class="clearfix"></div>
 <div class="clearfix top5">
   <div class="col-xs-4">
-    <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger"} %>
+  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
+		<%= button_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg"} %>
+	<% else %>
+    <%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger oplerno-cta btn-lg"} %>
+  <% end %>
   </div>
   <div class="col-xs-4">
-    <%= link_to t('generic.back'), courses_path, {:class => "btn btn-default"} %>
+    <%= link_to t('generic.back'), courses_path, {:class => "btn btn-default pull-right"} %>
   </div>
-  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
-      <div class="col-xs-4">
-        <%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info"} %>
-      </div>
-  <% end %>
 </div>
 

@@ -1,7 +1,7 @@
 <div itemscope itemtype="http://schema.org/Event" class="course vevent h-event">
   <!-- The default image comes from http://www.flickr.com/photos/shutterhacks/4474421855 -->
 	<%= link_to course, class: 'url' do %>
-		<div itemprop="image" class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');"></div>
+		<div itemprop="image" class='course_image' style="background-image:url('<%= url_prefix request %><%= course.avatar.url(:medium) %>');background-size:auto 194px;"></div>
   <%- end %>
 	<div itemprop='name' class='course_name summary p-name'>
 		<% begin %>
@@ -18,4 +18,12 @@
 		<div class='hidden-sm hidden-xs'><%= button_to t('cart.remove'), remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-default"} %></div>
 		<div class='hidden-lg hidden-md'><%= button_to 'x', remove_course_from_cart_url(course), {:disabled => !user_signed_in?, :class => "btn btn-warning btn-mini"} %></div>
   <%- end %>
+	<%- teacher = Teacher.find(@course.teacher) unless @course.nil? or @course.teacher.nil? or @course.teacher.empty? %>
+  <% if user_signed_in? && !teacher.nil? && teacher.id == current_user.id %>
+			<%= link_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg"} %>
+	<% else %>
+		<% unless @course.nil? %>
+			<%= button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !@course.active?, :class => "btn btn-success oplerno-cta btn-lg"} %>
+		<%- end %>
+  <% end %>
 </div>

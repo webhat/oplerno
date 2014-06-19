@@ -16,7 +16,7 @@ Oplerno::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = false
-  config.action_mailer.default_url_options = {:host => 'marketplace.oplerno.com'}
+  config.action_mailer.default_url_options = {:host => 'enroll.oplerno.com'}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -50,14 +50,14 @@ Oplerno::Application.configure do
         openssl_verify_mode: 'none'
     }
 
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login      => ENV['PAYPAL_USER'],
         :password   => ENV['PAYPAL_PASS'],
         :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://marketplace.oplerno.com/orders/ipn',
-        :return_url           => 'https://marketplace.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://marketplace.oplerno.com/orders/cancel',
+        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 

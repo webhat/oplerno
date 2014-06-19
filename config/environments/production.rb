@@ -52,7 +52,7 @@ Oplerno::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => 'marketplace.oplerno.com'}
+  config.action_mailer.default_url_options = {:host => 'enroll.oplerno.com'}
 
   # Enable threaded mode
   # config.threadsafe!
@@ -88,9 +88,9 @@ Oplerno::Application.configure do
         :login      => ENV['PAYPAL_USER'],
         :password   => ENV['PAYPAL_PASS'],
         :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://marketplace.oplerno.com/orders/ipn',
-        :return_url           => 'https://marketplace.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://marketplace.oplerno.com/orders/cancel',
+        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 end

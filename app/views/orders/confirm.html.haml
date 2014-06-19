@@ -1,0 +1,15 @@
+%div(style='min-height:800px;')
+.hidden
+  #order-dialog(title='#{t 'orders.summary'}')
+    .line-item
+      %span Order ID:
+      %span #{current_order.id}
+    %hr
+    - current_cart.courses.each do |course|
+      .line-item
+        %span.course-title #{course.name}
+        %span.pull-right.course-price $#{course.price}
+    %hr
+    .line-item
+      %span.course-title #{t 'orders.total'}
+      %span.pull-right.course-price $#{current_cart.total_price}

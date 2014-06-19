@@ -9,7 +9,7 @@ end
 gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.18'
 gem 'jquery-rails', '< 3.0.0' #, '>= 3.1.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -38,6 +38,7 @@ group :doc do
 end
 
 gem 'activeadmin', '>= 0.6.3'
+gem 'paper_trail'
 gem 'activemerchant', '>= 1.42.7'
 gem 'devise', '>= 3.2.4'
 gem 'devise-i18n', '>= 0.10.3'
@@ -106,8 +107,6 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'database_cleaner'
-	gem 'poltergeist'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
@@ -120,7 +119,9 @@ group :test do
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
+gem 'nokogiri', '~> 1.6'
 gem 'redis'
+gem 'sitemap'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'

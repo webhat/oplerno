@@ -88,9 +88,9 @@ describe OrdersController do
   end
 
   describe 'GET confirm' do
-    let(:valid_params) { {:token => 'EC-59R59009BF276314F', :PayerID => "H7E8K2LT573UN"} }
+		let(:valid_params) { {:token => 'EC-59R59009BF276314F', :PayerID => "H7E8K2LT573UN", :order_total => 750.00} }
 
-    vcr_options = {:record => :once}
+    vcr_options = {:record => :once, :allow_playback_repeats => true}
     context 'Something', vcr: vcr_options do
       before :each do
         Order.any_instance.stub(:price_in_cents).and_return(1000*100)

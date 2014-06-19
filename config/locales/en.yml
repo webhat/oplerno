@@ -1,9 +1,13 @@
 en:
+  social:
+    top_courses: 'Popular Courses'
+    top_courses_description: "Today's most visited courses"
   date:
     formats:
       default: "%d %B %Y"
       google: "%Y-%m-%d"
   search:
+    search: 'Search'
     term: 'Search Term'
     not_found: 'Not Found: "%{term}"'
   name: 'Name'
@@ -24,7 +28,7 @@ en:
     view: 'View details'
     messages:
       extra_security: 'Additional Security Features'
-      authy_description: 'Click <a href="%{url}" target="_new">here</a> to enter your phone number'
+      authy_description: '<a href="%{url}" target="_new">Click here to enter your phone number</a>'
     links: 'Links'
     link:
       name: 'Link Description'
@@ -43,16 +47,20 @@ en:
       email: "Email"
   orders:
     success: 'Success'
+    summary: 'Courses Summary'
+    total: 'Total'
   cart:
-    removed: 'Removed %{course} from Order'
+    removed: 'Removed "%{course}" from Order'
     remove: 'Remove'
     mycart: 'My Cart'
+    pay: 'Complete Purchase'
   payments:
     description: 'Course(s) with Oplerno LLC. %{courses}'
   courses:
     title: 'Courses'
-    register: 'Register'
+    register: 'Take This Course'
     view: 'View'
+    contact: 'Contact Instructor'
     date:
       start: 'Start Date'
       end: 'End Date'
@@ -71,10 +79,12 @@ en:
     success:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
-      add_to_cart: 'Course was added to cart'
+      add_to_cart: 'Course was added to cart <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Checkout Now</a>'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
+      already_in: 'You are already taking this course'
+      too_many: 'This course has reached its limit'
   generic:
     back: 'Back'
     edit: 'Edit'
@@ -97,9 +107,9 @@ en:
     contact: "Contact"
     register: "Register"
     canvas: "Canvas"
+    settings: "Settings"
     nav:
       inbox: "Inbox"
-      settings: "Settings"
       help: "Help"
   login:
     canvas_html: "Login with your Marketplace credentials"

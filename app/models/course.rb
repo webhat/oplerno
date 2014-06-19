@@ -22,15 +22,26 @@ class Course < ActiveRecord::Base
 									:start_date, :subject_list,
 									:skills, :skill, :skill_list,
 									:type, :syllabus,
-									:hidden
+									:hidden,
+									:max, :min
+
+	has_paper_trail
 
   has_many :teachers
   has_many :students
+  has_and_belongs_to_many :users
   has_and_belongs_to_many :carts
   has_and_belongs_to_many :skills
   has_one :canvas_course
 
 	has_and_belongs_to_many :subjects
+
+	def name
+		_name = read_attribute(:name)
+		return if _name.nil?
+		nbsp = Nokogiri::HTML("&nbsp;").text
+		_name.gsub(nbsp, " ")
+	end
 
   def active?
     self.price.to_f > 0
@@ -68,5 +79,9 @@ class Course < ActiveRecord::Base
 
 	def self.split skills
 		skills.split(',').map { |str| str.strip or str }
+	end
+
+	def display_name
+		self.name
 	end
 end
