@@ -24,4 +24,9 @@
   %meta(name='twitter:image1:src' content='#{url_prefix request}#{avatar 1}')
   %meta(name='twitter:image2:src' content='#{url_prefix request}#{avatar 2}')
   %meta(name='twitter:image3:src' content='#{url_prefix request}#{avatar 3}')
-
+- @name = 'Open Learning Organization'
+- unless defined?(@course).nil?
+  - @name = @course.name 
+- unless defined?(@teacher).nil?
+  - @name = @teacher.display_name.force_encoding('UTF-8')
+%title Oplerno - #{@name} - high-quality education for students from all corners of the globe
