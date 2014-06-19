@@ -3,7 +3,7 @@ set :rails_env, 'production'
 
 set :scm, :git
 set :repo_url, 'git@github.com:webhat/oplerno.git'
-set :branch, 'develop'
+set :branch, 'master'
 
 set :deploy_to, '/home/redhat/www'
 
