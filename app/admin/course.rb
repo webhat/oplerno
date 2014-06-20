@@ -42,6 +42,7 @@ ActiveAdmin.register Course do
 				image_tag(course.avatar.url(:thumb))
 			end
       row :name
+			row :slug
       row :price
       row :description
       row :syllabus
@@ -71,6 +72,7 @@ ActiveAdmin.register Course do
   form do |f|
     f.inputs "Course Details" do
       f.input :name
+      f.input :slug
       f.input :price
       f.input :description
       f.input :syllabus
