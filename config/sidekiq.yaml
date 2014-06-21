@@ -2,7 +2,7 @@
 # Options here can still be overridden by cmd line args.
 #   sidekiq -C config.yml
 ---
-:verbose: false
+:verbose: true
 :pidfile: /var/run/sidekiq.pid
 :logfile: ./log/sidekiq.log
 :concurrency:  25
