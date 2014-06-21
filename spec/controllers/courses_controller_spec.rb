@@ -96,7 +96,7 @@ describe CoursesController do
 
       it 'responds successfully redirects to new user session' do
         put :update, {id: @course.id}
-        response.should redirect_to(course_url)
+				response.should redirect_to(course_path(@course.slug))
       end
     end
 

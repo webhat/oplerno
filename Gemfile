@@ -123,6 +123,7 @@ gem 'nokogiri', '~> 1.6'
 gem 'redis'
 gem 'sidekiq'
 gem 'sitemap'
+gem 'friendly_id'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
