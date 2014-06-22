@@ -29,4 +29,23 @@ $(document).ready ->
   });
   $( "#order-dialog" ).dialog 'open'
 
+inquire_dialog_setup = ->
+  $( "#inquire-dialog" ).dialog({
+    autoOpen: false,
+    width: '600px',
+    buttons: {
+        "Send": ->
+          $( "#target" ).submit();
+          $( "#inquire-dialog" ).dialog 'close'
+      }
+    });
+  $("span.ui-button-icon-primary.ui-icon.ui-icon-closethick").css({"margin-left": '-8px', "margin-top": '-8px'})
+
+window.open_inquire_dialog = -> 
+  $( "#inquire-dialog" ).dialog 'open'
+
+$(document).ready ->
+	inquire_dialog_setup()
+
 $(document).on('page:change', window.switchButtons)
+$(document).on('page:change', inquire_dialog_setup)

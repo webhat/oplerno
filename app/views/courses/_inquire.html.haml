@@ -1,0 +1,19 @@
+.hidden
+  #inquire-dialog(title='Inquire for Course Name' width=400)
+    %form(action='/teachers/#{id}/contact.json' id='target' target='_iframe' type='')
+      %fieldset(class="list-unstyled")
+        %ol
+          %li(class="string input optional stringish")
+            %label(for='q_from' class=" label") Fullname
+            %input(id='q_from' name='question[from]')
+          %li(class="string input optional stringish")
+            %label(for='q_email' class=" label") Email
+            %input(id='q_email' name='question[email]' type='email')
+          %li(class="string input optional stringish")
+            %label(for='q_course_id' class=" label") Hidden
+            %input(id='q_course_id' name='question[course_id]')
+          %li(class="string input optional stringish")
+            %label(for='q_question' class=" label") How can the   instructor help you?
+            %textarea(id='q_question' name='question[question]')
+.hidden
+  %iframe(name='_iframe')
