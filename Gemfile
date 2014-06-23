@@ -121,7 +121,9 @@ end
 
 gem 'nokogiri', '~> 1.6'
 gem 'redis'
+gem 'sidekiq'
 gem 'sitemap'
+gem 'friendly_id'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
@@ -131,6 +133,9 @@ gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
 
 gem 'unicorn', '>= 4.8.2' #, group: :production
+
+gem 'sinatra', require: false
+gem 'slim'
 
 
 group :test, :production do

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Oplerno::Application.routes.draw do
   root :to => 'courses#index'
   #root :to => proc { [404, {}, ['']] }
@@ -33,4 +35,7 @@ Oplerno::Application.routes.draw do
   end
 
 	mount Paperclip::Storage::Redis::App.new => "/dynamic"
+	devise_scope :admin_user do
+		mount Sidekiq::Web, at: "/admin/sidekiq"
+	end
 end
