@@ -47,11 +47,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-      column do
-        panel "Info" do
-          para "Welcome to ActiveAdmin."
-        end
-      end
     end
     div :class => "blank_slate_container", :id => "dashboard_default_message" do
       span :class => "blank_slate" do
