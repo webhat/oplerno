@@ -1,7 +1,10 @@
 module ApplicationHelper
 	def url_prefix request
-		return "#{request.protocol}#{request.host_with_port}" #if Rails.env.development?
-		# "https://#{request.host_with_port}"
+		begin
+			"#{request.protocol}#{request.host_with_port}" #if Rails.env.development?
+		rescue
+			"https://#{request.host_with_port}"
+		end
 	end
 
 	def from_canvas request
