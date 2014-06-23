@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Course do
-  it "has a valid factory" do
+  it 'has a valid factory' do
     FactoryGirl.create(:course).should be_valid
   end
-  it "is invalid with an empty name" do
+  it 'is invalid with an empty name' do
     FactoryGirl.build(:course, name: '').should_not be_valid
   end
   it "is invalid without a name" do
