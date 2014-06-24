@@ -35,7 +35,5 @@ Oplerno::Application.routes.draw do
   end
 
 	mount Paperclip::Storage::Redis::App.new => "/dynamic"
-	devise_scope :admin_user do
-		mount Sidekiq::Web, at: "/admin/sidekiq"
-	end
+	mount Sidekiq::Web, at: "/admin/sidekiq" if Rails.env.development? 
 end
