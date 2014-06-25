@@ -1,5 +1,5 @@
 .hidden
-  #inquire-dialog(title='Inquire for Course Name' width=400)
+  #inquire-dialog(title='Inquire for Course #{@course.name}' width=400)
     %form(action='/teachers/#{id}/contact.json' id='target' target='_iframe' type='')
       %fieldset(class="list-unstyled")
         %ol
@@ -9,11 +9,12 @@
           %li(class="string input optional stringish")
             %label(for='q_email' class=" label") Email
             %input(id='q_email' name='question[email]' type='email')
-          %li(class="string input optional stringish")
+          %li(class="string input optional stringish hidden")
             %label(for='q_course_id' class=" label") Hidden
-            %input(id='q_course_id' name='question[course_id]')
+            %input(id='q_course_id' name='question[course_id]' value='#{@course.id}')
           %li(class="string input optional stringish")
-            %label(for='q_question' class=" label") How can the   instructor help you?
+            %label(for='q_question' class=" label") How can the instructor help you?
+            %br
             %textarea(id='q_question' name='question[question]')
 .hidden
   %iframe(name='_iframe')
