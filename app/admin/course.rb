@@ -2,7 +2,9 @@ ActiveAdmin.register Course do
 	actions :all, :except => [:destroy]
   index do
 		column :avatar do |course|
-			image_tag(course.avatar.url(:thumb))
+			link_to [course] do
+				image_tag(course.avatar.url(:thumb))
+			end
 		end
     column :name do |course|
 			"#{course.name} (#{course.id})"
