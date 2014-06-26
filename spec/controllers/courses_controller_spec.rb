@@ -22,13 +22,13 @@ describe CoursesController do
   end
 
   describe 'POST create' do
-		login_user
-		it 'can create a course with an empty subject' do
-			post :create, valid_attributes
-			expect(response).to be_success
-			assigns(:course).should be_a(Course)
-		end
-	end
+    login_user
+    it 'can create a course with an empty subject' do
+      post :create, valid_attributes
+      expect(response).to be_success
+      assigns(:course).should be_a(Course)
+    end
+  end
 
   describe 'PUT edit' do
     before do
@@ -96,7 +96,7 @@ describe CoursesController do
 
       it 'responds successfully redirects to new user session' do
         put :update, {id: @course.id}
-				response.should redirect_to(course_path(@course.slug))
+        response.should redirect_to(course_path(@course.slug))
       end
     end
 
@@ -151,6 +151,26 @@ describe CoursesController do
       it 'responds successfully redirects to new user session' do
         get :edit, {id: @course.id}
         response.should redirect_to(new_user_session_url)
+      end
+    end
+  end
+
+  describe 'GET image_picker' do
+    before do
+      @course = FactoryGirl.create(:course)
+      @course.teacher = 1
+      @course.save
+    end
+    describe 'while logged in' do
+      login_user
+      before(:each) do
+        @course.avatar = File.open('app/assets/images/logo.png')
+        @course.save
+
+        @course_alt = Course.create!
+      end
+      it 'should change the image' do
+        post :image_picker, {"image-picker" => @course_alt.id, id: @course.id}
       end
     end
   end

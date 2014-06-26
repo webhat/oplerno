@@ -1,3 +1,10 @@
+PATH
+  remote: lib/paperclip_redis
+  specs:
+    paperclip_redis (0.1.0)
+      paperclip
+      redis
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -330,7 +337,7 @@ GEM
       minitest (~> 4.0)
     money (6.1.1)
       i18n (~> 0.6.4)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     multi_test (0.1.1)
     multipart-post (2.0.0)
     mysql2 (0.3.16)
@@ -350,9 +357,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip_redis (0.0.9)
-      paperclip
-      redis
     parallel (1.0.0)
     perftools.rb (2.0.1)
     phantomjs (1.9.7.0)
@@ -626,7 +630,7 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   paper_trail
   paperclip (>= 4.1.1)
-  paperclip_redis (> 0.0.8)
+  paperclip_redis!
   perftools.rb
   poltergeist
   quiet_assets
@@ -640,7 +644,7 @@ DEPENDENCIES
   rb-fsevent (~> 0.9.4)
   rb-inotify (~> 0.9.3)
   redcarpet
-  redis
+  redis (~> 3.0.4)
   reek
   rspec-expectations
   rspec-mocks

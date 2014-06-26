@@ -24,6 +24,7 @@ Oplerno::Application.routes.draw do
 
 		post '/teachers/:id/contact' => 'teachers#contact'
 		get '/teachers/:id/contact' => 'teachers#contact'
+		post '/courses/:id/image_picker' => 'courses#image_picker'
     get '/orders/confirm' => 'orders#confirm'
     get '/orders/ipn' => 'orders#paypal_ipn'
     get '/orders/cancel' => 'orders#confirm'

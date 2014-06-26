@@ -19,6 +19,8 @@ matrix:
   fast_finish: true
   allow_failures:
   - rvm: ruby-head
+service:
+  - redis
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare

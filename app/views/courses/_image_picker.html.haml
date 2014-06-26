@@ -1,0 +1,7 @@
+.hidden
+  %form(action='/courses/#{@course.id}/image_picker' method='post' id='target')
+    #image-picker-dialog(title='Select A Default Image For #{@course.name}' width='400' data-form-url='/courses/#{@course.id}/image_picker')
+      %select{:name => 'image-picker'}
+        = Course.all.each do |course|
+          = if course.avatar.present?
+            = render :partial => 'image_picker_fragment', locals: { course: course}
