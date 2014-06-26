@@ -140,7 +140,7 @@ gem 'slim'
 
 
 group :test, :production do
-	gem 'paperclip_redis', '> 0.1.0'
+	gem 'paperclip_redis', '~> 0.1.0'
 	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
 end
 
