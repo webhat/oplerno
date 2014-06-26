@@ -1,5 +1,13 @@
 <h1><%= t('teachers.teachers')%></h1>
 
+<div class='pull-right'>
+	<%= paginate @teachers %>
+</div>
+<div class='clearfix'></div>
 <div class='row-fluid'>
 	<%= render @teachers %>
+</div>
+<div class='clearfix'></div>
+<div class='pull-right'>
+	<%= paginate @teachers %>
 </div>
