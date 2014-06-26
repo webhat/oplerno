@@ -8,6 +8,7 @@ class TeachersController < UsersController
   # GET /teachers.json
   def index
 		@teachers = Teacher.where("email like ?", "%oplerno.com%")
+		@teachers = @teachers.page(params[:page])
   end
 
   # GET /teachers/1
