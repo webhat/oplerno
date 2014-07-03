@@ -20,6 +20,11 @@ class CanvasUsers < ActiveRecord::Base
 			user = User.new email: canvas_user['login_id'], password: generated_password, password_confirmation: generated_password
 			user.skip_confirmation!
 			user.save!
+		else
+			last, first = canvas_user['sortable_name'].split(',')
+			user.first_name = first if user.first_name.nil?
+			user.last_name = last if user.last_name.nil?
+			user.save!
 		end
 		this_canvas_user = CanvasUsers.find_by_username canvas_user['login_id']
 		if this_canvas_user.nil?
