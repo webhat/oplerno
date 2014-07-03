@@ -19,7 +19,7 @@
 //= require chardinjs
 //= require angular
 //= require app
-//= require ../../../vendor/assets/javascripts/image-picker
-//= require ../../../vendor/assets/javascripts/jquery.lazyload.min
+//= require image-picker
+//= require jquery.lazyload.min
 //= require_tree .
 
