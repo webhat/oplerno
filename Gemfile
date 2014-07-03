@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.0.0'
+#ruby '2.0.0'
 
 if RUBY_VERSION =~ /1.9/
   Encoding.default_external = Encoding::UTF_8
@@ -116,8 +116,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
   gem 'database_cleaner'
-  gem 'perftools.rb'
-  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
+#  gem 'perftools.rb'
+#  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
 gem 'nokogiri', '~> 1.6'

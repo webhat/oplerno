@@ -340,7 +340,6 @@ GEM
     newrelic_rpm (3.8.1.221)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
-    open4 (1.3.4)
     orm_adapter (0.5.0)
     paper_trail (3.0.2)
       activerecord (>= 3.0, < 5.0)
@@ -354,7 +353,6 @@ GEM
       paperclip
       redis
     parallel (1.0.0)
-    perftools.rb (2.0.1)
     phantomjs (1.9.7.0)
     poltergeist (1.5.0)
       capybara (~> 2.1)
@@ -376,10 +374,6 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-perftools_profiler (0.6.1)
-      open4 (~> 1.0)
-      perftools.rb (~> 2.0.1)
-      rack (~> 1.0)
     rack-protection (1.5.3)
       rack
     rack-ssl (1.3.4)
@@ -627,10 +621,8 @@ DEPENDENCIES
   paper_trail
   paperclip (>= 4.1.1)
   paperclip_redis (~> 0.1.0)
-  perftools.rb
   poltergeist
   quiet_assets
-  rack-perftools_profiler
   rails (= 3.2.18)
   rails-assets-angular
   rails-assets-bootstrap-sass

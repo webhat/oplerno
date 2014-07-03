@@ -167,7 +167,7 @@ describe CoursesController do
         @course.avatar = File.open('app/assets/images/logo.png')
         @course.save
 
-        @course_alt = Course.create!
+        @course_alt = Course.create! name: 'Course Name'
       end
       it 'should change the image' do
         post :image_picker, {"image-picker" => @course_alt.id, id: @course.id}
