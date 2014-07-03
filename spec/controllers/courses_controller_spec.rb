@@ -154,5 +154,26 @@ describe CoursesController do
       end
     end
   end
+
+  describe 'GET image_picker' do
+    before do
+      @course = FactoryGirl.create(:course)
+      @course.teacher = 1
+      @course.save
+    end
+    describe 'while logged in' do
+      login_user
+      before(:each) do
+        @course.avatar = File.open('app/assets/images/logo.png')
+        @course.save
+
+        @course_alt = Course.create!
+      end
+      it 'should change the image' do
+				pending 'Image check broken'
+        post :image_picker, {"image-picker" => @course_alt.id, id: @course.id}
+      end
+    end
+  end
 end
 

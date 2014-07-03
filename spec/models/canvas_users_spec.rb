@@ -30,10 +30,6 @@ describe CanvasUsers do
 
       expect(user).to eq canvas_user.user
     end
-    it 'gets an update for all users' do
-      pending 'Errors out on occasion'
-      CanvasUsers.update_all
-    end
   end
 
   context 'Sync With Canvas' do

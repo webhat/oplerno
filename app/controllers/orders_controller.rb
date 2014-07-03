@@ -58,6 +58,7 @@ class OrdersController < InheritedResources::Base
 
 		if @order.save
 			purchase
+			render :action => 'new'
 		else
 			render :action => 'new'
 		end

@@ -22,19 +22,19 @@ gem 'jpbuilder'
 group :doc do
   gem 'sdoc', require: false
   gem 'yard', require: false
-  gem 'guard-rspec'
-  gem 'guard-yard'
-  gem 'guard-jasmine'
-  gem 'guard-coffeescript'
-  gem 'guard-cucumber'
-  gem 'redcarpet'
+  gem 'guard-rspec', require: false 
+  gem 'guard-yard', require: false 
+  gem 'guard-jasmine', require: false 
+  gem 'guard-coffeescript', require: false 
+  gem 'guard-cucumber', require: false 
+  gem 'redcarpet', require: false 
 
 # metrics
-  gem 'reek'
-  gem 'metric_fu'
-  gem 'simplecov-rcov-text'
-  gem 'churn'
-  gem 'flog'
+#  gem 'reek', require: false 
+#  gem 'metric_fu', require: false 
+#  gem 'churn', require: false 
+#  gem 'flog', require: false 
+	gem 'simplecov-rcov-text'
 end
 
 gem 'activeadmin', '>= 0.6.3'
@@ -89,12 +89,13 @@ gem 'minitest', '~> 4.7'
 gem 'minitest-rails', '>= 0.9.2'
 
 group :development, :test do
-  gem 'minitest-rails-capybara'
-  gem 'minitest-colorize'
-  gem 'minitest-focus'
+	gem 'minitest-rails-capybara'
+	gem 'minitest-colorize'
+	gem 'minitest-focus'
+	gem 'minitest-reporters'
 
-  gem 'minitest-reporters'
-  gem 'rspec-rails'
+	gem 'rspec-rails'
+	gem 'rspec', '< 3.0.0'
   gem 'rspec-expectations'
   gem 'rspec-mocks'
   gem 'simplecov'
@@ -106,7 +107,7 @@ end
 group :test do
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'capybara'
+	gem 'capybara', '>= 2.2.0'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
@@ -115,8 +116,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
   gem 'database_cleaner'
-  gem 'perftools.rb'
-  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
+#  gem 'perftools.rb'
+#  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
 gem 'nokogiri', '~> 1.6'

@@ -62,7 +62,9 @@ describe CanvasCourses do
     end
     it 'gets an update for all courses' do
 			pending 'you need to run a local redis and sidekiq for this to make any sense'
-      CanvasCourses.update_all
+			expect {
+				CanvasCourses.update_all
+			}.to raise_error
     end
     it "should add the user to Canvas when linked" do
 			pending 'doesn\'t work like this any more'

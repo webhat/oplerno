@@ -30,7 +30,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'ruby-saml'
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'rspec/autorun'
+#require 'rspec/autorun'
 
 require 'factory_girl_rails'
 require 'faker'
@@ -48,6 +48,7 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+	config.infer_spec_type_from_file_location!
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -56,6 +57,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = false
+
+	config.include RSpec::Rails::RequestExampleGroup, type: :feature
 
 	config.before :each do
 		if Capybara.current_driver == :rack_test
