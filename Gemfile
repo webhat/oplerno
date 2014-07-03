@@ -124,6 +124,7 @@ gem 'redis'
 gem 'sidekiq'
 gem 'sitemap'
 gem 'friendly_id'
+gem 'multi_fetch_fragments'
 gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'

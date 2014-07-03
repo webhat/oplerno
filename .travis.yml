@@ -19,6 +19,11 @@ matrix:
   fast_finish: true
   allow_failures:
   - rvm: ruby-head
+<<<<<<< HEAD
+=======
+services:
+  - redis
+>>>>>>> e55f7f3... change ruby version
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare

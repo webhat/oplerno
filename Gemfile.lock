@@ -331,6 +331,7 @@ GEM
       minitest (~> 4.0)
     money (6.1.1)
       i18n (~> 0.6.4)
+    multi_fetch_fragments (0.0.17)
     multi_json (1.10.1)
     multi_test (0.1.1)
     multipart-post (2.0.0)
@@ -625,6 +626,7 @@ DEPENDENCIES
   minitest-rails (>= 0.9.2)
   minitest-rails-capybara
   minitest-reporters
+  multi_fetch_fragments
   mysql2 (>= 0.3.15)
   newrelic_rpm (>= 3.7.3.204)
   nokogiri (~> 1.6)
