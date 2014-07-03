@@ -1,11 +1,24 @@
 ActiveAdmin.register User do
 	actions :all, :except => [:destroy]
   index do
+		column :avatar do |user|
+			link_to [user] do
+				image_tag(user.avatar.url(:thumb))
+			end
+		end
     column 'Name' do |user|
       begin
-          link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{user.id})", "/users/#{user.id}"
+          link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{user.id})", [user]
       rescue
         'Unknown'
+      end
+    end
+		column 'Courses' do |user|
+			course = Course.find_by_teacher(user.id)
+      begin
+				link_to course.name.force_encoding('binary'), [:admin, course]
+      rescue
+				'NA'
       end
     end
     column :email

@@ -1,6 +1,6 @@
 # If this were a shop #Course would be the product
 class CoursesController < ApplicationController
-  before_filter :set_course, only: [:show, :edit, :update, :destroy]
+  before_filter :set_course, only: [:show, :edit, :update, :destroy, :image_picker]
   before_filter :authenticate_user!, except: [:show, :index]
 
   helper_method :add_course_to_cart, :logged_in?
@@ -76,12 +76,21 @@ class CoursesController < ApplicationController
   def destroy
     return unless current_user?
 
-    @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
   end
+
+	def image_picker
+    return unless current_user?
+
+		avatar = Course.find(params['image-picker']).avatar
+		p "#{url_prefix request}#{avatar.url(:medium)}"
+		@course.avatar = avatar
+		@course.save
+		render layout: false
+	end
 
   def add_course_to_cart(course)
     session[:course_id] = course.id

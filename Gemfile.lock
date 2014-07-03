@@ -276,7 +276,10 @@ GEM
       minitest (~> 4.0)
     money (6.1.1)
       i18n (~> 0.6.4)
+<<<<<<< HEAD
     multi_fetch_fragments (0.0.17)
+=======
+>>>>>>> 9cdf48d28c7253d7affad82b1a6084b6e19bef39
     multi_json (1.10.1)
     multi_test (0.1.1)
     multipart-post (2.0.0)
@@ -296,7 +299,11 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+<<<<<<< HEAD
     paperclip_redis (0.1.1)
+=======
+    paperclip_redis (0.1.0)
+>>>>>>> 9cdf48d28c7253d7affad82b1a6084b6e19bef39
       paperclip
       redis
     phantomjs (1.9.7.1)
@@ -543,7 +550,12 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   paper_trail
   paperclip (>= 4.1.1)
+<<<<<<< HEAD
   paperclip_redis (> 0.0.8)
+=======
+  paperclip_redis (~> 0.1.0)
+  perftools.rb
+>>>>>>> 9cdf48d28c7253d7affad82b1a6084b6e19bef39
   poltergeist
   quiet_assets
   rails (= 3.2.18)
@@ -555,8 +567,13 @@ DEPENDENCIES
   rb-fsevent (~> 0.9.4)
   rb-inotify (~> 0.9.3)
   redcarpet
+<<<<<<< HEAD
   redis
   rspec (< 3.0.0)
+=======
+  redis (~> 3.0.4)
+  reek
+>>>>>>> 9cdf48d28c7253d7affad82b1a6084b6e19bef39
   rspec-expectations
   rspec-mocks
   rspec-rails

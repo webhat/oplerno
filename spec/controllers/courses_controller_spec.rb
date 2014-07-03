@@ -22,13 +22,13 @@ describe CoursesController do
   end
 
   describe 'POST create' do
-		login_user
-		it 'can create a course with an empty subject' do
-			post :create, valid_attributes
-			expect(response).to be_success
-			assigns(:course).should be_a(Course)
-		end
-	end
+    login_user
+    it 'can create a course with an empty subject' do
+      post :create, valid_attributes
+      expect(response).to be_success
+      assigns(:course).should be_a(Course)
+    end
+  end
 
   describe 'PUT edit' do
     before do
@@ -96,7 +96,7 @@ describe CoursesController do
 
       it 'responds successfully redirects to new user session' do
         put :update, {id: @course.id}
-				response.should redirect_to(course_path(@course.slug))
+        response.should redirect_to(course_path(@course.slug))
       end
     end
 
@@ -170,7 +170,6 @@ describe CoursesController do
         @course_alt = Course.create!
       end
       it 'should change the image' do
-				pending 'Image check broken'
         post :image_picker, {"image-picker" => @course_alt.id, id: @course.id}
       end
     end

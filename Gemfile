@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
+ruby '2.0.0'
 
 if RUBY_VERSION =~ /1.9/
   Encoding.default_external = Encoding::UTF_8
@@ -121,7 +122,7 @@ group :test do
 end
 
 gem 'nokogiri', '~> 1.6'
-gem 'redis'
+gem 'redis', '~> 3.0.4'
 gem 'sidekiq'
 gem 'sitemap'
 gem 'friendly_id'
@@ -141,7 +142,7 @@ gem 'slim'
 
 
 group :test, :production do
-	gem 'paperclip_redis', '> 0.0.8'
+	gem 'paperclip_redis', '~> 0.1.0'
 	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
 end
 
