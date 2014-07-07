@@ -49,6 +49,7 @@ Oplerno::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
 	config.assets.precompile += %w( devise_authy.js main.js plugins.js bootstrap-responsive.css chardinjs-0.1.2.css magic-bootstrap.css main.css normalize.css modernizr-2.6.2.min.js image-picker.js jquery.lazyload.min.js image-picker.css)
+	config.assets.paths << File.join(Rails.root, '/vendor/assets')
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
