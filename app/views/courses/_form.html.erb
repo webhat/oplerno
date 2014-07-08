@@ -54,7 +54,7 @@
 				<div class='well' style='min-width:400px;'>
 					<% Subject.all.each do |x| %>
 						<div style='display: inline-block;width:170px;'>
-							<label for="<%= "subject_list_#{x.id}" %>"><%= h(x.subject) %></label>
+							<label for="<%= "subject_list_#{x.id}" %>" id='<%= "subject_list_#{x.id}_label" %>'><%= h(x.subject) %></label>
 							<%= check_box_tag 'course[subject_list][]',  x.id, @course.subjects.include?(x), { id: "subject_list_#{x.id}" } %>
 						</div>
 					<% end %>
