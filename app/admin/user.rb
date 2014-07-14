@@ -55,7 +55,6 @@ ActiveAdmin.register User do
 	end
 
 	member_action :become, :method => :get do
-		return unless current_admin_user.id == 3
 		sign_in(:user, User.find(params[:id]), { :bypass => true })
 		redirect_to user_url
 	end
