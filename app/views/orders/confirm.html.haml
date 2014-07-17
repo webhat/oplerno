@@ -18,7 +18,6 @@
     $(window).ready(function() {
     console.log('send analytics data');
     ga('create', 'UA-41537918-3', { 'cookieDomain': 'none' });
-    ga('send', 'pageview', { 'page': '/my-new-page', 'hitCallback': function() { alert('analytics.js done sending data'); } });
     ga('require', 'ecommerce');
     ga('ecommerce:addTransaction', { 'id':'#{current_order.id}', 'affiliation':'Marketplace', 'revenue':'#{current_cart.total_price}', 'tax':'0.00' });
     - current_cart.courses.each do |course|
