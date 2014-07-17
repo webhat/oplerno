@@ -13,7 +13,7 @@
     .line-item
       %span.course-title #{t 'orders.total'}
       %span.pull-right.course-price $#{current_cart.total_price}
-- unless flash[:alert].nil?
+- if flash[:alert].nil?
   %script{:type=>"text/javascript"}
     $(window).ready(function() {
     console.log('send analytics data');
