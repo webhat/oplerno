@@ -17,3 +17,14 @@
 		<%= paginate @searches %>
 	</div>
 </div>
+<script type='text/javascript'>
+    $(window).ready(function() {
+    console.log('send analytics data');
+    ga('create', 'UA-41537918-3', { 'cookieDomain': 'none' });
+		ga('send', 'pageview', {
+			'page': '/searches/<%= @search %>',
+			'title': 'Search For <%= @search %>'
+		});
+    console.log('sent analytics data');
+    });
+</script>
