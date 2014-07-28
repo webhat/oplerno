@@ -1,14 +1,14 @@
 # Remote database credentials. Change to your username and database name. Don't fill the password field!
 set :db_remote_user, 'root'
 set :db_remote_password, ENV['MYSQL_PASSWORD']
-set :db_remote_name, 'oplerno_production'
+set :db_remote_name, "oplerno_production"
 # Local database credentials. Change to your username and database name. Don't fill the password field!
 set :db_local_user, 'root'
 set :db_local_password, ''
 set :db_local_name, 'oplerno_development'
 # A place where you'd like to save your database dumps
 set :local_dump_dir, 'db/dumps'
-set :sql_dump, "#{fetch(:db_remote_name)}_#{Time.now.to_i}.sql"
+set :sql_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{Time.now.to_i}.sql" }
 
 # Run with `cap db:sync`
 namespace :db do
