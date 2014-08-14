@@ -236,8 +236,6 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    intercom-rails (0.2.24)
-      activesupport (> 3.0)
     jasmine (2.0.1)
       jasmine-core (~> 2.0.0)
       phantomjs
@@ -601,7 +599,6 @@ DEPENDENCIES
   haml
   haml-rails (~> 0.4)
   hpricot
-  intercom-rails (~> 0.2.24)
   jasmine
   jasmine-jquery-rails
   jbuilder (~> 2.0.5)
