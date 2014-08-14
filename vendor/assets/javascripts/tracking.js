@@ -1,3 +1,4 @@
+INST.googleAnalyticsAccount = 'UA-41537918-6';
 
 (function (i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
@@ -9,10 +10,10 @@
 		a.async = 1;
 		a.src = g;
 		m.parentNode.insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', '_sec');
 
-ga('create', 'UA-41537918-6', 'enroll.oplerno.com');
-ga('set', 'forceSSL', true);
-ga('require', 'linkid', 'linkid.js');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
+_sec('create', 'UA-41537918-6', 'oplerno.instructure.com');
+_sec('set', 'forceSSL', true);
+_sec('require', 'linkid', 'linkid.js');
+_sec('require', 'displayfeatures');
+_sec('send', 'pageview');
