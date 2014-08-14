@@ -132,6 +132,7 @@ gem 'capistrano-bundler', group: :development
 #gem 'capistrano-rvm', group: :development
 gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
+gem 'intercom-rails', '~> 0.2.24'
 
 gem 'unicorn', '>= 4.8.2' #, group: :production
 
