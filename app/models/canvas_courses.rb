@@ -36,11 +36,11 @@ class CanvasCourses < ActiveRecord::Base
 		course = self.course
 		course = Course.create! name: canvas_course['name'], hidden: true if course.nil?
 
-		if canvas_course['workflow_state'] == "available"
-			course.hidden = false
-		else
+#		if canvas_course['workflow_state'] == "available"
+#			course.hidden = false
+#		else
 			course.hidden = true
-		end
+#		end
 		course.teacher = canvas_get_teacher
 		course.save
 		self.course = course
