@@ -34,3 +34,7 @@
 .course_image {
   -webkit-transform: translateZ(0.00001px);
 }
+
+.well > .well {
+	margin-bottom:0px;
+}
