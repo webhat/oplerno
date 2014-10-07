@@ -37,6 +37,21 @@ input {
 	min-height: 50px;
 }
 
+.btn.btn-success {
+  @include respond-to(medium-screens) {
+		font-size: 14px;
+		margin-left: -8px;
+	}
+	@include respond-to(small-screens) {
+		font-size: 14px;
+		margin-left: -8px;
+	}
+	@include respond-to(handhelds) {
+		font-size: 14px;
+		margin-left: -8px;
+	}
+}
+
 .left-inner-addon {
 	position: relative;
 }
