@@ -45,6 +45,9 @@ HOSTNAME: <%= Socket.gethostname %>
 
   <div class="row row-offcanvas row-offcanvas-right">
       <div class="col-xs-12 col-sm-12 col-lg-12 alerts span6 center offset2">
+				<% if is_teacher? %>
+					<%= render "layouts/abtest_notification" %>
+				<% end %>
 				<% unless notice.nil? %>
 					<div class="success alert-message">
 						<a class="close" href="#">×</a>

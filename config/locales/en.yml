@@ -23,6 +23,7 @@ en:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
     view: 'View'
+    complete: 'Having your information up to date will improve your ranking in the marketplace.'
   users:
     update: 'Update User'
     view: 'View details'

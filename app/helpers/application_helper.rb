@@ -12,6 +12,14 @@ module ApplicationHelper
 		false
 	end
 
+	def is_teacher?
+		if user_signed_in?
+			true
+		else
+			false
+		end
+	end
+
 	def avatar num
 		course = @courses[num]
 		unless course.nil?
