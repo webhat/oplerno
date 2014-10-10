@@ -15,7 +15,7 @@ Oplerno::Application.routes.draw do
 
   devise_scope :user do
 		get '/courses/me' => 'courses#me'
-		get '/teachers/edit' => 'teachers#edit'
+		get '/teachers/edit' => 'users#edit'
 
     resources :courses, except: [:new]
     resources :teachers, only: [:edit, :show, :index]
