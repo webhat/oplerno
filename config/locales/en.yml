@@ -59,6 +59,7 @@ en:
   payments:
     description: 'Course(s) with Oplerno LLC. %{courses}'
   courses:
+    mine: 'Your Courses'
     title: 'Courses Open For Enrollment'
     register: 'Take This Course'
     view: 'View'

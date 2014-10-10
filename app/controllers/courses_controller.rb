@@ -39,6 +39,12 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+	# GET /courses/me
+	# My courses
+	def me
+		@courses = current_user.courses
+	end
+
   # POST /courses
   # POST /courses.json
   def create
