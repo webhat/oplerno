@@ -31,7 +31,11 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
 
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+				if @user.email[-11..-1] == 'oplerno.com'
+					format.html { redirect_to "/teachers/#{@user.id}", notice: 'User was successfully updated.' }
+				else
+					format.html { redirect_to @user, notice: 'User WAS successfully updated.' }
+				end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
