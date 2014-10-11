@@ -40,6 +40,7 @@ end
 
 gem 'activeadmin', '>= 0.6.3'
 gem 'paper_trail'
+gem "paranoia", "~> 1.0"
 gem 'activemerchant', '>= 1.42.7'
 gem 'devise', '>= 3.2.4'
 gem 'devise-i18n', '>= 0.10.3'

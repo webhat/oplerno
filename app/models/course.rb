@@ -29,6 +29,7 @@ class Course < ActiveRecord::Base
 									:max, :min
 
 	has_paper_trail ignore: [:slug]
+	acts_as_paranoid
 
   has_many :teachers
   has_many :students
