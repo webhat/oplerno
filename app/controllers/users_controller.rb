@@ -32,9 +32,9 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
     respond_to do |format|
       if @user.update_attributes(user_params)
 				if @user.email[-11..-1] == 'oplerno.com'
-					format.html { redirect_to "/teachers/#{@user.id}", notice: 'User was successfully updated.' }
+					format.html { redirect_to "/teachers/#{@user.id}", notice: "User was successfully updated. <span class='pull-right'>#{undo_link}</span>" }
 				else
-					format.html { redirect_to @user, notice: 'User WAS successfully updated.' }
+					format.html { redirect_to @user, notice: "User WAS successfully updated. <span class='pull-right'>#{undo_link}</span>" }
 				end
         format.json { head :no_content }
       else
@@ -59,6 +59,12 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
   def whoami
     current_user
   end
+
+	def undo_link
+		unless @user.versions.scoped.last.nil?
+			view_context.link_to("undo", revert_version_path(@user.versions.scoped.last), :method => :post)
+		end
+	end
 
   protected
 

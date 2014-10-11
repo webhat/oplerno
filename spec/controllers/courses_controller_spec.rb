@@ -70,21 +70,21 @@ describe CoursesController do
       it "redirects to the course" do
         put :update, {:id => @course.to_param, :course => valid_attributes}
         expect(response).to_not be_success
-        flash[:notice].should eq (I18n.t 'courses.success.update')
+        flash[:notice].should eq (I18n.t 'courses.success.update') +" <span class='pull-right'></span>"
         response.should redirect_to(@course)
       end
 
       it 'edits the name field' do
         put :update, {:id => @course.to_param, :course => {name: 'Chinese Language'}}
         expect(response).to_not be_success
-        flash[:notice].should eq (I18n.t 'courses.success.update')
+        flash[:notice].should eq (I18n.t 'courses.success.update') +" <span class='pull-right'></span>"
         response.should redirect_to(@course)
       end
 
       it 'edits the name field' do
         put :update, {:id => @course.to_param, :course => {name: '中国语文'}}
         expect(response).to_not be_success
-        flash[:notice].should eq (I18n.t 'courses.success.update')
+        flash[:notice].should eq (I18n.t 'courses.success.update') +" <span class='pull-right'></span>"
         response.should redirect_to(@course)
       end
 
