@@ -37,6 +37,8 @@ Oplerno::Application.routes.draw do
 
     get '/saml/auth' => 'saml_idp#new'
     post '/saml/auth' => 'saml_idp#create'
+
+		post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   end
 
 	mount Paperclip::Storage::Redis::App.new => "/dynamic"
