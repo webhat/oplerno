@@ -96,6 +96,7 @@ en:
     dashboard_welcome:
       welcome: "Welcome"
       call_to_action: "Come and look around!"
+    versions: 'Recent Changes'
   modal:
     popup:
       sure: "Are you sure?"
