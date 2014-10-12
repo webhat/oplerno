@@ -99,9 +99,10 @@ group :development, :test do
   gem 'minitest-focus'
 
   gem 'minitest-reporters'
-	gem 'rspec-rails', '~>2.99'
-  gem 'rspec-expectations'
+	gem 'rspec-rails', '~>2.14'
+	gem 'rspec-expectations', '2.14'
   gem 'rspec-mocks'
+	gem 'rspec', '~> 2.14'
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'jasmine'
