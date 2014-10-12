@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.0.0'
+#ruby '2.0.0'
 
 if RUBY_VERSION =~ /1.9/
   Encoding.default_external = Encoding::UTF_8
@@ -32,10 +32,10 @@ group :doc do
 
 # metrics
 # FIXME: What's wrong here?
-#  gem 'reek'
-#  gem 'metric_fu'
-#  gem 'churn'
-#  gem 'flog'
+  gem 'reek'
+  gem 'metric_fu'
+  gem 'churn'
+  gem 'flog'
   gem 'simplecov-rcov-text'
 end
 
