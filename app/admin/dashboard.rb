@@ -13,6 +13,15 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
+        panel "Recently Active Courses (#{Course.all.count})" do
+          table_for Course.all(limit: 10, order: 'updated_at DESC') do
+            column do |course|
+              link_to course.name, [:admin, course]
+            end
+          end
+        end
+      end
+      column do
         panel "New Users (#{User.all.count})" do
           table_for User.all(limit: 10, order: 'created_at DESC') do
             column do |user|
@@ -25,7 +34,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Recent Users (#{User.all.count})" do
+        panel "Recently Active Users (#{User.all.count})" do
           table_for User.all(limit: 10, order: 'last_sign_in_at DESC') do
             column do |user|
 							link_to user.display_name.force_encoding('UTF-8'), [:admin, user]
