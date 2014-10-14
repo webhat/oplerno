@@ -129,8 +129,9 @@ gem 'nokogiri', '~> 1.6'
 gem 'redis', '~> 3.0.4'
 if RUBY_VERSION =~ /1.9/
 	gem 'sidekiq', '~>3.1.4'
+else
+	gem 'sidekiq'
 end
-gem 'sidekiq'
 gem 'sitemap'
 gem 'friendly_id'
 gem 'sshkit', group: :development
