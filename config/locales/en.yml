@@ -23,9 +23,11 @@ en:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
     view: 'View'
+    complete: 'Having your information up to date will improve your ranking in the marketplace.'
   users:
     update: 'Update User'
     view: 'View details'
+    change_password_notice: 'You can <a href="/users/edit">change your password here</a>.'
     messages:
       extra_security: 'Additional Security Features'
       authy_description: '<a href="%{url}" target="_new">Click here to enter your phone number</a>'
@@ -57,6 +59,7 @@ en:
   payments:
     description: 'Course(s) with Oplerno LLC. %{courses}'
   courses:
+    mine: 'Your Courses'
     title: 'Courses Open For Enrollment'
     register: 'Take This Course'
     view: 'View'
@@ -93,6 +96,7 @@ en:
     dashboard_welcome:
       welcome: "Welcome"
       call_to_action: "Come and look around!"
+    versions: 'Recent Changes'
   modal:
     popup:
       sure: "Are you sure?"

@@ -38,9 +38,11 @@
 			</div>
 			<div class="col-lg-3 col-sm-6">
         <div><%= f.label "Course image" %><%= f.file_field :avatar %></div>
-				<div class="xs-hidden col-sm-2 col-lg-4 avatar" style="background-image:url('<%= url_prefix request %><%= @course.avatar.url(:medium) %>');height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
+				<div class="xs-hidden col-sm-2 col-lg-4 avatar" id='course-avatar' style="background-image:url('<%= url_prefix request %><%= @course.avatar.url(:medium) %>');height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"></div>
       </div>
-			<div class='col-lg-3'><%= f.submit t('courses.update'), {:class => "btn btn-danger"} %></div>
+			<!--div class='col-lg-3'><a href='#' class='btn btn-success' id='image-picker-button' onclick='image_picker_open(); return false;'>Stock Image</a></div!-->
+			<!-- blah -->
+			<div class='col-lg-3' style='max-height:0;'><%= f.submit t('courses.update'), {:class => "btn btn-danger"} %></div>
 			<div class='clearfix'></div>
 			<div class='col-lg-5 col-md-6 col-sm-12 col-xs-12 '><%= f.label :description %>
 				<br/><%= f.text_area :description, class: 'tinymce', :placeholder => "Add a description here" %></div>
@@ -53,7 +55,7 @@
 				<div class='well' style='min-width:400px;'>
 					<% Subject.all.each do |x| %>
 						<div style='display: inline-block;width:170px;'>
-							<label for="<%= "subject_list_#{x.id}" %>"><%= h(x.subject) %></label>
+							<label for="<%= "subject_list_#{x.id}" %>" id='<%= "subject_list_#{x.id}_label" %>'><%= h(x.subject) %></label>
 							<%= check_box_tag 'course[subject_list][]',  x.id, @course.subjects.include?(x), { id: "subject_list_#{x.id}" } %>
 						</div>
 					<% end %>
@@ -76,6 +78,5 @@
 			</div>
     </div>
     <br/>
-    </div>
 		<div class='clearfix'><%= f.submit t('courses.update'), {:class => "btn btn-danger"} %></div>
 <% end %>

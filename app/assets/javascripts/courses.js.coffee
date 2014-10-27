@@ -10,7 +10,7 @@ window.switchButtons = ->
   })
 
   labelled_button = (i,but) ->
-    $(but).switchButton({ labels_placement: 'both', on_label: but.previousElementSibling.innerText, off_label: '' })
+    $(but).switchButton({ labels_placement: 'both', on_label: but.previousElementSibling.innerHTML, off_label: '' })
     $(but.previousElementSibling).hide();
 
   $('input[id^="skill_list_"]').each labelled_button

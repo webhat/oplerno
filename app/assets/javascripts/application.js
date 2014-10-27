@@ -19,5 +19,7 @@
 //= require chardinjs
 //= require angular
 //= require app
+//= require image-picker
+//= require jquery.lazyload.min
 //= require_tree .
 

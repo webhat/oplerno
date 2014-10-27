@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe Admin::CartsController do
+describe Admin::CartsController, :type => :controller do
   render_views
   login_admin
 

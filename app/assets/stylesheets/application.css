@@ -12,6 +12,7 @@
  *= require chardinjs
  *= require bootstrap-sass
  *= require jquery-ui
+ *= require ../../../vendor/assets/stylesheets/image-picker
  *= require_tree .
  */
 
@@ -32,4 +33,8 @@
 
 .course_image {
   -webkit-transform: translateZ(0.00001px);
+}
+
+.well > .well {
+	margin-bottom:0px;
 }

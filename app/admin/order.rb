@@ -25,7 +25,7 @@ ActiveAdmin.register Order do
     column 'User' do |cart|
       begin
         user = User.find(cart.user_id)
-        "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
+				link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})", [:admin, user]
       rescue
         puts $!.inspect, $@
         "*encrypted* (#{cart.user_id})"

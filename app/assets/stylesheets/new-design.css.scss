@@ -143,6 +143,7 @@ h1 {
 h2 {
 	@include respond-to(handhelds)  {font-size:large;}
 }
-.magic_course {
-	@include respond-to(handhelds)  {width:200px;}
+
+.atest, .btest {
+	display: none;
 }

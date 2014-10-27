@@ -45,6 +45,9 @@ HOSTNAME: <%= Socket.gethostname %>
 
   <div class="row row-offcanvas row-offcanvas-right">
       <div class="col-xs-12 col-sm-12 col-lg-12 alerts span6 center offset2">
+				<% if is_teacher? %>
+					<%= render "layouts/abtest_notification" %>
+				<% end %>
 				<% unless notice.nil? %>
 					<div class="success alert-message">
 						<a class="close" href="#">×</a>
@@ -91,21 +94,10 @@ HOSTNAME: <%= Socket.gethostname %>
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-41537918-3', 'enroll.oplerno.com');
+		ga('set', 'forceSSL', true);
+		ga('require', 'linkid', 'linkid.js');
+		ga('require', 'displayfeatures');
     ga('send', 'pageview');
-</script>
-
-<script type="text/javascript">var _kmq = _kmq || [];
-	var _kmk = _kmk || '4f219116dec87ba34eca0fa3c21fa3f4bf1b93ed';
-	function _kms(u){
-		setTimeout(function(){
-			var d = document, f = d.getElementsByTagName('script')[0],
-			s = d.createElement('script');
-			s.type = 'text/javascript'; s.async = true; s.src = u;
-			f.parentNode.insertBefore(s, f);
-		}, 1);
-	}
-	_kms('//i.kissmetrics.com/i.js');
-	_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 </script>
 </body>
 </html>

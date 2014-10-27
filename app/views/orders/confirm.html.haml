@@ -13,3 +13,16 @@
     .line-item
       %span.course-title #{t 'orders.total'}
       %span.pull-right.course-price $#{current_cart.total_price}
+- if flash[:alert].nil?
+  %script{:type=>"text/javascript"}
+    $(window).ready(function() {
+    console.log('send analytics data');
+    ga('create', 'UA-41537918-3', { 'cookieDomain': 'none' });
+    ga('require', 'ecommerce');
+    ga('ecommerce:addTransaction', { 'id':'#{current_order.id}', 'affiliation':'Marketplace', 'revenue':'#{current_cart.total_price}', 'tax':'0.00' });
+    - current_cart.courses.each do |course|
+      ga('ecommerce:addItem', { 'id':'#{current_order.id}', 'sku':'#{course.id}', 'name':'#{course.name}', 'price':'#{course.price}', 'quantity':'1', 'category':'course'});
+    ga('ecommerce:send');
+    console.log('sent analytics data');
+    });
+

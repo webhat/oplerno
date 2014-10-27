@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	serialize :links
 
 	has_paper_trail
+	acts_as_paranoid
 
 	# initialization callback
 	def after_initialize
@@ -75,10 +76,6 @@ class User < ActiveRecord::Base
   has_one :cart
   has_many :orders
   has_one :canvas_user
-
-  def destroy
-    self.hidden = 1
-  end
 
   def self.find_by_id(id)
     User.find(id)

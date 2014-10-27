@@ -4,6 +4,68 @@ ActiveAdmin.register_page "Dashboard" do
   content :title => proc { I18n.t("active_admin.dashboard") } do
     columns do
       column do
+        panel "New Courses (#{Course.all.count})" do
+          table_for Course.all(limit: 10, order: 'created_at DESC') do
+            column do |course|
+              link_to course.name, [:admin, course]
+            end
+          end
+        end
+      end
+      column do
+        panel "Recently Active Courses (#{Course.all.count})" do
+          table_for Course.all(limit: 10, order: 'updated_at DESC') do
+            column do |course|
+              link_to course.name, [:admin, course]
+            end
+          end
+        end
+      end
+      column do
+        panel "New Users (#{User.all.count})" do
+          table_for User.all(limit: 10, order: 'created_at DESC') do
+            column do |user|
+							link_to user.display_name.force_encoding('UTF-8'), [:admin, user]
+            end
+            column do |user|
+							link_to user.email, [:admin, user]
+            end
+          end
+        end
+      end
+      column do
+        panel "Recently Active Users (#{User.all.count})" do
+          table_for User.all(limit: 10, order: 'last_sign_in_at DESC') do
+            column do |user|
+							link_to user.display_name.force_encoding('UTF-8'), [:admin, user]
+            end
+          end
+        end
+      end
+    end
+    columns do
+      column do
+        panel "Popular Searches (#{Search.all.count})" do
+					table_for Search.select('term, count(id) as count_id').group('term').limit(10).order('count_id desc') do
+            column 'Term' do |search|
+							search.term
+            end
+            column 'Number' do |search|
+							search.count_id
+            end
+          end
+        end
+      end
+      column do
+        panel "Recent Searches (#{Search.all.count})" do
+          table_for Search.all(limit: 10, order: 'created_at DESC') do
+            column 'Term' do |search|
+							search.term
+            end
+          end
+        end
+      end
+      column do
         panel "Recent Orders (#{Order.all.count})" do
           ul do
             table_for Order.all(limit: 10).map do
@@ -29,39 +91,16 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-      column do
-        panel "Recent Courses (#{Course.all.count})" do
-          table_for Course.all(limit: 10, order: 'created_at DESC') do
-            column do |course|
-              link_to course.name, [:admin, course]
-            end
-          end
-        end
-      end
-      column do
-        panel "Recent Searches (#{Search.all.count})" do
-          table_for Search.all(limit: 10, order: 'created_at DESC') do
-            column do |search|
-							search.term
-            end
-          end
-        end
-      end
-      column do
-        panel "Info" do
-          para "Welcome to ActiveAdmin."
-        end
-      end
-    end
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
-    end
+		end
+   # div :class => "blank_slate_container", :id => "dashboard_default_message" do
+   #   span :class => "blank_slate" do
+   #     span I18n.t("active_admin.dashboard_welcome.welcome")
+   #     small I18n.t("active_admin.dashboard_welcome.call_to_action")
+   #   end
+   # end
 
-		section "Recently updated content" do
-			table_for PaperTrail::Version.order('id desc').limit(20) do # Use PaperTrail::Version if this throws an error
+		section link_to PaperTrail::Version, [:admin, :versions] do
+			table_for PaperTrail::Version.order('id desc').limit(10) do # Use PaperTrail::Version if this throws an error
 				column "ID" do |v| link_to v.item.id, [:admin, v.item] end # Uncomment to display as link
 				column "Item" do |v| v.item.display_name.force_encoding('UTF-8') end
 				column "Type" do |v| v.item_type.underscore.humanize end

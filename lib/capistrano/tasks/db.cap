@@ -1,14 +1,14 @@
 # Remote database credentials. Change to your username and database name. Don't fill the password field!
 set :db_remote_user, 'root'
 set :db_remote_password, ENV['MYSQL_PASSWORD']
-set :db_remote_name, 'oplerno_production'
+set :db_remote_name, "oplerno_production"
 # Local database credentials. Change to your username and database name. Don't fill the password field!
 set :db_local_user, 'root'
 set :db_local_password, ''
 set :db_local_name, 'oplerno_development'
 # A place where you'd like to save your database dumps
 set :local_dump_dir, 'db/dumps'
-set :sql_dump, "#{fetch(:db_remote_name)}_#{Time.now.to_i}.sql"
+set :sql_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{Time.now.to_i}.sql" }
 
 # Run with `cap db:sync`
 namespace :db do
@@ -32,7 +32,7 @@ namespace :db do
 	task :reindex do
     on roles(:db), in: :sequence, wait: 5 do
       within release_path do
-				execute "cd #{release_path} ; RAILS_ENV=production DB=#{fetch(:default_env)['DB']} PAYPAL_SIG=#{fetch(:default_env)['PAYPAL_SIG']} DEVISE_SECRET=xxx /tmp/Oplerno/rvm-auto.sh ruby-1.9.3-p448 bundle exec rake searchkick:reindex CLASS=Course"
+				execute "cd #{release_path} ; RAILS_ENV=production DB=#{fetch(:default_env)['DB']} PAYPAL_SIG=#{fetch(:default_env)['PAYPAL_SIG']} DEVISE_SECRET=xxx /tmp/Oplerno/rvm-auto.sh ruby-2.0.0-p481 bundle exec rake searchkick:reindex CLASS=Course"
 			end
 		end
 	end
