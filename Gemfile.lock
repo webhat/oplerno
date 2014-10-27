@@ -383,6 +383,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.2.0)
     rails (3.2.18)
       actionmailer (= 3.2.18)
       actionpack (= 3.2.18)
@@ -629,6 +630,7 @@ DEPENDENCIES
   paranoia (~> 1.0)
   poltergeist
   quiet_assets
+  railroady
   rails (= 3.2.18)
   rails-assets-angular
   rails-assets-bootstrap-sass

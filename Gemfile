@@ -95,6 +95,7 @@ gem 'minitest-rails', '>= 0.9.2'
 
 group :development, :test do
   #gem 'minitest-rails-capybara'
+	gem 'railroady'
   gem 'minitest-colorize'
   gem 'minitest-focus'
 
