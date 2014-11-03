@@ -64,6 +64,7 @@ ActiveAdmin.register User do
       f.input :encrypted_first_name, label: 'First Name'
       f.input :encrypted_last_name, label: 'Last Name'
 
+      f.input :description
       f.input :email
       f.input :password
       f.input :password_confirmation
