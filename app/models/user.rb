@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   attr_accessible :title,
                   :first_name,
                   :last_name,
-                  :email,
+									:email, :privateemail, :mailpass,
                   :username,
                   :description,
                   :hidden,
@@ -80,6 +80,10 @@ class User < ActiveRecord::Base
   def self.find_by_id(id)
     User.find(id)
   end
+
+	def is_teacher?
+		email[-11..-1] == 'oplerno.com' 
+	end
 
 	def display_name
 		begin
@@ -123,4 +127,12 @@ class User < ActiveRecord::Base
 		end
 	end
 	create_virtual_attributes :links
+
+	def mailpass= pass
+		@pass = pass
+	end
+
+	def mailpass
+		@pass
+	end
 end
