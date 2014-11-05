@@ -1,0 +1,2 @@
+module MailpreviewHelper
+end
