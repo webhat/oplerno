@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
                     :default_url => "/assets/:style/avatar.png", :storage => :redis
 
 	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
+	validates_uniqueness_of :email
 
 	serialize :links
 
