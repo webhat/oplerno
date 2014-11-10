@@ -40,6 +40,8 @@ ActiveAdmin.register Course do
 
   show do
     attributes_table do
+      row :id
+      row :hidden
 			row :avatar do |course|
 				image_tag(course.avatar.url(:thumb))
 			end
