@@ -29,7 +29,7 @@ describe UserObserver, :type => :observer do
 		end
 	end
 
-	it 'should not send a faculty mail if a teacher is created' do
+	it 'should not send a faculty mail if a teacher not is created' do
 		notification = double(Notification)
 		expect(notification).to_not receive(:deliver)
 		allow(Notification).to receive(:faculty_invite).and_return(notification)
@@ -40,13 +40,14 @@ describe UserObserver, :type => :observer do
 	end
 
 	it 'should send a faculty mail if a teacher is created' do
-		User.any_instance.should_receive(:is_teacher?).and_return(true)
+		#User.any_instance.should_receive(:is_teacher?).and_return(true)
 		notification = double(Notification)
 		expect(notification).to receive(:deliver)
 		allow(Notification).to receive(:faculty_invite).and_return(notification)
 
 		User.observers.enable :user_observer do
-			FactoryGirl.build(:user, email: 'testfacultymember@oplerno.com', privateemail: 'facultyinvite@example.com')
+			user = FactoryGirl.build(:user, email: 'facultyteach@oplerno.com', privateemail: 'facultyinvite@example.com')
+			user.save
 		end
 	end
 end

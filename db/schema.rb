@@ -94,13 +94,13 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.text     "description",         :limit => 255
+    t.text     "description"
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
     t.string   "type"
     t.text     "syllabus"
     t.boolean  "hidden"
-    t.integer  "min",                                :default => 2
-    t.integer  "max",                                :default => 25
+    t.integer  "min",                 :default => 2
+    t.integer  "max",                 :default => 25
     t.string   "slug"
     t.datetime "deleted_at"
   end
@@ -213,23 +213,23 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
   end
 
   create_table "users", :force => true do |t|
-    t.binary   "title",                   :limit => 255
-    t.binary   "first_name",              :limit => 255
-    t.binary   "last_name",               :limit => 255
+    t.binary   "title"
+    t.binary   "first_name"
+    t.binary   "last_name"
     t.string   "username"
-    t.text     "description",             :limit => 255
+    t.text     "description"
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.string   "email",                                  :default => "",    :null => false
-    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email",                   :default => "",    :null => false
+    t.binary   "encrypted_password",                         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                          :default => 0,     :null => false
+    t.integer  "sign_in_count",           :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -238,12 +238,12 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",                        :default => 0,     :null => false
+    t.integer  "failed_attempts",         :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",                          :default => false
+    t.boolean  "authy_enabled",           :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"
@@ -266,7 +266,6 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["privateemail"], :name => "index_users_on_privateemail", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 

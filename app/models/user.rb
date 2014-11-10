@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   end
 
 	def is_teacher?
-		email[-11..-1] == 'oplerno.com' 
+		self.email[-11..-1] == 'oplerno.com' 
 	end
 
 	def display_name
