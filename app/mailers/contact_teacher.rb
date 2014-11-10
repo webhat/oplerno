@@ -14,6 +14,7 @@ class ContactTeacher < ActionMailer::Base
 			subject = "Student Inquiry on #{course[:name]}"
 		end
 
+		@hively = false
 		@sent_on = Time.now
 		@headers = {}
 		mail(subject: subject, to: recipient)

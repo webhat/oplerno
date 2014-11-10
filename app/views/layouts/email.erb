@@ -152,7 +152,9 @@
   <tr>
     <td width="200" valign="top"></td>
 		<td width="400">
-			<%= render 'devise/mailer/hively' %>
+			<% unless @hively %>
+				<%= render 'devise/mailer/hively' %>
+			<% end %>
 		</td>
   </tr>
       </table>
