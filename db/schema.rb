@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141011190720) do
+ActiveRecord::Schema.define(:version => 20141104144207) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20141011190720) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20141011190720) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -259,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20141011190720) do
     t.datetime "avatar_updated_at"
     t.text     "links"
     t.datetime "deleted_at"
+    t.string   "privateemail"
   end
 
   add_index "users", ["authy_id"], :name => "index_users_on_authy_id"

@@ -1,0 +1,145 @@
+%tr
+  %td &nbsp;
+%tr
+  %td
+  %td
+    %h2 Hello and welcome Professor #{@user.encrypted_last_name}!
+%tr
+  %td
+  %td
+    Thanks again for your interest in working with Oplerno. This email serves as somewhat of an orientation resource "packet." Below, you'll find links to our modules and to documents that will help you establish your courses within the Oplerno network. First, let's get started with your new email account.
+    
+%tr
+  %td
+  %td
+    %h3 Email Account and Instructions
+%tr
+  %td
+  %td
+    %table
+      %tr
+        %td Username:
+        %td &nbsp;
+        %td
+          %b
+            = @user.email
+      %tr
+        %td Password:
+        %td &nbsp;
+        %td
+          %b
+            = @user.mailpass
+%tr
+  %td &nbsp;
+%tr
+  %td
+  %td
+    You can always login to your email account and change your account preferences and password via: email.oplerno.com
+    %br
+    *Please note: we are currently hosting our email through GoDaddy until our next phase of development, at which time we will transfer to our own email portal.
+    %p
+    We recommend using an email management program such as Thunderbird or Outlook (or Gmail if you prefer) to manage your email. However, you can always access your email via email.oplerno.com.
+    %p
+    The directions to set up these accounts are below:
+    %p
+    To set up your email via IMAP (Thunderbird, Outlook, iPhone, etc)
+    %p
+    %table
+      %tr
+        %td Username:
+        %td &nbsp;
+        %td
+          %b
+            = @user.email
+      %tr
+        %td Password:
+        %td &nbsp;
+        %td
+          %b
+            = @user.mailpass
+      %tr
+        %td
+          Incoming Mail Server
+        %td &nbsp;
+        %td
+          %b
+            imap.secureserver.net
+      %tr
+        %td
+          Outgoing Mail Server
+        %td &nbsp;
+        %td
+          %b
+            smtpout.secureserver.net
+      %tr
+        %td
+          Incoming Port
+        %td &nbsp;
+        %td
+          Without SSL -
+          %b 143
+          %br
+          With SSL -
+          %b 993
+      %tr
+        %td
+          Outgoing Port
+        %td &nbsp;
+        %td
+          Without SSL - one of the following:
+          %b 25, 80, 3535, 587
+          %br
+          With SSL -
+          %b 465
+
+    %p
+      To set up your email via POP3 (Gmail, etc):
+    
+    %table
+      %tr
+        %td Username:
+        %td &nbsp;
+        %td
+          %b
+            = @user.email
+      %tr
+        %td Password:
+        %td &nbsp;
+        %td
+          %b
+            = @user.mailpass
+      %tr
+        %td
+          Incoming Mail Server
+        %td &nbsp;
+        %td
+          %b
+            mail.oplerno.com
+      %tr
+        %td
+          Outgoing Mail Server
+        %td &nbsp;
+        %td
+          %b
+            smtpout.secureserver.net
+      %tr
+        %td
+          Incoming Port
+        %td &nbsp;
+        %td
+          Without SSL -
+          %b 143
+          %br
+          With SSL -
+          %b 993
+      %tr
+        %td
+          Outgoing Port
+        %td &nbsp;
+        %td
+          Without SSL - one of the following:
+          %b 25, 80, 3535, 587
+          %br
+          With SSL -
+          %b 465
+

@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Versions" do
   content :title => proc { I18n.t("active_admin.versions") } do
 		section "Recently updated content" do
-			table_for PaperTrail::Version.order('id desc').limit(100) do # Use PaperTrail::Version if this throws an error
+			table_for PaperTrail::Version.order('id desc').limit(250) do # Use PaperTrail::Version if this throws an error
 				column "ID" do |v| link_to v.item.id, [:admin, v.item] end # Uncomment to display as link
 				column "Item" do |v| v.item.display_name.force_encoding('UTF-8') end
 				column "Type" do |v| v.item_type.underscore.humanize end

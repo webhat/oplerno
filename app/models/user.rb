@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
                     :default_url => "/assets/:style/avatar.png", :storage => :redis
 
 	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
+	validates_uniqueness_of :email
 
 	serialize :links
 
@@ -47,7 +48,7 @@ class User < ActiveRecord::Base
   attr_accessible :title,
                   :first_name,
                   :last_name,
-                  :email,
+									:email, :privateemail, :mailpass,
                   :username,
                   :description,
                   :hidden,
@@ -80,6 +81,10 @@ class User < ActiveRecord::Base
   def self.find_by_id(id)
     User.find(id)
   end
+
+	def is_teacher?
+		self.email[-11..-1] == 'oplerno.com' 
+	end
 
 	def display_name
 		begin
@@ -123,4 +128,12 @@ class User < ActiveRecord::Base
 		end
 	end
 	create_virtual_attributes :links
+
+	def mailpass= pass
+		@pass = pass
+	end
+
+	def mailpass
+		@pass
+	end
 end
