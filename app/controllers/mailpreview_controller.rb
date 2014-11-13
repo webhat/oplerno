@@ -1,4 +1,6 @@
 class MailpreviewController < ApplicationController
+  before_filter :authenticate_admin_user!
+
 	def show
 		@user = User.last
 		@message = {email: @user.email}
