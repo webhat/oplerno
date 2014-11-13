@@ -29,6 +29,8 @@ group :doc do
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
   gem 'guard-cucumber'
+	gem 'brakeman', '~> 2.6.3'
+	gem 'guard-brakeman', '>= 0.8.2'
   gem 'redcarpet'
 
 # metrics
@@ -126,7 +128,7 @@ group :test do
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
-gem 'nokogiri', '~> 1.6'
+gem 'nokogiri', '= 1.6.3.1'
 gem 'redis', '~> 3.0.4'
 if RUBY_VERSION =~ /1.9/
 	gem 'sidekiq', '~>3.1.4'
