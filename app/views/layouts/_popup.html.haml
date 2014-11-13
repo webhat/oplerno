@@ -1,0 +1,11 @@
+#modal-dialog.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %a.close{"aria-hidden" => "true", "data-dismiss" => "modal", :href => "#"} &#x2716
+        %h3= t('modal.popup.sure')
+      .modal-body
+        %p= t('modal.popup.discard')
+      .modal-footer
+        %a#btnConfirm.btn.confirm{"data-dismiss" => "modal", :href => "#"}= t('modal.popup.ok')
+        %a.btn.secondary{"aria-hidden" => "true", "data-dismiss" => "modal", :href => "#"}= t('modal.popup.cancel')

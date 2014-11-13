@@ -1,0 +1,9 @@
+%h1= t('teachers.teachers')
+.pull-right
+  = paginate @teachers
+.clearfix
+.row-fluid
+  = render @teachers
+.clearfix
+.pull-right
+  = paginate @teachers

@@ -1,0 +1,23 @@
+.clearfix
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t('search.results')
+  .pull-right
+    = paginate @searches
+  .clearfix
+  - @searches.each do |course|
+    .col-lg-3.col-md-3.col-sm-4.col-xs-4.small= render course
+  - end unless @searches.empty?
+  .clearfix
+  .pull-right
+    = paginate @searches
+:javascript
+  $(window).ready(function() {
+      console.log('send analytics data');
+      ga('create', 'UA-41537918-3', { 'cookieDomain': 'none' });
+  		ga('send', 'pageview', {
+  			'page': '/searches/*',
+  			'title': 'Search All'
+  		});
+  
+      console.log('sent analytics data');
+      });

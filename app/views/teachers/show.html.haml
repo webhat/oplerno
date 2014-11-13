@@ -1,0 +1,23 @@
+.hide_name.col-3.col-lg-3.col-sm-4.col-xs-12
+  = render @teacher
+.col-9.col-lg-9.col-sm-8.col-xs-12
+  %h1.teacher_name= @teacher.display_name.force_encoding('UTF-8')
+  %h2.teacher_title.hidden-xs= @teacher.encrypted_title
+.clearfix
+.col-8.col-lg-8.col-md-8.col-sm-8.col-xs-8
+  %h2= t('teacher.about')
+  %span
+    = simple_format @teacher.description
+  = render partial: 'users/links/show', :handlers => [:haml], locals: { links: @user.links }
+.col-3.col-lg-3.col-md-3.col-sm-4.col-xs-8.well
+  %h2= t('courses.courses')
+  .col-lg-12.col-xs-12
+    - @teacher.courses.each { |course|
+    .col-lg-12.col-md-12.col-sm-12.col-xs-6
+      = render course
+    - }
+.clearfix
+%br/
+- if user_signed_in? && @teacher.id == current_user.id
+  = link_to 'Edit', edit_teacher_path(@teacher), {:class => "btn btn-default pull-right"}
+= link_to 'Back', teachers_path, {:class => "btn btn-default"}

@@ -1,0 +1,13 @@
+%h2
+  = I18n.t('authy.register.title', {:scope => 'devise'})
+= verify_authy_form do
+  %legend= I18n.t('authy.submit.token_title', {:scope => 'devise'})
+  = label_tag :token
+  = text_field_tag :token, "", :autocomplete => :off, :id => 'authy-token'
+  %label
+    = check_box_tag :remember_device
+    %span= I18n.t('authy.remember_device', {:scope => 'devise'})
+  = link_to '?', '#', :id => 'authy-help'
+  - if false
+    = authy_request_sms_link
+  = submit_tag I18n.t('authy.submit_token', {:scope => 'devise'}), :class => 'btn'

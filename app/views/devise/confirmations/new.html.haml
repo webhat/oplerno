@@ -1,0 +1,9 @@
+%h2= t('devise.confirmations.resend_confirm')
+= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:method => :post}) do |f|
+  = devise_error_messages!
+  %div
+    = f.label :email
+    %br/
+    = f.email_field :email, :autofocus => true
+  %div= f.submit t('devise.confirmations.resend_confirm'), {class: 'btn btn-danger'}
+= render "devise/shared/links"
