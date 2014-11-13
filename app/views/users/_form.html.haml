@@ -1,0 +1,42 @@
+= semantic_form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  = f.inputs class: 'list-unstyled' do
+    .row
+      .col-lg-7
+        = f.input :encrypted_title, label: t('users.fields.title')
+        = f.input :encrypted_first_name, label: t('users.fields.first_name')
+        = f.input :encrypted_last_name, label: t('users.fields.last_name')
+        = f.input :email, label: t('users.fields.email')
+      .col-lg-3
+    %li.optional
+      %label.label= t('users.fields.avatar')
+    %li
+      = f.file_field :avatar
+    .xs-hidden.col-sm-2.col-lg-4.avatar{:style => "background-image:url('#{url_prefix request}#{@user.avatar.url(:medium)}');height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"}
+    .col-lg-3
+      = f.actions class: 'list-unstyled' do
+        = f.action :submit, :as => :input, button_html: {class: 'btn btn-danger'}, label: true
+    .clearfix
+    %div
+      %label.label{:for => "user_description"}= t('users.fields.description')
+    .col-lg-8/
+    %li
+      = f.text_area :description, class: 'tinymce', label: t('users.fields.description'), rows: 40, cols: 120
+      = tinymce
+    .col-lg-8
+      %hr/
+      %h3= t('users.messages.extra_security')
+      = f.input :hidden, as: :boolean, label: t('users.fields.hidden')
+      = f.input :authy_enabled, label: t('users.fields.authy_enabled')
+      = raw t('users.messages.authy_description', url: '/users/enable-two-factor')
+    %div
+      = render partial: 'users/links/links', :handlers => [:haml], locals: { f: f }
+  = f.actions class: 'list-unstyled' do
+    = f.action :submit, :as => :input, button_html: {class: 'btn btn-danger'}, label: true

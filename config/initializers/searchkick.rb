@@ -1,0 +1,1 @@
+require 'typhoeus/adapters/faraday'

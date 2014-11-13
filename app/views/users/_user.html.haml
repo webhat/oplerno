@@ -1,0 +1,16 @@
+.col-4.hidden-xs.col-sm-3.col-sm-offset-1.col-md-2.col-md-offset-0.col-lg-2.top10.teacher
+  = link_to(user) do
+    .teacher_image{:style => "background-image:url('#{url_prefix request}#{user.avatar.url(:medium)}');"}
+  .teacher_name.top5
+    %span.hidden-sm.hidden-xs= user.encrypted_title
+    %span
+      = user.display_name.force_encoding('UTF-8')
+.hidden-sm.hidden-md.hidden-lg.col-xs-12.top5.teacher
+  .col-xs-3
+    = link_to(user) do
+      .teacher_image{:style => "background-image:url('#{url_prefix request}#{user.avatar.url(:thumb)}');"}
+  .col-xs-4.pull-right.hide_name
+    %span
+      = user.encrypted_title
+    %span
+      = user.display_name.force_encoding('UTF-8')

@@ -12,11 +12,11 @@ guard 'coffeescript', :output => 'spec/javascripts/compiled', :input => 'spec/ja
 end
 
 #guard :jasmine, coverage: true do
-#  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
-#  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
-#  watch(%r{spec/javascripts/fixtures/.+$})
-#  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) { |m| "spec/javascripts/#{ m[1] }_spec.#{ m[2] }" }
-#end
+# watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
+# watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
+# watch(%r{spec/javascripts/fixtures/.+$})
+# watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) { |m| "spec/javascripts/#{ m[1] }_spec.#{ m[2] }" }
+#nd
 
 guard :rspec, cmd: 'bundle exec rspec' do
   watch(%r{^spec/.+_spec\.rb$})
@@ -50,4 +50,11 @@ guard 'cucumber' do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$}) { 'features' }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+end
+
+guard 'brakeman', :run_on_start => true do
+  watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
+  watch(%r{^config/.+\.rb$})
+  watch(%r{^lib/.+\.rb$})
+  watch('Gemfile')
 end

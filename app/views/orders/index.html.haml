@@ -1,0 +1,13 @@
+%h1 Listing orders
+%table
+  %tr
+    %th
+    %th
+    %th
+  - @orders.each do |order|
+    %tr
+      %td= link_to 'Show', order, {class: 'btn btn-danger'}
+      %td= link_to 'Edit', edit_order_path(order), {class: 'btn btn-danger'}
+      %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, {class: 'btn btn-danger'}
+%br/
+= link_to 'New Order', new_order_path, {class: 'btn btn-danger'}

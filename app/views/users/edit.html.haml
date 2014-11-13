@@ -1,0 +1,8 @@
+.success.alert-message.col-lg-4.col-lg-offset-3
+  = t('users.change_password_notice').html_safe
+.clearfix
+%h1 Editing user
+= render 'form'
+= link_to 'Show', @user, {class: 'btn btn-danger'}
+|
+\#{link_to 'Back', '/', {class: 'btn btn-danger'}}

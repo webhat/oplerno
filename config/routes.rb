@@ -13,6 +13,11 @@ Oplerno::Application.routes.draw do
       :verify_authy_installation => '/verify-installation'
   }
 
+	devise_scope :admin_users do
+		match 'admin/mailer(/:mailer(/:method(.:format)))' => 'mailpreview#show'
+	end
+
+
   devise_scope :user do
 		get '/courses/me' => 'courses#me'
 		get '/teachers/edit' => 'users#edit'

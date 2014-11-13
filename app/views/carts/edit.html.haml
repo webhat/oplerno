@@ -1,0 +1,11 @@
+%h1 Editing cart
+- @cart.courses.each do |course|
+  .col-6.col-sm-6.col-lg-4
+    .xs-hidden.col-sm-2.col-lg-4{:style => "background-image:url(#{course.avatar.url(:medium)});height:256px;width:256px;border:1px solid black;background-position:center top;background-repeat:no-repeat;"}
+  %div= course.name
+  %div= button_to "Remove", remove_course_from_cart(course), {:disabled => !logged_in?, :class => "btn btn-default"}
+- end unless @cart.courses.empty?
+.clearfix
+= link_to 'Show', @cart, {:class => "btn btn-info pull-left"}
+|
+\#{link_to 'Back', carts_path, {:class => "btn btn-info pull-right"}}
