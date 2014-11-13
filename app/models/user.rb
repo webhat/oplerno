@@ -1,6 +1,8 @@
 # Handles the User and ensures that it is linked to Canvas by way of a #CanvasUsers
 # #Student and #Teacher are aliases for this class
 class User < ActiveRecord::Base
+	extend EncryptedAttributes
+	extend VirtualAttributes
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
 										:path => "users/:attachment/:id_partition/:style/:filename",
@@ -10,17 +12,8 @@ class User < ActiveRecord::Base
 	validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 	validates_uniqueness_of :email
 
-	serialize :links
-
 	has_paper_trail
 	acts_as_paranoid
-
-	# initialization callback
-	def after_initialize
-	  self.links ||= {} 
-	end
-
-	validates_with UserValidator, fields: [:links]
 
   encrypt_with_public_key :secret,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
@@ -30,6 +23,13 @@ class User < ActiveRecord::Base
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
   encrypt_with_public_key :last_name,
                           :key_pair => Rails.root.join('config', 'strongbox', 'keypair.pem')
+
+	create_encrypted_attributes :last_name, :first_name, :title
+
+	create_virtual_attributes :links
+	validates_with UserValidator, fields: [:links]
+  attr_accessible :links
+	serialize :links
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -70,8 +70,7 @@ class User < ActiveRecord::Base
                   :filename,
                   :content_type,
                   :binary_data,
-                  :encrypted_title, :encrypted_last_name, :encrypted_first_name,
-									:links
+                  :encrypted_title, :encrypted_last_name, :encrypted_first_name
 
   has_and_belongs_to_many :courses
   has_one :cart
@@ -94,45 +93,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
-	def self.create_encrypted_attributes (*args)
-		args.each do |method_name|
-			define_method "encrypted_#{method_name}" do
-				self.send(method_name).decrypt Devise.secret_key
-			end
-			define_method "encrypted_#{method_name}=" do |input|
-				self.send("#{method_name}=", input)
-			end
-		end
-	end
-
-	create_encrypted_attributes :last_name, :first_name, :title
-
-	def self.create_virtual_attributes (*args)
-		args.each do |method_name|
-			6.times do |key|
-				key = key.to_s
-				['name', 'url'].each do |field|
-					define_method "#{method_name}_#{field}_#{key}" do
-						self.links[key][field] unless self.links.nil? or self.links[key].nil? or self.links[key][field].nil?
-					end
-					define_method "#{method_name}_#{field}_#{key}=" do |value|
-						puts "XXXX: #{value}"
-						return if value.empty?
-						self.links ||= {}
-						self.links[key] ||= {}
-						self.links[key][field] = value
-					end
-				end
-			end
-		end
-	end
-	create_virtual_attributes :links
-
+	# Store the mail password in memory plaintext while the invitation mail is being generated
+	#
 	def mailpass= pass
 		@pass = pass
 	end
 
+	# Retrieve the mail password from memory plaintext for the invitation mail
+	#
 	def mailpass
 		@pass
 	end
