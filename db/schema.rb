@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20141118220235) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20141118220235) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(:version => 20141118220235) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["privateemail"], :name => "index_users_on_privateemail", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
