@@ -15,4 +15,15 @@ describe Teacher do
   it 'can be updated'
   it 'can be hidden'
   it 'can be unhidden'
+
+	it 'have no ranking' do
+		teacher = FactoryGirl.create(:teacher)
+		teacher.rank.should be_nil
+	end
+
+	it 'have a ranking' do
+		teacher = FactoryGirl.create(:teacher)
+		teacher.create_rank
+		teacher.rank.should_not be_nil
+	end
 end

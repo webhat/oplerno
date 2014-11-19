@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141104144207) do
+ActiveRecord::Schema.define(:version => 20141118220235) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -206,6 +206,15 @@ ActiveRecord::Schema.define(:version => 20141104144207) do
   end
 
   add_index "subjects", ["subject"], :name => "index_subjects_on_subject", :unique => true
+
+  create_table "teacher_rankings", :force => true do |t|
+    t.integer  "teacher_id"
+    t.integer  "ranking"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "teacher_rankings", ["teacher_id"], :name => "index_teacher_rankings_on_teacher_id", :unique => true
 
   create_table "teachers", :force => true do |t|
     t.datetime "created_at", :null => false

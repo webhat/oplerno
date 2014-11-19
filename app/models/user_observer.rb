@@ -9,4 +9,15 @@ class UserObserver < ActiveRecord::Observer
 			Notification.faculty_invite(user).deliver
 		end
 	end
+
+	def after_save(user)
+		if user.is_teacher?
+			teacher = Teacher::find(user.id)
+			if teacher.rank.nil?
+				teacher.create_rank
+				teacher.rank.teacher = teacher
+				teacher.save
+			end
+		end
+	end
 end

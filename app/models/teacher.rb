@@ -11,4 +11,6 @@ class Teacher < User
 
 	searchkick
 	paginates_per 24
+
+	has_one :rank, class_name: 'TeacherRanking'
 end
