@@ -1,5 +1,5 @@
 class TeacherRanking < ActiveRecord::Base
-  attr_accessible :ranking, :teacher_id
+  attr_accessible :ranking
 	has_paper_trail
 
 	belongs_to :teacher
