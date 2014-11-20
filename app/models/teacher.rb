@@ -13,4 +13,8 @@ class Teacher < User
 	paginates_per 24
 
 	has_one :rank, class_name: 'TeacherRanking'
+
+	def self.all
+		Teacher.where("email like ?", "%oplerno.com%")
+	end
 end

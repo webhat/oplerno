@@ -1,6 +1,6 @@
 class TeacherRanking < ActiveRecord::Base
   attr_accessible :ranking
-	has_paper_trail
+	#has_paper_trail
 
 	belongs_to :teacher
 
@@ -17,7 +17,7 @@ class TeacherRanking < ActiveRecord::Base
 		add_rank self.teacher[:sign_in_count]/10, :sign_in_count
 		add_rank 40, :description
 
-		self.save
+		synchronize_rank
 	end
 
 	def add_rank rank, member

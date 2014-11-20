@@ -13,10 +13,11 @@ class UserObserver < ActiveRecord::Observer
 	def after_save(user)
 		if user.is_teacher?
 			teacher = Teacher::find(user.id)
+
 			if teacher.rank.nil?
 				teacher.create_rank
 				teacher.rank.teacher = teacher
-				teacher.save
+				teacher.rank.save
 			end
 		end
 	end
