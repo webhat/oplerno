@@ -7,6 +7,6 @@ class CreateTeacherRankings < ActiveRecord::Migration
       t.timestamps
     end
 
-		add_index :teacher_rankings, :teacher_id, :unique => true 
+    add_index :teacher_rankings, :teacher_id, :unique => true 
   end
 end
