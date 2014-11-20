@@ -14,7 +14,7 @@ class Teacher < User
 
 	has_one :rank, class_name: 'TeacherRanking'
 
-	def self.all
-		Teacher.where("email like ?", "%oplerno.com%")
+	def self.all(*args)
+		find(:all, *args, conditions: [ "email like ?", "%oplerno.com"])
 	end
 end
