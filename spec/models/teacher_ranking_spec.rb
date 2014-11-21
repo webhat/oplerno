@@ -25,7 +25,10 @@ describe TeacherRanking do
 		end
 		it 'should rank first name' do
 			@teacher.first_name = Faker::Name.first_name
-			@teacher.save
+
+			User.observers.enable :user_observer do
+				@teacher.save
+			end
 
 			@teacher.rank.rank
 

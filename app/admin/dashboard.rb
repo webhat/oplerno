@@ -54,6 +54,8 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+		end
+    columns do
       column do
         panel "Ranking Teachers (#{TeacherRanking.all.count})" do
           table_for TeacherRanking.all(limit: 10, order: 'ranking DESC') do
@@ -62,6 +64,18 @@ ActiveAdmin.register_page "Dashboard" do
 						end
             column do |rank|
 							link_to rank.teacher.display_name.force_encoding('UTF-8'), [:admin, User::find(rank.teacher.id)]
+            end
+          end
+        end
+      end
+      column do
+        panel "Ranking Courses (#{CourseRanking.all.count})" do
+          table_for CourseRanking.all(limit: 10, order: 'ranking DESC') do
+            column do |rank|
+							rank.ranking
+						end
+            column do |rank|
+							link_to rank.course.name.force_encoding('UTF-8'), [:admin, rank.course]
             end
           end
         end
