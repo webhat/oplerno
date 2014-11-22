@@ -61,6 +61,5 @@ Oplerno::Application.configure do
     )
   end
 
-  #::CANVAS_HOST = 'oplerno.test.instructure.com'
-  ::CANVAS_HOST = 'oplerno.instructure.com'
+  ::CANVAS_HOST = 'oplerno.test.instructure.com'
 end

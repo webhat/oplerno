@@ -26,4 +26,7 @@ describe Teacher do
 		teacher.create_rank
 		teacher.rank.should_not be_nil
 	end
+	context '#all' do
+		it { expect(described_class.all).to_not be_nil }
+	end
 end

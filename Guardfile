@@ -28,6 +28,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
 	watch(%r{^spec/factories/(.+)\.rb$}) { |m| ["spec/models/", "spec/controllers/#{m[1]}_controller_spec.rb"] }
+	watch(%r{^app/models/(.+)\.rb$}) { |m| ["spec/models/#{m[1]}_spec.rb", "spec/controllers/#{m[1]}s_controller_spec.rb"] }
   watch(%r{^spec/support/(.+)\.rb$}) { "spec" }
   watch('config/routes.rb') { "spec/routing" }
   watch('app/controllers/application_controller.rb') { "spec/controllers" }
