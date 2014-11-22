@@ -682,6 +682,7 @@ DEPENDENCIES
   redis (~> 3.0.4)
   redis-rack-cache
   redis-rails
+  redis-store
   reek
   rspec (~> 2.14)
   rspec-expectations (= 2.14)

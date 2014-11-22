@@ -131,6 +131,9 @@ end
 
 gem 'nokogiri', '= 1.6.3.1'
 gem 'redis', '~> 3.0.4'
+gem 'redis-rails'
+gem 'redis-store'
+gem 'redis-rack-cache'
 if RUBY_VERSION =~ /1.9/
 	gem 'sidekiq', '~>3.1.4'
 else
@@ -146,8 +149,6 @@ gem 'capistrano-bundler', group: :development
 gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
 
-gem 'redis-rails'
-gem 'redis-rack-cache'
 
 gem 'unicorn', '>= 4.8.2' #, group: :production
 
