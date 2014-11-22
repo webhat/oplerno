@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
 
 	private
 
-	def search_params(params)
+	def search_params
 		params[:search]
 	end
 
