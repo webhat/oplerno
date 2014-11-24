@@ -4,18 +4,18 @@
       %h1.course_name.p-name.fn{:itemprop => "name"}= @course.name
     .hidden-sm.hidden-xs.e-description.description{:itemprop => "description"}
       = simple_format @course.description
-  .col-lg-3.col-md-3.col-sm-4.col-xs-6
+  .col-lg-3.col-md-3.col-sm-5.col-xs-12
     .well.hide_name.magic_course
       .well
         = render @course
     - teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? or @course.teacher.empty?
     - unless teacher.nil?
       .well
-        .well.small.hide_name
+        .well.hide_name
           %h2= t('teachers.teacher')
           = render teacher
           .hidden-sm.hidden-md.hidden-lg.col-xs-12{:itemprop => "performer"}= teacher.display_name.force_encoding('UTF-8')
-          %div
+          %div.top30
             %a.btn.btn-success{:href => "#", :onclick => "ga('send', 'event', 'button', 'click', 'mail instructor', 4); open_inquire_dialog(); return false;"}= t 'courses.contact'
     .well
       .well
@@ -38,14 +38,14 @@
               $#{@course.price}
           - rescue
             = t('courses.price.not_set')
-  .hidden-lg.hidden-md.col-sm-6.col-xs-6
+  .hidden-lg.hidden-md.col-sm-7.col-xs-12
     = simple_format @course.description
   .clearfix
-  .col-lg-8.col-md-8.col-sm-7.col-xs-6.syllabus
+  .col-lg-8.col-md-8.col-sm-12.col-xs-12.syllabus
     %h2 Syllabus
     %span
       = simple_format @course.syllabus
-  .col-lg-5.col-md-5.col-sm-5.col-xs-11.well
+  .col-lg-5.col-md-5.col-sm-6.col-xs-12.well
     %h2= t('courses.subjects')
     - begin
       - @course.subjects.each { |subject|
@@ -54,7 +54,7 @@
       - }
     - rescue
       = t('courses.subjects.not_set')
-  .col-lg-5.col-md-5.col-sm-5.col-xs-11.col-lg-offset-1.col-md-offset-1.col-sm-offset-1.well
+  .col-lg-5.col-md-5.col-sm-5.col-xs-12.col-lg-offset-1.col-md-offset-1.col-sm-offset-1.well
     %h2= t('courses.skills')
     - begin
       - @course.skills.each { |skill|
@@ -65,12 +65,12 @@
       = t('courses.skills.not_set')
 .clearfix
 .clearfix.top5
-  .col-xs-4
+  .col-xs-6
     - if user_signed_in? && !teacher.nil? && teacher.id == current_user.id
       = button_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg"}
     - else
       = button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger oplerno-cta btn-lg"}
-  .col-xs-4
+  .col-xs-6
     = link_to t('generic.back'), courses_path, {:class => "btn btn-default pull-right"}
 - unless teacher.nil?
   = render partial: 'inquire', :handlers => [:haml], locals: { id: teacher.id }

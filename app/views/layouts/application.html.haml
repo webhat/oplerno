@@ -32,11 +32,11 @@
       your browser</a> to improve your experience.</p>
     = render "layouts/navbar"
     .container
-      .row.row-offcanvas.row-offcanvas-right
-        .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
-          - if is_teacher?
-            = render "layouts/abtest_notification"
-          - unless notice.nil?
+      .row
+        - if is_teacher?
+          = render "layouts/abtest_notification"
+        - unless notice.nil?
+          .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
             .success.alert-message
               %a.close{:href => "#"} ✖
               %span= notice.html_safe
@@ -45,7 +45,7 @@
               %a.close{:href => "#"} ✖
               %span
                 = alert
-        .col-xs-12.col-sm-12.col-lg-12.top30
+        .col-xs-12.col-sm-12.col-lg-12
           .row
             / was row-fluid
             = yield
