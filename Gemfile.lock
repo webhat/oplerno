@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/webhat/podio-rb.git
+  revision: eddd85acff4a1e01181d5147f0497d2bc1c95253
+  specs:
+    podio (1.0.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      faraday (~> 0.9.0)
+      multi_json
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -667,6 +677,7 @@ DEPENDENCIES
   paperclip (>= 4.1.1)
   paperclip_redis (~> 0.1.0)
   paranoia (~> 1.0)
+  podio!
   poltergeist
   quiet_assets
   railroady

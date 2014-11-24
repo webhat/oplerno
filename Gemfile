@@ -61,6 +61,7 @@ gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
 gem 'kaminari', '>= 0.15.1'
 
+gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'canvas-api', '>= 1.0'
 
 gem 'json'
