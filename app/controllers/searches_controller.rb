@@ -4,14 +4,18 @@ class SearchesController < ApplicationController
 	end
 
 	def create
-		@search = params[:search][:term]
+		@search = search_params[:term]
 		puts @search
-		Search.create! params[:search]
+		Search.create! search_params
 		@searches = Course.search @search, per_page: 24, fields: [{name: :word_start}, {description: :word}]
 		not_found
 	end
 
 	private
+
+	def search_params
+		params[:search]
+	end
 
 	def not_found
 		flash[:alert] = t('search.not_found', term: @search) if @searches.empty?

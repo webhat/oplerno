@@ -1,0 +1,14 @@
+.col-sm-12
+  %h1= t('teachers.teachers')
+.pull-right
+  = paginate @teachers
+.clearfix
+.row
+  - @teachers.each do |teacher|
+    .teacher.small.col-xs-6.col-sm-4.col-sm-offset-1.col-md-3.col-md-offset-0.col-lg-3.col-lg-offset-0
+      = render teacher
+      %span.hidden-lg.hidden-md.hidden-sm{:itemprop => "name"}
+        = teacher.display_name.force_encoding('UTF-8')
+.clearfix
+.pull-right
+  = paginate @teachers

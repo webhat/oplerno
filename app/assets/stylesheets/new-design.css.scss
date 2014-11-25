@@ -10,10 +10,13 @@ body .container {
 }
 
 body > .container {
-  @include respond-to(handhelds) {
-	}
   @include respond-to(small-screens) {
-  margin-left: 0px !important;
+		margin-left: 0px !important;
+	}
+  @include respond-to(handhelds) {
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-left: -30px;
 	}
 }
 
@@ -81,7 +84,7 @@ $grey: #eee;
 
 .navbar-fixed-top, .navbar-fixed-bottom {
   position: static;
-  @include respond-to(handhelds) { margin-bottom: 50px;}
+  @include respond-to(handhelds) { margin-bottom: 10px;}
 }
 
 .navbar-toggle {

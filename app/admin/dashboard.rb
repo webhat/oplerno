@@ -42,6 +42,44 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+      column do
+        panel "Recently Active Teachers (#{Teacher.all.count})" do
+          table_for Teacher.all(limit: 10, order: 'last_sign_in_at DESC') do
+            column do |teacher|
+							teacher.rank.ranking
+						end
+            column do |teacher|
+							link_to teacher.display_name.force_encoding('UTF-8'), [:admin, User::find(teacher.id)]
+            end
+          end
+        end
+      end
+		end
+    columns do
+      column do
+        panel "Ranking Teachers (#{TeacherRanking.all.count})" do
+          table_for TeacherRanking.all(limit: 10, order: 'ranking DESC') do
+            column do |rank|
+							rank.ranking
+						end
+            column do |rank|
+							link_to rank.teacher.display_name.force_encoding('UTF-8'), [:admin, User::find(rank.teacher.id)]
+            end
+          end
+        end
+      end
+      column do
+        panel "Ranking Courses (#{CourseRanking.all.count})" do
+          table_for CourseRanking.all(limit: 10, order: 'ranking DESC') do
+            column do |rank|
+							rank.ranking
+						end
+            column do |rank|
+							link_to rank.course.name.force_encoding('UTF-8'), [:admin, rank.course]
+            end
+          end
+        end
+      end
     end
     columns do
       column do

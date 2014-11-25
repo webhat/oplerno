@@ -36,9 +36,10 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_and_belongs_to_many :carts
   has_and_belongs_to_many :skills
+	has_and_belongs_to_many :subjects
   has_one :canvas_course
 
-	has_and_belongs_to_many :subjects
+	has_one :rank, class_name: 'CourseRanking'
 
 	def name
 		_name = read_attribute(:name)

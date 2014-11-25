@@ -1,0 +1,32 @@
+.clearfix
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %div
+      %h4
+        Oplerno is a growing open learning organization. &nbsp;Courses are listed for enrollment as they are completed by the faculty member and approved by Oplerno. &nbsp;If you are interested in adding to our course catalog as a faculty member and instructor, please
+        = succeed "." do
+          %a{:href => "http://oplerno.com/faculty"} read through our faculty page
+        Students may view admissions policies and procedures at our
+        = succeed "." do
+          %a{:href => "http://oplerno.com/admissions"} admissions page
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t('courses.title')
+  .pull-right
+    = paginate @courses
+  .clearfix
+  - @courses.each do |course|
+    .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
+  - end unless @courses.empty?
+  .clearfix
+  .pull-right
+    = paginate @courses
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t('courses.under_development')
+  .pull-right
+    = paginate @courses_underdev
+  .clearfix
+  - @courses_underdev.each do |course|
+    .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
+  - end unless @courses_underdev.empty?
+  .clearfix
+  .pull-right
+    = paginate @courses_underdev

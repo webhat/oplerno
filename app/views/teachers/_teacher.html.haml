@@ -1,0 +1,9 @@
+= cache "teacher#{teacher.id}" do
+  .col-4.col-xs-12.col-sm-4.col-sm-offset-1.col-md-4.col-md-offset-0.col-lg-3.top10.teacher.h-card.vcard{:itemscope => "", :itemtype => "http://schema.org/Person"}
+    = link_to(teacher, class: 'url n') do
+      .teacher_image.u-photo.photo{:itemprop => "image", :style => "background-image:url('#{url_prefix request}#{teacher.avatar.url(:medium)}');"}
+    .teacher_name.hidden-xs.top5.p-name.p-author.fn
+      %span{:itemprop => "name"}
+        = teacher.display_name.force_encoding('UTF-8')
+      %span.hidden-sm.hidden-xs.honorific-prefix{:itemprop => "jobTitle"}
+        = teacher.encrypted_title

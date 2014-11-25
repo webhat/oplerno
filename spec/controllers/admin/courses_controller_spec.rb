@@ -16,6 +16,7 @@ describe Admin::CoursesController do
 
     before(:each) do
       @course = Course.create! valid_attributes
+			@course.create_rank
     end
 
     after(:each) do

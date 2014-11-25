@@ -22,9 +22,13 @@ en:
     success:
       create: 'Teacher was successfully created'
       update: 'Teacher was successfully updated'
+    mail:
+      welcome: 'Your Oplerno Account and Faculty Orientation'
     view: 'View'
     complete: 'Having your information up to date will improve your ranking in the marketplace.'
   users:
+    mail:
+      notification: 'New user account was created "%{user}"'
     update: 'Update User'
     view: 'View details'
     change_password_notice: 'You can <a href="/users/edit">change your password here</a>.'

@@ -10,9 +10,9 @@ end
 gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '~> 3.2.20'
+gem 'rails', '~> 3.2.21'
 gem 'jquery-rails', '< 3.0.0' #, '>= 3.1.0'
-gem 'actionpack', '~> 3.2.20'
+gem 'actionpack', '~> 3.2.21'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.2.1'
@@ -29,6 +29,8 @@ group :doc do
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
   gem 'guard-cucumber'
+	gem 'brakeman', '~> 2.6.3'
+	gem 'guard-brakeman', '>= 0.8.2'
   gem 'redcarpet'
 
 # metrics
@@ -96,6 +98,7 @@ gem 'minitest-rails', '>= 0.9.2'
 
 group :development, :test do
   #gem 'minitest-rails-capybara'
+	gem 'railroady'
   gem 'minitest-colorize'
   gem 'minitest-focus'
 
@@ -126,8 +129,11 @@ group :test do
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
-gem 'nokogiri', '~> 1.6'
+gem 'nokogiri', '= 1.6.3.1'
 gem 'redis', '~> 3.0.4'
+gem 'redis-rails'
+gem 'redis-store'
+gem 'redis-rack-cache'
 if RUBY_VERSION =~ /1.9/
 	gem 'sidekiq', '~>3.1.4'
 else
@@ -142,6 +148,7 @@ gem 'capistrano-bundler', group: :development
 #gem 'capistrano-rvm', group: :development
 gem 'capistrano-rails', group: :development
 gem 'rvm1-capistrano3', group: :development, :require => false
+
 
 gem 'unicorn', '>= 4.8.2' #, group: :production
 

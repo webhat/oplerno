@@ -1,0 +1,76 @@
+!!!
+/
+  IP:       <haml:loud> request.ip </haml:loud>
+  HOSTNAME: <haml:loud> Socket.gethostname </haml:loud>
+/[if lt IE 7]
+  <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7]
+  <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8]
+  <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    = csrf_meta_tag
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "http://microformats.org/profile/hcalendar", :rel => "profile"}/
+    %link{:href => "http://microformats.org/profile/hcard", :rel => "profile"}/
+    = render 'layouts/meta'
+    / Place favicon.ico and apple-touch-icon.png in the root directory
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
+  %body
+    /[if lt IE 7]
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+      your browser</a> to improve your experience.</p>
+    = render "layouts/navbar"
+    .container
+      .row
+        - if is_teacher?
+          = render "layouts/abtest_notification"
+        - unless notice.nil?
+          .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
+            .success.alert-message
+              %a.close{:href => "#"} ✖
+              %span= notice.html_safe
+        - unless alert.nil?
+          .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
+            .error.alert-message
+              %a.close{:href => "#"} ✖
+              %span
+                = alert
+        .col-xs-12.col-sm-12.col-lg-12
+          .row
+            / was row-fluid
+            = yield
+          / /row
+        / /span
+        / /span
+      / /row
+    / /.container
+    = render 'layouts/footer'
+    :javascript
+      (function (i, s, o, g, r, a, m) {
+              i['GoogleAnalyticsObject'] = r;
+              i[r] = i[r] || function () {
+                  (i[r].q = i[r].q || []).push(arguments)
+              }, i[r].l = 1 * new Date();
+              a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+              a.async = 1;
+              a.src = g;
+              m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      
+          ga('create', 'UA-41537918-3', 'enroll.oplerno.com');
+      		ga('set', 'forceSSL', true);
+      		ga('require', 'linkid', 'linkid.js');
+      		ga('require', 'displayfeatures');
+          ga('send', 'pageview');

@@ -1,0 +1,7 @@
+%h2 Sign in
+.well
+  %h3= t('login.canvas_html')
+  - if from_canvas request
+    %div= t('login.canvas_info_html', link: 'https://oplerno.instructure.com/login?canvas_login=1')
+= render 'devise/sessions/form'
+= render "devise/shared/links"

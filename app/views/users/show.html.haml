@@ -1,0 +1,12 @@
+.hide_name.col-lg-3.col-sm-4.col-xs-8
+  = render @user
+.col-lg-5.col-lg-offset-0.col-md-offset-0.col-sm-8.col-sm-offset-0.col-xs-10.col-xs-offset-1
+  %h1.teacher_name= @user.display_name.force_encoding('UTF-8')
+  %h2.teacher_title= @user.encrypted_title
+.col-lg-5.col-sm-6.col-xs-10= simple_format @user.description
+.clearfix
+.col-lg-12.col-sm-12.col-xs-12
+  - if user_signed_in? && @user.id == current_user.id
+    = link_to 'Edit', edit_user_path(@user), {:class => "btn btn-default pull-right"}
+  = render partial: 'users/links/show', :handlers => [:haml], locals: { links: @user.links }
+  = link_to 'Back', '/', {class: 'btn btn-danger'}

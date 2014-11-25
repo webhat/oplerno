@@ -7,8 +7,7 @@ class TeachersController < UsersController
   # GET /teachers
   # GET /teachers.json
   def index
-		@teachers = Teacher.where("email like ?", "%oplerno.com%")
-		@teachers = @teachers.page(params[:page])
+		@teachers = Kaminari.paginate_array( Teacher.all ).page(params[:page])
   end
 
   # GET /teachers/1

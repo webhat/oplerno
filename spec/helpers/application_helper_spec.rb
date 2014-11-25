@@ -22,4 +22,22 @@ describe ApplicationHelper do
 			from_canvas(request).should eq false
 		end
 	end
+	context 'is the user a teacher' do
+		it 'should return true if the signed in user is a teacher' do
+			pending
+			sign_in
+			expect(is_teacher?).to be true
+		end
+		it 'should return true if the signed in user is not a teacher' do
+			pending
+			sign_in
+			expect(is_teacher?).to be false
+		end
+
+		it 'should return true if the user is not signed in' do
+			pending
+			expect(is_teacher?).to be true
+		end
+
+	end
 end

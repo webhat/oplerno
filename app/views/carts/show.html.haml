@@ -1,0 +1,10 @@
+.col-12.col-lg-12.col-sm-12.col-xs-12
+  %h1= t('cart.mycart')
+- @cart.courses.each do |course|
+  .col-lg-3.col-md-3.col-sm-4.col-xs-4.small= render course
+- end unless @cart.courses.empty?
+.clearfix
+.col-12.col-lg-12.col-sm-12.col-xs-12
+  = button_to t('cart.pay'), orders_path, {:class => "btn btn-lg btn-success pull-left oplerno-cta", :action => :create, :method => :post}
+  %div
+    = link_to t('generic.back'), carts_path, {:class => "btn btn-info pull-right", style: 'margin-top:8px;'}
