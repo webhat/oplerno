@@ -41,10 +41,12 @@ div.teacher_name, .teacher_image {
 
 .small .teacher_image {
   @include respond-to(handhelds) {
-    @include avatar(200px);
+    @include avatar(150px);
   }
-  @include avatar(150px);
-  border: 1px solid black;
+  @include respond-to(small-screens) {
+		@include avatar(50px);
+	}
+  //border: 1px solid black;
   background-position: center top;
   background-repeat: no-repeat;
 }
