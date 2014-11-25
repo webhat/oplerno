@@ -14,7 +14,7 @@
     = paginate @courses
   .clearfix
   - @courses.each do |course|
-    .col-lg-3.col-md-3.col-sm-4.col-xs-4.small= render course
+    .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
   - end unless @courses.empty?
   .clearfix
   .pull-right
@@ -25,7 +25,7 @@
     = paginate @courses_underdev
   .clearfix
   - @courses_underdev.each do |course|
-    .col-lg-3.col-md-3.col-sm-4.col-xs-4.small= render course
+    .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
   - end unless @courses_underdev.empty?
   .clearfix
   .pull-right
