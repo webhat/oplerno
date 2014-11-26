@@ -8,6 +8,12 @@ GIT
       faraday (~> 0.9.0)
       multi_json
 
+PATH
+  remote: ../podiocrm
+  specs:
+    podiocrm (0.0.2)
+      podio
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -678,6 +684,7 @@ DEPENDENCIES
   paperclip_redis (~> 0.1.0)
   paranoia (~> 1.0)
   podio!
+  podiocrm!
   poltergeist
   quiet_assets
   railroady
