@@ -61,6 +61,7 @@ gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
 gem 'kaminari', '>= 0.15.1'
 
+
 gem 'canvas-api', '>= 1.0'
 
 gem 'json'
@@ -156,8 +157,12 @@ gem 'sinatra', require: false
 gem 'slim'
 
 
+gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
+gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
+#gem 'podiocrm', path: '../podiocrm'
+
 group :test, :production do
 	gem 'paperclip_redis', '~> 0.1.0'
-	#gem 'paperclip_redis', path: 'lib/paperclip_redis'
+	#gem 'paperclip_redis', path: '../paperclip_redis'
 end
 
