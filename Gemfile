@@ -158,10 +158,10 @@ gem 'slim'
 
 
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
+gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
+#gem 'podiocrm', path: '../podiocrm'
 
 group :test, :production do
-	#gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
-	gem 'podiocrm', path: '../podiocrm'
 	gem 'paperclip_redis', '~> 0.1.0'
 	#gem 'paperclip_redis', path: '../paperclip_redis'
 end
