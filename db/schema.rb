@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141120212933) do
+ActiveRecord::Schema.define(:version => 20141128191720) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -194,6 +194,24 @@ ActiveRecord::Schema.define(:version => 20141120212933) do
 
   add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+
+  create_table "podio_teachers", :force => true do |t|
+    t.string   "field_68472121"
+    t.string   "field_68472122"
+    t.string   "field_68472123"
+    t.string   "field_68472124"
+    t.string   "field_68472125"
+    t.string   "field_68472126"
+    t.string   "field_68472127"
+    t.string   "field_68472128"
+    t.string   "field_68472129"
+    t.string   "field_68472130"
+    t.string   "field_68472131"
+    t.string   "field_68472132"
+    t.integer  "teacher_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "searches", :force => true do |t|
     t.text     "term"
