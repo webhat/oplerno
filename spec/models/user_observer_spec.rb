@@ -4,6 +4,8 @@ describe UserObserver, :type => :observer do
 	subject { UserObserver.instance }
 
 	context 'create User' do
+		vcr_options = {record: :once}
+
 		it 'should call after_create on observer' do
 			subject.should_receive(:after_create)
 
@@ -40,7 +42,7 @@ describe UserObserver, :type => :observer do
 			end
 		end
 
-		it 'should send a faculty mail if a teacher is created' do
+		it 'should send a faculty mail if a teacher is created', vcr: vcr_options do
 			#User.any_instance.should_receive(:is_teacher?).and_return(true)
 			notification = double(Notification)
 			expect(notification).to receive(:deliver)
@@ -49,6 +51,18 @@ describe UserObserver, :type => :observer do
 			User.observers.enable :user_observer do
 				user = FactoryGirl.build(:user, email: 'user_observer_1@oplerno.com', privateemail: 'facultyinvite@example.com')
 				user.save
+			end
+		end
+
+		it 'creates a CanvasUser', :vcr => vcr_options do
+			canvas_user = double(CanvasUsers)
+			#expect_any_instance_of(Canvas::API).to receive(:post).and_return(canvas_user)
+			allow(CanvasUsers).to receive(:create).and_return(canvas_user)
+			allow(CanvasUsers).to receive(:update).with(canvas_user)
+			expect_any_instance_of(CanvasUsers).to receive(:canvas_sync)
+
+			User.observers.enable :user_observer do
+				FactoryGirl.create(:user, email: 'user_observer_2@oplerno.com', privateemail: 'facultyinvite@example.com')
 			end
 		end
 	end

@@ -3,10 +3,10 @@
 class CanvasUsers < ActiveRecord::Base
   extend CanvasModule
 
- # after_save :canvas_sync
+  after_create :canvas_sync
 
   belongs_to :user
-  attr_accessible :avatar_url, :locale, :username # :canvas_id
+  attr_accessible :avatar_url, :locale, :username, :user # :canvas_id
 
   def self.after_commit(record)
     canvas_user = CanvasUsers.find_by_username(record.email)
@@ -57,9 +57,9 @@ class CanvasUsers < ActiveRecord::Base
 
     begin
       user = CanvasUsers.canvas.post('/api/v1/accounts/1/users', {'pseudonym[unique_id]' => username, 'communication_channel[address]' => username, 'communication_channel[type]' => 'email'})
-    rescue => e
+    rescue
       # FIXME: Need to update this user here...
-      puts $!.inspect, $@
+      #puts $!.inspect, $@
     else
       CanvasUsers.update user
     end

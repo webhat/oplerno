@@ -6,6 +6,19 @@ rescue LoadError;
 end
 require 'cucumber/formatter/unicode'
 
+# XXX: when recording new cassettes enable this
+WebMock.allow_net_connect!
+
+VCR.configure do |c|
+	# INFO: This is relative to the Rails.root
+	c.cassette_library_dir = 'features/fixtures/vcr_cassettes'
+	c.default_cassette_options = { :record => :once }
+end
+
+VCR.cucumber_tags do |t|
+	t.tag  '@canvas'
+end
+
 Before do
 end
 
@@ -46,8 +59,10 @@ end
 Given /I add the (\w+): '(.*)'/ do |clazz, value|
 	object = Object.const_get(clazz).new
 	object.send("#{clazz.downcase}=", value)
-	@object.send("#{clazz.downcase}s").send('push', object)
-  object.save
+	VCR.use_cassette('@canvas') {
+		@object.send("#{clazz.downcase}s").send('push', object)
+		object.save
+	}
 end
 
 Given /I have a (\w+)/ do |clazz|
@@ -68,7 +83,9 @@ Given /I am a User/ do
 end
 
 When /I press (\w+)/ do |op|
-  @result = @object.send op
+	VCR.use_cassette('@canvas') {
+		@result = @object.send op
+	}
 end
 
 When /I placed my Order/ do
