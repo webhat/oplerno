@@ -7,11 +7,13 @@ ActiveAdmin.register User do
 			end
 		end
 		column 'Name' do |user|
+			name = 'Unknown'
 			begin
-				link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{user.id})", [user]
+				name = user.display_name.force_encoding('utf-8')
 			rescue
 				'Unknown'
 			end
+			link_to "#{name} (#{user.id})", [user]
 		end
 		column 'Courses' do |user|
 			courses = Course.find(:all, conditions: ["teacher = ?", user.id])
