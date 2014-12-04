@@ -8,7 +8,7 @@ class UserObserver < ActiveRecord::Observer
 		if user.is_teacher?
 			Notification.faculty_invite(user).deliver
 
-			CanvasUsers.create! username: user.email, user: user
+#			CanvasUsers.create! username: user.email, user: user
 		end
 	end
 
