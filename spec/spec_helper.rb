@@ -3,12 +3,14 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 require 'simplecov-rcov-text'
 require 'coveralls'
+require 'cadre/simplecov'
 #require 'perf_tools'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 	SimpleCov::Formatter::HTMLFormatter,
 	SimpleCov::Formatter::RcovTextFormatter,
-	Coveralls::SimpleCov::Formatter
+	Coveralls::SimpleCov::Formatter,
+	Cadre::SimpleCov::VimFormatter
 ]
 SimpleCov.start 'rails' do
 	add_filter '/spec/'
@@ -31,6 +33,7 @@ require 'ruby-saml'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'rspec/autorun'
+require 'cadre/rspec'
 
 require 'factory_girl_rails'
 require 'faker'
@@ -100,4 +103,13 @@ RSpec.configure do |config|
 =end
 end
 
-
+RSpec.configure do |config|
+  config.run_all_when_everything_filtered = true
+  if config.formatters.empty?
+    config.add_formatter(:progress)
+    #but do consider:
+    #config.add_formatter(Cadre::RSpec::TrueFeelingsFormatter)
+  end
+  config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
+  config.add_formatter(Cadre::RSpec::QuickfixFormatter)
+end

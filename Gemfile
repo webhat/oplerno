@@ -35,11 +35,12 @@ group :doc do
 
 # metrics
 # FIXME: What's wrong here?
-  gem 'reek'
-  gem 'metric_fu'
-  gem 'churn'
-  gem 'flog'
-  gem 'simplecov-rcov-text'
+	gem 'reek', require: false
+	gem 'metric_fu', require: false
+	gem 'churn', require: false
+	gem 'flog', require: false
+	gem 'simplecov-rcov-text', require: false
+	gem 'cadre', require: false
 end
 
 gem 'activeadmin', '>= 0.6.3'
