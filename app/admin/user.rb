@@ -11,7 +11,6 @@ ActiveAdmin.register User do
 			begin
 				name = user.display_name.force_encoding('utf-8')
 			rescue
-				'Unknown'
 			end
 			link_to "#{name} (#{user.id})", [user]
 		end
@@ -33,6 +32,9 @@ ActiveAdmin.register User do
 	end
 
 	filter :email
+	filter :current_sign_in_at
+	filter :last_sign_in_at
+	filter :sign_in_count
 
 	show do |user|
 		columns do
