@@ -1,31 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
-
-require 'simplecov'
-require 'simplecov-rcov-text'
-require 'coveralls'
-require 'cadre/simplecov'
 #require 'perf_tools'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-	SimpleCov::Formatter::HTMLFormatter,
-	SimpleCov::Formatter::RcovTextFormatter,
-	Coveralls::SimpleCov::Formatter,
-	Cadre::SimpleCov::VimFormatter
-]
-SimpleCov.start 'rails' do
-	add_filter '/spec/'
-	add_filter '/config/'
-	add_filter '/lib/'
-	add_filter '/vendor/'
-
-	add_group 'Controllers', 'app/controllers'
-	add_group 'Models', 'app/models'
-	add_group 'Helpers', 'app/helpers'
-	add_group 'Mailers', 'app/mailers'
-	add_group 'Views', 'app/views'
-end
-
-Coveralls.wear_merged!('rails')
 
 require File.expand_path('../../config/environment', __FILE__)
 
