@@ -1,3 +1,5 @@
+require 'new_relic/recipes'
+
 set :application, 'Oplerno'
 set :rails_env, 'production'
 
@@ -59,6 +61,7 @@ namespace :deploy do
   end
 
   after :updated, 'deploy:migrate'
+	after "deploy:updated", "newrelic:notice_deployment"
 
 	# Stub :restart
   task :restart do
