@@ -18,6 +18,9 @@ set :pty, true
 set :keep_releases, 10
 
 set :default_env, {
+    'PODIO_SECRET' => ENV['PODIO_SECRET'],
+    'PODIO_USERNAME' => ENV['PODIO_USERNAME'],
+    'PODIO_CID' => ENV['PODIO_CID'],
     'DEVISE_SECRET' => ENV['DEVISE_SECRET'],
     'DEVISE_PEPPER' => ENV['DEVISE_PEPPER'],
     'DB' => 'mysql',
