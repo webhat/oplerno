@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :courses
   has_one :cart
   has_many :orders
-  has_one :canvas_user
+  has_one :canvas_users
 
   def self.find_by_id(id)
     User.find(id)
