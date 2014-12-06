@@ -7,11 +7,12 @@ ActiveAdmin.register User do
 			end
 		end
 		column 'Name' do |user|
+			name = 'Unknown'
 			begin
-				link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{user.id})", [user]
+				name = user.display_name.force_encoding('utf-8')
 			rescue
-				'Unknown'
 			end
+			link_to "#{name} (#{user.id})", [user]
 		end
 		column 'Courses' do |user|
 			courses = Course.find(:all, conditions: ["teacher = ?", user.id])
@@ -31,6 +32,9 @@ ActiveAdmin.register User do
 	end
 
 	filter :email
+	filter :current_sign_in_at
+	filter :last_sign_in_at
+	filter :sign_in_count
 
 	show do |user|
 		columns do
@@ -118,8 +122,10 @@ ActiveAdmin.register User do
 
 			f.input :description
 			f.input :email
-			f.input :mailpass
-			f.input :privateemail
+			if f.object.new_record?
+				f.input :mailpass unless user.is_teacher?
+				f.input :privateemail unless user.is_teacher?
+			end
 			f.input :password
 			f.input :password_confirmation
 		end

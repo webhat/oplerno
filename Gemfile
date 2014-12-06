@@ -35,11 +35,12 @@ group :doc do
 
 # metrics
 # FIXME: What's wrong here?
-  gem 'reek'
-  gem 'metric_fu'
-  gem 'churn'
-  gem 'flog'
-  gem 'simplecov-rcov-text'
+	gem 'reek', require: false
+	gem 'metric_fu', require: false
+	gem 'churn', require: false
+	gem 'flog', require: false
+	gem 'simplecov-rcov-text', require: false
+	gem 'cadre', require: false
 end
 
 gem 'activeadmin', '>= 0.6.3'
@@ -162,7 +163,7 @@ gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
 #gem 'podiocrm', path: '../podiocrm'
 
 group :test, :production do
-	gem 'paperclip_redis', '~> 0.1.0'
+	gem 'paperclip_redis', '~> 0.1.1'
 	#gem 'paperclip_redis', path: '../paperclip_redis'
 end
 
