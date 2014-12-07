@@ -20,6 +20,9 @@ namespace :podio do
 						pt.faculty_oplerno_email = ActionView::Base.full_sanitizer.sanitize f['values'][0]['value'] 
 					end 
 				end
+				if pt.faculty_oplerno_email
+					pt.teacher = Teacher.find_by_email pt.faculty_oplerno_email.strip
+				end
 				pt.save
 			end
 		end
