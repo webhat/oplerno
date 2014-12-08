@@ -6,6 +6,7 @@
 
 require 'simplecov'
 SimpleCov.command_name 'Cucumber'
+SimpleCov.use_merging true
 SimpleCov.start 'rails'
 
 require 'cucumber/rails'

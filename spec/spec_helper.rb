@@ -18,6 +18,7 @@ SimpleCov.start 'rails' do
 	add_group 'Workers', 'app/workers'
 end
 SimpleCov.command_name 'RSpec'
+SimpleCov.use_merging true
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
