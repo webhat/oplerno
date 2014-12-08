@@ -78,8 +78,25 @@ Given /I don't enter a (\w+)/ do |op|
   # noop
 end
 
-Given /I am a User/ do
-  @user = FactoryGirl.create(:user)
+Given /I am a (\w+)/ do |type|
+	@user = FactoryGirl.create(type.underscore.to_sym)
+end
+
+Given /^I am not authenticated$/ do
+	  visit('/users/sign_out') # ensure that at least
+end
+
+Given /^I am confirmed$/ do
+	@user.confirm!
+	@user.save!
+end
+
+When /^I login$/ do
+	visit '/users/sign_in'
+	fill_in 'user_email', :with => @user.email
+	fill_in 'user_password', :with => @user.password
+	click_button I18n.t('devise.sessions.new.sign_in')
+	@result = page.has_content? I18n.t('devise.sessions.new.sign_out')
 end
 
 When /I press (\w+)/ do |op|
