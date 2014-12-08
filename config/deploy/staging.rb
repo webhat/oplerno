@@ -9,6 +9,7 @@ role :app, %w{redhat@secret.oplerno.com}
 role :web, %w{redhat@secret.oplerno.com}
 role :db, %w{redhat@secret.oplerno.com}
 
+set :branch, 'develop'
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server

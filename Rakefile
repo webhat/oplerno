@@ -3,10 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-require 'coveralls/rake/task'
-Coveralls::RakeTask.new
-task :test_with_coveralls => [:spec, :features, 'coveralls:push']
-
 require 'reek/rake/task'
 
 Reek::Rake::Task.new do |t|

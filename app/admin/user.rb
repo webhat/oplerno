@@ -81,6 +81,25 @@ ActiveAdmin.register User do
 						end
 					end
 				end
+				panel 'Podio' do
+					podio = PodioTeacher.find_by_teacher_id(user.id)
+					unless podio.nil?
+						table_for [podio] do
+							column :name
+							column :email
+						end
+						columns do
+							column do
+								simple_format podio.subject_area_s
+							end
+						end
+						columns do
+							column do
+								link_to 'LinkedIn', podio.linkedin
+							end
+						end
+					end
+				end
 			end
 		end
 		active_admin_comments

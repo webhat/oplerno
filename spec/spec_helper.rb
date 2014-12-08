@@ -1,30 +1,40 @@
-ENV['RAILS_ENV'] ||= 'test'
-#require 'perf_tools'
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
 
-require File.expand_path('../../config/environment', __FILE__)
+require 'simplecov'
+SimpleCov.start 'rails' do
+	add_filter '/spec/'
+	add_filter '/config/'
+	add_filter '/lib/'
+	add_filter '/vendor/'
+	add_filter '/features/'
 
-require 'ruby-saml'
+	add_group 'Admin', 'app/admin'
+	add_group 'Controllers', 'app/controllers'
+	add_group 'Models', 'app/models'
+	add_group 'Helpers', 'app/helpers'
+	add_group 'Mailers', 'app/mailers'
+	add_group 'Views', 'app/views'
+	add_group 'Workers', 'app/workers'
+end
+SimpleCov.command_name 'RSpec'
+SimpleCov.use_merging true
+
+require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'rspec/autorun'
 require 'cadre/rspec'
-
 require 'factory_girl_rails'
 require 'faker'
 require 'cucumber'
 
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-	# ## Mock Framework
-	#
-	# If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-	#
-	# config.mock_with :mocha
-	# config.mock_with :flexmock
-	# config.mock_with :rr
 
 	# config.infer_spec_type_from_file_location!
 
@@ -75,9 +85,7 @@ RSpec.configure do |config|
 		PerfTools::CpuProfiler.stop
 	end
 =end
-end
 
-RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   if config.formatters.empty?
     config.add_formatter(:progress)
@@ -87,3 +95,4 @@ RSpec.configure do |config|
   config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
   config.add_formatter(Cadre::RSpec::QuickfixFormatter)
 end
+
