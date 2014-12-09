@@ -29,6 +29,7 @@ Oplerno::Application.routes.draw do
     resources :carts, only: [:index, :show, :create, :destroy]
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
 		resources :searches, only: [:index, :create]
+		resources :certificates, only: [:show, :index, :create]
 
 		post '/teachers/:id/contact' => 'teachers#contact'
 		get '/teachers/:id/contact' => 'teachers#contact'
