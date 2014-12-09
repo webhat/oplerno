@@ -1,0 +1,5 @@
+
+- certificate.courses.each do |course|
+  .certificate_block
+    .certificate_image{:itemprop => "image", width: '100px', height: '100px',:style => "background-image:url('#{url_prefix request}#{course.avatar.url(:thumb)}');"}
+= certificate.name

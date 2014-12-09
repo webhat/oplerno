@@ -15,14 +15,7 @@ ActiveAdmin.register User do
 			link_to "#{name} (#{user.id})", [user]
 		end
 		column 'Courses' do |user|
-			courses = Course.find(:all, conditions: ["teacher = ?", user.id])
-			courses.each do |course|
-				columns title: 'Courses' do
-					column do
-						link_to course.name, [:admin, course]
-					end
-				end
-			end
+			render 'admin/courses_panel', data: Course.find(:all, conditions: ["teacher = ?", user.id])
 		end
 		column :email
 		column :current_sign_in_at

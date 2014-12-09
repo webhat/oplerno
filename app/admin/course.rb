@@ -72,48 +72,8 @@ ActiveAdmin.register Course do
 			unless course.teacher.nil?
 				teacher = Teacher.find(course.teacher)
 				column do
-					panel 'Instructor' do
-						columns do
-							column do
-								begin
-									# FIXME: what am I doing here?
-									#teacher.courses << course
-									link_to teacher.display_name.force_encoding('UTF-8'), "/admin/users/#{teacher.id}"
-								rescue
-									"Unknown"
-								end
-							end
-							column do
-								canvas_user = CanvasUsers.find_by_user_id(teacher.id)
-								unless canvas_user.nil?
-									link_to canvas_user.canvas_id, "https://oplerno.instructure.com/users/#{canvas_user.canvas_id}"
-								else
-									'??'
-								end
-							end
-						end
-					end
-					panel 'Also by this Instructor' do
-						courses = Course.find(:all, conditions: ["teacher = ?", teacher.id])
-						courses.each do |course|
-							columns title: 'Courses' do
-								column do
-									course.rank.ranking
-								end
-								column do
-									link_to course.name, [:admin, course]
-								end
-								column do
-									canvas_course = CanvasCourses.find_by_course_id(course.id)
-									unless canvas_course.nil?
-										link_to canvas_course.canvas_id, "https://oplerno.instructure.com/courses/#{canvas_course.canvas_id}"
-									else
-										'??'
-									end
-								end
-							end
-						end
-					end
+					render 'admin/teacher_panel', data: teacher
+					render 'admin/more_courses_panel', data: teacher
 				end
 			end
 		end
