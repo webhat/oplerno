@@ -12,10 +12,9 @@
 .col-3.col-lg-3.col-md-3.col-sm-4.col-xs-8.well
   %h2= t('courses.courses')
   .col-lg-12.col-xs-12
-    - @teacher.courses.each { |course|
-    .col-lg-12.col-md-12.col-sm-12.col-xs-6
-      = render course
-    - }
+    - @teacher.courses.each do |course|
+      .col-lg-12.col-md-12.col-sm-12.col-xs-6
+        = render course
 .clearfix
 %br/
 - if user_signed_in? && @teacher.id == current_user.id
