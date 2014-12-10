@@ -20,3 +20,19 @@ When /^I login as an AdminUser$/ do
 	@result = page.has_content? 'Logout' # I18n.t('devise.sessions.new.sign_out')
 end
 
+When /^I look at the (\w+) page$/ do |clazz|
+	visit "/admin/#{clazz.underscore}"
+	@result = page.has_content? 'Logout' # I18n.t('devise.sessions.new.sign_out')
+end
+
+When /^I look at the first (\w+)$/ do |clazz|
+	FactoryGirl.create(clazz.underscore.to_sym)
+	visit "/admin/#{clazz.underscore}s/#{clazz.constantize.first.id}"
+	@result = page.has_content? 'Logout' # I18n.t('devise.sessions.new.sign_out')
+end
+
+When /^I look at the edit (\w+)$/ do |clazz|
+	FactoryGirl.create(clazz.underscore.to_sym)
+	visit "/admin/#{clazz.underscore}s/#{clazz.constantize.first.id}/edit"
+	@result = page.has_content? 'Logout' # I18n.t('devise.sessions.new.sign_out')
+end

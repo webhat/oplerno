@@ -14,6 +14,7 @@ module ApplicationHelper
 
 	def is_teacher?
 		if user_signed_in?
+			# @FIXME: this should check it it's a teacher
 			true
 		else
 			false

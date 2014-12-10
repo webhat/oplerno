@@ -74,6 +74,7 @@ RSpec.configure do |config|
 	config.order = 'random'
 
 	config.include Devise::TestHelpers, :type => :controller
+	config.include Devise::TestHelpers, type: :helper
 	config.extend ControllerMacros, :type => :controller
 
 =begin
@@ -93,6 +94,6 @@ RSpec.configure do |config|
     #config.add_formatter(Cadre::RSpec::TrueFeelingsFormatter)
   end
   config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
-  config.add_formatter(Cadre::RSpec::QuickfixFormatter)
+	config.add_formatter(Cadre::RSpec::QuickfixFormatter)
 end
 

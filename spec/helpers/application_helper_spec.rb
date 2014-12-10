@@ -21,23 +21,48 @@ describe ApplicationHelper do
 			request = double(referer: 'http://localhost')
 			from_canvas(request).should eq false
 		end
+		it 'should return false if the referer is nil' do
+			request = double(referer: nil)
+			from_canvas(request).should eq false
+		end
 	end
 	context 'is the user a teacher' do
+		before do
+			user = FactoryGirl.create(:user)
+			sign_in user
+		end
 		it 'should return true if the signed in user is a teacher' do
-			pending
-			sign_in
+			expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(true)
 			expect(is_teacher?).to be true
+			expect(Date.today.month).to be(12)
+			expect(Date.today.year).to be(2014)
 		end
-		it 'should return true if the signed in user is not a teacher' do
-			pending
-			sign_in
+		it 'should return false if the signed in user is not a teacher' do
+			expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(false)
 			expect(is_teacher?).to be false
+			expect(Date.today.month).to be(12)
+			expect(Date.today.year).to be(2014)
 		end
 
-		it 'should return true if the user is not signed in' do
-			pending
-			expect(is_teacher?).to be true
+		it 'should return false if the user is not signed in' do
+			expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(false)
+			expect(is_teacher?).to be false
+			expect(Date.today.month).to be(12)
+			expect(Date.today.year).to be(2014)
 		end
-
+	end
+	context 'avatar' do
+		before do
+			@courses = []
+			(0..4).each do
+				@courses << FactoryGirl.create(:course)
+			end
+			assign(:courses, @courses)
+		end
+		(0..4).each do |id|
+			it '#avatar' do
+				avatar id
+			end
+		end
 	end
 end
