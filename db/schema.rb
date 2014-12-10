@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20141208221220) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20141208221220) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
