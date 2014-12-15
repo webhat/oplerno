@@ -18,4 +18,9 @@ module CoursesHelper
 			'courses'
 		end
 	end
+
+	def teachers_course?
+		teacher_id = @course.teacher
+		user_signed_in? && teacher_id == current_user.id.to_s
+	end
 end
