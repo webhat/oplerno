@@ -387,6 +387,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip_montage (0.1.0)
+      paperclip
     paperclip_redis (0.1.2)
       paperclip
       redis
@@ -688,6 +690,7 @@ DEPENDENCIES
   nokogiri (= 1.6.3.1)
   paper_trail
   paperclip (>= 4.1.1)
+  paperclip_montage (~> 0.1.0)
   paperclip_redis (~> 0.1.1)
   paranoia (~> 1.0)
   podio!

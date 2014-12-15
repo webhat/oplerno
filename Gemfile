@@ -165,5 +165,7 @@ gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
 group :test, :production do
 	gem 'paperclip_redis', '~> 0.1.1'
 	#gem 'paperclip_redis', path: '../paperclip_redis'
+	gem 'paperclip_montage', '~> 0.1.0'
+	#gem 'paperclip_montage', path: '../paperclip_montage'
 end
 
