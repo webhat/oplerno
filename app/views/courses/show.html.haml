@@ -70,8 +70,8 @@
 .clearfix
 .clearfix.top5
   .col-xs-6
-    - if user_signed_in? && !teacher.nil? && teacher.id == current_user.id
-      = button_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg"}
+    - if teachers_course?
+      = button_to t('generic.edit'), edit_course_path(@course), {:class => "btn btn-info oplerno-cta btn-lg", method: :get}
     - else
       = button_to t('courses.register'), add_course_to_cart(@course), {:disabled => !user_signed_in?|| !@course.active?, :class => "btn btn-danger oplerno-cta btn-lg"}
   .col-xs-6
