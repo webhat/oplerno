@@ -27,4 +27,8 @@ module ApplicationHelper
 			course.avatar.url(:medium)
 		end
 	end
+
+	def cache_id
+		'XXX'
+	end
 end
