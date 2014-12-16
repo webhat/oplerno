@@ -12,7 +12,7 @@ ActiveAdmin.register Course do
     column :price
 		column "Instructor" do |course|
 			course_teacher = course.teacher
-			unless course_teacher.nil?
+			unless course_teacher.blank? 
 				teacher = Teacher.find(course_teacher)
 				begin
 					teacher.display_name.force_encoding('UTF-8')
@@ -61,7 +61,7 @@ ActiveAdmin.register Course do
 					end
 					row 'Canvas ID' do |course|
 						canvas_course = CanvasCourses.find_by_course_id(course.id)
-						unless canvas_course.nil?
+						unless canvas_course.blank?
 							link_to canvas_course.canvas_id, "https://oplerno.instructure.com/courses/#{canvas_course.canvas_id}"
 						else
 							'??'
@@ -69,7 +69,7 @@ ActiveAdmin.register Course do
 					end
 				end
 			end
-			unless course.teacher.nil?
+			unless course.teacher.blank?
 				teacher = Teacher.find(course.teacher)
 				column do
 					render 'admin/teacher_panel', data: teacher
@@ -92,7 +92,7 @@ ActiveAdmin.register Course do
       f.input :syllabus
 			f.input :hidden
 			f.input :start_date
-			f.input :teacher, :collection => User.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
+			f.input :teacher, :collection => Teacher.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
 			f.input :avatar, :as => :file, :required => false
     end
     f.actions
