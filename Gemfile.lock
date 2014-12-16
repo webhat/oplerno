@@ -138,7 +138,7 @@ GEM
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cliver (0.3.2)
-    cocaine (0.5.4)
+    cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.5)
       sexp_processor
@@ -382,12 +382,12 @@ GEM
     paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
-    paperclip (4.2.0)
+    paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip_montage (0.1.0)
+    paperclip_montage (0.1.2)
       paperclip
     paperclip_redis (0.1.2)
       paperclip
@@ -689,8 +689,8 @@ DEPENDENCIES
   newrelic_rpm (>= 3.7.3.204)
   nokogiri (= 1.6.3.1)
   paper_trail
-  paperclip (>= 4.1.1)
-  paperclip_montage (~> 0.1.0)
+  paperclip (~> 4.1.1)
+  paperclip_montage (~> 0.1.2)
   paperclip_redis (~> 0.1.1)
   paranoia (~> 1.0)
   podio!

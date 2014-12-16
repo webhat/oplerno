@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141208221220) do
+ActiveRecord::Schema.define(:version => 20141216060525) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20141208221220) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20141208221220) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -92,9 +92,12 @@ ActiveRecord::Schema.define(:version => 20141208221220) do
 
   create_table "certificates", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "teacher_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "montage_file_name"
+    t.string   "montage_content_type"
+    t.integer  "montage_file_size"
+    t.datetime "montage_updated_at"
   end
 
   create_table "certificates_courses", :force => true do |t|

@@ -67,7 +67,7 @@ gem 'canvas-api', '>= 1.0'
 
 gem 'json'
 gem 'strongbox', '~> 0.7.0'
-gem 'paperclip', '>= 4.1.1'
+gem 'paperclip', '~> 4.1.1'
 gem 'tinymce-rails'
 
 gem 'haml'
@@ -161,11 +161,8 @@ gem 'slim'
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
 #gem 'podiocrm', path: '../podiocrm'
-
-group :test, :production do
-	gem 'paperclip_redis', '~> 0.1.1'
-	#gem 'paperclip_redis', path: '../paperclip_redis'
-	gem 'paperclip_montage', '~> 0.1.0'
-	#gem 'paperclip_montage', path: '../paperclip_montage'
-end
+gem 'paperclip_montage', '~> 0.1.2'
+#gem 'paperclip_montage', path: '../paperclip_montage'
+gem 'paperclip_redis', '~> 0.1.1'
+#gem 'paperclip_redis', path: '../paperclip_redis'
 
