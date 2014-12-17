@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-#ruby '2.0.0'
+# ruby '2.0.0'
 
 if RUBY_VERSION =~ /1.9/
   Encoding.default_external = Encoding::UTF_8
   Encoding.default_internal = Encoding::UTF_8
 end
 
-gem 'libnotify', :require => RUBY_PLATFORM.include?('linux') && 'rb-inotify'
-gem 'growl', :require => RUBY_PLATFORM.include?('darwin') && 'growl'
+gem 'libnotify', require: RUBY_PLATFORM.include?('linux') && 'rb-inotify'
+gem 'growl', require: RUBY_PLATFORM.include?('darwin') && 'growl'
 
 gem 'rails', '~> 3.2.21'
-gem 'jquery-rails', '< 3.0.0' #, '>= 3.1.0'
+gem 'jquery-rails', '< 3.0.0'
 gem 'actionpack', '~> 3.2.21'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -30,23 +30,23 @@ group :doc do
   gem 'guard-coffeescript'
   gem 'guard-cucumber'
   gem 'guard-rubocop'
-	gem 'brakeman', '~> 2.6.3'
-	gem 'guard-brakeman', '>= 0.8.2'
+  gem 'brakeman', '~> 2.6.3'
+  gem 'guard-brakeman', '>= 0.8.2'
   gem 'redcarpet'
 
-# metrics
-# FIXME: What's wrong here?
-	gem 'reek', require: false
-	gem 'metric_fu', require: false
-	gem 'churn', require: false
-	gem 'flog', require: false
-	gem 'simplecov-rcov-text', require: false
-	gem 'cadre', require: false
+  # metrics
+  # FIXME: What's wrong here?
+  gem 'reek', require: false
+  gem 'metric_fu', require: false
+  gem 'churn', require: false
+  gem 'flog', require: false
+  gem 'simplecov-rcov-text', require: false
+  gem 'cadre', require: false
 end
 
 gem 'activeadmin', '>= 0.6.3'
 gem 'paper_trail'
-gem "paranoia", "~> 1.0"
+gem 'paranoia', '~> 1.0'
 gem 'activemerchant', '>= 1.42.7'
 gem 'devise', '>= 3.2.4'
 gem 'devise-i18n', '>= 0.10.3'
@@ -62,7 +62,6 @@ gem 'ruby-saml-idp'
 gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
 gem 'kaminari', '>= 0.15.1'
-
 
 gem 'canvas-api', '>= 1.0'
 
@@ -88,28 +87,27 @@ gem 'rails-assets-normalize-css'
 group :development do
   gem 'quiet_assets'
   gem 'thin'
-	gem 'hpricot'
-	gem 'ruby_parser'
+  gem 'hpricot'
+  gem 'ruby_parser'
 
-  gem 'rb-fsevent', '~> 0.9.4', :require => false
-  gem 'rb-inotify', '~> 0.9.3', :require => false
-  gem 'rb-fchange', :require => false
+  gem 'rb-fsevent', '~> 0.9.4', require: false
+  gem 'rb-inotify', '~> 0.9.3', require: false
+  gem 'rb-fchange', require: false
 end
 
 gem 'minitest', '~> 4.7'
 gem 'minitest-rails', '>= 0.9.2'
 
 group :development, :test do
-  #gem 'minitest-rails-capybara'
-	gem 'railroady'
+  gem 'railroady'
   gem 'minitest-colorize'
   gem 'minitest-focus'
 
   gem 'minitest-reporters'
-	gem 'rspec-rails', '~>2.14'
-	gem 'rspec-expectations', '2.14'
+  gem 'rspec-rails', '~>2.14'
+  gem 'rspec-expectations', '2.14'
   gem 'rspec-mocks'
-	gem 'rspec', '~> 2.14'
+  gem 'rspec', '~> 2.14'
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'jasmine'
@@ -119,17 +117,17 @@ end
 group :test do
   gem 'faker'
   gem 'shoulda-matchers'
-	gem 'capybara', '>= 2.2.0'
+  gem 'capybara', '>= 2.2.0'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
   gem 'vcr'
   gem 'webmock'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber'
   gem 'database_cleaner'
-#  gem 'perftools.rb'
-#  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
+  #  gem 'perftools.rb'
+  #  gem 'rack-perftools_profiler', require: 'rack/perftools_profiler'
 end
 
 gem 'nokogiri', '= 1.6.3.1'
@@ -138,9 +136,9 @@ gem 'redis-rails'
 gem 'redis-store'
 gem 'redis-rack-cache'
 if RUBY_VERSION =~ /1.9/
-	gem 'sidekiq', '~>3.1.4'
+  gem 'sidekiq', '~>3.1.4'
 else
-	gem 'sidekiq'
+  gem 'sidekiq'
 end
 gem 'sitemap'
 gem 'friendly_id'
@@ -148,22 +146,19 @@ gem 'sshkit', group: :development
 gem 'capistrano', group: :development
 gem 'bundler'
 gem 'capistrano-bundler', group: :development
-#gem 'capistrano-rvm', group: :development
+# gem 'capistrano-rvm', group: :development
 gem 'capistrano-rails', group: :development
-gem 'rvm1-capistrano3', group: :development, :require => false
+gem 'rvm1-capistrano3', group: :development, require: false
 
-
-gem 'unicorn', '>= 4.8.2' #, group: :production
+gem 'unicorn', '>= 4.8.2'
 
 gem 'sinatra', require: false
 gem 'slim'
 
-
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
-#gem 'podiocrm', path: '../podiocrm'
+# gem 'podiocrm', path: '../podiocrm'
 gem 'paperclip_montage', '~> 0.1.2'
-#gem 'paperclip_montage', path: '../paperclip_montage'
+# gem 'paperclip_montage', path: '../paperclip_montage'
 gem 'paperclip_redis', '~> 0.1.1'
-#gem 'paperclip_redis', path: '../paperclip_redis'
-
+# gem 'paperclip_redis', path: '../paperclip_redis'

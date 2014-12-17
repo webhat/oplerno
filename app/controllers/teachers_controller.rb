@@ -7,7 +7,7 @@ class TeachersController < UsersController
   # GET /teachers
   # GET /teachers.json
   def index
-		@teachers = Kaminari.paginate_array( Teacher.all ).page(params[:page])
+    @teachers = Kaminari.paginate_array( Teacher.all ).page(params[:page])
   end
 
   # GET /teachers/1
@@ -26,13 +26,13 @@ class TeachersController < UsersController
   end
 
   # POST /teachers/1/contact
-	def contact
-		render nil, status: 500 and return unless params[:format] == 'json'
-		ContactTeacher.student_mail(valid_question).deliver
+  def contact
+    render nil, status: 500 and return unless params[:format] == 'json'
+    ContactTeacher.student_mail(valid_question).deliver
     respond_to do |format|
       format.json { render json: {}, status: :ok }
     end
-	end
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -45,21 +45,21 @@ class TeachersController < UsersController
     params[:teacher]
   end
 
-	def valid_question
-		unless question_params[:course_id] == ""
-			course = Course.find(question_params[:course_id])
-		end
-		{
-			from: "#{params[:question][:from]} #{question_params[:email]}",
-			email: @teacher.email,
-			course: course,
-			question: question_params[:question]
-		}
-	end
+  def valid_question
+    unless question_params[:course_id] == ""
+      course = Course.find(question_params[:course_id])
+    end
+    {
+      from: "#{params[:question][:from]} #{question_params[:email]}",
+      email: @teacher.email,
+      course: course,
+      question: question_params[:question]
+    }
+  end
 
-	def question_params
-		params[:question]
-	end
+  def question_params
+    params[:question]
+  end
 
   def user_exists
     respond_to do |format|

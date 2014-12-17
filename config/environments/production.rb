@@ -43,18 +43,18 @@ Oplerno::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
-	config.cache_store = :redis_store, 'redis://localhost:6379/1/cache', { expires_in: 90.minutes }
-	config.action_dispatch.rack_cache = {
-		metastore: 'redis://localhost:6379/1/metastore',
-		entitystore: 'redis://localhost:6379/1/entitystore'
-	}
+  config.cache_store = :redis_store, 'redis://localhost:6379/1/cache', { expires_in: 90.minutes }
+  config.action_dispatch.rack_cache = {
+    metastore: 'redis://localhost:6379/1/metastore',
+    entitystore: 'redis://localhost:6379/1/entitystore'
+  }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-	config.assets.precompile += %w( devise_authy.js main.js plugins.js bootstrap-responsive.css chardinjs-0.1.2.css magic-bootstrap.css main.css normalize.css modernizr-2.6.2.min.js image-picker.js jquery.lazyload.min.js image-picker.css tracking.js authy.js)
-	config.assets.paths << File.join(Rails.root, '/vendor/assets')
+  config.assets.precompile += %w( devise_authy.js main.js plugins.js bootstrap-responsive.css chardinjs-0.1.2.css magic-bootstrap.css main.css normalize.css modernizr-2.6.2.min.js image-picker.js jquery.lazyload.min.js image-picker.css tracking.js authy.js)
+  config.assets.paths << File.join(Rails.root, '/vendor/assets')
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -76,14 +76,14 @@ Oplerno::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address: 'smtp.mandrillapp.com',
-      port: 587,
-      domain: 'oplerno.com',
-      user_name: 'webmaster@oplerno.com',
-      password: ENV['MAIL_PASSWORD'],
-      authentication: 'plain',
-      enable_starttls_auto: true,
-      openssl_verify_mode: 'none'
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    domain: 'oplerno.com',
+    user_name: 'webmaster@oplerno.com',
+    password: ENV['MAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none'
   }
 
   ::CANVAS_HOST = 'oplerno.instructure.com'
@@ -91,12 +91,12 @@ Oplerno::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :production
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
-        :login      => ENV['PAYPAL_USER'],
-        :password   => ENV['PAYPAL_PASS'],
-        :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
-        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
+      :login      => ENV['PAYPAL_USER'],
+      :password   => ENV['PAYPAL_PASS'],
+      :signature  => ENV['PAYPAL_SIG'],
+      :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+      :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+      :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 end

@@ -8,7 +8,7 @@ describe 'Carts' do
     end
     it 'Should redirect for login' do
       get carts_path
-    response.should redirect_to(new_user_session_url)
+      response.should redirect_to(new_user_session_url)
     end
   end
 end

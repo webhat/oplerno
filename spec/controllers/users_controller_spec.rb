@@ -23,7 +23,7 @@ describe UsersController do
         user = current_user
         user.first_name = 'Test Name'
         user.save
-        
+
         get :edit, {id: current_user_id}
         assigns(:user).encrypted_first_name.should eq current_user.encrypted_first_name
       end
@@ -45,23 +45,23 @@ describe UsersController do
 
   context 'PUT update' do
     context 'while signed in' do
-			login_user
+      login_user
       it 'should update first_name' do
         user = current_user
         user.first_name = 'Test Name'
         user.save
-        
-				put :update, {id: user.to_param, user: {first_name: 'Other Name'}}
-				user.reload
+
+        put :update, {id: user.to_param, user: {first_name: 'Other Name'}}
+        user.reload
         assigns(:user).encrypted_first_name.should eq user.encrypted_first_name
-			end
+      end
       it 'should update email' do
         user = current_user
-        
-				put :update, {id: user.to_param, user: {email: 'test_user_controller@oplerno.com'}}
-				user.reload
+
+        put :update, {id: user.to_param, user: {email: 'test_user_controller@oplerno.com'}}
+        user.reload
         assigns(:user).email.should eq user.email
-			end
+      end
     end
     context 'while signed out'
   end
@@ -74,7 +74,7 @@ describe UsersController do
         user = current_user
         user.first_name = 'Test Name'
         user.save
-        
+
         get :show, {id: current_user_id}
         assigns(:user).encrypted_first_name.should eq current_user.encrypted_first_name
       end

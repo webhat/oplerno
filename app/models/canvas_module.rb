@@ -11,14 +11,14 @@ module CanvasModule
 
     @canvas ||= Canvas::API.new(:host => "https://#{CANVAS_HOST}",
                                 :token => token
-    )
+                               )
   end
 
   def connect_to_canvas
     @canvas = Canvas::API.new(:host => "https://#{CANVAS_HOST}",
-                             :client_id => ENV['CANVAS_USERNAME'],
-                             :secret => ENV['CANVAS_PASSWORD']
-    )
+                              :client_id => ENV['CANVAS_USERNAME'],
+                              :secret => ENV['CANVAS_PASSWORD']
+                             )
     @canvas.oauth_url 'https://localhost/oauth_success'
   end
 end

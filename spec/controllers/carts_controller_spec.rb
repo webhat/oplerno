@@ -12,15 +12,15 @@ describe CartsController do
     session[:course_id] = course.id
   end
 
-	before do
-		@cart = Cart.create! valid_cart
-		@cart.user = current_user
-		@cart.save
-	end
+  before do
+    @cart = Cart.create! valid_cart
+    @cart.user = current_user
+    @cart.save
+  end
 
-	after do
-		@cart.destroy
-	end
+  after do
+    @cart.destroy
+  end
 
   describe "GET show" do
     it "assigns the requested cart as @cart" do
@@ -30,9 +30,9 @@ describe CartsController do
   end
 
   describe "POST create" do
-		before do
-			@cart.destroy
-		end
+    before do
+      @cart.destroy
+    end
 
     describe "with valid params" do
       it "creates a new Cart" do
@@ -47,67 +47,67 @@ describe CartsController do
         assigns(:cart).should be_persisted
       end
 
-			it 'should add the course to the cart' do
-				@course = Course.create! valid_course
+      it 'should add the course to the cart' do
+        @course = Course.create! valid_course
 
-				def valid_session
-					mysession = { course_id: @course.id }
-					session.to_hash.merge mysession
-				end
-					
-				post :create, {}, valid_session
+        def valid_session
+          mysession = { course_id: @course.id }
+          session.to_hash.merge mysession
+        end
 
-				session[:course_id].should be(nil)
-			end
+        post :create, {}, valid_session
 
-			it 'can add the course to the cart twice' do
-				@course = Course.create! valid_course
+        session[:course_id].should be(nil)
+      end
 
-				def valid_session
-					mysession = { course_id: @course.id }
-					session.to_hash.merge mysession
-				end
-					
-				post :create, {}, valid_session
-				session[:course_id].should be(nil)
-				flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-				flash[:alert].should be nil
+      it 'can add the course to the cart twice' do
+        @course = Course.create! valid_course
 
-				post :create, {}, valid_session
-				session[:course_id].should be(nil)
-				flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-				flash[:alert].should be nil
-			end
+        def valid_session
+          mysession = { course_id: @course.id }
+          session.to_hash.merge mysession
+        end
 
-			it 'can\'t add the course to the cart if you are taking it' do
-				@course = Course.create! valid_course
+        post :create, {}, valid_session
+        session[:course_id].should be(nil)
+        flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
+        flash[:alert].should be nil
 
-				def valid_session
-					mysession = { course_id: @course.id }
-					session.to_hash.merge mysession
-				end
+        post :create, {}, valid_session
+        session[:course_id].should be(nil)
+        flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
+        flash[:alert].should be nil
+      end
 
-				current_user.courses << @course
+      it 'can\'t add the course to the cart if you are taking it' do
+        @course = Course.create! valid_course
 
-				post :create, {}, valid_session
-				flash[:notice].should be nil
-				flash[:alert].should eq (I18n.t 'courses.fail.already_in')
-			end
+        def valid_session
+          mysession = { course_id: @course.id }
+          session.to_hash.merge mysession
+        end
 
-			it 'can\'t add the course to the cart if the class is full' do
-				@course = Course.create! valid_course
-				@course.max = 0
-				@course.save
+        current_user.courses << @course
 
-				def valid_session
-					mysession = { course_id: @course.id }
-					session.to_hash.merge mysession
-				end
+        post :create, {}, valid_session
+        flash[:notice].should be nil
+        flash[:alert].should eq (I18n.t 'courses.fail.already_in')
+      end
 
-				post :create, {}, valid_session
-				flash[:notice].should be nil
-				flash[:alert].should eq (I18n.t 'courses.fail.too_many')
-			end
+      it 'can\'t add the course to the cart if the class is full' do
+        @course = Course.create! valid_course
+        @course.max = 0
+        @course.save
+
+        def valid_session
+          mysession = { course_id: @course.id }
+          session.to_hash.merge mysession
+        end
+
+        post :create, {}, valid_session
+        flash[:notice].should be nil
+        flash[:alert].should eq (I18n.t 'courses.fail.too_many')
+      end
     end
 
     describe "with invalid params" do

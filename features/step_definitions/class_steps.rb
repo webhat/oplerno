@@ -10,13 +10,13 @@ require 'cucumber/formatter/unicode'
 WebMock.allow_net_connect!
 
 VCR.configure do |c|
-	# INFO: This is relative to the Rails.root
-	c.cassette_library_dir = 'features/fixtures/vcr_cassettes'
-	c.default_cassette_options = { :record => :once }
+  # INFO: This is relative to the Rails.root
+  c.cassette_library_dir = 'features/fixtures/vcr_cassettes'
+  c.default_cassette_options = { :record => :once }
 end
 
 VCR.cucumber_tags do |t|
-	t.tag  '@canvas'
+  t.tag  '@canvas'
 end
 
 Before do
@@ -55,14 +55,14 @@ Given /The (\w+) with (\w+): '(.*)' has (\w+): (\d+)/ do |clazz, search_attribut
   object.save
 end
 
-#		* I add the Subject 'Test'
+#   * I add the Subject 'Test'
 Given /I add the (\w+): '(.*)'/ do |clazz, value|
-	object = Object.const_get(clazz).new
-	object.send("#{clazz.downcase}=", value)
-	VCR.use_cassette('@canvas') {
-		@object.send("#{clazz.downcase}s").send('push', object)
-		object.save
-	}
+  object = Object.const_get(clazz).new
+  object.send("#{clazz.downcase}=", value)
+  VCR.use_cassette('@canvas') {
+    @object.send("#{clazz.downcase}s").send('push', object)
+    object.save
+  }
 end
 
 Given /I have a (\w+)/ do |clazz|
@@ -79,30 +79,30 @@ Given /I don't enter a (\w+)/ do |op|
 end
 
 Given /I am a (\w+)/ do |type|
-	@user = FactoryGirl.create(type.underscore.to_sym)
+  @user = FactoryGirl.create(type.underscore.to_sym)
 end
 
 Given /^I am not authenticated$/ do
-	  visit('/users/sign_out') # ensure that at least
+  visit('/users/sign_out') # ensure that at least
 end
 
 Given /^I am confirmed$/ do
-	@user.confirm!
-	@user.save!
+  @user.confirm!
+  @user.save!
 end
 
 When /^I login$/ do
-	visit '/users/sign_in'
-	fill_in 'user_email', :with => @user.email
-	fill_in 'user_password', :with => @user.password
-	click_button I18n.t('devise.sessions.new.sign_in')
-	@result = page.has_content? I18n.t('devise.sessions.new.sign_out')
+  visit '/users/sign_in'
+  fill_in 'user_email', :with => @user.email
+  fill_in 'user_password', :with => @user.password
+  click_button I18n.t('devise.sessions.new.sign_in')
+  @result = page.has_content? I18n.t('devise.sessions.new.sign_out')
 end
 
 When /I press (\w+)/ do |op|
-	VCR.use_cassette('@canvas') {
-		@result = @object.send op
-	}
+  VCR.use_cassette('@canvas') {
+    @result = @object.send op
+  }
 end
 
 When /I placed my Order/ do

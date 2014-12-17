@@ -47,7 +47,7 @@
 # that is found on the object will be used.
 # Defaults to ["to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
 Formtastic::FormBuilder.collection_label_methods = [
-   "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
+  "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
 
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: true. Overridden for specific fields by setting value to true,

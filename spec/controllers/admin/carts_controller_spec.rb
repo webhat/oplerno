@@ -14,7 +14,7 @@ describe Admin::CartsController, :type => :controller do
 
     before(:each) do
       @cart = Cart.create! valid_attributes
-			@cart.user = @user
+      @cart.user = @user
     end
 
     after(:each) do
