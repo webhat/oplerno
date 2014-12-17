@@ -29,6 +29,7 @@ group :doc do
   gem 'guard-jasmine'
   gem 'guard-coffeescript'
   gem 'guard-cucumber'
+  gem 'guard-rubocop'
 	gem 'brakeman', '~> 2.6.3'
 	gem 'guard-brakeman', '>= 0.8.2'
   gem 'redcarpet'
