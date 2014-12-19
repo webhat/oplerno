@@ -40,10 +40,10 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
 
-#guard :rubocop, all_on_start: false  do
-#  watch(%r{.+\.rb$}) { |m| m[0] }
-#  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
-#end
+guard :rubocop, all_on_start: false  do
+  watch(%r{.+\.rb$}) { |m| m[0] }
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+end
 
 guard :yard, stdout: 'log/yard.log', stderr: 'log/yard_error.log' do
   watch(%r{app/.+\.rb})
