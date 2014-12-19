@@ -25,4 +25,13 @@ describe Notification, :type => :mailer do
     faculty_mail.deliver
     ActionMailer::Base.deliveries.should_not be_empty
   end
+  it 'should send an email to the admin' do
+    user = FactoryGirl.create(:user)
+    transactor = Notification.order_transaction(user)
+
+    expect(transactor.to[0]).to eq('webmaster@oplerno.com')
+
+    transactor.deliver
+    ActionMailer::Base.deliveries.should_not be_empty
+  end
 end

@@ -1,3 +1,4 @@
+# Mail notifications
 class Notification < ActionMailer::Base
   @from = 'webmaster@oplerno.com'
   default from: @from, to: @from
@@ -12,13 +13,21 @@ class Notification < ActionMailer::Base
   end
 
   def faculty_invite user
-    subject = t('teachers.mail.welcome')
-
     @user = user
 
     unless user.privateemail.nil?
+      subject = t('teachers.mail.welcome')
+
       mail(subject: subject, to: user.privateemail)
     end
+
+    self
+  end
+
+  def order_transaction user
+    subject = t('users.mail.order_transaction')
+
+    mail(subject: subject, user: user.email)
 
     self
   end

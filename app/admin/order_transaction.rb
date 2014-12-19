@@ -20,18 +20,20 @@ ActiveAdmin.register OrderTransaction do
         end
       rescue => e
         p e
-        @val = order_transaction.params.decrypt Devise.secret_key
-        "Unverified: #{JSON.parse(@val)['order_description']}"
+        val = order_transaction.params.decrypt Devise.secret_key
+        "Unverified: #{JSON.parse(val)['order_description']}"
       end
     end
     column 'User' do |order_transaction|
+      val = order_transaction.params.decrypt Devise.secret_key
+      user = User.find_by_email JSON.parse(val)['payer']
       begin
         cart = order_transaction.order.cart
         user = User.find(cart.user_id)
-        "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})"
+        name = "#{user.display_name} (#{cart.user_id})"
+        link_to name, [:admin, user] unless user.nil?
       rescue => e
         p e
-        val = order_transaction.params.decrypt Devise.secret_key
         user = User.find_by_email JSON.parse(val)['payer']
 
         link_to user.email, [:admin, user] unless user.nil?
