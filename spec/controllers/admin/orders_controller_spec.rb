@@ -6,19 +6,19 @@ describe Admin::OrdersController do
 
   before do
     @cart = FactoryGirl.create(:cart)
-		@cart.user = FactoryGirl.create(:user)
-		@cart.save
+    @cart.user = FactoryGirl.create(:user)
+    @cart.save
   end
 
   describe 'Get orders' do
     let(:valid_order) { {} }
 
     before do
-			@order = @cart.build_order(valid_order)
-			@order.save
+      @order = @cart.build_order(valid_order)
+      @order.save
     end
 
-		after do
+    after do
       @order.destroy
     end
 

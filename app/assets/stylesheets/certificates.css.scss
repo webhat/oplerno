@@ -1,0 +1,23 @@
+$block: 100px;
+@mixin cert_block($size) {
+	height: $size;
+	width: $size;
+	background-size:auto $size;
+}
+.certificates {
+	width: 80%;
+	display: flex;
+	flex-flow: row wrap; 
+}
+.certificate {
+	border: solid 10px white;
+}
+.certificate_block {
+	display: flex;
+	flex-flow: column wrap;
+	@include cert_block($block * 2)
+}
+.certificate_image {
+	@include cert_block($block)
+}
+

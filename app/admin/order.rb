@@ -1,31 +1,31 @@
 ActiveAdmin.register Order do
-	actions :all, :except => [:destroy]
+  actions :all, :except => [:destroy]
   index do
-		column 'Order ID' do |order|
-			order.id
-		end
+    column 'Order ID' do |order|
+      order.id
+    end
     column 'Order Value' do |order|
       begin
-				order.cart.total_price
+        order.cart.total_price
       rescue
-				'NA'
+        'NA'
       end
     end
     column :courses do |order|
       begin
-				table_for order.cart.courses do
-					column do |course|
-						link_to course.name, [:admin, course]
-					end
-				end
+        table_for order.cart.courses do
+          column do |course|
+            link_to course.name, [:admin, course]
+          end
+        end
       rescue
-				'NA'
+        'NA'
       end
     end
     column 'User' do |cart|
       begin
         user = User.find(cart.user_id)
-				link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})", [:admin, user]
+        link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})", [:admin, user]
       rescue
         puts $!.inspect, $@
         "*encrypted* (#{cart.user_id})"

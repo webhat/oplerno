@@ -40,24 +40,24 @@ Oplerno::Application.configure do
   config.after_initialize do
     ActionMailer::Base.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
-        address: 'smtp.mandrillapp.com',
-        port: 587,
-        domain: 'oplerno.com',
-        user_name: 'webmaster@oplerno.com',
-        password: ENV['MAIL_PASSWORD'],
-        authentication: 'plain',
-        enable_starttls_auto: true,
-        openssl_verify_mode: 'none'
+      address: 'smtp.mandrillapp.com',
+      port: 587,
+      domain: 'oplerno.com',
+      user_name: 'webmaster@oplerno.com',
+      password: ENV['MAIL_PASSWORD'],
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      openssl_verify_mode: 'none'
     }
 
     ActiveMerchant::Billing::Base.mode = :production
     ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
-        :login      => ENV['PAYPAL_USER'],
-        :password   => ENV['PAYPAL_PASS'],
-        :signature  => ENV['PAYPAL_SIG'],
-        :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
-        :return_url           => 'https://enroll.oplerno.com/orders/confirm',
-        :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
+      :login      => ENV['PAYPAL_USER'],
+      :password   => ENV['PAYPAL_PASS'],
+      :signature  => ENV['PAYPAL_SIG'],
+      :ipn_notification_url => 'https://enroll.oplerno.com/orders/ipn',
+      :return_url           => 'https://enroll.oplerno.com/orders/confirm',
+      :cancel_url           => 'https://enroll.oplerno.com/orders/cancel',
     )
   end
 

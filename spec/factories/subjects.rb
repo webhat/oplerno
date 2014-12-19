@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :subject do
-		subject { 'A Subject' }
+    subject { 'A Subject' }
   end
 end

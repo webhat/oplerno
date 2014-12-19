@@ -1,0 +1,19 @@
+panel 'Instructor' do
+	columns do
+		column do
+			begin
+				link_to data.display_name.force_encoding('UTF-8'), "/admin/users/#{data.id}"
+			rescue
+				"Unknown"
+			end
+		end
+		column do
+			canvas_user = CanvasUsers.find_by_user_id(resource.id)
+			unless canvas_user.nil?
+				link_to canvas_user.canvas_id, "https://oplerno.instructure.com/users/#{canvas_user.canvas_id}"
+			else
+				'??'
+			end
+		end
+	end
+end

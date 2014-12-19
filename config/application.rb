@@ -11,7 +11,7 @@ end
 
 module Oplerno
   class Application < Rails::Application
-		config.middleware.use Rack::Deflater
+    config.middleware.use Rack::Deflater
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -25,7 +25,7 @@ module Oplerno
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-		config.active_record.observers = :user_observer, :order_transaction_observer, :course_observer
+    config.active_record.observers = :user_observer, :order_transaction_observer, :course_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -67,14 +67,15 @@ module Oplerno
 
     config.generators do |g|
       g.test_framework :rspec,
-                       :fixtures => true,
-                       :view_specs => false,
-                       :helper_specs => false,
-                       :routing_specs => false,
-                       :controller_specs => true,
-                       :request_specs => true
+        :fixtures => true,
+        :view_specs => false,
+        :helper_specs => false,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
-			g.template_engine :haml
+      #g.form_builder :simple_form
+      g.template_engine :haml
     end
   end
 end

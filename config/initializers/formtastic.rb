@@ -46,8 +46,8 @@
 # for the text inside each @<option>@ tag or alongside each radio @<input>@. The first method
 # that is found on the object will be used.
 # Defaults to ["to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
-# Formtastic::FormBuilder.collection_label_methods = [
-#   "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
+Formtastic::FormBuilder.collection_label_methods = [
+  "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
 
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: true. Overridden for specific fields by setting value to true,
@@ -64,7 +64,7 @@
 
 # You can add custom inputs or override parts of Formtastic by subclassing Formtastic::FormBuilder and
 # specifying that class here.  Defaults to Formtastic::FormBuilder.
-# Formtastic::Helpers::FormHelper.builder = MyCustomBuilder
+# Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder
 
 # You can opt-in to Formtastic's use of the HTML5 `required` attribute on `<input>`, `<select>`
 # and `<textarea>` tags by setting this to false (defaults to true).
