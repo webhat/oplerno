@@ -7,11 +7,11 @@ class Course < ActiveRecord::Base
   paginates_per 24
 
   attr_accessible :avatar
-  has_attached_file :avatar, :styles => {:medium => "265x265>", :thumb => "100x100>"},
-    :default_url => "/assets/:style/missing.png",
-    :path => "courses/:attachment/:id_partition/:style/:filename",
-    :url => "/dynamic/courses/avatars/:id_partition/:style/:basename.:extension",
-    :storage => :redis
+  has_attached_file :avatar, styles: { medium: '265x265>', thumb: '100x100>' },
+    default_url: '/assets/:style/missing.png',
+    path: 'courses/:attachment/:id_partition/:style/:filename',
+    url: '/dynamic/courses/avatars/:id_partition/:style/:basename.:extension',
+    storage: :redis
 
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 
@@ -42,17 +42,17 @@ class Course < ActiveRecord::Base
   has_one :rank, class_name: 'CourseRanking'
 
   def name
-    _name = read_attribute(:name)
-    return if _name.nil?
-    nbsp = Nokogiri::HTML("&nbsp;").text
-    _name.gsub(nbsp, " ")
+    display_name = read_attribute(:name)
+    return if display_name.nil?
+    nbsp = Nokogiri::HTML('&nbsp;').text
+    display_name.gsub(nbsp, ' ')
   end
 
   def active?
     self.price.to_f > 0
   end
 
-  def subject=(_subject)
+  def subject= _subject
     return if _subject.empty?
     v = Subject.find(_subject)
     subjects << v unless subjects.include?(v)
@@ -63,11 +63,11 @@ class Course < ActiveRecord::Base
   end
 
   def subject_list= list
-    self.subjects = list.map{|x| Subject.find(x)}
+    self.subjects = list.map{ |x| Subject.find(x) }
   end
 
   def skill_list= list
-    self.skills = list.map{|x| Skill.find(x)}
+    self.skills = list.map{ |x| Skill.find(x) }
   end
 
   def skill
