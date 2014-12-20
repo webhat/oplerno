@@ -46,13 +46,22 @@ describe CertificatesController do
     context 'logged in' do
       login_user
 
+      before do
+        @course1 = FactoryGirl.create(:course)
+      end
+
       context 'bad request' do
         it "returns http success" do
           post :create
           expect(response).to redirect_to certificates_url
         end
       end
-      let(:valid_certificate) { { name:'History', courses: [1, 2, 3, 4] } }
+      let(:valid_certificate) { { name:'History', courses: [
+        @course1.id,
+        @course1.id,
+        @course1.id,
+        @course1.id
+      ] } }
       it "returns http success" do
         post :create, certificate: valid_certificate
         expect(response).to redirect_to certificates_url
