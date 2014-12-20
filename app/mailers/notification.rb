@@ -25,9 +25,23 @@ class Notification < ActionMailer::Base
   end
 
   def order_transaction user
+    return if user.nil?
+    @user = user
+
     subject = t('users.mail.order_transaction')
 
-    mail(subject: subject, user: user.email)
+    mail(subject: subject, user: user)
+
+    self
+  end
+
+  def order user
+    return if user.nil?
+    @user = user
+
+    subject = t('users.mail.order')
+
+    mail(subject: subject, user: user)
 
     self
   end
