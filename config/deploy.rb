@@ -18,28 +18,28 @@ set :pty, true
 set :keep_releases, 10
 
 set :default_env, {
-    'PODIO_SECRET' => ENV['PODIO_SECRET'],
-    'PODIO_CID' => ENV['PODIO_CID'],
-    'PODIO_USERNAME' => ENV['PODIO_USERNAME'],
-    'PODIO_PASSWORD' => ENV['PODIO_PASSWORD'],
-    'DEVISE_SECRET' => ENV['DEVISE_SECRET'],
-    'DEVISE_PEPPER' => ENV['DEVISE_PEPPER'],
-    'DB' => 'mysql',
-    'RAILS_ENV' => fetch(:rails_env),
-    'PAYPAL_USER' => ENV['PAYPAL_USER'],
-    'PAYPAL_PASS' => ENV['PAYPAL_PASS'],
-    'PAYPAL_SIG' => ENV['PAYPAL_SIG'],
-    'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
-    'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN'],
-    'CANVAS_USERNAME' => ENV['CANVAS_USERNAME'],
-    'CANVAS_PASSWORD' => ENV['CANVAS_PASSWORD'],
-    'CANVAS_TOKEN' => ENV['CANVAS_TOKEN'],
-    'MY_DEV_PASSWORD' => ENV['MY_DEV_PASSWORD'],
-    'MYSQL_PASSWORD' => ENV['MYSQL_PASSWORD'],
-    'NEWRELIC_KEY' => ENV['NEWRELIC_KEY'],
-    'AUTHY_API_KEY' => ENV['AUTHY_API_KEY'],
-    'PAPERCLIP_REDIS' => ENV['PAPERCLIP_REDIS'],
-    'MAIL_PASSWORD' => ENV['MAIL_PASSWORD']
+  'PODIO_SECRET' => ENV['PODIO_SECRET'],
+  'PODIO_CID' => ENV['PODIO_CID'],
+  'PODIO_USERNAME' => ENV['PODIO_USERNAME'],
+  'PODIO_PASSWORD' => ENV['PODIO_PASSWORD'],
+  'DEVISE_SECRET' => ENV['DEVISE_SECRET'],
+  'DEVISE_PEPPER' => ENV['DEVISE_PEPPER'],
+  'DB' => 'mysql',
+  'RAILS_ENV' => fetch(:rails_env),
+  'PAYPAL_USER' => ENV['PAYPAL_USER'],
+  'PAYPAL_PASS' => ENV['PAYPAL_PASS'],
+  'PAYPAL_SIG' => ENV['PAYPAL_SIG'],
+  'OPLERNO_KEYBASE' => ENV['OPLERNO_KEYBASE'],
+  'OPLERNO_TOKEN' => ENV['OPLERNO_TOKEN'],
+  'CANVAS_USERNAME' => ENV['CANVAS_USERNAME'],
+  'CANVAS_PASSWORD' => ENV['CANVAS_PASSWORD'],
+  'CANVAS_TOKEN' => ENV['CANVAS_TOKEN'],
+  'MY_DEV_PASSWORD' => ENV['MY_DEV_PASSWORD'],
+  'MYSQL_PASSWORD' => ENV['MYSQL_PASSWORD'],
+  'NEWRELIC_KEY' => ENV['NEWRELIC_KEY'],
+  'AUTHY_API_KEY' => ENV['AUTHY_API_KEY'],
+  'PAPERCLIP_REDIS' => ENV['PAPERCLIP_REDIS'],
+  'MAIL_PASSWORD' => ENV['MAIL_PASSWORD']
 }
 
 namespace :deploy do
@@ -65,12 +65,12 @@ namespace :deploy do
   end
 
   after :updated, 'deploy:migrate'
-	after "deploy:updated", "newrelic:notice_deployment"
+  after "deploy:updated", "newrelic:notice_deployment"
 
-	# Stub :restart
+  # Stub :restart
   task :restart do
 
-	end
+  end
 
   after :publishing, 'app:restart'
   after :finishing, 'deploy:cleanup'

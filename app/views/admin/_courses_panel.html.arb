@@ -1,0 +1,5 @@
+table_for data do
+	column do |course|
+		link_to course.name, [:admin, course]
+	end
+end

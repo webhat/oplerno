@@ -1,0 +1,21 @@
+panel 'Also by this Instructor' do
+	courses = Course.find(:all, conditions: ["teacher = ?", data.id])
+	courses.each do |course|
+		columns title: 'Courses' do
+			column do
+				course.rank.ranking
+			end
+			column do
+				link_to course.name, [:admin, course]
+			end
+			column do
+				canvas_course = CanvasCourses.find_by_course_id(course.id)
+				unless canvas_course.nil?
+					link_to canvas_course.canvas_id, "https://oplerno.instructure.com/courses/#{canvas_course.canvas_id}"
+				else
+					'??'
+				end
+			end
+		end
+	end
+end

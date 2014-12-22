@@ -28,29 +28,29 @@ describe TeachersController do
     end
   end
 
-	describe 'POST contact teacher' do
+  describe 'POST contact teacher' do
     before do
       @teacher = FactoryGirl.create(:teacher)
       @course = FactoryGirl.create(:course)
     end
 
-		it 'sends an email to the teacher' do
-			post :contact, {id: @teacher.id, format: 'json', question: { from: 'example@oplerno.com', course_id: @course.id, question: 'Do you know stuff?'}}
+    it 'sends an email to the teacher' do
+      post :contact, {id: @teacher.id, format: 'json', question: { from: 'example@oplerno.com', course_id: @course.id, question: 'Do you know stuff?'}}
       assigns(:teacher).should eq(@teacher)
-		end
+    end
 
-		it 'shouldn\'t use other than json' do
-			expect {
-				post :contact, { id: @teacher.id, format: 'html' }
-			}.to raise_error
-		end
+    it 'shouldn\'t use other than json' do
+      expect {
+        post :contact, { id: @teacher.id, format: 'html' }
+      }.to raise_error
+    end
 
-		it 'shouldn\'t route GET' do
-			expect {
-				get :contact, { id: @teacher.id }
-			}.to raise_error
-		end
-	end
+    it 'shouldn\'t route GET' do
+      expect {
+        get :contact, { id: @teacher.id }
+      }.to raise_error
+    end
+  end
 
   describe 'GET edit' do
     before do

@@ -18,6 +18,7 @@ Feature: Admin Browse
 			| Subject		|
 			| User			|
 			| OrderTransaction			|
+			| Certificate |
 
 	Scenario Outline: Admin looks at admin#show
 		* I am not authenticated as an AdminUser
@@ -35,8 +36,9 @@ Feature: Admin Browse
 			| Subject		|
 			| User			|
 			| AdminUser |
+			| Certificate |
 
-	Scenario Outline: Admin looks at admin#adit
+	Scenario Outline: Admin looks at admin#edit
 		* I am not authenticated as an AdminUser
 		* I am a AdminUser
 		* I login as an AdminUser
@@ -52,3 +54,4 @@ Feature: Admin Browse
 			| Subject		|
 			| User			|
 			| AdminUser |
+			| Certificate |

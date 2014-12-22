@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141128191720) do
+ActiveRecord::Schema.define(:version => 20141219114637) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -89,6 +89,28 @@ ActiveRecord::Schema.define(:version => 20141128191720) do
   add_index "carts_courses", ["cart_id"], :name => "index_carts_courses_on_cart_id"
   add_index "carts_courses", ["course_id", "cart_id"], :name => "index_carts_courses_on_course_id_and_cart_id", :unique => true
   add_index "carts_courses", ["course_id"], :name => "index_carts_courses_on_course_id"
+
+  create_table "certificates", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "teacher_id"
+    t.string   "montage_file_name"
+    t.string   "montage_content_type"
+    t.integer  "montage_file_size"
+    t.datetime "montage_updated_at"
+    t.string   "slug"
+  end
+
+  add_index "certificates", ["slug"], :name => "index_certificates_on_slug"
+
+  create_table "certificates_courses", :force => true do |t|
+    t.integer "course_id"
+    t.integer "certificate_id"
+  end
+
+  add_index "certificates_courses", ["certificate_id"], :name => "index_certificates_courses_on_certificate_id"
+  add_index "certificates_courses", ["course_id"], :name => "index_certificates_courses_on_course_id"
 
   create_table "course_rankings", :force => true do |t|
     t.integer  "course_id"
@@ -302,7 +324,6 @@ ActiveRecord::Schema.define(:version => 20141128191720) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["privateemail"], :name => "index_users_on_privateemail", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
