@@ -1,6 +1,7 @@
 GIT
-  remote: https://github.com/webhat/podio-rb.git
-  revision: eddd85acff4a1e01181d5147f0497d2bc1c95253
+  remote: git://github.com/webhat/podio-rb.git
+  revision: 5411d704fe1918e4baa05091a2c6e4b4fb5653cd
+  branch: master
   specs:
     podio (1.0.0)
       activemodel (>= 3.0)
@@ -14,6 +15,12 @@ GIT
   specs:
     podiocrm (0.1.0)
       podio
+
+PATH
+  remote: ../crypt-env
+  specs:
+    crypt-env (0.1.4)
+      openssl
 
 GEM
   remote: https://rubygems.org/
@@ -384,6 +391,7 @@ GEM
       json (~> 1.7)
       money (< 7.0.0)
       nokogiri (~> 1.4)
+    openssl (1.0.0.beta)
     orm_adapter (0.5.0)
     paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
@@ -664,6 +672,7 @@ DEPENDENCIES
   churn
   coffee-rails (~> 3.2.1)
   coveralls
+  crypt-env!
   cucumber
   cucumber-rails
   database_cleaner
