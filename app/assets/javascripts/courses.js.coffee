@@ -1,8 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-
 window.switchButtons = ->
   $('.switch-wrapper input').switchButton({
     on_label: "Undergraduate",
@@ -11,7 +6,7 @@ window.switchButtons = ->
 
   labelled_button = (i,but) ->
     $(but).switchButton({ labels_placement: 'both', on_label: but.previousElementSibling.innerHTML, off_label: '' })
-    $(but.previousElementSibling).hide();
+    $(but.previousElementSibling).hide()
 
   $('input[id^="skill_list_"]').each labelled_button
   $('input[id^="subject_list_"]').each labelled_button
@@ -26,7 +21,7 @@ $(document).ready ->
       "OK": ->
         document.location = '/'
     }
-  });
+  })
   $( "#order-dialog" ).dialog 'open'
 
 inquire_dialog_setup = ->
@@ -35,13 +30,13 @@ inquire_dialog_setup = ->
     width: '600px',
     buttons: {
         "Send": ->
-          $( "#target" ).submit();
+          $( "#target" ).submit()
           $( "#inquire-dialog" ).dialog 'close'
       }
-    });
+    })
   $("span.ui-button-icon-primary.ui-icon.ui-icon-closethick").css({"margin-left": '-8px', "margin-top": '-8px'})
 
-window.open_inquire_dialog = -> 
+window.open_inquire_dialog = ->
   $( "#inquire-dialog" ).dialog 'open'
 
 $(document).ready ->
