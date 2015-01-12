@@ -1,0 +1,15 @@
+# Runs `rake rank:(users|courses)`
+namespace :sitemap do
+	desc 'rake sitemap:generate'
+	task :generate do
+		on roles(:app) do
+      execute "cd #{release_path} ; DB=mysql PAYPAL_USER='production' PAYPAL_PASS='production' PAYPAL_SIG='production' RAILS_ENV=production CANVAS_TOKEN=#{fetch(:default_env)['CANVAS_TOKEN']} MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-2.0.0-p481 bundle exec rake sitemap:generate"
+		end
+	end
+	desc 'rake sitemap:ping'
+	task :ping do
+		on roles(:app) do
+      execute "cd #{release_path} ; DB=mysql PAYPAL_USER='production' PAYPAL_PASS='production' PAYPAL_SIG='production' RAILS_ENV=production CANVAS_TOKEN=#{fetch(:default_env)['CANVAS_TOKEN']} MAIL_PASSWORD=#{fetch(:default_env)['MAIL_PASSWORD']} AUTHY_API_KEY=#{fetch(:default_env)['AUTHY_API_KEY']} NEWRELIC_KEY=#{fetch(:default_env)['NEWRELIC_KEY']} OPLERNO_TOKEN=#{fetch(:default_env)['OPLERNO_TOKEN']} OPLERNO_KEYBASE=#{fetch(:default_env)['OPLERNO_KEYBASE']} DEVISE_SECRET=#{fetch(:default_env)['DEVISE_SECRET']} DEVISE_PEPPER=#{fetch(:default_env)['DEVISE_PEPPER']} /tmp/Oplerno/rvm-auto.sh ruby-2.0.0-p481 bundle exec rake sitemap:ping"
+		end
+	end
+end

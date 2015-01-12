@@ -10,7 +10,16 @@ set :branch, 'develop'
 set :deploy_to, '/home/redhat/www'
 
 set :linked_files, %w{config/database.yml config/newrelic.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system config/strongbox}
+set :linked_dirs, %w{
+  bin
+  log
+  tmp/pids
+  tmp/cache
+  tmp/sockets
+  vendor/bundle
+  public/system
+  config/strongbox
+}
 
 set :format, :pretty
 set :log_level, :debug
@@ -65,7 +74,7 @@ namespace :deploy do
   end
 
   after :updated, 'deploy:migrate'
-  after "deploy:updated", "newrelic:notice_deployment"
+  after 'deploy:updated', 'newrelic:notice_deployment'
 
   # Stub :restart
   task :restart do

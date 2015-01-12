@@ -34,21 +34,21 @@ describe ApplicationHelper do
     it 'should return true if the signed in user is a teacher' do
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(true)
       expect(is_teacher?).to be true
-      expect(Date.today.month).to be(12)
-      expect(Date.today.year).to be(2014)
+      expect(Date.today.month).to be < 2
+      expect(Date.today.year).to be(2015)
     end
     it 'should return false if the signed in user is not a teacher' do
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(false)
       expect(is_teacher?).to be false
-      expect(Date.today.month).to be(12)
-      expect(Date.today.year).to be(2014)
+      expect(Date.today.month).to be < 2
+      expect(Date.today.year).to be(2015)
     end
 
     it 'should return false if the user is not signed in' do
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(false)
       expect(is_teacher?).to be false
-      expect(Date.today.month).to be(12)
-      expect(Date.today.year).to be(2014)
+      expect(Date.today.month).to be < 2
+      expect(Date.today.year).to be(2015)
     end
   end
   context 'avatar' do

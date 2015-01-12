@@ -26,12 +26,12 @@ group :doc do
   gem 'yard', require: false
   gem 'guard-rspec'
   gem 'guard-yard'
-  gem 'guard-jasmine'
-  gem 'guard-coffeescript'
-  gem 'guard-cucumber'
+  gem 'guard-jasmine', '~> 2.0.1'
+  gem 'guard-coffeescript', github: 'guard/guard-coffeescript'
+  gem 'guard-cucumber', '~> 1.5.0'
   gem 'guard-rubocop'
   gem 'brakeman', '~> 2.6.3'
-  gem 'guard-brakeman', '>= 0.8.2'
+  gem 'guard-brakeman', '~> 0.8.2'
   gem 'redcarpet'
 
   # metrics
@@ -82,6 +82,7 @@ gem 'chardinjs-rails', '>= 0.1.3'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-bootstrap-sass'
 gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
 gem 'rails-assets-normalize-css'
 
 group :development do
