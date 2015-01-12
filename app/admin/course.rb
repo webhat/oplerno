@@ -9,6 +9,7 @@ ActiveAdmin.register Course do
     column :name do |course|
       "#{course.name} (#{course.id})"
     end
+    column :start_date
     column :price
     column 'Instructor' do |course|
       course_teacher = course.teacher
@@ -81,6 +82,7 @@ ActiveAdmin.register Course do
   end
 
   filter :name
+  filter :start_date
   # filter :teacher, :collection => User.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
 
   form do |f|
