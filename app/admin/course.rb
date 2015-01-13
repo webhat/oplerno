@@ -1,6 +1,6 @@
 ActiveAdmin.register Course do
   actions :all, except: [:destroy]
-  index do
+  index download_links: [:csv, :xml, :json, :ical] do
     column :avatar do |course|
       link_to [course] do
         image_tag(course.avatar.url(:thumb))
@@ -39,7 +39,27 @@ ActiveAdmin.register Course do
     course = Course.find(params[:id])
     course.hidden = !course.hidden
     course.save
-      redirect_to action: :show, notice: 'Locked!'
+    redirect_to action: :show, notice: 'Locked!'
+  end
+
+  controller do
+    if Mime::Type.lookup_by_extension(:ical).nil?
+      Mime::Type.register 'text/calendar', :ical
+    end
+    require 'activeadmin/ical'
+    ActiveAdmin::ResourceDSL.send :include, ActiveAdmin::Ical::DSL
+    ActiveAdmin::Resource.send :include, ActiveAdmin::Ical::Resource
+    ActiveAdmin::Views::PaginatedCollection.add_format :ical
+    ActiveAdmin::ResourceController.send :include, ActiveAdmin::Ical::ResourceController
+  end
+
+  def ical(options={}, &block)
+    options[:resource] = @resource
+
+    config.ical_builder = ActiveAdmin::Ical::Builder.new config.resource_class, options, &block
+  end
+
+  ical do
   end
 
   show do
