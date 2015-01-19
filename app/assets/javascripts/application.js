@@ -20,6 +20,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-sanitize
+//= require angular-timeago
 //= require app
 //= require image-picker
 //= require jquery.lazyload.min

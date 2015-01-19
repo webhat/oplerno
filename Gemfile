@@ -80,10 +80,12 @@ group :assets do
   gem 'chardinjs-rails', '>= 0.1.3'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-bootstrap-sass'
-  gem 'rails-assets-angular'
-  gem 'rails-assets-angular-sanitize'
-  gem 'rails-assets-angular-resource'
-  gem 'rails-assets-angular-mocks'
+  gem 'rails-assets-angular', '~> 1.3.5'
+  gem 'rails-assets-angular-sanitize', '~> 1.3.5'
+  gem 'rails-assets-angular-resource', '~> 1.3.5'
+  gem 'rails-assets-angular-mocks', '~> 1.3.5'
+  gem 'rails-assets-angular-route', '~> 1.3.5'
+  gem 'rails-assets-angular-timeago'
   gem 'rails-assets-normalize-css'
 end
 

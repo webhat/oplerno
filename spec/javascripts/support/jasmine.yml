@@ -11,9 +11,14 @@
 #   - dist/**/*.js
 #
 src_files:
-  - assets/**/*.js
+  #- assets/**/*.js
+  - assets/angular/angular.js
+  - assets/angular-mocks/angular-mocks.js
+  - assets/angular-resource/angular-resource.js
   - assets/application.js
   - public/javascripts/compiled/*.js
+
+asset_paths:
 
 # stylesheets
 #

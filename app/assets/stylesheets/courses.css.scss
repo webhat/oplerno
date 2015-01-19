@@ -40,6 +40,10 @@ div.course_name, .course_image {
   background-repeat: no-repeat;
 }
 
+h4.course_price {
+  color: red;
+}
+
 .small .course_image {
   @include respond-to(handhelds) {
     @include avatar(150px);
