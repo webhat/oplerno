@@ -459,9 +459,6 @@ GEM
       activesupport (= 3.2.21)
       bundler (~> 1.0)
       railties (= 3.2.21)
-    rails-assets-angular (1.2.26)
-    rails-assets-angular-route (1.2.26)
-      rails-assets-angular (= 1.2.26)
     rails-assets-bootstrap-sass (3.0.2)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.1)
@@ -737,8 +734,6 @@ DEPENDENCIES
   quiet_assets
   railroady
   rails (~> 3.2.21)
-  rails-assets-angular
-  rails-assets-angular-route
   rails-assets-bootstrap-sass
   rails-assets-jquery-ui
   rails-assets-normalize-css

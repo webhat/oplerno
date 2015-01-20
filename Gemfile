@@ -81,8 +81,6 @@ end
 gem 'chardinjs-rails', '>= 0.1.3'
 gem 'rails-assets-jquery-ui'
 gem 'rails-assets-bootstrap-sass'
-gem 'rails-assets-angular'
-gem 'rails-assets-angular-route'
 gem 'rails-assets-normalize-css'
 
 group :development do
