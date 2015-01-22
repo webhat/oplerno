@@ -6,6 +6,8 @@ class Course < ActiveRecord::Base
   searchkick word_start: [:name]
   paginates_per 24
 
+  after_save :invalidate_caches
+
   attr_accessible :avatar
   has_attached_file :avatar, styles: { medium: '265x265>', thumb: '100x100>' },
     default_url: '/assets/:style/missing.png',
@@ -92,5 +94,16 @@ class Course < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     new_record?
+  end
+
+  private
+  def invalidate_caches
+    invalidate_cache :description, :syllabus, :subjects, :skills
+  end
+
+  def invalidate_cache(*args)
+    args.each do |field|
+      Rails.cache.delete("#{field}_#{self.id}")
+    end
   end
 end

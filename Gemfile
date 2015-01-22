@@ -135,6 +135,8 @@ group :test do
   #  gem 'rack-perftools_profiler', require: 'rack/perftools_profiler'
 end
 
+gem 'icalendar'
+
 gem 'nokogiri', '= 1.6.3.1'
 gem 'redis', '~> 3.0.4'
 gem 'redis-rails'

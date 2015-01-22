@@ -23,6 +23,9 @@ Development:
 Attributions
 ============
 
+Code from:
+[activeadmin-axlsx](https://github.com/randym/activeadmin-axlsx)
+
 Stock Images:
 
 [jetheriot](http://www.flickr.com/photos/jetheriot/7940996488)

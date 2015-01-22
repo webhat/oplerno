@@ -9,7 +9,11 @@ class Cart < ActiveRecord::Base
   attr_accessible :total_price, :purchased_at, :courses #, :user_id
 
   def total_price
-    courses.compact.map(&:price).inject(0, &:+)
+    begin
+      courses.compact.map(&:price).inject(0, &:+)
+    rescue
+      'Error calculating'
+    end
   end
 
   def courses_to_student
