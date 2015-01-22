@@ -1,12 +1,23 @@
 describe 'Directives', ->
+  scope = null
+  $compile = null
+  element = null
   $controller = {}
 
   beforeEach ->
     module 'coursesApp'
-    inject ->
+
+  beforeEach ->
+    inject ($rootScope, _$compile_, _$controller_)->
+      scope = $rootScope
+      $compile = _$compile_
       $controller = _$controller_
+
+      element = angular.element('<a back-img="/testimg"/>')
 
   describe 'backImg', ->
     it 'should render a course image', ->
-      a = $('<a back-img="testimg"/>')
-      expect(a.css('background-image')).toEqual('url(testimg)')
+      $compile(element)(scope)
+      scope.$digest()
+
+      expect(element.css('background-image')).toEqual("url(#{ window.location.origin }/testimg)")
