@@ -24,6 +24,7 @@ config/gemnasium.yml
 coverage
 bin
 doc
+enroll*.png
 
 node_modules/
 .vagrant/
