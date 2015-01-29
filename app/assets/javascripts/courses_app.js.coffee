@@ -1,6 +1,6 @@
 'use strict'
 bootstrapAngular = ->
-  angular.bootstrap(document, ['coursesApp'])
+  angular.bootstrap(document.getElementById('angular_courses_list'), ['coursesApp'])
 
 window.coursesApp =
   angular
@@ -67,4 +67,4 @@ window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
   0 # DON'T REMOVE
 
 $(document).on('ready', bootstrapAngular)
-$(document).on('page:load', bootstrapAngular)
+$(document).on('page:change', bootstrapAngular)
