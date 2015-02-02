@@ -161,7 +161,7 @@ gem 'unicorn', '>= 4.8.2'
 
 gem 'sinatra', require: false
 gem 'slim'
-gem "bullet", :group => "development"
+gem 'bullet', group: 'development'
 
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
