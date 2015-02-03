@@ -27,22 +27,17 @@ window.rankingApp =
         self = this
 
         RankingIO.query query, (result) ->
-          console.log "called get"
           self.data = result
           console.log result.result
 
       new RankingSession()
 
     .controller 'RankingList', ($scope, RankingIO, RankingModel) ->
-      console.log 'Ranking'
-      console.log RankingModel
       $scope.ranking_value = RankingModel.fetch()
 
-      console.log 'XXX?'
       $scope.ranking = ->
         if $scope.ranking_value.length > 0
           $scope.ranking_value[0].rank
-
 
       0 # DON'T REMOVE
 

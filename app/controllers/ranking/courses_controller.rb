@@ -16,7 +16,7 @@ class Ranking::CoursesController < ApplicationController
         redirect_to '/'
       }
       format.json {
-        render json: [rank: Course.find(params[:id]).rank.ranking]
+        render json: [rank: @course.rank.ranking]
       }
     end
   end
@@ -28,11 +28,5 @@ class Ranking::CoursesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white
-  # list through.
-  def course_params
-    params[:course]
   end
 end
