@@ -64,7 +64,7 @@ Oplerno::Application.configure do
 
   ::CANVAS_HOST = 'oplerno.test.instructure.com'
 
-  Bullet.enable = true
+  Bullet.enable = false
   Bullet.alert = true
   Bullet.bullet_logger = true
   Bullet.console = true
