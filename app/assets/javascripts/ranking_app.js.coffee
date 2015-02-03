@@ -6,8 +6,10 @@ window.rankingApp =
   angular
     .module 'rankingApp', ['ngResource', 'ngSanitize'], ->
       console.log 'Angular Ranking'
-    .factory 'RankingIO', ($resource) ->
-      args = { id: 120, type: 'courses'}
+    .factory 'RankingIO', ($resource, $location) ->
+      path = $location.absUrl().split('/')
+      # FIXME: hack to keep tests working
+      args = { id: path[4] || 120, type: path[3] || 'courses'}
       methods =
         query:
           method: 'GET',
