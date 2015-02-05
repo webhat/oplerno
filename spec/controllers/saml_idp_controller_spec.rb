@@ -23,7 +23,7 @@ describe SamlIdpController do
 
     it "should create a SAML Response" do
       saml_response = encode_SAMLResponse("foo@oplerno.com")
-      response = Onelogin::Saml::Response.new(saml_response)
+      response = OneLogin::RubySaml::Response.new(saml_response)
       response.name_id.should == "foo@oplerno.com"
       response.issuer.should == "http://oplerno.com"
       response.settings = saml_settings
@@ -34,7 +34,7 @@ describe SamlIdpController do
       it "should create a SAML Response using the #{algorithm_name} algorithm" do
         self.algorithm = algorithm_name
         saml_response = encode_SAMLResponse("foo@oplerno.com")
-        response = Onelogin::Saml::Response.new(saml_response)
+        response = OneLogin::RubySaml::Response.new(saml_response)
         response.name_id.should == "foo@oplerno.com"
         response.issuer.should == "http://oplerno.com"
         response.settings = saml_settings
@@ -86,14 +86,14 @@ describe SamlIdpController do
   private
 
   def make_saml_request(requested_saml_acs_url = "https://foo.oplerno.com/saml/consume")
-    auth_request = Onelogin::Saml::Authrequest.new
+    auth_request = OneLogin::RubySaml::Authrequest.new
     auth_url = auth_request.create(saml_settings(requested_saml_acs_url))
     @request.host = 'oplerno.com'
     CGI.unescape(auth_url.split("=").last)
   end
 
   def saml_settings(saml_acs_url = "https://foo.oplerno.com/saml/consume")
-    settings = Onelogin::Saml::Settings.new
+    settings = OneLogin::RubySaml::Settings.new
     settings.assertion_consumer_service_url = saml_acs_url
     settings.issuer = "http://oplerno.com/issuer"
     settings.idp_sso_target_url = "http://idp.com/saml/idp"
