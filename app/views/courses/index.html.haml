@@ -10,7 +10,14 @@
           %a{:href => "http://oplerno.com/admissions"} admissions page
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1= t('courses.title')
+
   %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
+    %script(type="text/ng-template" id="putInCartDialog")
+      %h1
+        Cart Updated
+      %p
+        The course was added to your cart
+        %a(class="btn btn-warning" href="/carts/mycart") Checkout Now
     .course{ ng: { repeat: 'course in courses() track by $index' } }
       .course.vevent.h-event.row(itemscope="" itemtype="http://schema.org/Event")
         .course_icon.col-lg-3
@@ -26,11 +33,11 @@
               .course_description.summary.e-description.description(ng-bind-html-unsafe="html" itemprop="description")
                 {{ course.description.stripHTML().trunc(500,true) }}
           .course_button.top20.row
-            .col-lg-4
-              %form(action='/carts/' method='POST')
-                %input(class="btn btn-success oplerno-cta btn-lg" type="submit" value="Take This Course")
-                %input(name='course' type='hidden' value='{{ course.id }}')
-                %input(name='authenticity_token' type='hidden')
+            .col-lg-4{ng:{controller: 'CartFormController'}}
+              %form(class='wrapper' ng-submit='clickToOpen()')
+                %input{class:"btn btn-success oplerno-cta btn-lg", type:"submit", value:"#{ t 'courses.register' }" }
+                %input{name:'course', type:'hidden', value:'{{ course.id }}', ng: { init: 'formData.course=course.id', model: 'formData.course' } }
+                %input{name:'authenticity_token', type:'hidden', ng: { init: "formData.authenticity_token='#{form_authenticity_token}'", model: 'formData.authenticity_token' } }
             .col-lg-4
               %h3
                 %time-ago(from-time='{{ course.start_date }}T00:00:00Z')

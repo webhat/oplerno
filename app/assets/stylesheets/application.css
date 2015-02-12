@@ -11,6 +11,7 @@
  *= require_self
  *= require chardinjs
  *= require bootstrap-sass
+ *= require ngDialog
  *= require jquery-ui
  *= require ../../../vendor/assets/stylesheets/image-picker
  *= require_tree .

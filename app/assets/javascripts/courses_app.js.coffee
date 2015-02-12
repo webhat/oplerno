@@ -4,7 +4,7 @@ bootstrapAngular = ->
 
 window.coursesApp =
   angular
-    .module 'coursesApp', ['ngResource', 'ngSanitize', 'yaru22.angular-timeago'], ->
+    .module 'coursesApp', ['ngResource', 'ngSanitize', 'yaru22.angular-timeago', 'ngDialog'], ->
       console.log 'Angular'
     .factory 'CoursesIO', ($resource) ->
       args = {}
@@ -56,6 +56,28 @@ window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
   $scope.courses = -> $scope.courses_list
 
   0 # DON'T REMOVE
+
+window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
+  $scope.formData =
+    course : '',
+    authenticity_token : ''
+
+  $scope.clickToOpen = ->
+    request =
+      method  : 'POST',
+      url     : '/carts/',
+      data    : $.param($scope.formData)
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+    $http(request).success (data) ->
+      console.log $scope.formData
+      console.log data
+
+      if !data.success
+        console.log 'Error'
+      else
+        $scope.message = data.message
+
+    ngDialog.open({ template: 'putInCartDialog' })
 
 $(document).on('ready', bootstrapAngular)
 $(document).on('page:change', bootstrapAngular)

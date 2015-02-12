@@ -480,6 +480,8 @@ GEM
     rails-assets-jquery (2.1.1)
     rails-assets-jquery-ui (1.11.1)
       rails-assets-jquery (>= 1.6)
+    rails-assets-ngDialog (0.3.9)
+      rails-assets-angular (~> 1)
     rails-assets-normalize-css (3.0.2)
     rails_best_practices (1.15.4)
       activesupport
@@ -760,6 +762,7 @@ DEPENDENCIES
   rails-assets-angular-timeago
   rails-assets-bootstrap-sass
   rails-assets-jquery-ui
+  rails-assets-ngDialog
   rails-assets-normalize-css
   rb-fchange
   rb-fsevent (~> 0.9.4)

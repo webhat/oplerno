@@ -86,6 +86,7 @@ group :assets do
   gem 'rails-assets-angular-mocks', '~> 1.3.5'
   gem 'rails-assets-angular-route', '~> 1.3.5'
   gem 'rails-assets-angular-timeago'
+  gem 'rails-assets-ngDialog'
   gem 'rails-assets-normalize-css'
 end
 
