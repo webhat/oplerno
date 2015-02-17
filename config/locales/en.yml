@@ -89,11 +89,14 @@ en:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
       add_to_cart: 'Course was added to cart <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Checkout Now</a>'
+      added_to_cart: 'The course was added to your cart'
+      check_out: 'Checkout Now'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
       already_in: 'You are already taking this course'
       too_many: 'This course has reached its limit'
+      no_check_out: 'You need to sign in to complete this transaction'
   generic:
     back: 'Back'
     edit: 'Edit'

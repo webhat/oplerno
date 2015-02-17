@@ -57,6 +57,12 @@ window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
 
   0 # DON'T REMOVE
 
+window.coursesApp.controller 'InfoController', ($scope, $http, ngDialog) ->
+
+  $scope.priceInfo = ->
+    console.log 'priceInfo'
+    ngDialog.open({ template: 'priceInfo', scope: $scope })
+
 window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
   $scope.formData =
     course : '',
@@ -69,15 +75,13 @@ window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
       data    : $.param($scope.formData)
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
     $http(request).success (data) ->
-      console.log $scope.formData
-      console.log data
+      $scope.message = ''
+      ngDialog.open({ template: 'putInCartDialog', scope: $scope })
+    .error ->
+      console.log 'Error'
+      $scope.message = 'NOT'
+      ngDialog.open({ template: 'putInCartDialog', scope: $scope })
 
-      if !data.success
-        console.log 'Error'
-      else
-        $scope.message = data.message
-
-    ngDialog.open({ template: 'putInCartDialog' })
 
 $(document).on('ready', bootstrapAngular)
 $(document).on('page:change', bootstrapAngular)

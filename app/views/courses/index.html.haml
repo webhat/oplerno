@@ -1,10 +1,11 @@
 .clearfix
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %div
-      %h3.hidden-md.hidden-sm.hidden-xs LG
-      %h3.hidden-lg.hidden-sm.hidden-xs MD
-      %h3.hidden-lg.hidden-md.hidden-xs SM
-      %h3.hidden-lg.hidden-md.hidden-sm XS
+      - if Rails.env.development?
+        %h3.hidden-md.hidden-sm.hidden-xs LG
+        %h3.hidden-lg.hidden-sm.hidden-xs MD
+        %h3.hidden-lg.hidden-md.hidden-xs SM
+        %h3.hidden-lg.hidden-md.hidden-sm XS
       %h4
         Oplerno is a growing open learning organization. &nbsp;Courses are listed for enrollment as they are completed by the faculty member and approved by Oplerno. &nbsp;If you are interested in adding to our course catalog as a faculty member and instructor, please
         = succeed "." do
@@ -16,12 +17,26 @@
     %h1= t('courses.title')
 
   %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
+    %script(type="text/ng-template" id="priceInfo")
+      %h1
+        Price Info
+      %p
+        Due to the success of our crowdfunding campaign we are able to offer these seats for the first year without a sign up fee
     %script(type="text/ng-template" id="putInCartDialog")
       %h1
-        Cart Updated
-      %p
-        The course was added to your cart
-        %a(class="btn btn-warning" href="/carts/mycart") Checkout Now
+        Cart Update
+        - if signed_in?
+          %p.top10
+            = t 'courses.success.added_to_cart'
+          %p.top20
+            %a(class="btn btn-warning" href="/carts/mycart")
+              = t 'courses.success.check_out'
+        - else
+          %p.top10
+            = t 'courses.fail.no_check_out'
+          %p.top20
+            %a(class="btn btn-warning" href="/users/sign_in")
+              = t 'devise.sessions.new.sign_in'
     .course.col-sm-offset-1{ ng: { repeat: 'course in courses() track by $index' } }
       .course.vevent.h-event.row(itemscope="" itemtype="http://schema.org/Event")
         .course_icon.col-lg-3.col-md-3.col-sm-3
@@ -45,12 +60,12 @@
             .col-lg-4.col-md-4.col-sm-4.col-xs-7
               %h3
                 %time-ago(from-time='{{ course.start_date }}T00:00:00Z')
-            .col-lg-4.col-md-4.col-sm-4.col-xs-12
+            .col-lg-4.col-md-4.col-sm-4.col-xs-12{ng:{controller: 'InfoController'}}
               %h2.course_price.top20
                 %small
                   %strike
                     $ {{ course.price + 20 }}
-                    %a(href='#') *
+                    %a{ href:'#', ng:{ click:'priceInfo()' } } *
                 $ {{ course.price }}
         %hr
   - unless @courses.empty?
