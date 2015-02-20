@@ -6,7 +6,7 @@ window.rankingApp =
   angular
     .module 'rankingApp', ['ngResource', 'ngSanitize'], ->
       console.log 'Angular Ranking'
-    .factory 'RankingIO', ($resource, $location) ->
+    .factory 'RankingIO', [ '$resource', '$location', ($resource, $location) ->
       path = $location.absUrl().split('/')
       # FIXME: hack to keep tests working
       args = { id: path[4] || 120, type: path[3] || 'courses'}
@@ -20,7 +20,8 @@ window.rankingApp =
       RankingIO = $resource '/ranking/:type/:id.json', args, methods
 
       return RankingIO
-    .service 'RankingModel', (RankingIO) ->
+    ]
+    .service 'RankingModel', [ 'RankingIO', (RankingIO) ->
       RankingSession = ->
         this.data = {}
         this.created = Date.NOW
@@ -33,8 +34,8 @@ window.rankingApp =
           console.log result.result
 
       new RankingSession()
-
-    .controller 'RankingList', ($scope, RankingIO, RankingModel) ->
+    ]
+    .controller 'RankingList', [ '$scope', 'RankingIO', 'RankingModel', ($scope, RankingIO, RankingModel) ->
       $scope.ranking_value = RankingModel.fetch()
 
       $scope.ranking = ->
@@ -42,6 +43,7 @@ window.rankingApp =
           $scope.ranking_value[0].rank
 
       0 # DON'T REMOVE
+    ]
 
 $(document).on('ready', bootstrapRankingAngular)
 $(document).on('page:change', bootstrapRankingAngular)
