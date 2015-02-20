@@ -19,7 +19,7 @@ window.coursesApp =
 
       return CoursesIO
     ]
-    .service 'CoursesModel', [ 'CoursesIO', (CoursesIO, timeAgo) ->
+    .service 'CoursesModel', [ 'CoursesIO', 'timeAgo', (CoursesIO, timeAgo) ->
       timeAgo.settings.allowFuture = true
 
       CoursesSession = ->
