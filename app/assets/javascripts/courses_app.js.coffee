@@ -6,7 +6,7 @@ window.coursesApp =
   angular
     .module 'coursesApp', ['ngResource', 'ngSanitize', 'yaru22.angular-timeago', 'ngDialog'], ->
       console.log 'Angular'
-    .factory 'CoursesIO', ($resource) ->
+    .factory 'CoursesIO', [ '$resource', ($resource) ->
       args = {}
       methods =
         query:
@@ -18,7 +18,8 @@ window.coursesApp =
       CoursesIO = $resource '/courses.json', args, methods
 
       return CoursesIO
-    .service 'CoursesModel', (CoursesIO, timeAgo) ->
+    ]
+    .service 'CoursesModel', [ 'CoursesIO', (CoursesIO, timeAgo) ->
       timeAgo.settings.allowFuture = true
 
       CoursesSession = ->
@@ -34,6 +35,7 @@ window.coursesApp =
           console.log result.result
 
       new CoursesSession()
+    ]
 
 coursesApp.directive 'backImg', ->
   console.log 'Directive'
