@@ -48,7 +48,7 @@ coursesApp.directive 'backImg', ->
 
     element.css(style)
 
-window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
+window.coursesApp.controller 'CourseList', [ '$scope', 'CoursesIO', 'CoursesModel', ($scope, CoursesIO, CoursesModel) ->
   console.log 'Course List'
   console.log CoursesModel
   $scope.courses_list = CoursesModel.fetch()
@@ -58,8 +58,9 @@ window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
     $scope.courses_list
 
   0 # DON'T REMOVE
+]
 
-window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
+window.coursesApp.controller 'CartFormController', [ '$scope', '$http', 'ngDialog', ($scope, $http, ngDialog) ->
   $scope.formData =
     course : '',
     authenticity_token : ''
@@ -77,6 +78,7 @@ window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
       console.log 'Error'
       $scope.message = 'NOT'
       ngDialog.open({ template: 'putInCartDialog', scope: $scope })
+]
 
 
 $(document).on('ready', bootstrapAngular)
