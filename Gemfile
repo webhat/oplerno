@@ -77,12 +77,18 @@ group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'rails-assets-angular', '>= 1.3.5'
+  gem 'chardinjs-rails', '>= 0.1.3'
+  gem 'rails-assets-jquery-ui'
+  gem 'rails-assets-bootstrap-sass'
+  gem 'rails-assets-angular', '~> 1.3.5'
+  gem 'rails-assets-angular-sanitize', '~> 1.3.5'
+  gem 'rails-assets-angular-resource', '~> 1.3.5'
+  gem 'rails-assets-angular-mocks', '~> 1.3.5'
+  gem 'rails-assets-angular-route', '~> 1.3.5'
+  gem 'rails-assets-angular-timeago'
+  gem 'rails-assets-ngDialog'
+  gem 'rails-assets-normalize-css'
 end
-gem 'chardinjs-rails', '>= 0.1.3'
-gem 'rails-assets-jquery-ui'
-gem 'rails-assets-bootstrap-sass'
-gem 'rails-assets-normalize-css'
 
 group :development do
   gem 'quiet_assets'
@@ -156,6 +162,7 @@ gem 'unicorn', '>= 4.8.2'
 
 gem 'sinatra', require: false
 gem 'slim'
+gem 'bullet', group: 'development'
 
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'

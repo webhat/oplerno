@@ -1,6 +1,11 @@
 .clearfix
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %div
+      - if Rails.env.development?
+        %h3.hidden-md.hidden-sm.hidden-xs LG
+        %h3.hidden-lg.hidden-sm.hidden-xs MD
+        %h3.hidden-lg.hidden-md.hidden-xs SM
+        %h3.hidden-lg.hidden-md.hidden-sm XS
       %h4
         Oplerno is a growing open learning organization. &nbsp;Courses are listed for enrollment as they are completed by the faculty member and approved by Oplerno. &nbsp;If you are interested in adding to our course catalog as a faculty member and instructor, please
         = succeed "." do
@@ -10,24 +15,76 @@
           %a{:href => "http://oplerno.com/admissions"} admissions page
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1= t('courses.title')
-  .pull-right
-    = paginate @courses
-  .clearfix
-  %div
-  - @courses.each do |course|
-    .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
-  - end unless @courses.empty?
-  .clearfix
-  .pull-right
-    = paginate @courses
+
+  - if admin_user_signed_in?
+    /FIXME: Allow only admin user
+    %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
+      %script(type="text/ng-template" id="putInCartDialog")
+        %h1
+          Cart Update
+          - if signed_in?
+            %p.top10
+              = t 'courses.success.added_to_cart'
+            %p.top20
+              %a(class="btn btn-warning" href="/carts/mycart")
+                = t 'courses.success.check_out'
+          - else
+            %p.top10
+              = t 'courses.fail.no_check_out'
+            %p.top20
+              %a(class="btn btn-warning" href="/users/sign_in")
+                = t 'devise.sessions.new.sign_in'
+      .course.col-sm-offset-1{ ng: { repeat: 'course in courses() track by $index' } }
+        .course.vevent.h-event.row(itemscope="" itemtype="http://schema.org/Event")
+          .course_icon.col-lg-3.col-md-3.col-sm-3
+            %a(href="/courses/{{ course.slug }}" class="url")
+              .course_image(itemprop="image" back-img="#{url_prefix request}/dynamic/courses/avatars/000/000/{{ ('000' + course.id).substr(-3) }}/medium/{{ course.avatar_file_name }}" style="background-size:auto 194px;")
+              .course_name.summary.p-name.hidden-md.hidden-sm.hidden-xs(itemprop="name") {{ course.name }}
+          .course_right.col-lg-9
+            .course_body
+              %h2
+                %a(href="/courses/{{ course.slug }}" class="url")
+                  .course_title.summary.p-name(itemprop="name") {{ course.name }}
+              .description
+                .course_description.summary.e-description.description(ng-bind-html-unsafe="html" itemprop="description")
+                  {{ course.description.stripHTML().trunc(500,true) }}
+            .course_button.top20.row
+              .col-lg-4.col-md-4.col-sm-4.col-xs-7{ng:{controller: 'CartFormController'}}
+                %form(class='wrapper' ng-submit='clickToOpen()')
+                  %input{class:"btn btn-success oplerno-cta btn-lg", type:"submit", value:"#{ t 'courses.register' }" }
+                  %input{name:'course', type:'hidden', value:'{{ course.id }}', ng: { init: 'formData.course=course.id', model: 'formData.course' } }
+                  %input{name:'authenticity_token', type:'hidden', ng: { init: "formData.authenticity_token='#{form_authenticity_token}'", model: 'formData.authenticity_token' } }
+              .col-lg-4.col-md-4.col-sm-4.col-xs-7
+                %h3
+                  %time-ago(from-time='{{ course.start_date }}T00:00:00Z')
+              .col-lg-4.col-md-4.col-sm-4.col-xs-12
+                %h2.course_price.top10
+                  %small
+                    %strike
+                      $ {{ course.price + 20 }}
+                    %a.price_info{ data:{ toggle:'tooltip', placement:'bottom' }, title:'Due to the success of our crowdfunding campaign we are able to offer these seats for the first year without a sign up fee'} *
+                  $ {{ course.price }}
+          %hr
+  - unless @courses.empty?
+    %a(name='courses')
+    .pull-right
+      = paginate @courses, params: { anchor: 'courses'}
+    .clearfix
+    - @courses.each do |course|
+      .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
+    - end unless @courses.empty?
+    .clearfix
+    .pull-right
+      = paginate @courses, params: { anchor: 'courses'}
+  %a(name='develop')
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1= t('courses.under_development')
   .pull-right
-    = paginate @courses_underdev
+    = paginate @courses_underdev, params: { anchor: 'develop'}
   .clearfix
   - @courses_underdev.each do |course|
     .col-lg-3.col-md-3.col-sm-4.col-xs-12.small= render course
   - end unless @courses_underdev.empty?
   .clearfix
   .pull-right
-    = paginate @courses_underdev
+    = paginate @courses_underdev, params: { anchor: 'develop'}

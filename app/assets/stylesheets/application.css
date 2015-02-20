@@ -11,6 +11,7 @@
  *= require_self
  *= require chardinjs
  *= require bootstrap-sass
+ *= require ngDialog
  *= require jquery-ui
  *= require ../../../vendor/assets/stylesheets/image-picker
  *= require_tree .
@@ -29,6 +30,7 @@
 .top10 { margin-top:10px; }
 .top15 { margin-top:15px; }
 .top17 { margin-top:17px; }
+.top20 { margin-top:20px; }
 .top30 { margin-top:30px; }
 
 .course_image {
@@ -36,5 +38,5 @@
 }
 
 .well > .well {
-	margin-bottom:0px;
+  margin-bottom:0px;
 }

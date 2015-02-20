@@ -1,6 +1,12 @@
 # If this were a shop #Course would be the product
 class CoursesController < ApplicationController
-  before_filter :set_course, only: [:show, :edit, :update, :destroy, :image_picker]
+  before_filter :set_course, only: [
+    :show,
+    :edit,
+    :update,
+    :destroy,
+    :image_picker
+  ]
   before_filter :authenticate_user!, except: [:show, :index]
 
   helper_method :add_course_to_cart, :logged_in?
@@ -10,11 +16,13 @@ class CoursesController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @courses = Course.order(:name).where(:hidden => false).page params[:page]
+        @courses = Course.order('start_date desc').where(:hidden => false).page params[:page]
         @courses_underdev = Course.order(:name).where(:hidden => true).page params[:page]
       }
       format.json {
-        @courses = Course.all
+        @courses = Course.order('start_date desc').where(
+          :hidden => false,
+          start_date: 1.week.ago..3.months.from_now).page params[:page]
         render json: @courses
       }
     end
@@ -53,15 +61,29 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: (I18n.t 'courses.success.create') }
-        format.json { render action: 'show', status: :created, location: @course }
-        current_user.courses << @course
-        current_user.save
+        save_created_course format
       else
-        format.html { render action: 'new' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        save_created_course_fail(format)
       end
     end
+  end
+
+  def save_created_course_fail(format)
+    format.html { render action: 'new' }
+    format.json {
+      render json: @course.errors,
+      status: :unprocessable_entity
+    }
+  end
+
+  def save_created_course(format)
+    format.html {
+      redirect_to @course,
+      notice: (I18n.t 'courses.success.create')
+    }
+    format.json { render action: 'show', status: :created, location: @course }
+    current_user.courses << @course
+    current_user.save
   end
 
   # GET /courses/1/edit
@@ -119,7 +141,8 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white
+  # list through.
   def course_params
     params[:course]
   end
