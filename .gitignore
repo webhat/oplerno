@@ -36,3 +36,4 @@ lib/paperclip_redis
 errors.err
 .cadre
 
+dump.rdb
