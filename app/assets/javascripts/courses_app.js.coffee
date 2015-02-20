@@ -53,15 +53,11 @@ window.coursesApp.controller 'CourseList', ($scope, CoursesIO, CoursesModel) ->
   console.log CoursesModel
   $scope.courses_list = CoursesModel.fetch()
 
-  $scope.courses = -> $scope.courses_list
+  $scope.courses = ->
+    $('[data-toggle="tooltip"]').tooltip()
+    $scope.courses_list
 
   0 # DON'T REMOVE
-
-window.coursesApp.controller 'InfoController', ($scope, $http, ngDialog) ->
-
-  $scope.priceInfo = ->
-    console.log 'priceInfo'
-    ngDialog.open({ template: 'priceInfo', scope: $scope })
 
 window.coursesApp.controller 'CartFormController', ($scope, $http, ngDialog) ->
   $scope.formData =

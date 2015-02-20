@@ -16,58 +16,55 @@
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1= t('courses.title')
 
-  %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
-    %script(type="text/ng-template" id="priceInfo")
-      %h1
-        Price Info
-      %p
-        Due to the success of our crowdfunding campaign we are able to offer these seats for the first year without a sign up fee
-    %script(type="text/ng-template" id="putInCartDialog")
-      %h1
-        Cart Update
-        - if signed_in?
-          %p.top10
-            = t 'courses.success.added_to_cart'
-          %p.top20
-            %a(class="btn btn-warning" href="/carts/mycart")
-              = t 'courses.success.check_out'
-        - else
-          %p.top10
-            = t 'courses.fail.no_check_out'
-          %p.top20
-            %a(class="btn btn-warning" href="/users/sign_in")
-              = t 'devise.sessions.new.sign_in'
-    .course.col-sm-offset-1{ ng: { repeat: 'course in courses() track by $index' } }
-      .course.vevent.h-event.row(itemscope="" itemtype="http://schema.org/Event")
-        .course_icon.col-lg-3.col-md-3.col-sm-3
-          %a(href="/courses/{{ course.slug }}" class="url")
-            .course_image(itemprop="image" back-img="#{url_prefix request}/dynamic/courses/avatars/000/000/{{ ('000' + course.id).substr(-3) }}/medium/{{ course.avatar_file_name }}" style="background-size:auto 194px;")
-            .course_name.summary.p-name.hidden-md.hidden-sm.hidden-xs(itemprop="name") {{ course.name }}
-        .course_right.col-lg-9
-          .course_body
-            %h2
-              %a(href="/courses/{{ course.slug }}" class="url")
-                .course_title.summary.p-name(itemprop="name") {{ course.name }}
-            .description
-              .course_description.summary.e-description.description(ng-bind-html-unsafe="html" itemprop="description")
-                {{ course.description.stripHTML().trunc(500,true) }}
-          .course_button.top20.row
-            .col-lg-4.col-md-4.col-sm-4.col-xs-7{ng:{controller: 'CartFormController'}}
-              %form(class='wrapper' ng-submit='clickToOpen()')
-                %input{class:"btn btn-success oplerno-cta btn-lg", type:"submit", value:"#{ t 'courses.register' }" }
-                %input{name:'course', type:'hidden', value:'{{ course.id }}', ng: { init: 'formData.course=course.id', model: 'formData.course' } }
-                %input{name:'authenticity_token', type:'hidden', ng: { init: "formData.authenticity_token='#{form_authenticity_token}'", model: 'formData.authenticity_token' } }
-            .col-lg-4.col-md-4.col-sm-4.col-xs-7
-              %h3
-                %time-ago(from-time='{{ course.start_date }}T00:00:00Z')
-            .col-lg-4.col-md-4.col-sm-4.col-xs-12{ng:{controller: 'InfoController'}}
-              %h2.course_price.top20
-                %small
-                  %strike
-                    $ {{ course.price + 20 }}
-                    %a{ href:'#', ng:{ click:'priceInfo()' } } *
-                $ {{ course.price }}
-        %hr
+  - if admin_user_signed_in?
+    /FIXME: Allow only admin user
+    %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
+      %script(type="text/ng-template" id="putInCartDialog")
+        %h1
+          Cart Update
+          - if signed_in?
+            %p.top10
+              = t 'courses.success.added_to_cart'
+            %p.top20
+              %a(class="btn btn-warning" href="/carts/mycart")
+                = t 'courses.success.check_out'
+          - else
+            %p.top10
+              = t 'courses.fail.no_check_out'
+            %p.top20
+              %a(class="btn btn-warning" href="/users/sign_in")
+                = t 'devise.sessions.new.sign_in'
+      .course.col-sm-offset-1{ ng: { repeat: 'course in courses() track by $index' } }
+        .course.vevent.h-event.row(itemscope="" itemtype="http://schema.org/Event")
+          .course_icon.col-lg-3.col-md-3.col-sm-3
+            %a(href="/courses/{{ course.slug }}" class="url")
+              .course_image(itemprop="image" back-img="#{url_prefix request}/dynamic/courses/avatars/000/000/{{ ('000' + course.id).substr(-3) }}/medium/{{ course.avatar_file_name }}" style="background-size:auto 194px;")
+              .course_name.summary.p-name.hidden-md.hidden-sm.hidden-xs(itemprop="name") {{ course.name }}
+          .course_right.col-lg-9
+            .course_body
+              %h2
+                %a(href="/courses/{{ course.slug }}" class="url")
+                  .course_title.summary.p-name(itemprop="name") {{ course.name }}
+              .description
+                .course_description.summary.e-description.description(ng-bind-html-unsafe="html" itemprop="description")
+                  {{ course.description.stripHTML().trunc(500,true) }}
+            .course_button.top20.row
+              .col-lg-4.col-md-4.col-sm-4.col-xs-7{ng:{controller: 'CartFormController'}}
+                %form(class='wrapper' ng-submit='clickToOpen()')
+                  %input{class:"btn btn-success oplerno-cta btn-lg", type:"submit", value:"#{ t 'courses.register' }" }
+                  %input{name:'course', type:'hidden', value:'{{ course.id }}', ng: { init: 'formData.course=course.id', model: 'formData.course' } }
+                  %input{name:'authenticity_token', type:'hidden', ng: { init: "formData.authenticity_token='#{form_authenticity_token}'", model: 'formData.authenticity_token' } }
+              .col-lg-4.col-md-4.col-sm-4.col-xs-7
+                %h3
+                  %time-ago(from-time='{{ course.start_date }}T00:00:00Z')
+              .col-lg-4.col-md-4.col-sm-4.col-xs-12
+                %h2.course_price.top10
+                  %small
+                    %strike
+                      $ {{ course.price + 20 }}
+                    %a.price_info{ data:{ toggle:'tooltip', placement:'bottom' }, title:'Due to the success of our crowdfunding campaign we are able to offer these seats for the first year without a sign up fee'} *
+                  $ {{ course.price }}
+          %hr
   - unless @courses.empty?
     %a(name='courses')
     .pull-right
