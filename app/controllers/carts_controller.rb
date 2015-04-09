@@ -106,7 +106,7 @@ class CartsController < InheritedResources::Base
     user.password = generated_code
     user.password_confirmation = generated_code
     user.email = "#{generated_code}@localhost"
-    user.confirm!
+    user.skip_confirmation!
     user.save!
     user
   end
