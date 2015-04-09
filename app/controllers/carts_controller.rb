@@ -15,7 +15,6 @@ class CartsController < InheritedResources::Base
   end
 
   def create
-    @cart.user_id = current_user.id
     p params
     session[:course_id] = params[:course] unless params[:course].nil?
     course = Course.find(session[:course_id])
@@ -41,7 +40,7 @@ class CartsController < InheritedResources::Base
   end
 
   def remove_course_from_cart_url(course)
-    "/carts/#{Cart.find_by_user_id(current_user.id).id}/#{course.id}"
+    "/carts/#{Cart.find_by_user_id(@user.id).id}/#{course.id}"
   end
 
   def remove_course_from_cart
@@ -56,7 +55,7 @@ class CartsController < InheritedResources::Base
 
   def add_to_cart(course)
     if course.price.to_i > 0
-      unless current_user.courses.include?(course)
+      unless @user.courses.include?(course)
         add_course_to_cart(course)
       else
         flash[:alert] = (I18n.t 'courses.fail.already_in')
@@ -76,18 +75,47 @@ class CartsController < InheritedResources::Base
   end
 
   def set_cart
-    if current_user.nil?
-      return @cart = nil
-    end
-
-    unless current_user.cart.nil?
-      @cart = Cart.find_by_user_id(current_user.id)
+    set_user
+    unless @user.cart.nil?
+      @cart = Cart.find_by_user_id(@user.id)
     else
-      @cart = current_user.build_cart
+      @cart = @user.build_cart
     end
   end
 
   def cart_params
     params[:cart]
+  end
+
+  def set_user
+    @user = if current_user.nil?
+              create_and_signin_user
+            else
+              current_user
+            end
+  end
+
+  def create_and_signin_user
+    user = create_user
+    cart_sign_in user
+    user
+  end
+
+  def create_user
+    user = User.new
+    user.password = generated_code
+    user.password_confirmation = generated_code
+    user.confirm!
+    user.email = "#{generated_code}@localhost"
+    user.save!
+    user
+  end
+
+  def cart_sign_in user
+    sign_in :user, user
+  end
+
+  def generated_code
+    token ||= Digest::SHA256.hexdigest(Time.now.to_s)[0..10]
   end
 end
