@@ -25,6 +25,7 @@ Oplerno::Application.routes.draw do
     namespace :ranking do
       resources :courses, only: [:show]
     end
+    resource :invites, only: [:new, :create, :edit, :update]
     resources :courses, except: [:new]
     resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]

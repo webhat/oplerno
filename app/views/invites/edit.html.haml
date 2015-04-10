@@ -1,0 +1,7 @@
+<h1>Fix Me</h1>
+
+= form_for(:invite_validate, url: invites_path, html: {method: :put}) do |f|
+  = f.email_field :email
+  = f.hidden_field :code, value: invites_code
+  <br />
+  = f.submit I18n.t('invites.create_user')

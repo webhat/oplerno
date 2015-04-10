@@ -94,28 +94,4 @@ class CartsController < InheritedResources::Base
               current_user
             end
   end
-
-  def create_and_signin_user
-    user = create_user
-    cart_sign_in user
-    user
-  end
-
-  def create_user
-    user = User.new
-    user.password = generated_code
-    user.password_confirmation = generated_code
-    user.email = "#{generated_code}@localhost"
-    user.skip_confirmation!
-    user.save!
-    user
-  end
-
-  def cart_sign_in user
-    sign_in :user, user
-  end
-
-  def generated_code
-    token ||= Digest::SHA256.hexdigest(Time.now.to_s)[0..10]
-  end
 end
