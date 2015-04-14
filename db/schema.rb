@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150409080412) do
+ActiveRecord::Schema.define(:version => 20150414114941) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -90,8 +90,19 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
   add_index "carts_courses", ["course_id", "cart_id"], :name => "index_carts_courses_on_course_id_and_cart_id", :unique => true
   add_index "carts_courses", ["course_id"], :name => "index_carts_courses_on_course_id"
 
-# Could not dump table "certificates" because of following StandardError
-#   Unknown type 'belongs_to' for column 'teacher_id'
+  create_table "certificates", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "teacher_id"
+    t.string   "montage_file_name"
+    t.string   "montage_content_type"
+    t.integer  "montage_file_size"
+    t.datetime "montage_updated_at"
+    t.string   "slug"
+  end
+
+  add_index "certificates", ["slug"], :name => "index_certificates_on_slug"
 
   create_table "certificates_courses", :force => true do |t|
     t.integer "course_id"
@@ -114,13 +125,13 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.text     "description",         :limit => 255
+    t.text     "description"
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -129,8 +140,8 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
     t.string   "type"
     t.text     "syllabus"
     t.boolean  "hidden"
-    t.integer  "min",                                :default => 2
-    t.integer  "max",                                :default => 25
+    t.integer  "min",                 :default => 2
+    t.integer  "max",                 :default => 25
     t.string   "slug"
     t.datetime "deleted_at"
   end
@@ -182,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
     t.boolean  "used"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "by_id"
   end
 
   add_index "invite_credits", ["user_id"], :name => "index_invite_credits_on_user_id"
@@ -280,23 +292,23 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
   end
 
   create_table "users", :force => true do |t|
-    t.binary   "title",                   :limit => 255
-    t.binary   "first_name",              :limit => 255
-    t.binary   "last_name",               :limit => 255
+    t.binary   "title"
+    t.binary   "first_name"
+    t.binary   "last_name"
     t.string   "username"
-    t.text     "description",             :limit => 255
+    t.text     "description"
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.string   "email",                                  :default => "",    :null => false
-    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email",                   :default => "",    :null => false
+    t.binary   "encrypted_password",                         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                          :default => 0,     :null => false
+    t.integer  "sign_in_count",           :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -305,12 +317,12 @@ ActiveRecord::Schema.define(:version => 20150409080412) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",                        :default => 0,     :null => false
+    t.integer  "failed_attempts",         :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",                          :default => false
+    t.boolean  "authy_enabled",           :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"

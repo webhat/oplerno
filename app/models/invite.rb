@@ -1,6 +1,6 @@
 class Invite < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :active, :code, :user
+  attr_accessible :active, :code, :user, :user_id
 
   after_create :set_code
 

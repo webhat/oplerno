@@ -24,8 +24,8 @@ class InvitesController < ApplicationController
       flash[:notice] = I18n.t('invites.applied')
     end
     user = setup_user
-    InviteCredit.create! user: @invite.user
-    InviteCredit.create! user: user
+    InviteCredit.create! user: @invite.user, by: @invite.user
+    InviteCredit.create! user: user, by: @invite.user
     redirect_to '/'
   end
 

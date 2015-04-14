@@ -10,6 +10,8 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
+			| Invite		|
+			| InviteCredit			|
 			| AdminUser |
 		  | Course		|
 			| Order			|
@@ -30,6 +32,7 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
+			| Invite		|
 		  | Course		|
 			| Order			|
 			| Skill			|
@@ -48,6 +51,7 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
+			| Invite		|
 		  | Course		|
 			| Order			|
 			| Skill			|
