@@ -33,7 +33,6 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
-			| Invite		|
 		  | Course		|
 			| Order			|
 			| Skill			|
@@ -53,7 +52,6 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
-			| Invite		|
 		  | Course		|
 			| Order			|
 			| Skill			|

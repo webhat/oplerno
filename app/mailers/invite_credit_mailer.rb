@@ -1,7 +1,10 @@
 class InviteCreditMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'webmaster@oplerno.com'
+
+  layout 'email'
 
   def by_user invite_credit
+    @ic = invite_credit
     to = invite_credit.user
 
     email = get_recipient_email(to)
