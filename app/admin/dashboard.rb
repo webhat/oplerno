@@ -128,9 +128,18 @@ ActiveAdmin.register_page 'Dashboard' do
     end
     section link_to PaperTrail::Version, [:admin, :versions] do
       table_for PaperTrail::Version.order('id desc').includes(:item).limit(10) do
-        column 'ID' do |v| link_to v.item.id, [:admin, v.item] end
+        column 'ID' do |v|
+          item = v.item_type.constantize.with_deleted.find(v.item_id)
+          if v.item.nil?
+            item.id
+          else
+            link_to item.id, [:admin, v.item]
+          end
+        end
         column 'Type' do |v| v.item_type.underscore.humanize end
-        column 'Item' do |v| v.item.display_name.force_encoding('UTF-8') end
+        column 'Item' do |v|
+          v.item_type.constantize.with_deleted.find(v.item_id).display_name.force_encoding('UTF-8')
+        end
         column 'Modified at' do |v| v.created_at.to_s :long end
         column 'Admin' do |v|
           begin
