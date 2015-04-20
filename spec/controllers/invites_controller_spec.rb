@@ -5,19 +5,7 @@ describe InvitesController do
     login_user
     it 'Invite#persisted?' do
       get :new, {}
-      expect(assigns(:invite)).to be_persisted
-    end
-    it 'Invite#active' do
-      get :new, {}
-      expect(assigns(:invite).active).to be_true
-    end
-    it 'Invite#code' do
-      get :new, {}
-      expect(assigns(:invite).code).to_not be_nil
-    end
-    it 'Invite#user' do
-      get :new, {}
-      expect(assigns(:invite).user).to eq current_user
+      expect(assigns(:invite)).to be_nil
     end
   end
   context ':create' do

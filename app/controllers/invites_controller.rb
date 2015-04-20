@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-  before_filter :set_invite, only: [:new, :create]
+  before_filter :set_invite, only: [:create]
   before_filter :get_invite, only: [:edit, :update]
   before_filter :authenticate_user!, only: [:new, :create]
 

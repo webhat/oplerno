@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-  actions :all, :except => [:destroy]
   index do
     column :avatar do |user_object|
       link_to [user_object] do
