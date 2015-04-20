@@ -129,8 +129,8 @@ ActiveAdmin.register_page 'Dashboard' do
     section link_to PaperTrail::Version, [:admin, :versions] do
       table_for PaperTrail::Version.order('id desc').includes(:item).limit(10) do
         column 'ID' do |v| link_to v.item.id, [:admin, v.item] end
-        column 'Item' do |v| v.item.display_name.force_encoding('UTF-8') end
         column 'Type' do |v| v.item_type.underscore.humanize end
+        column 'Item' do |v| v.item.display_name.force_encoding('UTF-8') end
         column 'Modified at' do |v| v.created_at.to_s :long end
         column 'Admin' do |v|
           begin

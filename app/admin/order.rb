@@ -25,7 +25,7 @@ ActiveAdmin.register Order do
     column 'User' do |cart|
       begin
         user = User.find(cart.user_id)
-        link_to "#{user.encrypted_first_name} #{user.encrypted_last_name} (#{cart.user_id})", [:admin, user]
+        link_to "#{user.display_name} (#{cart.user_id})", [:admin, user]
       rescue
         puts $!.inspect, $@
         "*encrypted* (#{cart.user_id})"
@@ -35,9 +35,11 @@ ActiveAdmin.register Order do
   end
 
   form do |f|
-    f.inputs "Course Details" do
+    f.inputs 'Course Details' do
       f.input :cart, :collection => Cart.all.map(&:id)
-      f.input :user, :collection => User.all.map { |x| ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id] }
+      f.input :user, :collection => User.all.map do |x|
+        ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id]
+      end
     end
     f.actions
   end

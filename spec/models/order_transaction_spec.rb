@@ -1,25 +1,28 @@
 require 'spec_helper'
 
 describe OrderTransaction do
-  it "has a valid factory" do
+  it 'has a valid factory' do
     FactoryGirl.create(:order_transaction).should be_valid
   end
 
   context 'Strongbox' do
     it 'encrypts secret' do
-      order_transaction = FactoryGirl.create(:order_transaction)
+      ot = FactoryGirl.create(:order_transaction)
       value = {'a' => true}
-      order_transaction.params = value.to_json
+      json_value = value.to_json
+      ot.params = json_value
 
-      expect(order_transaction.params).not_to eq value.to_json
-      expect(order_transaction.params.decrypt Devise.secret_key).to eq value.to_json
+      expect(ot.params).not_to eq json_value
+      expect(ot.params.decrypt Devise.secret_key).to eq json_value
     end
     it 'encrypts secret' do
-      order_transaction = OrderTransaction.new
+      ot = OrderTransaction.new
       value = {'a' => true}
-      order_transaction.params = value.to_json
-      expect(order_transaction.params).not_to eq value.to_json
-      expect(order_transaction.params.decrypt Devise.secret_key).to eq value.to_json
+      json_value = value.to_json
+      ot.params = json_value
+
+      expect(ot.params).not_to eq json_value
+      expect(ot.params.decrypt Devise.secret_key).to eq json_value
     end
   end
   context 'PayPal' do
@@ -50,7 +53,11 @@ describe OrderTransaction do
       order_transaction = FactoryGirl.create(:order_transaction)
       #GATEWAY.stub(:purchase).and_return(nil)
 
-      value = GATEWAY.purchase((response.params['order_total'].to_f*100).round, token: response.params['token'], payer_id: response.params['payer_id'])
+      value = GATEWAY.purchase(
+        (response.params['order_total'].to_f*100).round,
+        token: response.params['token'],
+        payer_id: response.params['payer_id']
+      )
       expect(GATEWAY).to receive(:purchase).and_return(value)
 
       order_transaction.response = response

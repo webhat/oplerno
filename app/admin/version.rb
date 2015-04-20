@@ -3,8 +3,8 @@ ActiveAdmin.register_page "Versions" do
     section "Recently updated content" do
       table_for PaperTrail::Version.order('id desc').limit(250) do # Use PaperTrail::Version if this throws an error
         column "ID" do |v| link_to v.item.id, [:admin, v.item] end # Uncomment to display as link
-        column "Item" do |v| v.item.display_name.force_encoding('UTF-8') end
         column "Type" do |v| v.item_type.underscore.humanize end
+        column "Item" do |v| v.item.display_name.force_encoding('UTF-8') end
         column "Modified at" do |v| v.created_at.to_s :long end
         column "Admin" do |v|
           begin

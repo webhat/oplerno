@@ -1,0 +1,17 @@
+%tr
+  %td &nbsp;
+%tr
+  %td
+  %td
+    %h2 You have #{@ic.amount} credits
+    %br
+    Great news, you now have #{@ic.amount} credits to use in the 
+    %a(href='https://enroll.oplerno.com/') Oplerno Marketplace.
+    %br
+    - if @ic.user.id == @ic.by.id
+      One of your friends has used an invitation you created. They will need to complete at least 25% of the course before we credit your account.
+    %br
+
+    You will receive credits once the class has passed the time for a refund.
+
+
