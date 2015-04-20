@@ -3,6 +3,7 @@
 #
 # Links to #Courses using #CartsCourses
 class CartsController < InheritedResources::Base
+  before_filter :create_user_from_cart, only: [:create]
   before_filter :set_cart, only: [:create, :show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
@@ -86,11 +87,11 @@ class CartsController < InheritedResources::Base
     params[:cart]
   end
 
+  def create_user_from_cart
+    @user = create_and_signin_user if current_user.nil?
+  end
+
   def set_user
-    @user = if current_user.nil?
-              create_and_signin_user
-            else
-              current_user
-            end
+    @user = current_user
   end
 end
