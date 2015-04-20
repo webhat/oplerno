@@ -15,7 +15,6 @@ class CartsController < InheritedResources::Base
   end
 
   def create
-    p params
     session[:course_id] = params[:course] unless params[:course].nil?
     course = Course.find(session[:course_id])
     add_to_cart course
