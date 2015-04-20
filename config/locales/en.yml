@@ -130,3 +130,17 @@ en:
     canvas:
       fail: "Cannot login in to Canvas using the Marketplace"
       fail_info: "If you have a Canvas account you can login in directly below"
+  invites:
+    accept: 'Accept'
+    created: 'Created your invite URL'
+    create_user: 'Accept and Create User'
+    not_applied: 'You need to create a user first'
+    claim:
+      title: 'Claim your Free Class'
+      text: 'To be able to register for your free class you need to create a user account. After that you can register for a course.'
+      email: 'Fill in your email address below to create your account.'
+    cta:
+      free_courses: 'Take Free Courses'
+      free_classes: 'Take Free Classes'
+      tell_a_friend: 'Tell a Friend'
+      refer_a_friend: 'Refer a Friend'

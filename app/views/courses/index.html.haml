@@ -16,8 +16,7 @@
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1= t('courses.title')
 
-  - if admin_user_signed_in?
-    /FIXME: Allow only admin user
+  - if Setting.get_key('angular', 'false').value == 'true' or admin_user_signed_in?
     %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
       %script(type="text/ng-template" id="putInCartDialog")
         %h1

@@ -1,1 +1,6 @@
-<h1>Fix Me</h1>
+%h1 Oplerno recruit a student program
+
+= render 'rules'
+
+%p
+  = button_to t('invites.accept'), invites_path, {:class => "pull-right btn btn-info oplerno-cta btn-lg", method: :post}

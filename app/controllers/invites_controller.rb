@@ -10,10 +10,11 @@ class InvitesController < ApplicationController
 
   def create
     flash[:notice] = I18n.t('invites.created')
-    redirect_to current_user
+#    redirect_to current_user
   end
 
   def edit
+    sign_out
     unless @invite.nil?
       flash[:alert] = I18n.t('invites.not_applied')
     end
