@@ -131,7 +131,11 @@ en:
       fail: "Cannot login in to Canvas using the Marketplace"
       fail_info: "If you have a Canvas account you can login in directly below"
   invites:
-    accept: 'Accept'
+    invite:
+      accepted: 'You create an invite URL'
+    accept:
+      us: 'Accept as a US National'
+      not_us: 'Accept'
     created: 'Created your invite URL'
     create_user: 'Accept and Create User'
     not_applied: 'You need to create a user first'
