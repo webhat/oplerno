@@ -1,0 +1,17 @@
+%h1
+  = I18n.t 'invites.claim.title'
+
+= render 'rules'
+
+%p
+  = I18n.t 'invites.claim.text'
+%p
+  %b
+    = I18n.t 'invites.claim.email'
+
+= form_for(:invite_validate, url: invites_path, html: {method: :put}) do |f|
+  = f.email_field :email, placeholder: 'email'
+  = f.hidden_field :code, value: invites_code
+  <br />
+  <br />
+  = f.submit I18n.t('invites.create_user'), class: 'btn btn-info oplerno-cta btn-lg'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141219114637) do
+ActiveRecord::Schema.define(:version => 20150416123929) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -187,6 +187,27 @@ ActiveRecord::Schema.define(:version => 20141219114637) do
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "invite_credits", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.boolean  "used"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "by_id"
+  end
+
+  add_index "invite_credits", ["user_id"], :name => "index_invite_credits_on_user_id"
+
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "code"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "invites", ["user_id"], :name => "index_invites_on_user_id", :unique => true
+
   create_table "order_transactions", :force => true do |t|
     t.integer  "order_id"
     t.string   "action"
@@ -240,6 +261,16 @@ ActiveRecord::Schema.define(:version => 20141219114637) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "deleted_at"
+  end
+
+  add_index "settings", ["deleted_at"], :name => "index_settings_on_deleted_at"
 
   create_table "skills", :force => true do |t|
     t.string "skill"

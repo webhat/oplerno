@@ -1,0 +1,21 @@
+%h1 Share with your friends
+
+.container
+  #invite.well.col-lg-5
+    #invite_url Your invite url is
+    %b
+      %a(href="https://enroll.oplerno.com/invited/#{@invite.code}") https://enroll.oplerno.com/invited/#{@invite.code}
+
+  .col-lg-1
+  #invite.well.col-lg-5
+    #invite_social
+      #invite_tw.social
+        %a(href="https://twitter.com/intent/tweet?text=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value} https://enroll.oplerno.com/invited/#{@invite.code}" target='_new') Tweet
+      #invite_fb.social
+        %a(href="https://www.facebook.com/sharer/sharer.php?u=https://enroll.oplerno.com/invited/#{@invite.code}&display=popup&redirect_uri=https://enroll.oplerno.com/" target='_new') Share on FaceBook
+      #invite_li.social
+        %a(href="https://www.linkedin.com/shareArticle?mini=true&url=https://enroll.oplerno.com/invited/#{@invite.code}&title=Invite&summary=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value}&source=Oplerno" target='_new') Share on LinkedIn
+
+  #invite.well.col-lg-5
+    #invite_email
+      %a(href="mailto:?&subject=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value}&body=This is your referal URL https://enroll.oplerno.com/invited/#{@invite.code}") Email your Friends

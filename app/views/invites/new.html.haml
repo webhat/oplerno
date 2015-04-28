@@ -1,0 +1,15 @@
+%h1 Oplerno recruit a student program
+
+= render 'rules'
+
+%p
+  If you are a US National click
+  %b
+    = t('invites.accept.us')
+  to indicate this. Otherwise simply click
+  %b
+    = t('invites.accept.not_us')
+
+%p
+  = button_to t('invites.accept.not_us'), invites_path, {:class => "pull-right btn btn-info oplerno-cta btn-lg", method: :post}
+  = button_to t('invites.accept.us'), invites_path, {:class => "btn btn-warning oplerno-cta btn-lg", method: :post}

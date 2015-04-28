@@ -10,11 +10,14 @@ Feature: Admin Browse
 		Examples:
 			| clazz     |
 			| Cart			|
+			| Invite		|
+			| InviteCredit			|
 			| AdminUser |
 		  | Course		|
 			| Order			|
 			| Comment		|
 			| Skill			|
+			| Setting	|
 			| Subject		|
 			| User			|
 			| OrderTransaction			|
@@ -33,6 +36,7 @@ Feature: Admin Browse
 		  | Course		|
 			| Order			|
 			| Skill			|
+			| Setting	|
 			| Subject		|
 			| User			|
 			| AdminUser |
@@ -51,6 +55,7 @@ Feature: Admin Browse
 		  | Course		|
 			| Order			|
 			| Skill			|
+			| Setting	|
 			| Subject		|
 			| User			|
 			| AdminUser |

@@ -3,7 +3,7 @@ class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
     user.logger.info('New user added!')
-    Notification.new_user(user).deliver
+    Notification.new_user(user).deliver if (user.email =~ /.*@localhost/).nil?
 
     if user.is_teacher?
       Notification.faculty_invite(user).deliver

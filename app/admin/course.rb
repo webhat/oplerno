@@ -1,5 +1,4 @@
 ActiveAdmin.register Course do
-  actions :all, except: [:destroy]
   index download_links: [:csv, :xml, :json, :ical] do
     column :avatar do |course|
       link_to [course] do
