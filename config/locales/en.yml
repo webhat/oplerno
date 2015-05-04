@@ -149,3 +149,6 @@ en:
       free_classes: 'Take Free Classes'
       tell_a_friend: 'Tell a Friend'
       refer_a_friend: 'Refer a Friend'
+    invite_credit:
+      accepted: 'Your friend accepted your invitation'
+      notification: 'You accepted an invitation to take a course at Oplerno'
