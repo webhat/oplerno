@@ -79,7 +79,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'chardinjs-rails', '>= 0.1.3'
   gem 'rails-assets-jquery-ui'
-  gem 'rails-assets-bootstrap-sass', '>= 3.3.3'
+  gem 'bootstrap-sass', '>= 3.3.3'
   gem 'rails-assets-angular', '~> 1.3.5'
   gem 'rails-assets-angular-sanitize', '~> 1.3.5'
   gem 'rails-assets-angular-resource', '~> 1.3.5'

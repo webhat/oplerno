@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require turbolinks
 //= require tinymce
-//= require bootstrap-sass
+//= require bootstrap-sprockets
 //= require chardinjs
 //= require angular
 //= require angular-resource
