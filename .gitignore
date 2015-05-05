@@ -18,7 +18,7 @@
 config/gemnasium.yml
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*.log*
 /tmp
 .idea
 coverage

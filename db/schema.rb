@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150416123929) do
+ActiveRecord::Schema.define(:version => 20150504230334) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(:version => 20150416123929) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "analytics", :force => true do |t|
+    t.string   "remote"
+    t.string   "request"
+    t.datetime "time"
+    t.string   "status"
+    t.string   "bytes"
+    t.string   "referer"
+    t.string   "user_agent"
+    t.string   "method"
+    t.string   "path"
+    t.string   "protocol"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "analytics", ["path"], :name => "index_analytics_on_path"
+  add_index "analytics", ["remote", "path", "time"], :name => "index_analytics_on_remote_and_path_and_time", :unique => true
+  add_index "analytics", ["time"], :name => "index_analytics_on_time"
 
   create_table "canvas_courses", :force => true do |t|
     t.text     "name"
@@ -125,13 +144,13 @@ ActiveRecord::Schema.define(:version => 20150416123929) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.text     "description",         :limit => 255
+    t.text     "description"
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -140,8 +159,8 @@ ActiveRecord::Schema.define(:version => 20150416123929) do
     t.string   "type"
     t.text     "syllabus"
     t.boolean  "hidden"
-    t.integer  "min",                                :default => 2
-    t.integer  "max",                                :default => 25
+    t.integer  "min",                 :default => 2
+    t.integer  "max",                 :default => 25
     t.string   "slug"
     t.datetime "deleted_at"
   end
@@ -302,23 +321,23 @@ ActiveRecord::Schema.define(:version => 20150416123929) do
   end
 
   create_table "users", :force => true do |t|
-    t.binary   "title",                   :limit => 255
-    t.binary   "first_name",              :limit => 255
-    t.binary   "last_name",               :limit => 255
+    t.binary   "title"
+    t.binary   "first_name"
+    t.binary   "last_name"
     t.string   "username"
-    t.text     "description",             :limit => 255
+    t.text     "description"
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.string   "email",                                  :default => "",    :null => false
-    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email",                   :default => "",    :null => false
+    t.binary   "encrypted_password",                         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                          :default => 0,     :null => false
+    t.integer  "sign_in_count",           :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -327,12 +346,12 @@ ActiveRecord::Schema.define(:version => 20150416123929) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",                        :default => 0,     :null => false
+    t.integer  "failed_attempts",         :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",                          :default => false
+    t.boolean  "authy_enabled",           :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"

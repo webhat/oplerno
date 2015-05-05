@@ -27,7 +27,7 @@ group :doc do
   gem 'guard-rspec'
   gem 'guard-yard'
   gem 'guard-jasmine', '~> 2.0.1'
-  gem 'guard-coffeescript'#, github: 'guard/guard-coffeescript'
+  gem 'guard-coffeescript', github: 'guard/guard-coffeescript'
   gem 'guard-cucumber', '~> 1.5.0'
   gem 'guard-rubocop'
   gem 'brakeman', '~> 2.6.3'

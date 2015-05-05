@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/guard/guard-coffeescript.git
+  revision: 5272ccd2134d3419f03b673ef540359ccee0a38c
+  specs:
+    guard-coffeescript (2.0.1)
+      coffee-script (>= 2.2.0)
+      guard (>= 2.1.0)
+      guard-compat (~> 1.1)
+
+GIT
   remote: https://github.com/webhat/podio-rb.git
   revision: eddd85acff4a1e01181d5147f0497d2bc1c95253
   specs:
@@ -251,9 +260,6 @@ GEM
       thor (>= 0.18.1)
     guard-brakeman (0.8.2)
       brakeman (>= 2.1.1)
-      guard (>= 1.1.0)
-    guard-coffeescript (1.4.0)
-      coffee-script (>= 2.2.0)
       guard (>= 1.1.0)
     guard-compat (1.2.0)
     guard-cucumber (1.5.3)
@@ -715,7 +721,7 @@ DEPENDENCIES
   friendly_id
   growl
   guard-brakeman (~> 0.8.2)
-  guard-coffeescript
+  guard-coffeescript!
   guard-cucumber (~> 1.5.0)
   guard-jasmine (~> 2.0.1)
   guard-rspec
