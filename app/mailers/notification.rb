@@ -30,7 +30,7 @@ class Notification < ActionMailer::Base
 
     subject = t('users.mail.order_transaction')
 
-    mail(subject: subject, user: user)
+    mail(subject: subject)
 
     self
   end
@@ -41,7 +41,7 @@ class Notification < ActionMailer::Base
 
     subject = t('users.mail.order')
 
-    mail(subject: subject, user: user)
+    mail(subject: subject)
 
     self
   end

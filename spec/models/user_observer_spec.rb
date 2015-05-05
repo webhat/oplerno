@@ -77,7 +77,7 @@ describe UserObserver, :type => :observer do
       end
     end
   end
-  context 'save User' do
+  context 'Save User' do
     it 'should call after_create on observer' do
       expect(subject).to receive(:after_save)
 
