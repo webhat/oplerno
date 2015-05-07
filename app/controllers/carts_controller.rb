@@ -80,7 +80,7 @@ class CartsController < InheritedResources::Base
       @cart = Cart.find_by_user_id(@user.id)
     else
       @cart = @user.build_cart
-    end
+    end unless @user.nil?
   end
 
   def cart_params
@@ -92,6 +92,10 @@ class CartsController < InheritedResources::Base
   end
 
   def set_user
-    @user = current_user
+    unless current_user.nil?
+      @user = current_user
+    else
+      flash[:alert] = (I18n.t 'cart.add_something')
+    end
   end
 end

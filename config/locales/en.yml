@@ -58,6 +58,7 @@ en:
     summary: 'Courses Summary'
     total: 'Total'
   cart:
+    add_something: 'Your Cart is empty. Add a course to you cart to continue.'
     removed: 'Removed "%{course}" from Order'
     remove: 'Remove'
     mycart: 'My Cart'
