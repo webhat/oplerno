@@ -17,7 +17,7 @@
     %h1= t('courses.title')
 
   - if Setting.get_key('angular', 'false').value == 'true' or admin_user_signed_in?
-    %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list' }
+    %div{ ng: { controller: 'CourseList' }, id: 'angular_courses_list', style: 'display:none' }
       %script(type="text/ng-template" id="putInCartDialog")
         %h1
           Cart Update

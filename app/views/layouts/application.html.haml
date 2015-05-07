@@ -24,10 +24,7 @@
     = render 'layouts/meta'
     / Place favicon.ico and apple-touch-icon.png in the root directory
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
-    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
   %body
     /[if lt IE 7]
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -56,6 +53,8 @@
       / /row
     / /.container
     = render 'layouts/footer'
+    = javascript_include_tag "https://cdn.supportkit.io/supportkit.min.js"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     :javascript
       (function (i, s, o, g, r, a, m) {
               i['GoogleAnalyticsObject'] = r;
@@ -74,3 +73,5 @@
       		ga('require', 'linkid', 'linkid.js');
       		ga('require', 'displayfeatures');
           ga('send', 'pageview');
+    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
