@@ -95,7 +95,7 @@ class CartsController < InheritedResources::Base
     unless current_user.nil?
       @user = current_user
     else
-      flash[:alert] = (I18n.t 'cart.add_something')
+   #   flash[:alert] = (I18n.t 'cart.add_something')
     end
   end
 end
