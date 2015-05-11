@@ -26,7 +26,7 @@
         %td Access:
         %td &nbsp;
         %td
-          %b email.oplerno.com
+          %b mail.oplerno.com
       %tr
         %td Username:
         %td &nbsp;
@@ -37,8 +37,8 @@
         %td Password:
         %td &nbsp;
         %td
-          %b
-            = @user.mailpass
+          %i
+            The same password as your marketplace account
 %tr
   %td &nbsp;
 %tr
@@ -77,30 +77,27 @@
         %td Password:
         %td &nbsp;
         %td
-          %b
-            = @user.mailpass
+          %i
+            The same password as your marketplace account
       %tr
         %td
           Incoming Mail Server
         %td &nbsp;
         %td
           %b
-            imap.secureserver.net
+            mail.oplerno.com
       %tr
         %td
           Outgoing Mail Server
         %td &nbsp;
         %td
           %b
-            smtpout.secureserver.net
+            mail.oplerno.com
       %tr
         %td
           Incoming Port
         %td &nbsp;
         %td
-          Without SSL -
-          %b 143
-          %br
           With SSL -
           %b 993
       %tr
@@ -108,11 +105,8 @@
           Outgoing Port
         %td &nbsp;
         %td
-          Without SSL - one of the following:
-          %b 25, 80, 3535, 587
-          %br
-          With SSL -
-          %b 465
+          With SSL - one of the following:
+          %b 25, 587
 
     %p
       To set up your email via POP3 (Gmail, etc):
@@ -128,8 +122,8 @@
         %td Password:
         %td &nbsp;
         %td
-          %b
-            = @user.mailpass
+          %i
+            The same password as your marketplace account
       %tr
         %td
           Incoming Mail Server
@@ -143,25 +137,19 @@
         %td &nbsp;
         %td
           %b
-            smtpout.secureserver.net
+            mail.oplerno.com
       %tr
         %td
           Incoming Port
         %td &nbsp;
         %td
-          Without SSL -
-          %b 143
-          %br
           With SSL -
-          %b 993
+          %b 995
       %tr
         %td
           Outgoing Port
         %td &nbsp;
         %td
-          Without SSL - one of the following:
-          %b 25, 80, 3535, 587
-          %br
-          With SSL -
-          %b 465
+          With SSL - one of the following:
+          %b 25, 587
 
