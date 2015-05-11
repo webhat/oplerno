@@ -1,6 +1,16 @@
 ActiveAdmin.register AdminUser do
-  actions :all, except: [:destroy]
+  actions :all
   menu parent: 'Admin'
+
+  controller do
+    def action_methods
+      if current_admin_user.id == 3 
+        super
+      else
+        super - ['destroy', 'new', 'create']
+      end
+    end
+  end
 
   index do
     column :email
