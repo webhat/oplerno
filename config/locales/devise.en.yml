@@ -39,7 +39,7 @@ en:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
       send: "Send me reset password instructions"
-      forgot: "Forgot your password?"
+      forgot: "Reset your password?"
       new:
         password: "New password"
         confirm: "Confirm new password"
