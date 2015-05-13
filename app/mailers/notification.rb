@@ -17,9 +17,9 @@ class Notification < ActionMailer::Base
 
     unless user.privateemail.nil?
       subject = t('teachers.mail.welcome')
-      @raw_token, user.reset_password_token= Devise.token_generator.generate(User, :reset_password_token)
+      @raw_token, user.reset_password_token = Devise.token_generator.generate(
+        User, :reset_password_token)
       user.reset_password_sent_at = Time.now.utc
-      user.confirm!
 
       mail(subject: subject, to: user.privateemail)
     end
