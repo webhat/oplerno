@@ -4,6 +4,12 @@
       %h1.course_name.p-name.fn{:itemprop => "name"}= @course.name
     .hidden-sm.hidden-xs.e-description.description{:itemprop => "description"}
       = simple_format @course.description
+    %hr
+    - cache "syllabus_#{@course.id}" do
+      .hidden-sm.hidden-xs.col-lg-8.col-md-8.col-sm-12.col-xs-12.syllabus
+        %h2 Syllabus
+        %span
+          = simple_format @course.syllabus
   .col-lg-3.col-md-3.col-sm-5.col-xs-12
     .well.hide_name.magic_course
       .well
@@ -26,34 +32,37 @@
         - rescue
           - start_date_google = '0000-00-00'
           - start_date = t('courses.date.not_set')
-        %span{:content => start_date_google, :itemprop => "startDate"}= start_date
+        %h3
+          %span{:content => start_date_google, :itemprop => "startDate"}= start_date
     .well{:itemprop => "offers", :itemscope => "", :itemtype => "http://schema.org/Offer"}
       .well
         %h2= t('courses.price')
-        %span.p-price.price{:itemprop => "price"}
-          - begin
-            - if @course.price.nil? or @course.price <= 0
+        %h3
+          %span.p-price.price{:itemprop => "price"}
+            - begin
+              - if @course.price.nil? or @course.price <= 0
+                = t('courses.price.not_set')
+              - else
+                $#{@course.price}
+            - rescue
               = t('courses.price.not_set')
-            - else
-              $#{@course.price}
-          - rescue
-            = t('courses.price.not_set')
   - cache "description_#{@course.id}" do
     .hidden-lg.hidden-md.col-sm-7.col-xs-12
       = simple_format @course.description
-  .clearfix
   - cache "syllabus_#{@course.id}" do
-    .col-lg-8.col-md-8.col-sm-12.col-xs-12.syllabus
+    .hidden-lg.hidden-md.col-sm-7.col-xs-12.syllabus
       %h2 Syllabus
       %span
         = simple_format @course.syllabus
+  .clearfix
   - cache "subjects_#{@course.id}" do
-    .col-lg-5.col-md-5.col-sm-6.col-xs-12.well
+    .col-lg-5.col-md-5.col-sm-5.col-xs-12.well
       %h2= t('courses.subjects')
       - begin
         - @course.subjects.each { |subject|
         %span
           = subject.subject
+          ,
         - }
       - rescue
         = t('courses.subjects.not_set')
