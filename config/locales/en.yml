@@ -142,7 +142,7 @@ en:
     applied: "The credit will be applied onec you've completed 30% of the course"
     not_applied: 'You need to create a user first'
     claim:
-      title: 'Claim your Free Class'
+      title: 'Earn A Free Class'
       text: 'To be able to register for your free class you need to create a user account. After that you can register for a course.'
       email: 'Fill in your email address below to create your account.'
     cta:
