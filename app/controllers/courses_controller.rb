@@ -17,7 +17,9 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html {
         @courses = Course.order('start_date desc').where(:hidden => false).page params[:page]
-        @courses_underdev = Course.order(:name).where(:hidden => true).page params[:page]
+        @courses_underdev = Course.includes(:rank).order("course_rankings.ranking desc").where(
+          "courses.hidden = 'TRUE' AND course_rankings.ranking >= 100"
+        ).page params[:page]
       }
       format.json {
         @courses = Course.order('start_date desc').where(

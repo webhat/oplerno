@@ -58,7 +58,7 @@ describe CourseObserver, :type => :observer  do
       end
       course.rank.should respond_to(:rank)
       course.should eq course.rank.course
-      course.rank.ranking.should eq 10
+      course.rank.ranking.should eq 15
     end
 
     it 'should send a mail if a teacher is added to a course' do

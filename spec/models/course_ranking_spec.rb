@@ -22,7 +22,7 @@ describe CourseRanking, type: :observer do
     it 'should rank :name using the observer' do
       set_course :name, 'Test Course'
 
-      @course.rank.ranking.should eq 10
+      @course.rank.ranking.should eq 5
     end
 
     it 'should rank :description' do

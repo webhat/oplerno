@@ -6,7 +6,7 @@ describe Admin::UsersController do
   login_admin
 
   describe 'Get users' do
-    let(:valid_attributes) { {email: 'example_teacher@oplerno.com', password: '1234567890', password_confirmation: '1234567890'} }
+    let(:valid_attributes) { {email: 'example_teacher@example.com', password: '1234567890', password_confirmation: '1234567890'} }
 
     before(:each) do
       @user = User.create! valid_attributes
