@@ -92,6 +92,7 @@ ActiveAdmin.register Course do
       unless course.teacher.blank?
         teacher = Teacher.find(course.teacher)
         column do
+          render 'admin/ranking_panel', data: teacher
           render 'admin/teacher_panel', data: teacher
           render 'admin/more_courses_panel', data: teacher
         end

@@ -1,0 +1,7 @@
+panel 'Ranking' do
+	columns do
+		column do
+      raw "<h2>#{resource.rank.ranking}</h2>"
+		end
+	end
+end

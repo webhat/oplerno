@@ -61,6 +61,7 @@ ActiveAdmin.register User do
         end
       end
       column do
+        render 'admin/ranking_panel', resource: Teacher.find(user.id) if user.is_teacher?
         panel 'Courses' do
           courses = Course.find(:all, conditions: ["teacher = ?", user.id])
           courses.each do |course|

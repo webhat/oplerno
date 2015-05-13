@@ -132,6 +132,7 @@ en:
       fail: "Cannot login in to Canvas using the Marketplace"
       fail_info: "If you have a Canvas account you can login in directly below"
   invites:
+    no_invite: "Sorry, we couldn't find that invite"
     invite:
       accepted: 'You create an invite URL'
     accept:
