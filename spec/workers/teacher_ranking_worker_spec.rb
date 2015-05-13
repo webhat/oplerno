@@ -2,6 +2,7 @@ require 'spec_helper'
 RSpec.describe TeacherRankingWorker, :type => :worker do
   it 'should update TeacherRanking' do
     user = FactoryGirl.build(:user, email: 'teacher_ranking_worker@oplerno.com')
+    user.confirm!
 
     User.observers.enable :user_observer do
       user.save
