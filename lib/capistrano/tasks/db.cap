@@ -8,8 +8,9 @@ set :db_local_password, ''
 set :db_local_name, 'oplerno_development'
 # A place where you'd like to save your database dumps
 set :local_dump_dir, 'db/dumps'
-set :sql_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{Time.now.to_i}.sql" }
-set :redis_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{Time.now.to_i}.rdb" }
+set :timestamp, "#{Time.now.to_i}"
+set :sql_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{fetch(:timestamp)}.sql" }
+set :redis_dump, ->{ "#{fetch(:db_remote_name)}-#{fetch(:stage, 'production')}_#{fetch(:timestamp)}.rdb" }
 
 # Run with `cap db:sync`
 namespace :db do
@@ -25,6 +26,7 @@ namespace :db do
       download! "/var/lib/redis/dump.rdb", "#{fetch(:local_dump_dir)}/#{fetch(:redis_dump)}"
     end
     sh "mysql -u #{fetch(:db_local_user)} #{fetch(:db_local_name)} <<< 'source #{fetch(:local_dump_dir)}/#{fetch(:sql_dump)};'"
+    rm 'dump.rdb'
     ln "#{fetch(:local_dump_dir)}/#{fetch(:redis_dump)}", 'dump.rdb'
   end
 
