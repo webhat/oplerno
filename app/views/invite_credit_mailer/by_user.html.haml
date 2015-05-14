@@ -3,18 +3,18 @@
 %tr
   %td
   %td
-    %h2 You have #{@ic.amount} credits
+    %h2 You have $#{@ic.amount} credits
     %br
-    Great news, you now have #{@ic.amount} credits to use in the 
+    Great news, you now have $#{@ic.amount} credits to use in the 
     %a(href='https://enroll.oplerno.com/') Oplerno Marketplace!
-    %br
+    %p
     - if @ic.user.id == @ic.by.id
       One of your friends has used an invitation you created. They will need to complete at least 30% of the course before we credit your account.
-      %br
-      For you to receive your #{@ic.amount} toward an Oplerno course, your friend just has to enroll in a course and stay in the course for at least four weeks (we need to make sure your friend is serious about taking the course after all)!
-      %br
-      You can build up as many #{@ic.amount} credits toward Oplerno courses as you would like. Remember, they hold no cash value and can only be used toward Oplerno courses.
-    %br
+      %p
+      For you to receive your $#{@ic.amount} toward an Oplerno course, your friend just has to enroll in a course and stay in the course for at least four weeks (we need to make sure your friend is serious about taking the course after all)!
+      %p
+      You can build up as many $#{@ic.amount} credits toward Oplerno courses as you would like. Remember, they hold no cash value and can only be used toward Oplerno courses.
+    %p
 
     You will receive credits once the class has passed the time for a refund.
 

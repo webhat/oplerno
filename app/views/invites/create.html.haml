@@ -12,10 +12,10 @@
       #invite_tw.social
         %a(href="https://twitter.com/intent/tweet?text=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value} https://enroll.oplerno.com/invited/#{@invite.code}" target='_new') Tweet
       #invite_fb.social
-        %a(href="https://www.facebook.com/sharer/sharer.php?u=https://enroll.oplerno.com/invited/#{@invite.code}&display=popup&redirect_uri=https://enroll.oplerno.com/" target='_new') Share on FaceBook
+        %a(href="https://www.facebook.com/sharer/sharer.php?u=https://enroll.oplerno.com/invited/#{@invite.code}&display=popup&redirect_uri=https://enroll.oplerno.com/invited/#{@invite.code}" target='_new') Share on FaceBook
       #invite_li.social
         %a(href="https://www.linkedin.com/shareArticle?mini=true&url=https://enroll.oplerno.com/invited/#{@invite.code}&title=Invite&summary=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value}&source=Oplerno" target='_new') Share on LinkedIn
 
   #invite.well.col-lg-5
     #invite_email
-      %a(href="mailto:?&subject=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value}&body=This is your referal URL https://enroll.oplerno.com/invited/#{@invite.code}") Email your Friends
+      %a(href="mailto:myfriend@example.com?&subject=#{Setting.get_key('tweettext', 'Take Free Classes at @Oplerno').value}&body=Hi%21%0A%0AOplerno%20is%20an%20open%20online%20learning%20institution%20that%20offers%20courses%20for%20college%20credit%20at%20a%20fraction%20of%20the%20cost.%20If%20you%20sign%20up%20by%20clicking%20on%20this%20link%2C%20you%20and%20I%20both%20earn%20a%20%2450%20credit%20to%20use%20on%20their%20courses%21%0A%0Ahttps://enroll.oplerno.com/invited/#{@invite.code}%0A%0AIf%20you%20have%20any%20questions%20you%20can%20email%20me%20back%2C%20or%20email%20questions@oplerno.com.%0A%0AThanks%21") Email Your Friends
