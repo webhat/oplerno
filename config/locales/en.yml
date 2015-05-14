@@ -76,6 +76,7 @@ en:
       end: 'End Date'
       not_set: 'Coming soon'
     new: 'New Course'
+    new_teacher: "You have been added as a Teacher to %{display_name}"
     update: 'Update Course'
     skill:
       name: 'Skill'

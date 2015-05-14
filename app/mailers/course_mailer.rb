@@ -8,7 +8,8 @@ class CourseMailer < ActionMailer::Base
     @course = course
     @teacher = Teacher.find(course.teacher)
 
-    mail(subject: t('courses.new_teacher'),
+    subject = t('courses.new_teacher', display_name: course.display_name)
+    mail(subject: subject,
          to: @teacher.email
         )
 
