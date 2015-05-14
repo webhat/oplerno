@@ -33,7 +33,7 @@ class InvitesController < ApplicationController
   def setup_user
     user = create_user
     user.email = invites_email
-    user.save
+    user.save!
     user.send_confirmation_instructions
     return user
   end

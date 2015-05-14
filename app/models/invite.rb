@@ -4,6 +4,10 @@ class Invite < ActiveRecord::Base
 
   after_initialize :set_code
 
+  def user_id= id
+    self.user = User.find(id)
+  end
+
   def set_code
     self.code ||= Digest::SHA256.hexdigest(Time.now.to_s)[0..10]
   end
