@@ -153,4 +153,4 @@ en:
       refer_a_friend: 'Refer a Friend'
     invite_credit:
       accepted: 'Your friend accepted your invitation'
-      notification: 'You accepted an invitation to take a course at Oplerno'
+      notification: "You have $%{amount} to use toward an Oplerno course!"

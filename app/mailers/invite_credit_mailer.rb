@@ -20,9 +20,9 @@ class InviteCreditMailer < ActionMailer::Base
 
   def credit_mail_user invite_credit, email
     if invite_credit.user.id == invite_credit.by.id 
-      I18n.t('invites.invite_credit.accepted', user: email)
+      I18n.t('invites.invite_credit.accepted', amount: invite_credit.amount)
     else
-      I18n.t('invites.invite_credit.notification', user: email)
+      I18n.t('invites.invite_credit.notification', amount: invite_credit.amount)
     end
   end
 

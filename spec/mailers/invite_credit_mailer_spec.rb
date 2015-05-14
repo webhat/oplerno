@@ -21,7 +21,7 @@ describe InviteCreditMailer do
 
       invite_credit_mailer = described_class.by_user(ic)
 
-      subject = I18n.t('invites.invite_credit.notification', user: user.email)
+      subject = I18n.t('invites.invite_credit.notification', amount: '50')
       expect(invite_credit_mailer.subject).to eq(subject)
 
       invite_credit_mailer.deliver
@@ -44,7 +44,7 @@ describe InviteCreditMailer do
 
       invite_credit_mailer = described_class.by_user(ic)
 
-      subject = I18n.t('invites.invite_credit.accepted', user: user.email)
+      subject = I18n.t('invites.invite_credit.accepted', amount: '50')
 
       expect(invite_credit_mailer.subject).to eq(subject)
 
