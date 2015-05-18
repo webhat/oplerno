@@ -57,6 +57,7 @@ en:
     success: 'Success'
     summary: 'Courses Summary'
     total: 'Total'
+    description: 'Enrolling at Oplerno'
   cart:
     add_something: 'Your Cart is empty. Add a course to you cart to continue.'
     removed: 'Removed "%{course}" from Order'

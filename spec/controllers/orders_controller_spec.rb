@@ -63,6 +63,7 @@ describe OrdersController do
   describe 'GET confirm' do
     let(:valid_params) {
       {
+        :id => nil,
         :token => 'EC-59R59009BF276314F',
         :PayerID => 'H7E8K2LT573UN',
         :order_total => 750.00
@@ -77,6 +78,7 @@ describe OrdersController do
         @cart.user = FactoryGirl.create(:user)
         order = @cart.build_order
         order.save
+        valid_params[:id] = order.id
         OrdersController.any_instance.stub(:current_cart).and_return(@cart)
       end
       it 'create any error state' do
@@ -131,6 +133,7 @@ describe OrdersController do
   describe 'Test Resolution' do
     let(:valid_params) {
       {
+        :id => nil,
         :token => 'EC-59R59009BF276314F',
         :PayerID => 'H7E8K2LT573UN',
         :order_total => 750.00
@@ -146,6 +149,7 @@ describe OrdersController do
       cart = FactoryGirl.build(:cart, user: @user)
       cart.save!
       cart.build_order.save
+      valid_params[:id] = cart.order.id
       OrdersController.any_instance.stub(:current_cart).and_return(cart)
     end
 
@@ -162,7 +166,7 @@ describe OrdersController do
     end
 
     it ':confirm failure' do
-      VCR.use_cassette('resolution_success') do
+      VCR.use_cassette('resolution_failure') do
         expect(@user.email).to eq 'h7e8k2lt573un@localhost'
 
         get :confirm, valid_params
