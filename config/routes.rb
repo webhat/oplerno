@@ -34,14 +34,15 @@ Oplerno::Application.routes.draw do
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
     resources :searches, only: [:index, :create]
     resources :certificates, only: [:show, :index, :create]
+    resource :payments, only: [:new]
 
     post '/teachers/:id/contact' => 'teachers#contact'
     get '/teachers/:id/contact' => 'teachers#contact'
     post '/courses/:id/image_picker' => 'courses#image_picker'
 
-    get '/orders/confirm' => 'orders#confirm'
-    get '/orders/ipn' => 'orders#paypal_ipn'
-    get '/orders/cancel' => 'orders#confirm'
+    match '/orders/:id/confirm' => 'orders#confirm'
+    match '/orders/:id/ipn' => 'orders#paypal_ipn'
+    match '/orders/:id/cancel' => 'orders#confirm'
 
     post '/carts/:cart/:course', to: 'carts#remove_course_from_cart'
 
