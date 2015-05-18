@@ -101,14 +101,27 @@ class OrdersController < InheritedResources::Base
   def purchase
     setup_response = GATEWAY.setup_purchase(
       @order.price_in_cents, ip: @order.ip,
-      return_url: url_for(controller: 'orders', action: 'confirm', only_path: false),
+      return_url: url_for(controller: 'orders', id: @order.id, action: 'confirm', only_path: false),
+      items: items_in_cart,
       cancel_return_url: url_for(controller: 'carts', action: 'index', only_path: false),
+      ipn_notification_url: url_for(controller: 'orders', id: @order.id, action: 'paypal_ipn', only_path: false),
       email: current_user.email,
-      description: (I18n.t 'payments.description', { courses: all_courses}),
       allow_note: false, allow_guest_checkout: false,
+      description: I18n.t('orders.description'),
     )
 
     redirect_to GATEWAY.redirect_url_for(setup_response.token)
+  end
+
+  def items_in_cart
+    current_cart.courses.map do |course|
+      {
+        name: course.name,
+        quanity: 1,
+        description: Nokogiri::HTML(course.description).text[0..50],
+        amount: course.price*100
+      }
+    end + [{name: 'Canvas Subscription', quantity: 1, description: '', amount: 0}]
   end
 
   def current_cart
