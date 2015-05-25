@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150511224138) do
+ActiveRecord::Schema.define(:version => 20150521202415) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(:version => 20150511224138) do
   add_index "analytics", ["remote", "path", "time"], :name => "index_analytics_on_remote_and_path_and_time", :unique => true
   add_index "analytics", ["time"], :name => "index_analytics_on_time"
 
+  create_table "angels", :force => true do |t|
+    t.integer  "user_id_id"
+    t.string   "angelslug"
+    t.string   "twitterslug"
+    t.string   "adviser_to"
+    t.string   "investor_in"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "angels", ["user_id_id"], :name => "index_angels_on_user_id_id"
+
   create_table "canvas_courses", :force => true do |t|
     t.text     "name"
     t.integer  "canvas_id"
@@ -77,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20150511224138) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -90,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20150511224138) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -229,6 +241,19 @@ ActiveRecord::Schema.define(:version => 20150511224138) do
 
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id", :unique => true
 
+  create_table "mentors", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mentors_teams", :id => false, :force => true do |t|
+    t.integer "team_id"
+    t.integer "mentor_id"
+  end
+
+  add_index "mentors_teams", ["mentor_id"], :name => "index_mentors_teams_on_mentor_id"
+  add_index "mentors_teams", ["team_id"], :name => "index_mentors_teams_on_team_id"
+
   create_table "order_transactions", :force => true do |t|
     t.integer  "order_id"
     t.string   "action"
@@ -320,6 +345,13 @@ ActiveRecord::Schema.define(:version => 20150511224138) do
   create_table "teachers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
