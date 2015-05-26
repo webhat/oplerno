@@ -3,7 +3,7 @@ module CoursesHelper
     @course.binary_data.nil?
   end
 
-  def course_cache_id course
+  def course_cache_id course=@course
     if current_user.nil?
       "#{prefix}_#{cache_id}_#{ course.id }"
     else
