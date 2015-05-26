@@ -20,12 +20,12 @@ en:
     settings: Settings
   cart:
     add_something: Your Cart is empty. Add a course to you cart to continue.
+    error:
+      save_failed: 'prohibited this cart from being saved:'
     mycart: My Cart
     pay: Complete Purchase
     remove: Remove
     removed: Removed "%{course}" from Order
-    error:
-      save_failed: 'prohibited this cart from being saved:'
   courses:
     contact: Contact Instructor
     date:
@@ -126,6 +126,11 @@ en:
     success:
       create: Student was successfully created
       update: Student was successfully updated
+  contact_teacher:
+    mail:
+      from: 'From: %{from}'
+      from_student: One of your future students has a question for you.
+      to: Dear %{to},
   teachers:
     complete: Having your information up to date will improve your ranking in the
       marketplace.
