@@ -5,8 +5,8 @@
     .hidden-sm.hidden-xs.e-description.description{:itemprop => "description"}
       = simple_format @course.description
     %hr
-    - cache "syllabus_#{@course.id}" do
-      .hidden-sm.hidden-xs.col-lg-8.col-md-8.col-sm-12.col-xs-12.syllabus
+    - cache "syllabus_large_#{course_cache_id}" do
+      .hidden-sm.hidden-xs.col-lg-8.col-md-8.syllabus
         %h2 Syllabus
         %span
           = simple_format @course.syllabus
@@ -46,16 +46,16 @@
                 $#{@course.price}
             - rescue
               = t('courses.price.not_set')
-  - cache "description_#{@course.id}" do
+  - cache "description_#{course_cache_id}" do
     .hidden-lg.hidden-md.col-sm-7.col-xs-12
       = simple_format @course.description
-  - cache "syllabus_#{@course.id}" do
+  - cache "syllabus_small_#{course_cache_id}" do
     .hidden-lg.hidden-md.col-sm-7.col-xs-12.syllabus
       %h2 Syllabus
       %span
         = simple_format @course.syllabus
   .clearfix
-  - cache "subjects_#{@course.id}" do
+  - cache "subjects_#{course_cache_id}" do
     .col-lg-5.col-md-5.col-sm-5.col-xs-12.well
       %h2= t('courses.subjects')
       - begin
@@ -66,7 +66,7 @@
         - }
       - rescue
         = t('courses.subjects.not_set')
-  - cache "skills_#{@course.id}" do
+  - cache "skills_#{course_cache_id}" do
     .col-lg-5.col-md-5.col-sm-5.col-xs-12.col-lg-offset-1.col-md-offset-1.col-sm-offset-1.well
       %h2= t('courses.skills')
       - begin
