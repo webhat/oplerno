@@ -18,12 +18,13 @@
 config/gemnasium.yml
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*.log*
 /tmp
 .idea
 coverage
 bin
 doc
+enroll*.png
 
 node_modules/
 .vagrant/
@@ -35,3 +36,4 @@ lib/paperclip_redis
 errors.err
 .cadre
 
+dump.rdb

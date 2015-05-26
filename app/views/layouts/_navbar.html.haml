@@ -22,7 +22,7 @@
               %span(class='caret')>
           %ul(class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu1')
             %li(role='presentation')
-              %a(role='menuitem' tabindex='-1' href='/courses')
+              %a(role='menuitem' tabindex='-1' href='/courses' data-no-turbolink)
                 = t('browse.by_course_title')
             %li(role='presentation')
               %a(role='menuitem' tabindex='-1' href='/teachers')
@@ -67,4 +67,9 @@
             %div
               %span(class='glyphicon glyphicon-shopping-cart')>
               %i.cartcount 0
-
+      - if Setting.get_key('invites', 'false').value == 'true' || admin_user_signed_in?
+        %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
+          %li
+            %a.cart(href='/invites/new' class='btn active btn-warning navbar-toggle referral hidden-xs')
+              %div
+                = t(Setting.get_key('refer', 'invites.cta.refer_a_friend').value)

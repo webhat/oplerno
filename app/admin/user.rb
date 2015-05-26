@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-  actions :all, :except => [:destroy]
   index do
     column :avatar do |user|
       link_to [user] do
@@ -17,7 +16,13 @@ ActiveAdmin.register User do
     column 'Courses' do |user|
       render 'admin/courses_panel', data: Course.find(:all, conditions: ["teacher = ?", user.id])
     end
-    column :email
+    column :email do |user|
+      if user.unconfirmed_email.nil?
+        user.email
+      else
+        user.unconfirmed_email
+      end
+    end
     column :current_sign_in_at
     column :last_sign_in_at
     column :sign_in_count
@@ -47,12 +52,16 @@ ActiveAdmin.register User do
           row :email do
             mail_to user.email, user.email
           end
+          row :unconfirmed_email do
+            mail_to user.unconfirmed_email, user.unconfirmed_email
+          end
           row :description do
             simple_format user.description
           end
         end
       end
       column do
+        render 'admin/ranking_panel', resource: Teacher.find(user.id) if user.is_teacher?
         panel 'Courses' do
           courses = Course.find(:all, conditions: ["teacher = ?", user.id])
           courses.each do |course|
@@ -106,6 +115,10 @@ ActiveAdmin.register User do
     end
   end
 
+  action_item only: :show do
+    link_to 'Confirm Email', "/admin/users/#{params[:id]}/confirm"
+  end
+
   member_action :lock, :method => :get do
     user = User.find(params[:id])
     user.lock_access!
@@ -116,6 +129,12 @@ ActiveAdmin.register User do
     user = User.find(params[:id])
     user.unlock_access!
     redirect_to :action => :show, :notice => "Unlocked!"
+  end
+
+  member_action :confirm, :method => :get do
+    user = User.find(params[:id])
+    user.confirm!
+    redirect_to :action => :show, :notice => "Confirmed!"
   end
 
   action_item only: :show do

@@ -1,5 +1,9 @@
 .col-lg-12
-  %h1 Editing course
+  .col-lg-8
+    %h1 Editing course
+  #angular_ranking_list.col-lg-4{ ng: { controller: 'RankingList' } }
+    %h1.rank {{ ranking() }}
+
 = render 'form'
 = link_to 'Show', @course, {:class => "btn btn-info pull-right"}
 = link_to 'Back', courses_path, {:class => "btn btn-default"}

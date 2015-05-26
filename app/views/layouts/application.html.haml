@@ -1,7 +1,9 @@
 !!!
 /
-  IP:       <haml:loud> request.ip </haml:loud>
-  HOSTNAME: <haml:loud> Socket.gethostname </haml:loud>
+  IP:      
+  = request.ip
+  HOSTNAME: 
+  = Socket.gethostname
 /[if lt IE 7]
   <html class="no-js lt-ie9 lt-ie8 lt-ie7">
 /[if IE 7]
@@ -22,10 +24,9 @@
     = render 'layouts/meta'
     / Place favicon.ico and apple-touch-icon.png in the root directory
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "https://cdn.supportkit.io/supportkit.min.js"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
-    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
   %body
     /[if lt IE 7]
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -33,8 +34,6 @@
     = render "layouts/navbar"
     .container
       .row
-        - if is_teacher?
-          = render "layouts/abtest_notification"
         - unless notice.nil?
           .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
             .success.alert-message
@@ -74,3 +73,5 @@
       		ga('require', 'linkid', 'linkid.js');
       		ga('require', 'displayfeatures');
           ga('send', 'pageview');
+    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"

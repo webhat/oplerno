@@ -67,8 +67,17 @@ describe UserObserver, :type => :observer do
         FactoryGirl.create(:user, teacher_user)
       end
     end
+    it 'should call after_create on observer' do
+      expect_any_instance_of(described_class).to receive(:after_create).once
+      expect(Notification).to_not receive(:new_user)
+
+      User.observers.enable :user_observer do
+        user = FactoryGirl.build(:user, email: 'blah@localhost')
+        user.save
+      end
+    end
   end
-  context 'save User' do
+  context 'Save User' do
     it 'should call after_create on observer' do
       expect(subject).to receive(:after_save)
 
@@ -89,6 +98,7 @@ describe UserObserver, :type => :observer do
     end
     it 'should create a ranking if a teacher is saved' do
       user = FactoryGirl.build(:user, teacher_user)
+      #user.confirm!
 
       User.observers.enable :user_observer do
         user.save

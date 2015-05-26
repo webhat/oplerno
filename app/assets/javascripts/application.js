@@ -15,9 +15,13 @@
 //= require jquery-ui
 //= require turbolinks
 //= require tinymce
-//= require bootstrap-sass
+//= require bootstrap-sprockets
 //= require chardinjs
 //= require angular
+//= require angular-resource
+//= require angular-sanitize
+//= require angular-timeago
+//= require ngDialog
 //= require app
 //= require image-picker
 //= require jquery.lazyload.min

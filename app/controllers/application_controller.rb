@@ -24,4 +24,24 @@ class ApplicationController < ActionController::Base
       view_context.link_to("undo", revert_version_path(instance_variable_get("@#{model}").versions.scoped.last), :method => :post)
     end
   end
+
+  def create_and_signin_user
+    user = create_user
+    sign_in :user, user
+    user
+  end
+
+  def create_user
+    user = User.new
+    user.password = generated_code
+    user.password_confirmation = generated_code
+    user.email = "#{generated_code}@localhost"
+    user.skip_confirmation!
+    user.save!
+    user
+  end
+
+  def generated_code
+    token ||= Digest::SHA256.hexdigest(Time.now.to_s)[0..10]
+  end
 end

@@ -19,8 +19,8 @@ cta_sign_up = ->
   $( "#dialog" ).dialog 'open' 
 
 
-$(document).on 'click', '.oplerno-cta', (e) ->
-  e.stopPropagation();
-  cta_sign_up()
+#$(document).on 'click', '.oplerno-cta', (e) ->
+#  e.stopPropagation();
+#  cta_sign_up()
 
 

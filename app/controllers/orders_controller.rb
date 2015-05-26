@@ -9,30 +9,65 @@ class OrdersController < InheritedResources::Base
 
     details_response = GATEWAY.details_for(token_params)
 
-    unless details_response.success?
-      @message = details_response.message
-      transactions.create!(:action => "error", :amount => price_in_cents, :response => details_response)
-      flash[:alert] = @message
-    else
-      transactions.create!(:action => "purchase", :amount => price_in_cents, :response => details_response)
-      current_cart.courses_to_student
-      current_user.cart = Cart.create!
-      current_user.save
-      flash[:notice] = (I18n.t 'orders.success')
-    end
+    resolve_payment details_response
   end
 
   def paypal_ipn
     notify = Paypal::Notification.new(@request.raw_post)
+    # TODO: resolve payer here
     if notify.acknowledge
-      OrderTransaction.create!(:action => "purchase", :amount => price_in_cents, :response => details_response) if notify.complete?
+      create_ot_transaction 'purchase', details_response if notify.complete?
     else
       logger.info(@request)
-      OrderTransaction.create!(:action => "error", :amount => price_in_cents, :response => details_response)
+      create_ot_transaction 'error', details_response
     end
   end
 
   private
+
+  def resolve_payment details_response
+    ot = nil
+    unless details_response.success?
+      @message = details_response.message
+      ot = create_transaction 'error', details_response
+      flash[:alert] = @message
+    else
+      ot = create_transaction 'purchase', details_response
+      courses_to_students
+      flash[:notice] = (I18n.t 'orders.success')
+    end
+    update_email details_response.params['payer'], ot.order.cart.user
+  end
+
+  def update_email payer, user
+    unless (user.email =~ /.*@localhost/).nil?
+      user.email = payer
+      user.save
+      user.send_confirmation_instructions
+    end unless user.nil?
+  end
+
+  def courses_to_students
+    current_cart.courses_to_student
+    current_user.cart = Cart.create!
+    current_user.save
+  end
+
+  def create_transaction(action, details_response)
+    transactions.create!(
+      action: action,
+      amount: price_in_cents,
+      response: details_response
+    )
+  end
+
+  def create_ot_transaction action, details_response
+    OrderTransaction.create!(
+      action: action,
+      amount: price_in_cents,
+      response: details_response
+    )
+  end
 
   def order
     current_cart.order
@@ -65,17 +100,28 @@ class OrdersController < InheritedResources::Base
 
   def purchase
     setup_response = GATEWAY.setup_purchase(
-      @order.price_in_cents,
-      :ip => @order.ip,
-      :return_url => url_for(controller: 'orders', action: 'confirm', only_path: false),
-      :cancel_return_url => url_for(:controller => 'carts', :action => 'index', :only_path => false),
-      :email => current_user.email,
-      :description => (I18n.t 'payments.description', { courses: all_courses}),
-      :allow_note => false,
-      :allow_guest_checkout => false,
+      @order.price_in_cents, ip: @order.ip,
+      return_url: url_for(controller: 'orders', id: @order.id, action: 'confirm', only_path: false),
+      items: items_in_cart,
+      cancel_return_url: url_for(controller: 'carts', action: 'index', only_path: false),
+      ipn_notification_url: url_for(controller: 'orders', id: @order.id, action: 'paypal_ipn', only_path: false),
+      email: current_user.email,
+      allow_note: false, allow_guest_checkout: false,
+      description: I18n.t('orders.description'),
     )
 
     redirect_to GATEWAY.redirect_url_for(setup_response.token)
+  end
+
+  def items_in_cart
+    current_cart.courses.map do |course|
+      {
+        name: course.name,
+        quanity: 1,
+        description: Nokogiri::HTML(course.description).text[0..50],
+        amount: course.price*100
+      }
+    end + [{name: 'Canvas Subscription', quantity: 1, description: '', amount: 0}]
   end
 
   def current_cart

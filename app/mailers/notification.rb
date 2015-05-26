@@ -17,6 +17,9 @@ class Notification < ActionMailer::Base
 
     unless user.privateemail.nil?
       subject = t('teachers.mail.welcome')
+      @raw_token, user.reset_password_token = Devise.token_generator.generate(
+        User, :reset_password_token)
+      user.reset_password_sent_at = Time.now.utc
 
       mail(subject: subject, to: user.privateemail)
     end
@@ -30,7 +33,7 @@ class Notification < ActionMailer::Base
 
     subject = t('users.mail.order_transaction')
 
-    mail(subject: subject, user: user)
+    mail(subject: subject)
 
     self
   end
@@ -41,7 +44,7 @@ class Notification < ActionMailer::Base
 
     subject = t('users.mail.order')
 
-    mail(subject: subject, user: user)
+    mail(subject: subject)
 
     self
   end

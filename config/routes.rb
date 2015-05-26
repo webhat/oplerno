@@ -22,6 +22,10 @@ Oplerno::Application.routes.draw do
     get '/courses/me' => 'courses#me'
     get '/teachers/edit' => 'users#edit'
 
+    namespace :ranking do
+      resources :courses, only: [:show]
+    end
+    resource :invites, only: [:new, :create, :edit, :update]
     resources :courses, except: [:new]
     resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
@@ -44,9 +48,9 @@ Oplerno::Application.routes.draw do
     get '/saml/auth' => 'saml_idp#new'
     post '/saml/auth' => 'saml_idp#create'
 
-    post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+    post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
   end
 
-  mount Paperclip::Storage::Redis::App.new => "/dynamic"
-  mount Sidekiq::Web, at: "/admin/sidekiq" if Rails.env.development? 
+  mount Paperclip::Storage::Redis::App.new => '/dynamic'
+  mount Sidekiq::Web, at: '/admin/sidekiq' if Rails.env.development? 
 end

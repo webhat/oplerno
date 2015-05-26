@@ -5,6 +5,8 @@ class TeacherRanking < ActiveRecord::Base
   belongs_to :teacher
 
   before_save :synchronize_rank
+  after_initialize :set_default_rank
+
 
   def rank
     set_default_rank

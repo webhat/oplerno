@@ -58,7 +58,19 @@ describe CourseObserver, :type => :observer  do
       end
       course.rank.should respond_to(:rank)
       course.should eq course.rank.course
-      course.rank.ranking.should eq 10
+      course.rank.ranking.should eq 15
+    end
+
+    it 'should send a mail if a teacher is added to a course' do
+      course_mailer = double(CourseMailer)
+      expect(course_mailer).to receive(:deliver)
+      expect(CourseMailer).to receive(:new_teacher).and_return(course_mailer)
+      course = Course.create! name: 'blank'
+
+      Course.observers.enable :course_observer do
+        course.teacher = FactoryGirl.create(:user).id
+        course.save
+      end
     end
   end
 end

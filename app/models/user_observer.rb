@@ -1,9 +1,17 @@
 class UserObserver < ActiveRecord::Observer
   observe :user
 
+  def before_validation_on_create(user)
+    begin
+      user.confirm! if user.is_teacher?
+    rescue => e
+      user.logger.error("User confirm failed for #{user.email}: #{e}")
+    end
+  end
+
   def after_create(user)
     user.logger.info('New user added!')
-    Notification.new_user(user).deliver
+    Notification.new_user(user).deliver if (user.email =~ /.*@localhost/).nil?
 
     if user.is_teacher?
       Notification.faculty_invite(user).deliver

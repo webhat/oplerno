@@ -1,0 +1,22 @@
+%tr
+  %td &nbsp;
+%tr
+  %td
+  %td
+    %h2 You have been added as a Teacher to #{@course.display_name}
+    %p
+    Hi #{@teacher.email},
+    %p
+    Great news, you've been added to the course
+    %a(href="https://enroll.oplerno.com/courses/#{@course.id}") #{@course.display_name} 
+    which is listed on the 
+    %a(href='https://enroll.oplerno.com/') Oplerno Marketplace.
+    %p
+    From now on you will be able to 
+    %a(href="https://enroll.oplerno.com/courses/#{@course.id}/edit") edit
+    and promote this course, as soon as you set a
+    %b price
+    students will be able to pre-enroll in your class. And once you course has
+    been approved you can set a
+    %b start date.
+    %p

@@ -29,6 +29,8 @@ en:
   users:
     mail:
       notification: 'New user account was created "%{user}"'
+      order: 'Somebody place and order, not yet paid'
+      order_transaction: 'Somebody paid'
     update: 'Update User'
     view: 'View details'
     change_password_notice: 'You can <a href="/users/edit">change your password here</a>.'
@@ -55,7 +57,9 @@ en:
     success: 'Success'
     summary: 'Courses Summary'
     total: 'Total'
+    description: 'Enrolling at Oplerno'
   cart:
+    add_something: 'Your Cart is empty. Add a course to you cart to continue.'
     removed: 'Removed "%{course}" from Order'
     remove: 'Remove'
     mycart: 'My Cart'
@@ -73,6 +77,7 @@ en:
       end: 'End Date'
       not_set: 'Coming soon'
     new: 'New Course'
+    new_teacher: "You have been added as a Teacher to %{display_name}"
     update: 'Update Course'
     skill:
       name: 'Skill'
@@ -87,11 +92,14 @@ en:
       create: 'Course was successfully created'
       update: 'Course was successfully updated'
       add_to_cart: 'Course was added to cart <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Checkout Now</a>'
+      added_to_cart: 'The course was added to your cart'
+      check_out: 'Checkout Now'
     fail:
       own_course: 'You can only edit your own courses'
       inactive: 'This course can not be added'
       already_in: 'You are already taking this course'
       too_many: 'This course has reached its limit'
+      no_check_out: 'You need to sign in to complete this transaction'
   generic:
     back: 'Back'
     edit: 'Edit'
@@ -125,3 +133,26 @@ en:
     canvas:
       fail: "Cannot login in to Canvas using the Marketplace"
       fail_info: "If you have a Canvas account you can login in directly below"
+  invites:
+    no_invite: "Sorry, we couldn't find that invite"
+    invite:
+      accepted: 'You create an invite URL'
+    accept:
+      us: 'Accept as a US National'
+      not_us: 'Accept'
+    created: 'Created your invite URL'
+    create_user: 'Accept and Create User'
+    applied: "The credit will be applied onec you've completed 30% of the course"
+    not_applied: 'You need to create a user first'
+    claim:
+      title: 'Earn A Free Class'
+      text: 'To be able to register for your free class you need to create a user account. After that you can register for a course.'
+      email: 'Fill in your email address below to create your account.'
+    cta:
+      free_courses: 'Take Free Courses'
+      free_classes: 'Take Free Classes'
+      tell_a_friend: 'Tell a Friend'
+      refer_a_friend: 'Refer a Friend'
+    invite_credit:
+      accepted: "You're one step closer to $%{amount} at Oplerno!"
+      notification: "You have $%{amount} to use toward an Oplerno course!"
