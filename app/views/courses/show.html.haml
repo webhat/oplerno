@@ -6,7 +6,7 @@
       = simple_format @course.description
     %hr
     - cache "syllabus_large_#{course_cache_id}" do
-      .hidden-sm.hidden-xs.col-lg-8.col-md-8.syllabus
+      .hidden-sm.hidden-xs.col-lg-12.col-md-12.syllabus
         %h2 Syllabus
         %span
           = simple_format @course.syllabus
