@@ -42,7 +42,11 @@
     -moz-border-radius: 100px;
     border-radius: 100px;
   }
+  .mentor-name:hover {
+    transform: rotate(1deg);
+  }
   .mentor-name {
+    color: #666;
     font-size: 24px;
     height: 100px;
     overflow: auto;
@@ -92,10 +96,10 @@ $image-twist: 10deg;
         transform: rotate(0deg);
       }
       25% {
-        transform: rotate(10deg);
+        transform: rotate(5deg);
       }
       75% {    
-        transform: rotate(-10deg);
+        transform: rotate(-5deg);
       }
     }
     .mentor-image.mentor-wobble {
