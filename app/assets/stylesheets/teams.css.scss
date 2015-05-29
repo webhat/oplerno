@@ -34,6 +34,7 @@
   .mentor-image {
     background-image: url(/assets/accel/Mentor3.png);
     background-repeat: no-repeat;
+    background-size: 100%;
     border: 5px solid #FFFFFF;
     width: 189px;
     height: 189px;
@@ -137,8 +138,18 @@ $image-twist: 10deg;
 }
 #description {
   @include center-mentors;
-  background-image: url(/assets/accel/Description.png);
   width: 538px;
+  textarea {
+    padding: 10px;
+    height: 167px;
+    width: 538px;
+    border: 1px solid #979797;
+    border-radius: 8px;
+    font-family: AvenirNext-Regular;
+    font-size: 14px;
+    color: #4A4A4A;
+    line-height: 19px;
+  }
 }
 #worked-with {
   @include center-mentors;
