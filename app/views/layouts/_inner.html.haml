@@ -1,18 +1,19 @@
 - unless new_layout?
-  .row
-    - unless notice.nil?
-      .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
-        .success.alert-message
-          %a.close{:href => "#"} ✖
-          %span= notice.html_safe
-    - unless alert.nil?
-      .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
-        .error.alert-message
-          %a.close{:href => "#"} ✖
-          %span
-            = alert
-    .col-xs-12.col-sm-12.col-lg-12
-      .row
-        = yield
+  .container
+    .row
+      - unless notice.nil?
+        .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
+          .success.alert-message
+            %a.close{:href => "#"} ✖
+            %span= notice.html_safe
+      - unless alert.nil?
+        .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
+          .error.alert-message
+            %a.close{:href => "#"} ✖
+            %span
+              = alert
+      .col-xs-12.col-sm-12.col-lg-12
+        .row
+          = yield
 - else
   = yield

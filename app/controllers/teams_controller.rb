@@ -1,2 +1,2 @@
-class TeamsController < ApplicationController
+class TeamsController < InheritedResources::Base #
 end
