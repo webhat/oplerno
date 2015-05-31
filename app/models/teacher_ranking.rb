@@ -14,7 +14,7 @@ class TeacherRanking < ActiveRecord::Base
     add_rank 10, :first_name
     add_rank 10, :last_name
     add_rank 5, :title
-    add_rank 30, :avatar
+    add_rank 30, :avatar_file_name
     #   add_rank 10, :last_sign_in_at
     add_rank self.teacher[:sign_in_count]/10, :sign_in_count
     add_rank 40, :description
