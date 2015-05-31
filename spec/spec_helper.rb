@@ -14,6 +14,7 @@ SimpleCov.start 'rails' do
   add_group 'Models', 'app/models'
   add_group 'Helpers', 'app/helpers'
   add_group 'Mailers', 'app/mailers'
+  add_group 'Observers', 'app/observers'
   add_group 'Views', 'app/views'
   add_group 'Workers', 'app/workers'
 end

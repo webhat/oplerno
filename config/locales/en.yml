@@ -26,6 +26,11 @@ en:
     pay: Complete Purchase
     remove: Remove
     removed: Removed "%{course}" from Order
+  contact_teacher:
+    mail:
+      from: 'From: %{from}'
+      from_student: One of your future students has a question for you.
+      to: Dear %{to},
   courses:
     contact: Contact Instructor
     date:
@@ -126,11 +131,6 @@ en:
     success:
       create: Student was successfully created
       update: Student was successfully updated
-  contact_teacher:
-    mail:
-      from: 'From: %{from}'
-      from_student: One of your future students has a question for you.
-      to: Dear %{to},
   teachers:
     complete: Having your information up to date will improve your ranking in the
       marketplace.
@@ -142,6 +142,8 @@ en:
     teacher: Instructor
     teachers: Instructors
     view: View
+  teams:
+    apply: Apply
   users:
     change_password_notice: You can <a href="/users/edit">change your password here</a>.
     fail:

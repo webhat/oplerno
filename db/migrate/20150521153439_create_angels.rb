@@ -1,7 +1,7 @@
 class CreateAngels < ActiveRecord::Migration
   def change
     create_table :angels do |t|
-      t.belongs_to :user_id
+      t.belongs_to :mentor
       t.string :angelslug
       t.string :twitterslug
       t.string :adviser_to
@@ -9,6 +9,6 @@ class CreateAngels < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :angels, :user_id_id
+    add_index :angels, :mentor_id
   end
 end
