@@ -29,10 +29,10 @@ ActiveAdmin.register User do
     default_actions
   end
 
-  filter :email
-  filter :current_sign_in_at
-  filter :last_sign_in_at
-  filter :sign_in_count
+  #filter :email
+  #filter :current_sign_in_at
+  #filter :last_sign_in_at
+  #filter :sign_in_count
 
   show do |user|
     columns do

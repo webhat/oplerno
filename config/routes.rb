@@ -43,6 +43,10 @@ Oplerno::Application.routes.draw do
     resources :searches, only: [:index, :create]
     resources :certificates, only: [:show, :index, :create]
 
+    # Accelerator
+    resources :teams, only: [:show]
+    resources :mentors, only: [:show]
+
     post '/teachers/:id/contact' => 'teachers#contact'
     get '/teachers/:id/contact' => 'teachers#contact'
     post '/courses/:id/image_picker' => 'courses#image_picker'

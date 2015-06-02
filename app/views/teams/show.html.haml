@@ -1,0 +1,24 @@
+#top-image
+  #title
+    = @resource.display_name
+  #mentors
+    - @resource.mentors.each do |mentor|
+      = render partial: 'mentors/mentor', locals: { resource: mentor }
+  #tags
+    - @resource.tags.each do |tag|
+      %a.tag(href='#') #{ tag }
+  #description
+    %textarea(placeholder='Write Something')
+  #worked-with
+    .ww#ww1
+    .ww#ww2
+    .ww#ww3
+    .ww#ww4
+    .ww#ww5
+    .ww#ww6
+    .ww#ww7
+    .ww#ww8
+  %button#apply
+    .text 
+      = t('teams.apply')
+#page

@@ -32,28 +32,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
       your browser</a> to improve your experience.</p>
     = render "layouts/navbar"
-    .container
-      .row
-        - unless notice.nil?
-          .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
-            .success.alert-message
-              %a.close{:href => "#"} ✖
-              %span= notice.html_safe
-        - unless alert.nil?
-          .col-xs-12.col-sm-12.col-lg-12.alerts.span6.center.offset2
-            .error.alert-message
-              %a.close{:href => "#"} ✖
-              %span
-                = alert
-        .col-xs-12.col-sm-12.col-lg-12
-          .row
-            / was row-fluid
-            = yield
-          / /row
-        / /span
-        / /span
-      / /row
-    / /.container
+    = render 'layouts/inner'
     = render 'layouts/footer'
     :javascript
       (function (i, s, o, g, r, a, m) {
