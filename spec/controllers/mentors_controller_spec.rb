@@ -1,10 +1,12 @@
 require 'spec_helper'
 
-describe TeamsController do
+describe MentorsController do
+  let(:mentor) { create :mentor }
   context ':show' do
-    let(:team) { create :team }
+    before do
+    end
     it 'should get a page' do
-      get :show, { id: team.id }
+      get :show, { id: mentor.id }
       expect(response).to be_success
     end
   end

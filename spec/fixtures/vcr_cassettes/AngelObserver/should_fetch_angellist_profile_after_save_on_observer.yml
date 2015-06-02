@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.angel.co/1/users/search?slug=joshuaxls
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - AngellistApi Ruby Gem 1.1.0
+      Authorization:
+      - Bearer 73ecaa957cbd8dab7ad7cffdcdb5768534f58f37ca5bdbcb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 01 Jun 2015 21:07:50 GMT
+      Etag:
+      - '"6b82cb9ac2b63d5fc218df04d44238b4"'
+      Server:
+      - nginx
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Rack-Cache:
+      - miss
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '2000'
+      X-Request-Id:
+      - 0c7eaa85fdd42bd6633c4f9d8cfabe6c
+      X-Runtime:
+      - '0.027141'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '652'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test User","id":671,"bio":"Test","follower_count":1109,"angellist_url":"https://angel.co/joshuaxls","image":"https://d1qb2nb5cznatu.cloudfront.net/users/671-medium_jpg?1405433531","blog_url":"","online_bio_url":null,"twitter_url":"http://twitter.com/#!/joshuaxls","facebook_url":"https://www.facebook.com/joshy","linkedin_url":"https://www.linkedin.com/pub/joshua-slayton/12/267/b7b","aboutme_url":"","github_url":"","dribbble_url":"","behance_url":"","resume_url":"","what_ive_built":"","what_i_do":"I''m
+        a developer at AngelList, working to bring more efficiency and access to the
+        startup ecosystem.","criteria":"","locations":[{"id":1692,"tag_type":"LocationTag","name":"san
+        francisco","display_name":"San Francisco","angellist_url":"https://angel.co/san-francisco"}],"roles":[{"id":14726,"tag_type":"RoleTag","name":"developer","display_name":"Developer","angellist_url":"https://angel.co/developer"},{"id":9300,"tag_type":"RoleTag","name":"angels","display_name":"Angel","angellist_url":"https://angel.co/angels"}],"skills":[{"id":58883,"tag_type":"SkillTag","name":"server
+        ops","display_name":"Server Ops","angellist_url":"https://angel.co/server-ops","level":null},{"id":17184,"tag_type":"SkillTag","name":"ruby","display_name":"Ruby","angellist_url":"https://angel.co/ruby","level":null}],"investor":true}'
+    http_version: 
+  recorded_at: Mon, 01 Jun 2015 21:07:50 GMT
+recorded_with: VCR 2.9.3

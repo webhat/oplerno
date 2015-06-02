@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TeamsHelper do
   it 'test of in new layout mode ' do
-    @team = FactoryGirl.create(:team)
+    @resource = FactoryGirl.create(:team)
     assign(:team, @team)
     expect(helper.new_layout?).to eql(true)
   end

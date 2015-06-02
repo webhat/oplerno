@@ -54,10 +54,17 @@
   .mentor-links {
     position: relative;
     left: 33%;
-    background-image: url(/assets/accel/ALLI.png);
     width: 66px;
     height: 28px;
     background-repeat: no-repeat;
+    .linkedin {
+      height:28px;
+      width:28px;
+    }
+    .angellist {
+      height:28px;
+      width:28px;
+    }
   }
 }
 

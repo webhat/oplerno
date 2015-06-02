@@ -17,4 +17,15 @@ describe AngelObserver do
       angel.save
     end
   end
+  it 'should fetch angellist profile after_save on observer', vcr: {record: :once} do
+    Mentor.any_instance.stub(:update_avatar)
+    mentor = FactoryGirl.create(:mentor)
+    angel = mentor.build_angel angelslug: 'joshuaxls'
+
+    Angel.observers.enable :angel_observer do
+      angel.save
+    end
+    mentor.reload
+    expect(mentor.description).to eq 'Test'
+  end
 end

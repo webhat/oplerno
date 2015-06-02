@@ -1,5 +1,5 @@
 module TeamsHelper
   def new_layout?
-    !@team.nil?
+    !@resource.nil?
   end
 end

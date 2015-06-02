@@ -45,6 +45,7 @@ Oplerno::Application.routes.draw do
 
     # Accelerator
     resources :teams, only: [:show]
+    resources :mentors, only: [:show]
 
     post '/teachers/:id/contact' => 'teachers#contact'
     get '/teachers/:id/contact' => 'teachers#contact'

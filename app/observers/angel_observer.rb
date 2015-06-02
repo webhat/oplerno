@@ -4,10 +4,7 @@ class AngelObserver < ActiveRecord::Observer
       ac = ::AngellistApi::Client.new
       res = ac.user_search(slug: angel.angelslug)
       user = angel.mentor
-      user.last_name = res.name
-      user.description = res.bio
-      user.avatar = open(res.image)
-      user.links['angellist_url'] = { 'url' => res.angellist_url, 'name' => 'AngelList' }
+      user.update_from_angel res
       user.save
     end if angel.angelslug_changed?
   end

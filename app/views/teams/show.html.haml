@@ -1,16 +1,11 @@
 #top-image
   #title
-    = @team.display_name
+    = @resource.display_name
   #mentors
-    - @team.mentors.each do |mentor|
-      .mentor
-        %a(href='#')
-          .mentor-image.mentor-wobble(style="background-image:url('#{url_prefix request}#{mentor.avatar.url(:medium)}')")
-          .mentor-name
-            = mentor.display_name
-        .mentor-links
+    - @resource.mentors.each do |mentor|
+      = render partial: 'mentors/mentor', locals: { resource: mentor }
   #tags
-    - @team.tags.each do |tag|
+    - @resource.tags.each do |tag|
       %a.tag(href='#') #{ tag }
   #description
     %textarea(placeholder='Write Something')
