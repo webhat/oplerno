@@ -1,5 +1,8 @@
 class Team < ActiveRecord::Base
-  attr_accessible :description, :name
+  extend FriendlyId
+  friendly_id :display_name, use: [:slugged, :history]
+
+  attr_accessible :description, :name, :slug
   attr_accessible :mentor_ids
   has_and_belongs_to_many :mentors
 

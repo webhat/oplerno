@@ -1,8 +1,11 @@
 class Mentor < User
+  extend FriendlyId
+  friendly_id :display_name, use: [:slugged, :history]
+
   has_and_belongs_to_many :teams
   has_one :angel
 
-  attr_accessible :team_ids, :angel
+  attr_accessible :team_ids, :angel, :slug
 
   def angel= angel
     p angel
