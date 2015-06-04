@@ -154,7 +154,6 @@ ActiveAdmin.register User do
       f.input :description
       f.input :email
       if f.object.new_record?
-        f.input :mailpass unless user.is_teacher?
         f.input :privateemail unless user.is_teacher?
       end
       f.input :password
