@@ -1,5 +1,15 @@
 ---
 en:
+  accelerator:
+    application:
+      placeholder: Write your application here
+      question: What are the things you need to be able to consider an application?
+      title: Apply
+    apply: Submit Application
+  acceletator:
+    application:
+      application_label: Full Application
+      email: How can we contact you?
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
@@ -131,6 +141,9 @@ en:
     success:
       create: Student was successfully created
       update: Student was successfully updated
+  tags:
+    mentors: Mentors
+    teams: Teams
   teachers:
     complete: Having your information up to date will improve your ranking in the
       marketplace.

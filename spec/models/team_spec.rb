@@ -24,6 +24,6 @@ describe Team do
     t = FactoryGirl.build :team, name: 'Test'
     t.mentors << FactoryGirl.create(:mentor)
     expect(t.tags).to be_kind_of(Array)
-    expect(t.tags).to_not be_empty
+    expect(t.tags).to be_empty
   end
 end

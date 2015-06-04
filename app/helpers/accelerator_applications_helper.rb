@@ -1,0 +1,2 @@
+module AcceleratorApplicationsHelper
+end

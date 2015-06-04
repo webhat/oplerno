@@ -21,11 +21,14 @@ Oplerno::Application.routes.draw do
   constraint = lambda do |request|
                  request.env['warden'].authenticate!({ scope: :admin_user })
                end
+
   constraints constraint do
     mount Sidekiq::Web, at: '/admin/sidekiq'
     # Accelerator
-    resources :teams, only: [:show]
+    resources :teams, only: [:show, :update]
     resources :mentors, only: [:show]
+    resources :accelerator_applications, only: [:index, :update, :create]
+    resources :tags, only: :show
   end
 
 

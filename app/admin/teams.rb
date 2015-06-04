@@ -1,4 +1,5 @@
 ActiveAdmin.register Team do
+  menu parent: 'Accelerator'
   form do |f|
     f.actions
     f.inputs 'Details' do

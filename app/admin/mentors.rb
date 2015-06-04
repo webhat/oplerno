@@ -1,4 +1,5 @@
 ActiveAdmin.register Mentor do
+  menu parent: 'Accelerator'
   index do
     column :avatar do |user|
       link_to [user] do

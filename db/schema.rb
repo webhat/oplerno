@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150604122000) do
+ActiveRecord::Schema.define(:version => 20150606091934) do
+
+  create_table "accelerator_applications", :force => true do |t|
+    t.string   "description"
+    t.string   "email"
+    t.integer  "team_id"
+    t.integer  "mentor_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "accelerator_applications", ["mentor_id"], :name => "index_accelerator_applications_on_mentor_id"
+  add_index "accelerator_applications", ["team_id"], :name => "index_accelerator_applications_on_team_id"
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20150604122000) do
   add_index "admin_users", ["deleted_at"], :name => "index_admin_users_on_deleted_at"
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "advisors_companies", :force => true do |t|
+    t.integer "angel_id"
+    t.integer "company_id"
+  end
+
+  add_index "advisors_companies", ["angel_id"], :name => "index_advisors_companies_on_angel_id"
+  add_index "advisors_companies", ["company_id", "angel_id"], :name => "index_advisors_companies_on_company_id_and_angel_id", :unique => true
+  add_index "advisors_companies", ["company_id"], :name => "index_advisors_companies_on_company_id"
 
   create_table "analytics", :force => true do |t|
     t.string   "remote"
@@ -145,6 +166,25 @@ ActiveRecord::Schema.define(:version => 20150604122000) do
   add_index "certificates_courses", ["certificate_id"], :name => "index_certificates_courses_on_certificate_id"
   add_index "certificates_courses", ["course_id"], :name => "index_certificates_courses_on_course_id"
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "company_url"
+    t.string   "logo_url"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
+
+  create_table "companies_investors", :force => true do |t|
+    t.integer "angel_id"
+    t.integer "company_id"
+  end
+
+  add_index "companies_investors", ["angel_id"], :name => "index_companies_investors_on_angel_id"
+  add_index "companies_investors", ["company_id", "angel_id"], :name => "index_companies_investors_on_company_id_and_angel_id", :unique => true
+  add_index "companies_investors", ["company_id"], :name => "index_companies_investors_on_company_id"
+
   create_table "course_rankings", :force => true do |t|
     t.integer  "course_id"
     t.integer  "ranking"
@@ -241,6 +281,15 @@ ActiveRecord::Schema.define(:version => 20150604122000) do
 
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id", :unique => true
 
+  create_table "mentors_tags", :force => true do |t|
+    t.integer "mentor_id"
+    t.integer "tag_id"
+  end
+
+  add_index "mentors_tags", ["mentor_id"], :name => "index_mentors_tags_on_mentor_id"
+  add_index "mentors_tags", ["tag_id", "mentor_id"], :name => "index_mentors_tags_on_tag_id_and_mentor_id", :unique => true
+  add_index "mentors_tags", ["tag_id"], :name => "index_mentors_tags_on_tag_id"
+
   create_table "mentors_teams", :id => false, :force => true do |t|
     t.integer "team_id"
     t.integer "mentor_id"
@@ -327,6 +376,26 @@ ActiveRecord::Schema.define(:version => 20150604122000) do
   end
 
   add_index "subjects", ["subject"], :name => "index_subjects_on_subject", :unique => true
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "slug"
+  end
+
+  add_index "tags", ["slug"], :name => "index_tags_on_slug"
+
+  create_table "tags_teams", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags_teams", ["tag_id", "team_id"], :name => "index_tags_teams_on_tag_id_and_team_id", :unique => true
+  add_index "tags_teams", ["tag_id"], :name => "index_tags_teams_on_tag_id"
+  add_index "tags_teams", ["team_id"], :name => "index_tags_teams_on_team_id"
 
   create_table "teacher_rankings", :force => true do |t|
     t.integer  "teacher_id"
