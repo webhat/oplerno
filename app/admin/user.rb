@@ -137,8 +137,19 @@ ActiveAdmin.register User do
     redirect_to :action => :show, :notice => "Confirmed!"
   end
 
+  member_action :reset, :method => :get do
+    user = User.find(params[:id])
+    token = user.send_reset_password_instructions
+    flash[:notice] = "Password Reset Link: http://enroll.oplerno.com/users/password/edit?reset_password_token=#{token}"
+    redirect_to :action => :show, :notice => "Confirmed!"
+  end
+
   action_item only: :show do
     link_to 'Become User', "/admin/users/#{params[:id]}/become", :target => "_blank"
+  end
+
+  action_item only: :show do
+    link_to 'Reset Password', "/admin/users/#{params[:id]}/reset"
   end
 
   member_action :become, :method => :get do
