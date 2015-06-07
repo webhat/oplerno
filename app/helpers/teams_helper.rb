@@ -14,8 +14,4 @@ module TeamsHelper
       false
     end
   end
-
-  def member_can_edit?
-    !@resource.mentors.select{|u| u.id == current_user.id }.empty?
-  end
 end

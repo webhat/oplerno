@@ -1,6 +1,12 @@
-class MentorsController < ApplicationController
+class MentorsController < TeamsController
+  before_filter :find_resource, only: [:show, :edit, :update]
+
   def show
-    @resource = Mentor.find( params[:id] )
     render 'teams/show'
+  end
+
+  private
+  def find_resource
+    @resource = Mentor.find( params[:id] )
   end
 end

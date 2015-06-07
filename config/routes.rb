@@ -26,7 +26,7 @@ Oplerno::Application.routes.draw do
     mount Sidekiq::Web, at: '/admin/sidekiq'
     # Accelerator
     resources :teams, only: [:show, :update]
-    resources :mentors, only: [:show]
+    resources :mentors, only: [:show, :update]
     resources :accelerator_applications, only: [:index, :update, :create]
     resources :tags, only: :show
   end

@@ -24,3 +24,4 @@ $(document).ready ->
 
 $(document).on('page:change', application_setup)
 $(document).on('page:change', company_tooltips)
+

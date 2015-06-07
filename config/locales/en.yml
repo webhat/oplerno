@@ -157,6 +157,7 @@ en:
     view: View
   teams:
     apply: Apply
+    save: Save
   users:
     change_password_notice: You can <a href="/users/edit">change your password here</a>.
     fail:

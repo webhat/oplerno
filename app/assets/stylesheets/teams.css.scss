@@ -192,8 +192,9 @@ $image-twist: 10deg;
   line-height: 0
 }
 
-#apply {
+#apply, #save {
   @include center-mentors;
+  display: block;
   width: 538px;
   background-image: linear-gradient(-180deg, #B4EC51 0%, #429321 100%);
   border: 1px solid #979797;

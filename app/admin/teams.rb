@@ -5,6 +5,7 @@ ActiveAdmin.register Team do
     f.inputs 'Details' do
       f.input :name
       f.input :slug
+      f.input :description
     end
     f.inputs 'Mentors' do
       f.input :mentors, as: :select, input_html: { multiple: true }

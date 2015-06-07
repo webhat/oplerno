@@ -1,8 +1,8 @@
 - if notice
   #notice=notice
-#top-image
+#top-image{ ng: { controller: 'ProfilesController' } }
   #title
-    = @resource.display_name
+    = @resource.display_name.force_encoding('BINARY')
   #mentors
     - @resource.mentors.each do |mentor|
       = render partial: 'mentors/mentor', locals: { resource: mentor }
@@ -10,8 +10,12 @@
     - @resource.tags.each do |tag|
       %a.tag(href='/tags/#{tag.slug}') #{ tag.name }
   #description
-    %div(placeholder='Write Something' contenteditable="#{editable_string?}")
-      = @resource.description.html_safe
+    %div{ placeholder:'Write Something', contenteditable:"#{editable_string?}" }
+      = @resource.description.force_encoding('BINARY').html_safe
+  - if editable?
+    %button#save{ ng: { click: 'submit()' } }
+      .text
+        = t('teams.save')
   #worked-with
     - @resource.worked_with.each do |company|
       .ww
