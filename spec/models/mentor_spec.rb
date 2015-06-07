@@ -10,31 +10,26 @@ describe Mentor do
 
   context 'methods' do
     it ':tags' do
-      tags = mentor.tags
-      expect(tags).to be_kind_of(Array)
-      expect(tags).to_not be_empty
+      expect(mentor.tags).to be_kind_of(Array)
+      expect(mentor.tags).to be_empty
     end
     it ':angellist_url fail' do
-      url = mentor.angellist_url
-      expect(url).to be_nil
+      expect(mentor.angellist_url).to be_nil
     end
     it ':angellist_url fail' do
       expected = 'http://localhost/'
       mentor.links = { angellist_url: { url: expected } }
-      url = mentor.angellist_url
-      expect(url).to_not be_empty
-      expect(url).to eq expected
+      expect(mentor.angellist_url).to_not be_empty
+      expect(mentor.angellist_url).to eq expected
     end
     it ':linkedin_url' do
-      url = mentor.linkedin_url
-      expect(url).to be_nil
+      expect(mentor.linkedin_url).to be_nil
     end
     it ':linkedin_url fail' do
       expected = 'http://localhost/'
       mentor.links = { linkedin_url: { url: expected } }
-      url = mentor.linkedin_url
-      expect(url).to_not be_empty
-      expect(url).to eq expected
+      expect(mentor.linkedin_url).to_not be_empty
+      expect(mentor.linkedin_url).to eq expected
     end
   end
 end

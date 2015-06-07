@@ -1,4 +1,5 @@
 ActiveAdmin.register Mentor do
+  menu parent: 'Accelerator'
   index do
     column :avatar do |user|
       link_to [user] do
@@ -16,7 +17,11 @@ ActiveAdmin.register Mentor do
   end
   form do |f|
     f.actions
-    f.input :encrypted_last_name, label: 'Full Name'
+    f.inputs 'Mentor Details' do
+      f.input :encrypted_first_name, label: 'THIS SHOULD BE BLANK!'
+      f.input :encrypted_last_name, label: 'Full Name'
+      f.input :slug
+    end
     f.inputs 'AngelList', for: [:angel, f.object.angel || f.object.create_angel] do |angel|
       angel.input :angelslug, label: 'AngelList Slug'
       angel.input :twitterslug, label: 'Twitter Slug'

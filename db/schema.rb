@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150521202415) do
+ActiveRecord::Schema.define(:version => 20150607211033) do
+
+  create_table "accelerator_applications", :force => true do |t|
+    t.string   "description"
+    t.string   "email"
+    t.integer  "team_id"
+    t.integer  "mentor_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "accelerator_applications", ["mentor_id"], :name => "index_accelerator_applications_on_mentor_id"
+  add_index "accelerator_applications", ["team_id"], :name => "index_accelerator_applications_on_team_id"
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
   add_index "admin_users", ["deleted_at"], :name => "index_admin_users_on_deleted_at"
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "advisors_companies", :force => true do |t|
+    t.integer "angel_id"
+    t.integer "company_id"
+  end
+
+  add_index "advisors_companies", ["angel_id"], :name => "index_advisors_companies_on_angel_id"
+  add_index "advisors_companies", ["company_id", "angel_id"], :name => "index_advisors_companies_on_company_id_and_angel_id", :unique => true
+  add_index "advisors_companies", ["company_id"], :name => "index_advisors_companies_on_company_id"
 
   create_table "analytics", :force => true do |t|
     t.string   "remote"
@@ -89,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
   end
 
   add_index "canvas_courses", ["canvas_id"], :name => "index_canvas_courses_on_canvas_id", :unique => true
-  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name"
+  add_index "canvas_courses", ["name"], :name => "index_canvas_courses_on_name", :length => {"name"=>64}
 
   create_table "canvas_users", :force => true do |t|
     t.integer  "user_id"
@@ -102,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
   end
 
   add_index "canvas_users", ["user_id"], :name => "index_canvas_users_on_user_id"
-  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username"
+  add_index "canvas_users", ["username"], :name => "index_canvas_users_on_username", :length => {"username"=>64}
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -145,6 +166,25 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
   add_index "certificates_courses", ["certificate_id"], :name => "index_certificates_courses_on_certificate_id"
   add_index "certificates_courses", ["course_id"], :name => "index_certificates_courses_on_course_id"
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "company_url"
+    t.string   "logo_url"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
+
+  create_table "companies_investors", :force => true do |t|
+    t.integer "angel_id"
+    t.integer "company_id"
+  end
+
+  add_index "companies_investors", ["angel_id"], :name => "index_companies_investors_on_angel_id"
+  add_index "companies_investors", ["company_id", "angel_id"], :name => "index_companies_investors_on_company_id_and_angel_id", :unique => true
+  add_index "companies_investors", ["company_id"], :name => "index_companies_investors_on_company_id"
+
   create_table "course_rankings", :force => true do |t|
     t.integer  "course_id"
     t.integer  "ranking"
@@ -158,13 +198,13 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
-    t.text     "description",         :limit => 255
+    t.text     "description"
     t.string   "teacher"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -173,8 +213,8 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
     t.string   "type"
     t.text     "syllabus"
     t.boolean  "hidden"
-    t.integer  "min",                                :default => 2
-    t.integer  "max",                                :default => 25
+    t.integer  "min",                 :default => 2
+    t.integer  "max",                 :default => 25
     t.string   "slug"
     t.datetime "deleted_at"
   end
@@ -241,10 +281,14 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
 
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id", :unique => true
 
-  create_table "mentors", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "mentors_tags", :force => true do |t|
+    t.integer "mentor_id"
+    t.integer "tag_id"
   end
+
+  add_index "mentors_tags", ["mentor_id"], :name => "index_mentors_tags_on_mentor_id"
+  add_index "mentors_tags", ["tag_id", "mentor_id"], :name => "index_mentors_tags_on_tag_id_and_mentor_id", :unique => true
+  add_index "mentors_tags", ["tag_id"], :name => "index_mentors_tags_on_tag_id"
 
   create_table "mentors_teams", :id => false, :force => true do |t|
     t.integer "team_id"
@@ -333,6 +377,26 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
 
   add_index "subjects", ["subject"], :name => "index_subjects_on_subject", :unique => true
 
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "slug"
+  end
+
+  add_index "tags", ["slug"], :name => "index_tags_on_slug"
+
+  create_table "tags_teams", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags_teams", ["tag_id", "team_id"], :name => "index_tags_teams_on_tag_id_and_team_id", :unique => true
+  add_index "tags_teams", ["tag_id"], :name => "index_tags_teams_on_tag_id"
+  add_index "tags_teams", ["team_id"], :name => "index_tags_teams_on_team_id"
+
   create_table "teacher_rankings", :force => true do |t|
     t.integer  "teacher_id"
     t.integer  "ranking"
@@ -349,29 +413,32 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
 
   create_table "teams", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
 
+  add_index "teams", ["slug"], :name => "index_teams_on_slug"
+
   create_table "users", :force => true do |t|
-    t.binary   "title",                   :limit => 255
-    t.binary   "first_name",              :limit => 255
-    t.binary   "last_name",               :limit => 255
+    t.binary   "title"
+    t.binary   "first_name"
+    t.binary   "last_name"
     t.string   "username"
-    t.text     "description",             :limit => 255
+    t.text     "description"
     t.string   "hidden"
     t.string   "filename"
     t.string   "content_type"
     t.string   "binary_data"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.string   "email",                                  :default => "",    :null => false
-    t.binary   "encrypted_password",      :limit => 255, :default => "",    :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email",                   :default => "",    :null => false
+    t.binary   "encrypted_password",                         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                          :default => 0,     :null => false
+    t.integer  "sign_in_count",           :default => 0,     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -380,12 +447,12 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",                        :default => 0,     :null => false
+    t.integer  "failed_attempts",         :default => 0,     :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean  "authy_enabled",                          :default => false
+    t.boolean  "authy_enabled",           :default => false
     t.binary   "secret"
     t.binary   "secret_key"
     t.binary   "secret_iv"
@@ -402,6 +469,7 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
     t.text     "links"
     t.datetime "deleted_at"
     t.string   "privateemail"
+    t.string   "slug"
   end
 
   add_index "users", ["authy_id"], :name => "index_users_on_authy_id"
@@ -410,6 +478,7 @@ ActiveRecord::Schema.define(:version => 20150521202415) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["privateemail"], :name => "index_users_on_privateemail", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug"
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "versions", :force => true do |t|

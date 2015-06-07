@@ -1,16 +1,19 @@
 class Mentor < User
+  extend FriendlyId
+  friendly_id :display_name, use: [:slugged, :history]
+
   has_and_belongs_to_many :teams
+  has_and_belongs_to_many :tags
   has_one :angel
 
-  attr_accessible :team_ids, :angel
+  attr_accessible :team_ids, :angel, :slug
 
   def angel= angel
-    p angel
     self.angel.update_attributes angel
   end
 
-  def tags
-    ['SSG', 'EdTech', 'Investor', 'SaaS', 'Local', 'Retail', 'FinTech']
+  def worked_with
+    self.angel && self.angel.worked_with || []
   end
 
   def update_from_angel angel
