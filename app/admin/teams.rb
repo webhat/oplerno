@@ -1,3 +1,4 @@
+# encoding : utf-8
 ActiveAdmin.register Team do
   menu parent: 'Accelerator'
   form do |f|
