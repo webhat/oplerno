@@ -5,7 +5,7 @@ describe 'Directives', ->
   $controller = {}
 
   beforeEach ->
-    module 'coursesApp'
+    module 'oplernoApp'
 
   beforeEach ->
     inject ($rootScope, _$compile_, _$controller_)->

@@ -7,7 +7,7 @@ describe 'Ranking', ->
   createController = null
 
   beforeEach ->
-    module 'rankingApp'
+    module 'oplernoApp'
 
   beforeEach ->
     inject ($injector, $rootScope, _$compile_, _$controller_)->

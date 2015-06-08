@@ -1,12 +1,12 @@
 window.oplernoApp.factory 'ProfilesIO', [
-  '$resource', ($resource)->
+  '$resource', '$location', ($resource, $location)->
     console.log 'ProfilesIO'
     methods =
       update:
         isArray: false
         method: 'PUT'
 
-    ProfilesIO = $resource "#{ location.pathname }.json", {}, methods
+    ProfilesIO = $resource "#{ $location.path() }.json", {}, methods
 
     return ProfilesIO
 ]

@@ -25,5 +25,6 @@
 //= require app
 //= require image-picker
 //= require jquery.lazyload.min
+//= require angular/oplerno_app
 //= require_tree .
 

@@ -90,8 +90,11 @@ class User < ActiveRecord::Base
 
   def display_name
     begin
-      "#{self.encrypted_first_name.force_encoding("binary")} #{self.encrypted_last_name.force_encoding("binary")}"
+      dn = "#{self.encrypted_first_name.force_encoding("binary")} #{self.encrypted_last_name.force_encoding("binary")}"
+      logger.info(dn)
+      dn
     rescue
+      logger.info('XXX')
       "Unknown"
     end
   end

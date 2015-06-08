@@ -10,8 +10,10 @@ describe 'ProfilesController', ->
     module 'oplernoApp'
 
   beforeEach ->
-    inject ($injector, $rootScope, _$compile_, _$controller_)->
+    inject ($injector, $rootScope, _$compile_, _$controller_, $location)->
       scope = $rootScope
+      spyOn($location, 'path').and.returnValue('/teams/1')
+
       $compile = _$compile_
       $controller = _$controller_
       $httpBackend = $injector.get '$httpBackend'

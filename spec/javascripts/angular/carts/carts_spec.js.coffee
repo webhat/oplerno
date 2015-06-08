@@ -7,7 +7,7 @@ describe 'Carts', ->
   createController = null
 
   beforeEach ->
-    module 'cartsApp'
+    module 'oplernoApp'
 
   beforeEach ->
     inject ($injector, $rootScope, _$compile_, _$controller_)->
