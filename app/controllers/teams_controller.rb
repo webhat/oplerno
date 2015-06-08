@@ -6,10 +6,14 @@ class TeamsController < ApplicationController
 
   def update
     respond_to do |format|
-      format.json {
-        @resource.update_attributes resource_params
-        render json: resource_params, status: 200
-      } if member_can_edit?
+        format.json {
+          if member_can_edit?
+            @resource.update_attributes resource_params
+            render json: resource_params, status: 200
+          else
+            render json: {}, status: 403
+          end
+        }
     end
   end
 

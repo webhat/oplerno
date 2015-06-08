@@ -1,7 +1,4 @@
 class Mentor < User
-  extend FriendlyId
-  friendly_id :display_name, use: [:slugged, :history]
-
   has_and_belongs_to_many :teams
   has_and_belongs_to_many :tags
   has_one :angel

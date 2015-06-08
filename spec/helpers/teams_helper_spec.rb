@@ -15,6 +15,9 @@ describe TeamsHelper do
     end
   end
   context ':editable?' do
+    before do
+      allow(helper).to receive(:member_can_edit?).and_return(true)
+    end
     it 'not logged in' do
       assign(:resource, FactoryGirl.create(:mentor))
       expect(helper.editable?).to eql(false)
@@ -24,11 +27,13 @@ describe TeamsHelper do
     login_user
 
     it 'logged in as user' do
+      allow(helper).to receive(:member_can_edit?).and_return(true)
       assign(:resource, Mentor.find(current_user.id))
 
       expect(helper.editable_string?).to eql(true.to_s)
     end
     it 'not logged in as user' do
+      allow(helper).to receive(:member_can_edit?).and_return(false)
       @resource = FactoryGirl.create(:mentor)
       assign(:resource, @resource)
 
