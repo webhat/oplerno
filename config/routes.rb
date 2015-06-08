@@ -31,7 +31,6 @@ Oplerno::Application.routes.draw do
     resources :tags, only: :show
   end
 
-
   devise_scope :user do
     get '/courses/me' => 'courses#me'
     get '/teachers/edit' => 'users#edit'

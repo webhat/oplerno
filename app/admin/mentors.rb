@@ -29,7 +29,7 @@ ActiveAdmin.register Mentor do
 
     f.inputs 'Teams' do
       f.input :teams, as: :select, input_html: { multiple: true }
-    f.actions
+      f.actions
     end
   end
 end
