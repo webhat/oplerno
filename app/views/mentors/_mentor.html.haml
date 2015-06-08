@@ -1,0 +1,12 @@
+.mentor
+  %a(href="/mentors/#{resource.id}")
+    .mentor-image.mentor-wobble(style="background-image:url('#{url_prefix request}#{resource.avatar.url(:medium)}')")
+    .mentor-name
+      = resource.display_name
+  .mentor-links
+    - if resource.angellist_url
+      %a.angellist(href="#{resource.angellist_url}")
+        %img(src='/assets/accel/AL.png' width='28' height='28')
+    = if resource.linkedin_url
+      %a.linkedin(href="#{resource.linkedin_url}")
+        %img(src='/assets/accel/LI.png' width='28' height='28')

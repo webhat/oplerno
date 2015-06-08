@@ -1,0 +1,158 @@
+nl:
+  social:
+    top_courses: 'Populaire Vakken'
+    top_courses_description: "Meest Bekeken Vakken"
+  date:
+    formats:
+      default: "%d %B %Y"
+      google: "%Y-%m-%d"
+  search:
+    search: 'Zoek'
+    term: 'Zoek naar ...'
+    not_found: '"%{term}" Niet Gevonden'
+  name: 'Naam'
+  price: 'Prijs'
+  students:
+    success:
+      create: 'Student is aangemaakt'
+      update: 'Student is opgeslagen'
+  teachers:
+    teachers: 'Docenten'
+    teacher: 'Docent'
+    success:
+      create: 'Docent is aangemaakt'
+      update: 'Docent is opgeslagen'
+    mail:
+      welcome: 'Je Oplerno Gebruiker en Oriëntatie Pakket'
+    view: 'Bekijk'
+    complete: 'Als je gegevens actueel houden maakt het makkelijker om je profiel te vinden'
+  users:
+    mail:
+      notification: 'Nieuwe gebruiker "%{user}" is aangemaakt'
+      order: 'Iemand heeft besteld en nog niet betaald'
+      order_transaction: 'Iemand heeft betaald'
+    update: 'Gebruiker Aanpassen'
+    view: 'Bekijk details'
+    change_password_notice: '<a href="/users/edit">Pas hier je wachtwoord aan</a>.'
+    messages:
+      extra_security: 'Extra beveiliging'
+      authy_description: '<a href="%{url}" target="_new">Click hier om een telefoon nummer toe te voegen</a>'
+    links: 'Links'
+    link:
+      name: 'Link Beschrijving'
+      url: 'URL'
+    fail:
+      user_record: 'Je kunt alleen je eigen profiel aanpassen'
+      no_description: 'Je moet een beschrijving voor je links toevoegen'
+    fields:
+      authy_enabled: 'Twee Factor Authenticatie Activeren'
+      hidden: 'Verberg je gebruiker uit de zoek'
+      avatar: "Profiel Photo"
+      title: "Titel"
+      first_name: "Voornaam"
+      last_name: "Achternaam"
+      description: "Profiel Beschrijving"
+      email: "Email"
+  orders:
+    success: 'Successvol'
+    summary: 'Vakken Beschrijvingen'
+    total: 'Totaal'
+    description: 'Inschrijven bij Oplerno'
+  cart:
+    add_something: 'Je winkelwagen is leeg. Voeg een vak toe om verder to gaan.'
+    removed: '"%{course}" verwijderd uit winkelwagen'
+    remove: 'Verwijder'
+    mycart: 'Mijn Winkelwagen'
+    pay: 'Betaling Afronden'
+  payments:
+    description: 'Vak(ken) bij Oplerno LLC. %{courses}'
+  courses:
+    mine: 'Je Vakken'
+    title: 'Open Vakken'
+    register: 'Kies Dit Vak'
+    view: 'Bekijk'
+    contact: 'Docent Bevragen'
+    date:
+      start: 'Start Datum'
+      end: 'Eind Datum'
+      not_set: 'Binnenkort'
+    new: 'Nieuw Vak'
+    new_teacher: "Je bent als docent toegevoegd aan %{display_name}"
+    update: 'Veranderingen Opslaan'
+    skill:
+      name: 'Ervaring'
+      hint: 'Selecteer de vaardigheden die dit vak bied'
+    subject:
+      name: 'Tak van Wetenschap'
+      hint: 'Selecteer de meest passende tak van wetenschap waar dit vak bij past:'
+    graduate:
+      name: 'Niveau'
+      hint: 'Is het vak graduate of undergraduate niveau:'
+    success:
+      create: 'Vak succesvol gecreëerd'
+      update: 'Vak is opgeslagen'
+      add_to_cart: 'Het vak is aan je winkelwagen toegevoegd <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Direct Betalen</a>'
+      added_to_cart: 'Het vak is aan je winkelwagen toegevoegd'
+      check_out: 'Direct Betalen'
+    fail:
+      own_course: 'Je kunt alleen je eigen vakken aanpassen'
+      inactive: 'Dit vak kan niet worden toegevoegd'
+      already_in: 'Je bent al voor dit vak ingeschreven.'
+      too_many: 'Dit vak is vol'
+      no_check_out: 'Je moet inloggen om de transactie te voltooien'
+  generic:
+    back: 'Terug'
+    edit: 'Aanpassen'
+  active_admin:
+    dashboard: "Overzicht"
+    dashboard_welcome:
+      welcome: "Welkom"
+      call_to_action: "Kom binnen"
+    versions: 'Recente Aanpassingen'
+  modal:
+    popup:
+      sure: "Weet je het zeker?"
+      discard: "Wil je de aanpassingen weggooien?"
+      ok: "Okee"
+      cancel: "Ongedaan maken"
+  browse:
+    by_subject: "Op onderwerp"
+    by_course_title: "Op Vak Title"
+    by_instructor: "Op Docent"
+    about: "Over Ons"
+    contact: "Contact"
+    register: "Aanmelden"
+    canvas: "Canvas"
+    settings: "Mijn Gegevens"
+    nav:
+      inbox: "Inbox"
+      help: "Help"
+  login:
+    canvas_html: "Log in met je marktplaats gegevens"
+    canvas_info_html: "Als je vanaf Canvas komt en enkel een Canvas gebruiker hebt gebruik dan: <a href='%{link}'>direct login</a>."
+    canvas:
+      fail: "Je kun niet met het Oplerno Marktplaats op Canvas inloggen."
+      fail_info: "Als je een Canvas gebruiken hebt kun je beneden inloggen"
+  invites:
+    no_invite: "Het spijt ons, we kunnen die uitnodiging niet vinden"
+    invite:
+      accepted: 'Hier maak je een URL om mensen mee uit te nodigen'
+    accept:
+      us: 'Ik ben ingezetene van de VS'
+      not_us: 'Accepteer'
+    created: 'Hier maak je een URL om mensen mee uit te nodigen'
+    create_user: 'Accepteer en Creëer Gebruiker'
+    applied: "Je krijgt de credit alleen als je 30% van het vak hebt afgemaakt"
+    not_applied: 'Je moet eerst een gebruiker aanmaken'
+    claim:
+      title: 'Verdien een Gratis Les'
+      text: 'Om korting te krijgen op een vak het je eerst een gebruiker aanmaken. Daarna kun je je inschrijven voor een vak'
+      email: 'Vul je email adres in om een gebruiker aan te maken'
+    cta:
+      free_courses: 'Volg gratis vakken'
+      free_classes: 'Volg Gratis Lessen'
+      tell_a_friend: 'Vertel een Vriend'
+      refer_a_friend: 'Stuur door aan een Vriend'
+    invite_credit:
+      accepted: "Je bent één stap dichter bij $%{amount} bij Oplerno!"
+      notification: "Je hebt nu $%{amount} om te gebruiken voor een vak bij Oplerno!"

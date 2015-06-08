@@ -27,7 +27,7 @@ namespace :db do
     end
     sh "mysql -u #{fetch(:db_local_user)} #{fetch(:db_local_name)} <<< 'source #{fetch(:local_dump_dir)}/#{fetch(:sql_dump)};'"
     rm 'dump.rdb'
-    ln "#{fetch(:local_dump_dir)}/#{fetch(:redis_dump)}", 'dump.rdb'
+    cp "#{fetch(:local_dump_dir)}/#{fetch(:redis_dump)}", 'dump.rdb'
   end
 
 	desc 'Index elasticsearch'

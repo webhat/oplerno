@@ -17,6 +17,19 @@ Oplerno::Application.routes.draw do
     match 'admin/mailer(/:mailer(/:method(.:format)))' => 'mailpreview#show'
   end
 
+  # Protect SideKiq
+  constraint = lambda do |request|
+                 request.env['warden'].authenticate!({ scope: :admin_user })
+               end
+
+  constraints constraint do
+    mount Sidekiq::Web, at: '/admin/sidekiq'
+    # Accelerator
+    resources :teams, only: [:show, :update]
+    resources :mentors, only: [:show, :update]
+    resources :accelerator_applications, only: [:index, :update, :create]
+    resources :tags, only: :show
+  end
 
   devise_scope :user do
     get '/courses/me' => 'courses#me'
@@ -35,6 +48,7 @@ Oplerno::Application.routes.draw do
     resources :searches, only: [:index, :create]
     resources :certificates, only: [:show, :index, :create]
 
+
     post '/teachers/:id/contact' => 'teachers#contact'
     get '/teachers/:id/contact' => 'teachers#contact'
     post '/courses/:id/image_picker' => 'courses#image_picker'
@@ -52,5 +66,4 @@ Oplerno::Application.routes.draw do
   end
 
   mount Paperclip::Storage::Redis::App.new => '/dynamic'
-  mount Sidekiq::Web, at: '/admin/sidekiq' if Rails.env.development? 
 end

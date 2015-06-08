@@ -1,0 +1,21 @@
+[main]
+host = https://www.transifex.com
+
+[oplerno-marketplace.enyml]
+file_filter = config/locales/<lang>.yml
+source_file = config/locales/en.yml
+source_lang = en
+type = PO
+
+[oplerno-marketplace.deviseenyml]
+file_filter = config/locales/devise.<lang>.yml
+source_file = config/locales/devise.en.yml
+source_lang = en
+type = PO
+
+[oplerno-marketplace.deviseauthyenyml]
+file_filter = config/locales/devise.authy.<lang>.yml
+source_file = config/locales/devise.authy.en.yml
+source_lang = en
+type = PO
+

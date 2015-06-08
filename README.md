@@ -30,3 +30,4 @@ Stock Images:
 
 [jetheriot](http://www.flickr.com/photos/jetheriot/7940996488)
 [StutterHacks](http://www.flickr.com/photos/shutterhacks/4474421855)
+[Rachel Kramer](https://www.flickr.com/photos/rkramer62/11680114165/)

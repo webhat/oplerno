@@ -1,0 +1,30 @@
+nl:
+  devise:
+    submit_token: "Verifieer Code"
+    submit_token_title: "Vul hier je Authy Code in:"
+    authy_register_title: 'Twee Factor Authenticatie Activeren'
+    enable_authy: 'Activeer'
+    cellphone: 'Vul je telefoon nummer in'
+    country: 'Vul je land in'
+    request_sms: 'Vraag om een SMS'
+    remember_device: 'Onthoud Apparaat'
+    authy_verify_installation_title: "Verifieer je gebruiker"
+    enable_my_account: 'Activeer mijn gebruiker'
+    devise_authy:
+      user:
+        enabled: 'Twee factor authenticatie is geactiveren'
+        not_enabled: 'Er ging iets mis met het instellen van twee factor authenicatie'
+        signed_in: 'Authy is geactiveerd.'
+        already_enabled: "Twee factor authenticatie is reeds geactiveren"
+        invalid_token: 'De ingevoerde code is fout'
+    authy:
+      submit_token: "Verstuur Code"
+      register:
+        title: "Registreer Authy"
+      verify_installation:
+        title: "Verifieer Authy"
+      submit:
+        token_title: "Authy Code"
+      enable: "Activeer Authy"
+      enable_my_account: "Activeer Authy"
+      remember_device: "Onthoud My Authy Apparaat"
