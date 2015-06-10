@@ -1,6 +1,9 @@
 'use strict'
 bootstrapAngular = ->
-  angular.bootstrap(document.body, ['oplernoApp'])
+  try
+    angular.bootstrap(document.body, ['oplernoApp'])
+  catch e
+    console.log 'Failed to bootstrap, probably already done.'
 
 window.oplernoApp =
   angular.module 'oplernoApp', [

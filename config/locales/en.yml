@@ -109,6 +109,7 @@ en:
     no_invite: Sorry, we couldn't find that invite
     not_applied: You need to create a user first
   login:
+    button: Login
     canvas:
       fail: Cannot login in to Canvas using the Marketplace
       fail_info: If you have a Canvas account you can login in directly below
