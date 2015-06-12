@@ -94,7 +94,6 @@ class User < ActiveRecord::Base
       logger.info(dn)
       dn
     rescue
-      logger.info('XXX')
       "Unknown"
     end
   end

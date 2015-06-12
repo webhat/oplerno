@@ -9,7 +9,6 @@ describe ContactTeacher do
 
   it 'sends a regular mail' do
     mail = ContactTeacher.student_mail(valid_question)
-    p mail
     mail.deliver
   end
 end
