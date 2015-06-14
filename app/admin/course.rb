@@ -104,7 +104,7 @@ ActiveAdmin.register Course do
 
   filter :name
   filter :start_date
-  filter :teachers, :collection => Teacher.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
+  #filter :teachers, :collection => Teacher.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
 
   form do |f|
     f.actions
