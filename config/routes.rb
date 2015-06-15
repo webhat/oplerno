@@ -24,12 +24,12 @@ Oplerno::Application.routes.draw do
 
   constraints constraint do
     mount Sidekiq::Web, at: '/admin/sidekiq'
-    # Accelerator
-    resources :teams, only: [:show, :update]
-    resources :mentors, only: [:show, :update]
-    resources :accelerator_applications, only: [:index, :update, :create]
-    resources :tags, only: :show
   end
+  # Accelerator
+  resources :teams, only: [:show, :update]
+  resources :mentors, only: [:create, :show, :update]
+  resources :accelerator_applications, only: [:index, :update, :create]
+  resources :tags, only: :show
 
   devise_scope :user do
     get '/courses/me' => 'courses#me'
@@ -64,6 +64,8 @@ Oplerno::Application.routes.draw do
 
     post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
   end
+
+  get '/mentors/' => 'mentors#signup'
 
   mount Paperclip::Storage::Redis::App.new => '/dynamic'
 end

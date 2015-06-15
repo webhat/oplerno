@@ -116,6 +116,25 @@ en:
     canvas_html: Login with your Marketplace credentials
     canvas_info_html: If you are coming from Canvas and only have an account on Canvas
       please use <a href='%{link}'>direct login</a>.
+  mentors:
+    wizard:
+      dialog:
+        form:
+          angellist: 'AngelList ID:'
+          angellist_placeholder: mentor
+          email: 'Email:'
+          email_placeholder: mentor@example.com
+          finish: Finish
+          fullname: 'Fullname:'
+          fullname_placeholder: What you are known by
+        thank_you:
+          message: Thank you for signing up, you will recieve a mail to set your password
+            and sign in to your account.
+          title: Mentor Wizard Completed
+        error:
+          message: An error occured, we are looking into it.
+          title: Mentor Wizard Error
+        title: Mentor Wizard
   modal:
     popup:
       cancel: Cancel
