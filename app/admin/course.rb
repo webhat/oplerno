@@ -11,7 +11,7 @@ ActiveAdmin.register Course do
     column :start_date
     column :price
     column 'Instructor' do |course|
-      course_teacher = course.teacher
+      course_teacher = course.teachers.first
       unless course_teacher.blank?
         teacher = Teacher.find(course_teacher)
         begin

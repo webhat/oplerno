@@ -13,7 +13,7 @@ ActiveAdmin.register User do
       end
       link_to "#{name} (#{user.id})", [user]
     end
-    column 'Courses' do |user|
+    column 'Courses (incorrect)' do |user|
       render 'admin/courses_panel', data: Course.find(:all, conditions: ["teacher = ?", user.id])
     end
     column :email do |user|

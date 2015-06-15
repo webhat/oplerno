@@ -16,7 +16,7 @@ class CanvasCourses < ActiveRecord::Base
 
     this_canvas_course.canvas_id = canvas_course['id']
     this_canvas_course.name = canvas_course['name']
-    puts this_canvas_course.name.force_encoding('UTF-8')
+    #puts this_canvas_course.name.force_encoding('UTF-8')
     this_canvas_course.syllabus = canvas_course['syllabus_body']
     this_canvas_course.save
   end
@@ -39,12 +39,7 @@ class CanvasCourses < ActiveRecord::Base
     course = self.course
     course = Course.create! name: canvas_course['name'], hidden: true if course.nil?
 
-    #   if canvas_course['workflow_state'] == "available"
-    #     course.hidden = false
-    #   else
-    #     course.hidden = true
-    #   end
-    course.teacher = canvas_get_teacher
+    course.teachers << new_teacher unless new_teacher.nil? or course.teachers.include?(new_teacher)
     PaperTrail.whodunnit = 6
     course.save
     self.course = course
@@ -58,9 +53,13 @@ class CanvasCourses < ActiveRecord::Base
     begin
       CanvasCourses.canvas.post("/api/v1/courses/#{canvas_id}/enrollments", {'enrollment[user_id]' => user.canvas_id, 'enrollment[type]' => 'StudentEnrollment', 'enrollment[notify]' => true})
     rescue => e
-      puts $!.inspect, $@
+      #puts $!.inspect, $@
       logger.debug(e)
     end
+  end
+
+  def new_teacher
+    @new_teacher ||= canvas_get_teacher
   end
 
   def canvas_get_teacher
@@ -71,10 +70,10 @@ class CanvasCourses < ActiveRecord::Base
     begin
       canvas_teacher = CanvasCourses.canvas.get("/api/v1/courses/#{canvas_id}/search_users", {'enrollment_roll' => 'TeacherEnrollment'})[0]
       unless canvas_teacher.nil?
-        User.find_by_email canvas_teacher['login_id']
+        Teacher.find_by_email canvas_teacher['login_id']
       end
     rescue => e
-      puts $!.inspect, $@
+      #puts $!.inspect, $@
       logger.debug(e)
       nil
     end
