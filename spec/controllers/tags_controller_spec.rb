@@ -10,8 +10,8 @@ describe TagsController do
   end
   context ':destroy' do
     let(:mentor) { create :mentor }
-    t = Tag.create! name: 'Test'
     it 'should work' do
+      t = Tag.create! name: 'Test'
       delete :destroy, { mentor_id: mentor.id, id: t.id, tag: {name:'test'} }
       expect(response).to be_success
     end
