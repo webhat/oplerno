@@ -1,5 +1,5 @@
 .mentor
-  %a(href="/mentors/#{resource.id}")
+  %a(href="/mentors/#{resource.id}" target='_self')
     .mentor-image.mentor-wobble(style="background-image:url('#{url_prefix request}#{resource.avatar.url(:medium)}')")
     .mentor-name
       = resource.display_name
