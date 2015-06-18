@@ -23,7 +23,7 @@
       #new-tag.left-inner-addon
         %li.string.input.optional.stringish
           %form{ ng: {submit:'create()'}}
-            %input.form-control{ng: { model: 'new_tag' }}
+            %input.form-control{ng: { model: 'new_tag' }, name: 'new-tag-input'}
         %i.glyphicon.glyphicon-pencil.edit-tag-icon
       %button.btn.btn-warning.new-tag-button{ng: {click: 'make()'}}=t('acceletator.tag.new')
   #description
