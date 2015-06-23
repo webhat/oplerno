@@ -19,4 +19,10 @@ describe MentorsController do
       expect(response).to be_redirect
     end
   end
+  context ':create' do
+    it 'should create a mentor' do
+      post :create, { format: 'json', mentor: {display_name: "D", email: Faker::Internet.free_email, angel: {angelslug: "a"}}}
+      expect(response).to be_success
+    end
+  end
 end

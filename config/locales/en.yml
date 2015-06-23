@@ -117,6 +117,7 @@ en:
     canvas_info_html: If you are coming from Canvas and only have an account on Canvas
       please use <a href='%{link}'>direct login</a>.
   mentors:
+    email_changed: You've been added as a Mentor %{display_name}
     wizard:
       dialog:
         form:

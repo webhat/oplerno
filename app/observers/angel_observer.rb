@@ -5,7 +5,7 @@ class AngelObserver < ActiveRecord::Observer
       result = @ac.user_search(slug: angel.angelslug)
       populate_user angel.mentor, result
       populate_companies angel, result
-    end if angel.angelslug_changed?
+    end if angel.angelslug_changed? && !angel.angelslug.empty?
   end
 
   def populate_companies angel, result

@@ -56,7 +56,7 @@ describe TagsController do
 
       visit "/mentors/#{mentor.id}"
 
-      save_and_open_screenshot
+      #save_and_open_screenshot
 
       expect(page.find('#tags')).to have_content 'poekoe'
     end
