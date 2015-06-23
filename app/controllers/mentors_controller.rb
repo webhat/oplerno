@@ -4,8 +4,10 @@ class MentorsController < TeamsController
   def create
     respond_to do |format|
         format.json {
-          unless mentor_params[:email] || mentor = Mentor.find(create_and_signin_user)
+          unless mentor_params[:email].nil?
+            mentor = Mentor.find(create_and_signin_user.id)
             mentor.update_attributes mentor_params
+            mentor.save
             render json: mentor_params, status: 200
           else
             render json: {}, status: 403
