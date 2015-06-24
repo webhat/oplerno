@@ -6,9 +6,26 @@
   #mentors
     - @resource.mentors.each do |mentor|
       = render partial: 'mentors/mentor', locals: { resource: mentor }
-  #tags
+  #tags{ ng: { controller:'MentorTagsController' } }
+    %rep{ ng: { repeat:'tag in tags' } }
+      .tag
+        - if @resource.mentors.length == 1 && editable?
+          .close{ng:{click:'remove(tag.id)'}} ×
+          .edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+        %a(href='/tags/{{tag.slug}}' target='_self') {{ tag.name }}
     - @resource.tags.each do |tag|
-      %a.tag(href='/tags/#{tag.slug}') #{ tag.name }
+      .tag
+        - if @resource.mentors.length == 1 && editable?
+          .close{ng:{click:"remove(#{tag.id})"}} ×
+          .edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+        %a(href='/tags/#{tag.slug}' target='_self') #{ tag.name }
+    - if @resource.mentors.length == 1 && editable?
+      #new-tag.left-inner-addon
+        %li.string.input.optional.stringish
+          %form{ ng: {submit:'create()'}}
+            %input.form-control{ng: { model: 'new_tag' }, name: 'new-tag-input'}
+        %i.glyphicon.glyphicon-pencil.edit-tag-icon
+      %button.btn.btn-warning.new-tag-button{ng: {click: 'make()'}}=t('acceletator.tag.new')
   #description
     %div{ placeholder:'Write Something', contenteditable:"#{editable_string?}" }
       = @resource.description.force_encoding('BINARY').html_safe

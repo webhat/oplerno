@@ -5,3 +5,5 @@ class InstructureWorker
   def perform(blob, count)
   end
 end
+
+#  vim: set ts=2 sw=2 tw=0 et :

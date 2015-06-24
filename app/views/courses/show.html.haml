@@ -14,7 +14,7 @@
     .well.hide_name.magic_course
       .well
         = render @course
-    - teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? or @course.teacher.empty?
+    - teacher = @course.teachers.first
     - unless teacher.nil?
       .well
         .well.hide_name

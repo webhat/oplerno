@@ -65,6 +65,14 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Capybara
+  config.before(:each, js: true) do
+    page.driver.browser.url_blacklist = ['https://cdn.supportkit.io/',
+                                         'jsdelivr-cb7.kxcdn.com',
+                                         'http://rum-collector.pingdom.net/',
+                                         'http://insights.hotjar.com/']
+  end
+
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of

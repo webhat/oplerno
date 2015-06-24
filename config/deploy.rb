@@ -53,7 +53,6 @@ set :default_env, {
 
 namespace :deploy do
   before :starting, 'github:ssh'
-  before :starting, 'db:sync'
 
   desc 'Seed Admin User'
   task :seed do

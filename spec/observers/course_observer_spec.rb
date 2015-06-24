@@ -62,6 +62,7 @@ describe CourseObserver, :type => :observer  do
     end
 
     it 'should send a mail if a teacher is added to a course' do
+      pending
       course_mailer = double(CourseMailer)
       expect(course_mailer).to receive(:deliver)
       expect(CourseMailer).to receive(:new_teacher).and_return(course_mailer)

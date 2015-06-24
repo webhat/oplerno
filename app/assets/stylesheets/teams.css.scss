@@ -118,13 +118,19 @@ $image-twist: 10deg;
   .tag {
     display: inline-block;
     background: #D8D8D8;
-    max-width: 130px;
+    max-width: 200px;
     min-width: 125px;
     height:40px;
     padding-top: 10px;
     margin: 0 16px 16px 0;
     border: 1px solid #979797;
     border-radius: 8px;
+    .edit{
+      margin-left: 10px;
+    }
+    .close{
+      margin-right: 10px;
+    }
   }
   .tag:nth-last-child(6):first-child,
   .tag:nth-last-child(6):first-child ~ a {
@@ -137,6 +143,18 @@ $image-twist: 10deg;
   .tag:nth-last-child(14):first-child,
   .tag:nth-last-child(14):first-child ~ a {
     margin: 8px 3px;
+  }
+  #new-tag {
+    margin-bottom:16px;
+    display:none;
+    width: 200px;
+    .edit-tag-icon {
+      left: 245px;
+    }
+    .form-control {
+      position: relative;
+      left: 245px;
+    }
   }
 }
 #description {

@@ -39,5 +39,3 @@ window.oplernoApp.controller 'RankingList', [ '$scope', 'RankingIO', 'RankingMod
   0 # DON'T REMOVE
 ]
 
-$(document).on('ready', bootstrapRankingAngular)
-$(document).on('page:change', bootstrapRankingAngular)

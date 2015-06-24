@@ -44,30 +44,10 @@ class CoursesController < ApplicationController
     end
   end
 
-  # GET /courses/new
-  def new
-    @course = Course.new
-  end
-
   # GET /courses/me
   # My courses
   def me
     @courses = current_user.courses
-  end
-
-  # POST /courses
-  # POST /courses.json
-  def create
-    @course = Course.new(course_params)
-    @course.teacher = current_user
-
-    respond_to do |format|
-      if @course.save
-        save_created_course format
-      else
-        save_created_course_fail(format)
-      end
-    end
   end
 
   def save_created_course_fail(format)
@@ -130,11 +110,12 @@ class CoursesController < ApplicationController
   protected
 
   def current_user?
-    unless @course.teacher.to_i == current_user.id
+    unless @course.course_teacher? Teacher.find(current_user.id)
       redirect_to course_url, alert: (I18n.t 'courses.fail.own_course')
       return false
+    else
+      true
     end
-    return true
   end
 
   private

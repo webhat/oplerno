@@ -109,12 +109,32 @@ en:
     no_invite: Sorry, we couldn't find that invite
     not_applied: You need to create a user first
   login:
+    button: Login
     canvas:
       fail: Cannot login in to Canvas using the Marketplace
       fail_info: If you have a Canvas account you can login in directly below
     canvas_html: Login with your Marketplace credentials
     canvas_info_html: If you are coming from Canvas and only have an account on Canvas
       please use <a href='%{link}'>direct login</a>.
+  mentors:
+    wizard:
+      dialog:
+        form:
+          angellist: 'AngelList ID:'
+          angellist_placeholder: mentor
+          email: 'Email:'
+          email_placeholder: mentor@example.com
+          finish: Finish
+          fullname: 'Fullname:'
+          fullname_placeholder: What you are known by
+        thank_you:
+          message: Thank you for signing up, you will recieve a mail to set your password
+            and sign in to your account.
+          title: Mentor Wizard Completed
+        error:
+          message: An error occured, we are looking into it.
+          title: Mentor Wizard Error
+        title: Mentor Wizard
   modal:
     popup:
       cancel: Cancel
@@ -133,7 +153,7 @@ en:
   search:
     not_found: 'Not Found: "%{term}"'
     search: Search
-    term: Search Term
+    term: I want to learn
   social:
     top_courses: Popular Courses
     top_courses_description: Today's most visited courses

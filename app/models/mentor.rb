@@ -3,9 +3,14 @@ class Mentor < User
   has_and_belongs_to_many :tags
   has_one :angel
 
-  attr_accessible :team_ids, :angel, :slug
+  attr_accessible :team_ids, :angel, :slug, :display_name
+
+  def display_name= name
+    self.last_name= name
+  end
 
   def angel= angel
+    self.create_angel if self.angel.nil?
     self.angel.update_attributes angel
   end
 

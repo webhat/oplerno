@@ -1,0 +1,37 @@
+.ngdialog-content {
+  #wizard_dialog_box, #wizard_dialog_thanks {
+    background: white;
+    border-radius: 10px;
+    border: 10px solid #B8E986;
+    padding: 10px 10px;
+    .wizard-title {
+      background-color: #B8E986;
+      color: white;
+      font-size: large;
+      font-weight: heavy;
+      margin: -10px -10px 0px;
+      padding: 0px 10px 10px;
+    }
+    .wizard-thanks {
+      font-size: large;
+      font-weight: heavy;
+      margin: 10px 10px 0px;
+      padding: 0px 10px 10px;
+    }
+    .wizard-label {
+      display: inline-block;
+      margin-top: 10px;
+      width: 33%;
+    }
+    .wizard-input {
+      display: inline-block;
+      width: 66%;
+      input {
+        width: 100%;
+      }
+    }
+    input[type=submit] {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+#wizard{ ng: { controller: 'WizardDialog' } }
+  %script#wizard_dialog(type="text/ng-template")
+    %form#wizard_dialog_box{ ng: { submit: 'submit()', controller: 'WizardDialogController' } }
+      .wizard-title= t('mentors.wizard.dialog.title')
+      .wizard-label
+        %label= t('mentors.wizard.dialog.form.fullname')
+      .wizard-input
+        %input{ ng: { model:'mentor.display_name' }, placeholder:"#{ t('mentors.wizard.dialog.form.fullname_placeholder') }" }
+      .wizard-label
+        %label= t('mentors.wizard.dialog.form.email')
+      .wizard-input
+        %input{ ng: { model:'mentor.email' }, placeholder:"#{ t('mentors.wizard.dialog.form.email_placeholder') }" }
+      .wizard-label
+        %label= t('mentors.wizard.dialog.form.angellist')
+      .wizard-input
+        %input{ ng: { model:'mentor.angel.angelslug'}, placeholder:"#{ t('mentors.wizard.dialog.form.angellist_placeholder') }" }
+        %input.hidden(name='welcome' value="#{params[:welcome]}")
+      %hr
+      %input.btn.btn-success{type:"submit", id:"submit", value:"#{ t('mentors.wizard.dialog.form.finish') }", ng:{click:'submit()'}}
+
+  %script#wizard_dialog_thanks(type="text/ng-template")
+    #wizard_dialog_box
+      .wizard-title= t('mentors.wizard.dialog.thank_you.title')
+      .wizard-thanks= t('mentors.wizard.dialog.thank_you.message')
+
+  %script#wizard_dialog_error(type="text/ng-template")
+    #wizard_dialog_box
+      .wizard-title= t('mentors.wizard.dialog.error.title')
+      .wizard-thanks.error= t('mentors.wizard.dialog.error.message')
+

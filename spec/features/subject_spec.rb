@@ -10,12 +10,12 @@ describe 'Visiting URLs' do
 
   context 'while logged in' do
     before(:each) do
-      @user = User.create! valid_user
+      @user = Teacher.create! valid_user
       @user.confirm!
 
       @subject = Subject.create! subject: 'Test'
       @course = Course.new valid_course
-      @course.teacher = @user.id
+      @course.teachers << @user
       @course.save
 
       visit '/users/sign_out'
@@ -26,10 +26,7 @@ describe 'Visiting URLs' do
     end
 
     after(:each) do
-      @course.destroy
-      Course.all.each { |course|
-        course.destroy
-      }
+      Course.find_each { |course| course.destroy }
       @user.destroy
     end
 

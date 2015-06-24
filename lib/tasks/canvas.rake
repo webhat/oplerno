@@ -1,5 +1,5 @@
 
-namespace :cron do
+namespace :canvas do
 	task :users => :environment do
 		puts 'Pulling new Users From Canvas...'
 		CanvasUsers.update_all

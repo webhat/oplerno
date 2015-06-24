@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150607211033) do
+ActiveRecord::Schema.define(:version => 20150614213303) do
 
   create_table "accelerator_applications", :force => true do |t|
     t.string   "description"
@@ -239,6 +239,15 @@ ActiveRecord::Schema.define(:version => 20150607211033) do
   add_index "courses_subjects", ["course_id", "subject_id"], :name => "index_courses_subjects_on_course_id_and_subject_id", :unique => true
   add_index "courses_subjects", ["course_id"], :name => "index_courses_subjects_on_course_id"
   add_index "courses_subjects", ["subject_id"], :name => "index_courses_subjects_on_subject_id"
+
+  create_table "courses_teachers", :force => true do |t|
+    t.integer "course_id"
+    t.integer "teacher_id"
+  end
+
+  add_index "courses_teachers", ["course_id"], :name => "index_courses_teachers_on_course_id"
+  add_index "courses_teachers", ["teacher_id", "course_id"], :name => "index_courses_teachers_on_teacher_id_and_course_id", :unique => true
+  add_index "courses_teachers", ["teacher_id"], :name => "index_courses_teachers_on_teacher_id"
 
   create_table "courses_users", :force => true do |t|
     t.integer "user_id"

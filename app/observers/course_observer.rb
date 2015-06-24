@@ -6,7 +6,7 @@ class CourseObserver < ActiveRecord::Observer
   def after_save course
     update_rank course
 
-    CourseMailer.new_teacher(course).deliver if course.teacher_changed?
+    #CourseMailer.new_teacher(course).deliver if course.teacher_changed?
   end
 
   def update_rank course
