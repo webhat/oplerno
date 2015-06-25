@@ -1,12 +1,12 @@
-$ -> load_cart()
+#$ -> load_cart()
 
-load_cart = () ->
-  callback = (response) -> cart_count response
-  $.get '/carts/mycart.json', {}, callback, 'json'
+#load_cart = () ->
+#  callback = (response) -> cart_count response
+#  $.get '/carts/mycart.json', {}, callback, 'json'
 
-cart_count = (response) ->
-  $('.cartcount').text response.length
-  console.log response
+#cart_count = (response) ->
+#  $('.cartcount').text response.length
+#  console.log response
 
 visible = true
 
@@ -32,7 +32,7 @@ close_button = ->
   $('.close').click (e) ->
     close e
 
-$(document).on('page:load', load_cart)
+#$(document).on('page:load', load_cart)
 $(document).on('page:load', close_button)
 $(document).on('page:change', close_button)
 
