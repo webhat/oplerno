@@ -15,14 +15,19 @@
     '$scope',
     'CartsContentIO',
     function($scope, CartsContentIO) {
-      console.log('CartsContentController');
-      console.log(CartsContentIO.query());
-
       $scope.items = 0;
+      $scope.total = 0;
 
       CartsContentIO.query().$promise.then(function(result) {
-        console.log('LEN: '+ result.length);
+        console.log('LEN: '+ result);
         $scope.items = result.length;
+        $scope.total = 0;
+
+
+        for(i=0;i<result.length;i++){
+          $scope.total += result[i].price;
+        }
+
       });
   }]);
 }).call(this);
