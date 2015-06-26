@@ -3,8 +3,9 @@
     .navbar-header
       %a.cart.pull-right{ng:{controller:'CartsContentController'}, href:'/carts/mycart', class:'btn active btn-danger navbar-toggle'}
         %div
-          %span(class='glyphicon glyphicon-shopping-cart')>
           %i.cartcount {{ items }}
+          %span(class='glyphicon glyphicon-shopping-cart')
+          %i.total ${{ total }}
       %button.float-right(type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse')
         %span(class='icon-bar')
         %span(class='icon-bar')       
@@ -65,8 +66,9 @@
         %li
           %a.cart.pull-right{ng:{controller:'CartsContentController'}, href:'/carts/mycart', class:'btn active btn-danger navbar-toggle hidden-xs'}
             %div
-              %span(class='glyphicon glyphicon-shopping-cart')>
               %i.cartcount {{ items }}
+              %span(class='glyphicon glyphicon-shopping-cart')
+              %i.total ${{ total }}
       - if Setting.get_key('invites', 'false').value == 'true' || admin_user_signed_in?
         %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
           %li

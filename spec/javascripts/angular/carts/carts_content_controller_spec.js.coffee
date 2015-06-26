@@ -13,10 +13,16 @@ describe 'CartsContentController', ->
     inject ($injector, $rootScope, _$compile_, _$controller_)->
       scope = $rootScope
 
+      item1 = 
+        price: 3
+
+      item2 = 
+        price: 7
+
       $compile = _$compile_
       $controller = _$controller_
       $httpBackend = $injector.get '$httpBackend'
-      $httpBackend.when('GET', '/carts/mycart.json').respond(200,["blah1", "blah1"])
+      $httpBackend.when('GET', '/carts/mycart.json').respond(200,[item1, item2])
       element = angular.element('<div ng-controller="CartsContentController"/>')
 
       createController = ->
@@ -39,5 +45,25 @@ describe 'CartsContentController', ->
 
       $httpBackend.flush()
       expect(scope.items).toEqual(2)
+
+    it 'total 0', ->
+      $compile(element)(scope)      
+      controller = createController()
+      expect(scope.total).toEqual(0)
+      $httpBackend.flush()
+
+    it 'total 10', ->
+      $compile(element)(scope)
+      $httpBackend.expectGET('/carts/mycart.json')
+      controller = createController()
+
+      $httpBackend.flush()
+      expect(scope.total).toEqual(10)
+
+
+
+
+
+
 
 
