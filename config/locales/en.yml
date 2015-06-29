@@ -199,7 +199,7 @@ en:
     links: Links
     mail:
       notification: New user account was created "%{user}"
-      order: Somebody place and order, not yet paid
+      order: Somebody placed an order, not yet paid
       order_transaction: Somebody paid
     messages:
       authy_description: <a href="%{url}" target="_new">Click here to enter your phone
