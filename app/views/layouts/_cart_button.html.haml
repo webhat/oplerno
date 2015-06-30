@@ -1,4 +1,5 @@
-%div
-  %i.cartcount {{ items }}
-  %span(class='glyphicon glyphicon-shopping-cart')
-  %i.total ${{ total }}
+%a.cart.pull-right{ng:{controller:'CartsContentController'}, href:'/carts/mycart', class:'btn active btn-danger navbar-toggle'}
+  %div
+    %i.cartcount {{ items }}
+    %span(class='glyphicon glyphicon-shopping-cart')
+    %i.total ${{ total }}
