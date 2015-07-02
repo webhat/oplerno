@@ -36,7 +36,9 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs 'Course Details' do
-      f.input :cart, :collection => Cart.all.map(&:id)
+      f.input :cart, :collection => Cart.all.map do |x|
+        ["Cart #{x.id} for #{x.display_name}", x.id]
+      end
       f.input :user, :collection => User.all.map do |x|
         ["#{x.encrypted_first_name} #{x.encrypted_last_name}", x.id]
       end
