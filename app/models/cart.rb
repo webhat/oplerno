@@ -16,6 +16,18 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  def display_name
+    "Cart #{self.id} for #{self.checkout_user}"
+  end
+
+  def checkout_user
+    if self.user.nil?
+      "Unknown"
+    else
+      self.user.display_name
+    end
+  end
+
   def courses_to_student
     student = Student.find(user.id)
 
