@@ -30,7 +30,7 @@ Oplerno::Application.routes.draw do
     resource :tags, only: [:show]
   end
   resources :mentors, only: [:create, :show, :update] do
-    resources :tags, only: [:create, :show, :update, :destroy]
+    resources :tags, only: [:create, :show, :update, :destroy, :index]
   end
   resources :accelerator_applications, only: [:index, :update, :create]
   resources :tags, only: :show

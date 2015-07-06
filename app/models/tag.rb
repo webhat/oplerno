@@ -8,4 +8,8 @@ class Tag < ActiveRecord::Base
   attr_accessible :name, :slug, :mentor_id
 
   alias_attribute :display_name, :name
+
+  def clean_tag
+     {id: self.id, name: self.name }
+  end
 end
