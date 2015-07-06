@@ -109,8 +109,6 @@ describe CanvasUsers do
       # this function is deprecated
       user = FactoryGirl.create(:user)
       CanvasUsers.after_commit user
-      expect(Date.today.month).to be < 7
-      expect(Date.today.year).to be(2015)
     end
     it '#update'
     it '#canvas'
