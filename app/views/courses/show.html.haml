@@ -61,7 +61,7 @@
       - begin
         - @course.subjects.each { |subject|
         %span
-          = subject.subject
+          = link_to subject.subject, [@course, subject]
           ,
         - }
       - rescue
@@ -73,6 +73,7 @@
         - @course.skills.each { |skill|
         %span
           = skill.skill
+          ,
         - }
       - rescue
         = t('courses.skills.not_set')

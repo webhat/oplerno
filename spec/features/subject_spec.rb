@@ -17,6 +17,11 @@ describe 'Visiting URLs' do
       @course = Course.new valid_course
       @course.teachers << @user
       @course.save
+      rank = @course.create_rank
+      rank.ranking = 100
+      rank.save
+
+      Setting.create! key: 'ranking', value: '0'
 
       visit '/users/sign_out'
       visit '/users/sign_in'

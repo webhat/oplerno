@@ -1,5 +1,8 @@
-%h2= subject.subject
-- subject.courses.each do |course|
-  = render course
 .clearfix
-%hr/
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h2= subject.subject
+    - subject.courses.includes(:rank).order("course_rankings.ranking desc").where( "course_rankings.ranking >= #{Setting.get_key('ranking', '100').value}").each do |course|
+      .col-lg-2.col-md-3.col-sm-4.col-xs-12
+        = render course
+    .clearfix
+      %hr/
