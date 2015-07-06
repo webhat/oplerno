@@ -19,6 +19,7 @@ describe 'MentorTagsController', ->
       $httpBackend = $injector.get '$httpBackend'
       $httpBackend.when('PUT', '/mentors/7/tags/1.json').respond(200,{tag: {name:'blaat'}})
       $httpBackend.when('POST', '/mentors/7/tags.json').respond(200,{tag: {name:'newblaat'}})
+      $httpBackend.when('GET', '/mentors/7/tags.json').respond(200,[])
       $httpBackend.when('DELETE', '/mentors/7/tags/1.json').respond(200,{tag: {name:'newblaat'}})
       element = angular.element('<div ng-controller="MentorTagsController"/>')
 
