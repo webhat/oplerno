@@ -43,7 +43,9 @@ Oplerno::Application.routes.draw do
       resources :courses, only: [:show]
     end
     resource :invites, only: [:new, :create, :edit, :update]
-    resources :courses, except: [:new, :create]
+    resources :courses, except: [:new, :create] do
+      resources :subjects, only: :show
+    end
     resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
     resources :subjects, only: [:index, :show]

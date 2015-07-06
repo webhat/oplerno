@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150614213303) do
+ActiveRecord::Schema.define(:version => 20150706155751) do
 
   create_table "accelerator_applications", :force => true do |t|
     t.string   "description"
@@ -387,8 +387,10 @@ ActiveRecord::Schema.define(:version => 20150614213303) do
 
   create_table "subjects", :force => true do |t|
     t.string "subject"
+    t.string "slug"
   end
 
+  add_index "subjects", ["slug"], :name => "index_subjects_on_slug"
   add_index "subjects", ["subject"], :name => "index_subjects_on_subject", :unique => true
 
   create_table "tags", :force => true do |t|
