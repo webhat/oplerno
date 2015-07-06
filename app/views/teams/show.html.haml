@@ -10,14 +10,14 @@
     %rep{ ng: { repeat:'tag in tags' } }
       .tag
         - if @resource.mentors.length == 1 && editable?
-          .close{ng:{click:'remove(tag.id)'}} ×
-          .edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+          .close{ng:{click:"remove(tag.id)"}, data: {id: '{{tag.id}}'}} ×
+          //.edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
         %a(href='/tags/{{tag.slug}}' target='_self') {{ tag.name }}
     - @resource.tags.each do |tag|
       .tag
         - if @resource.mentors.length == 1 && editable?
           .close{ng:{click:"remove(#{tag.id})"}} ×
-          .edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+          //.edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
         %a(href='/tags/#{tag.slug}' target='_self') #{ tag.name }
     - if @resource.mentors.length == 1 && editable?
       #new-tag.left-inner-addon
