@@ -19,6 +19,7 @@ Development:
 [![Dependency Status](https://www.versioneye.com/user/projects/5336d2ff7bae4b94b900007f/badge.png)](https://www.versioneye.com/user/projects/5336d2ff7bae4b94b900007f)
 [![Dependency Status](https://www.versioneye.com/user/projects/5336d3457bae4bff0f000bed/badge.png)](https://www.versioneye.com/user/projects/5336d3457bae4bff0f000bed)
 
+Release: v0.9.18
 
 Attributions
 ============
