@@ -3,7 +3,7 @@ class UserObserver < ActiveRecord::Observer
 
   def before_validation_on_create(user)
     begin
-      user.confirm! if user.is_teacher?
+      user.confirm if user.is_teacher?
     rescue => e
       user.logger.error("User confirm failed for #{user.email}: #{e}")
     end

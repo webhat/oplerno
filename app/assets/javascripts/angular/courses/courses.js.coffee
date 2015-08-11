@@ -24,15 +24,12 @@ window.oplernoApp.service 'CoursesModel', [ 'CoursesIO', 'timeAgo', (CoursesIO, 
     self = this
 
     CoursesIO.query query, (result) ->
-      console.log "called get"
       self.data = result
-      console.log result.result
 
   new CoursesSession()
 ]
 
 window.oplernoApp.directive 'backImg', ->
-  console.log 'Directive'
   return (scope, element, attrs) ->
     if attrs.backImg.lastIndexOf('/') == attrs.backImg.length-1
       attrs.backImg += '../../../../../../../../assets/medium/missing.png'
@@ -45,8 +42,6 @@ window.oplernoApp.directive 'backImg', ->
     element.css(style)
 
 window.oplernoApp.controller 'CourseList', ['$scope', 'CoursesIO', 'CoursesModel', ($scope, CoursesIO, CoursesModel) ->
-  console.log 'Course List'
-  console.log CoursesModel
   $scope.courses_list = CoursesModel.fetch()
 
 
@@ -73,7 +68,6 @@ window.oplernoApp.controller 'CartFormController', [ '$rootScope', '$scope', '$h
       $rootScope.$broadcast("cartContentUpdated", {})
       ngDialog.open({ template: 'putInCartDialog', scope: $scope })
     .error ->
-      console.log 'Error'
       $scope.message = 'NOT'
       ngDialog.open({ template: 'putInCartDialog', scope: $scope })
 ]

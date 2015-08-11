@@ -1,6 +1,5 @@
 window.oplernoApp.factory 'MentorSignupIO', [
   '$resource', '$location', ($resource, $location)->
-    console.log 'MentorSignupIO'
     methods =
       update:
         isArray: false
@@ -13,7 +12,6 @@ window.oplernoApp.factory 'MentorSignupIO', [
 
 window.oplernoApp.service 'MentorSignupModel', [
   'MentorSignupIO', (MentorSignupIO)->
-    console.log 'MentorSignupModel'
     MentorSignupSession = ->
       this.data = {}
 
@@ -22,7 +20,6 @@ window.oplernoApp.service 'MentorSignupModel', [
 
       MentorSignupIO.update value, (result)->
         self.data = result
-        console.log result
 
     new MentorSignupSession()
 ]

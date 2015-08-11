@@ -45,7 +45,7 @@ describe CoursesController do
 
       it "redirects to the course if bad update" do
         user = FactoryGirl.build(:user)
-        user.confirm!
+        user.confirm
         user.skip_confirmation_notification!
         user.save
         sign_in user

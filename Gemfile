@@ -10,9 +10,8 @@ end
 gem 'libnotify', require: RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', require: RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '~> 3.2.21'
+gem 'rails', '~> 3.2.22'
 gem 'jquery-rails', '< 3.0.0'
-gem 'actionpack', '~> 3.2.21'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.2.1'
@@ -48,7 +47,7 @@ gem 'activeadmin', '>= 0.6.3'
 gem 'paper_trail'
 gem 'paranoia', '~> 1.0'
 gem 'activemerchant', '>= 1.42.7'
-gem 'devise', '>= 3.2.4'
+gem 'devise', '~> 3.5'
 gem 'devise-i18n', '>= 0.10.3'
 gem 'devise-authy', '>= 1.5.0'
 # FIXME: What's wrong here?
@@ -173,3 +172,7 @@ gem 'paperclip_montage', '~> 0.1.2'
 # gem 'paperclip_montage', path: '../paperclip_montage'
 gem 'paperclip_redis', '~> 0.1.1'
 # gem 'paperclip_redis', path: '../paperclip_redis'
+
+
+# SECURITY UPDATES
+gem 'rack', '=1.4.5'

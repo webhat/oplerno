@@ -98,7 +98,7 @@ describe UserObserver, :type => :observer do
     end
     it 'should create a ranking if a teacher is saved' do
       user = FactoryGirl.build(:user, teacher_user)
-      #user.confirm!
+      #user.confirm
 
       User.observers.enable :user_observer do
         user.save

@@ -1,5 +1,4 @@
 image_picker_dialog_setup = ->
-  console.log 'dialog'
   $( "#image-picker-dialog" ).dialog({
     autoOpen: false,
     width: '800px',
@@ -10,7 +9,6 @@ image_picker_dialog_setup = ->
                 url: $('#image-picker-dialog').attr('data-form-url'),
                 data: $('#image-picker-dialog :input').serialize(),
                 success: (xml, status, error) -> 
-                  console.log(xml);
                   $('#course-avatar').css('background-image',"url(#{xml})")
                 error: (xml, status, error) -> 
                   $('#image-picker-dialog').html('<p><strong>Error Code:</strong> '+status+'</p><p><strong>Explanation:</strong> '+error+'</p>');

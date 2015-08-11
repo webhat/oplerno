@@ -1,13 +1,3 @@
-#$ -> load_cart()
-
-#load_cart = () ->
-#  callback = (response) -> cart_count response
-#  $.get '/carts/mycart.json', {}, callback, 'json'
-
-#cart_count = (response) ->
-#  $('.cartcount').text response.length
-#  console.log response
-
 visible = true
 
 $(window).scroll ->
@@ -22,13 +12,10 @@ $(window).scroll ->
 delay = (ms, func) -> setTimeout func, ms
 
 close = (e) ->
-  console.log 'close'
-  console.log e
   e.stopPropagation()
   e.currentTarget.parentNode.style.display = 'none'
 
 close_button = ->
-  console.log 'close_button'
   $('.close').click (e) ->
     close e
 

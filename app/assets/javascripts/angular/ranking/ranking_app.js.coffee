@@ -25,7 +25,6 @@ window.oplernoApp.service 'RankingModel', [ 'RankingIO', (RankingIO) ->
 
     RankingIO.query query, (result) ->
       self.data = result
-      console.log result.result
 
   new RankingSession()
 ]

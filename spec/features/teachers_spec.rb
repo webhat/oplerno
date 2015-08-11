@@ -10,7 +10,7 @@ describe 'Teacher' do
     let (:teacher) { create :teacher, password: 'testtest', email: 'test@oplerno.com' }
     let (:course) { create :course }
     it 'Login' do
-      teacher.confirm!
+      teacher.confirm
 
       visit '/users/sign_out'
       visit '/users/sign_in'

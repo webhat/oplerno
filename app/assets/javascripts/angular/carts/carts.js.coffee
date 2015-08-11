@@ -24,7 +24,6 @@ window.oplernoApp.service 'CartsModel', [ 'CartsIO', (CartsIO) ->
 
     CartsIO.query query, (result) ->
       self.data = result
-      console.log result.result
 
   new CartsSession()
 ]
@@ -39,7 +38,6 @@ window.oplernoApp.controller 'CartsList', [ '$scope', 'CartsIO', 'CartsModel', (
     total = 0
     total = (total = total + product.price for product in $scope.cart)
     total = total[total.length-1]
-    console.log 'TOTAL:' + total
     total
 
   0 # DON'T REMOVE

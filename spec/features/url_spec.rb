@@ -11,7 +11,7 @@ describe 'Visiting URLs' do
   context 'while logged in as Teacher' do
     before (:each) do
       @teacher = Teacher.create! valid_user
-      @teacher.confirm!
+      @teacher.confirm
 
       visit '/users/sign_out'
       visit '/users/sign_in'
@@ -125,7 +125,7 @@ describe 'Visiting URLs' do
   context 'while logged in as User' do
     before (:each) do
       @user = User.create! valid_user
-      @user.confirm!
+      @user.confirm
 
       visit '/users/sign_out'
       visit '/users/sign_in'

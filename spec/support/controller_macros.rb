@@ -10,7 +10,7 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @_user = FactoryGirl.build(:user)
-      @_user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
+      @_user.confirm # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
       @_user.skip_confirmation_notification!
       @_user.save
       sign_in @_user

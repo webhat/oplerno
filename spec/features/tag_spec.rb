@@ -38,7 +38,7 @@ describe TagsController do
       expect(page.find('#tags')).to have_content 'blaat'
     end
     it 'visit mentor page add tag', js: true do
-      mentor.confirm!
+      mentor.confirm
       mentor.tags << Tag.create!( name: 'blaat' )
 
       visit '/users/sign_out'

@@ -12,12 +12,10 @@
     = paginate @searches
 :javascript
   $(window).ready(function() {
-      console.log('send analytics data');
       ga('create', 'UA-41537918-3', { 'cookieDomain': 'none' });
   		ga('send', 'pageview', {
   			'page': '/searches/*',
   			'title': 'Search All'
   		});
   
-      console.log('sent analytics data');
       });

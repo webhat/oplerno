@@ -133,7 +133,7 @@ ActiveAdmin.register User do
 
   member_action :confirm, :method => :get do
     user = User.find(params[:id])
-    user.confirm!
+    user.confirm
     redirect_to :action => :show, :notice => "Confirmed!"
   end
 

@@ -7,7 +7,7 @@ describe 'User Links' do
       I18n.locale = :en
 
       @user = FactoryGirl.build(:user, password: 'testtest', first_name: 'Test')
-      @user.confirm!
+      @user.confirm
 
       visit '/users/sign_out'
       visit '/users/sign_in'

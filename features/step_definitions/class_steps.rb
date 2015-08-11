@@ -87,7 +87,7 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I am confirmed$/ do
-  @user.confirm!
+  @user.confirm
   @user.save!
 end
 

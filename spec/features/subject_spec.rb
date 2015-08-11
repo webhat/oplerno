@@ -11,7 +11,7 @@ describe 'Visiting URLs' do
   context 'while logged in' do
     before(:each) do
       @user = Teacher.create! valid_user
-      @user.confirm!
+      @user.confirm
 
       @subject = Subject.create! subject: 'Test'
       @course = Course.new valid_course

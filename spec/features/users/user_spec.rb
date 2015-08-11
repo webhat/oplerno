@@ -8,7 +8,7 @@ describe 'User Login' do
 
   it "accepts a reqular user" do
     @user = FactoryGirl.build(:user, password: 'testtest')
-    @user.confirm!
+    @user.confirm
 
     visit '/users/sign_out'
     visit '/users/sign_in'
