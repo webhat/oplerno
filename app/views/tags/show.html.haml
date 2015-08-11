@@ -1,0 +1,13 @@
+#top-image
+  #title
+    = @resource.display_name
+  #mentors
+    - @resource.mentors.each do |mentor|
+      = render partial: 'mentors/mentor', locals: { resource: mentor }
+  .clearfix
+  %hr
+  - unless @resource.teams.empty?
+    #teams
+      %h1= t('tags.teams')
+      %h3= render @resource.teams.name
+#page

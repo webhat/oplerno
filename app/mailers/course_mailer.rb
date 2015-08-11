@@ -6,7 +6,8 @@ class CourseMailer < ActionMailer::Base
 
   def new_teacher course
     @course = course
-    @teacher = Teacher.find(course.teacher)
+    # FIXME: Only sends to first teacher
+    @teacher = course.teachers.first
 
     subject = t('courses.new_teacher', display_name: course.display_name)
     mail(subject: subject,

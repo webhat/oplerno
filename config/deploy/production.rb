@@ -12,3 +12,7 @@ set :ssh_options, {
   forward_agent: true,
   auth_methods: %w(publickey),
 }
+
+namespace :deploy do
+  before :starting, 'db:sync'
+end

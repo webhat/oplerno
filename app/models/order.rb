@@ -11,4 +11,14 @@ class Order < ActiveRecord::Base
   def price_in_cents
     (cart.total_price*100).round
   end
+
+  def display_name
+    ret = "Order #{id}"
+    unless self.cart.nil?
+      ret += " of #{cart.display_name}"
+    else
+      ret += " for user #{user.display_name} (#{user.id})" unless self.user.nil?
+    end
+    ret
+  end
 end

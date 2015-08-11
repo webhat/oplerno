@@ -1,6 +1,9 @@
 # Handles the User and ensures that it is linked to Canvas by way of a #CanvasUsers
 # #Student and #Teacher are aliases for this class
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :display_name, use: [:slugged, :history]
+
   extend EncryptedAttributes
   extend VirtualAttributes
   attr_accessible :avatar
@@ -87,7 +90,9 @@ class User < ActiveRecord::Base
 
   def display_name
     begin
-      "#{self.encrypted_first_name.force_encoding("binary")} #{self.encrypted_last_name.force_encoding("binary")}"
+      dn = "#{self.encrypted_first_name.force_encoding("binary")} #{self.encrypted_last_name.force_encoding("binary")}"
+      logger.info(dn)
+      dn
     rescue
       "Unknown"
     end

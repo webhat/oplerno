@@ -21,9 +21,11 @@
 //= require angular-resource
 //= require angular-sanitize
 //= require angular-timeago
+//= require angular-route
 //= require ngDialog
 //= require app
 //= require image-picker
 //= require jquery.lazyload.min
+//= require angular/oplerno_app
 //= require_tree .
 

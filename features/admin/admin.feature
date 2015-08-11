@@ -9,6 +9,8 @@ Feature: Admin Browse
 
 		Examples:
 			| clazz     |
+      | Team      |
+      | Mentor    |
 			| Cart			|
 			| Invite		|
 			| InviteCredit			|
@@ -32,6 +34,8 @@ Feature: Admin Browse
 
 		Examples:
 			| clazz     |
+      | Team      |
+      | Mentor    |
 			| Cart			|
 		  | Course		|
 			| Order			|
@@ -51,6 +55,8 @@ Feature: Admin Browse
 
 		Examples:
 			| clazz     |
+      | Team      |
+      | Mentor    |
 			| Cart			|
 		  | Course		|
 			| Order			|

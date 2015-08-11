@@ -1,15 +1,12 @@
 %div(class='navbar navbar-fixed-top navbar-inverse')
   .container
     .navbar-header
-      %a.cart.pull-right(href='/carts/mycart' class='btn active btn-danger navbar-toggle')
-        %div
-          %span(class='glyphicon glyphicon-shopping-cart')>
-          %i.cartcount 0
+      =render 'layouts/cart_button'
       %button.float-right(type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse')
         %span(class='icon-bar')
         %span(class='icon-bar')       
         %span(class='icon-bar')   
-      %a.float-left(href='/')
+      %a.float-left(href='/' target='_self')
         .logo
     .navbar-collapse(class='collapse')
       %ul(class='btn-group nav navbar-nav nav-bar-browse')
@@ -62,11 +59,8 @@
               .ph
                 = t('devise.sessions.new.sign_out')
       %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
-        %li
-          %a.cart(href='/carts/mycart' class='btn active btn-danger navbar-toggle hidden-xs')
-            %div
-              %span(class='glyphicon glyphicon-shopping-cart')>
-              %i.cartcount 0
+        %li.hidden-xs
+          =render 'layouts/cart_button'
       - if Setting.get_key('invites', 'false').value == 'true' || admin_user_signed_in?
         %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
           %li

@@ -29,9 +29,10 @@ describe CoursesHelper do
     end
   end
   context '#teachers_course' do
+    let (:course) { create :course }
+    let (:teacher) { create :teacher }
     it 'should be false when not signed in' do
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(false)
-      @course = FactoryGirl.build(:course, teacher: nil)
 
       expect(teachers_course?).to eq false
     end
@@ -39,17 +40,16 @@ describe CoursesHelper do
       user = FactoryGirl.create(:user)
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(true)
       expect_any_instance_of(Devise::TestHelpers).to receive(:current_user).and_return(user)
-      @course = FactoryGirl.create(:course)
-      @course.teacher = FactoryGirl.create(:user).id.to_s
+      course.teachers << teacher
+      @course = course
 
       expect(teachers_course?).to eq false
     end
     it 'should be true when the assigned teacher is the signed in user' do
-      user = FactoryGirl.create(:user)
       expect_any_instance_of(Devise::TestHelpers).to receive(:user_signed_in?).and_return(true)
-      expect_any_instance_of(Devise::TestHelpers).to receive(:current_user).and_return(user)
-      @course = FactoryGirl.create(:course)
-      @course.teacher = user.id.to_s
+      expect_any_instance_of(Devise::TestHelpers).to receive(:current_user).and_return(teacher)
+      course.teachers << teacher
+      @course = course
 
       expect(teachers_course?).to eq true
     end

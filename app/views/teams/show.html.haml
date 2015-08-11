@@ -1,0 +1,57 @@
+- if notice
+  #notice=notice
+#top-image{ ng: { controller: 'ProfilesController' } }
+  #title
+    = @resource.display_name.force_encoding('BINARY')
+  #mentors
+    - @resource.mentors.each do |mentor|
+      = render partial: 'mentors/mentor', locals: { resource: mentor }
+  #tags{ ng: { controller:'MentorTagsController' } }
+    %rep{ ng: { repeat:'tag in tags' } }
+      .tag
+        - if @resource.mentors.length == 1 && editable?
+          .close{ng:{click:"remove(tag.id)"}, data: {id: '{{tag.id}}'}} ×
+          //.edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+        %a(href='/tags/{{tag.slug}}' target='_self') {{ tag.name }}
+    - @resource.tags.each do |tag|
+      .tag
+        - if @resource.mentors.length == 1 && editable?
+          .close{ng:{click:"remove(#{tag.id})"}} ×
+          //.edit.pull-left.glyphicon.glyphicon-pencil{ ng: { click: 'edit()'}}
+        %a(href='/tags/#{tag.slug}' target='_self') #{ tag.name }
+    - if @resource.mentors.length == 1 && editable?
+      #new-tag.left-inner-addon
+        %li.string.input.optional.stringish
+          %form{ ng: {submit:'create()'}}
+            %input.form-control{ng: { model: 'new_tag' }, name: 'new-tag-input'}
+        %i.glyphicon.glyphicon-pencil.edit-tag-icon
+      %button.btn.btn-warning.new-tag-button{ng: {click: 'make()'}}=t('acceletator.tag.new')
+  #description
+    %div{ placeholder:'Write Something', contenteditable:"#{editable_string?}" }
+      = @resource.description.force_encoding('BINARY').html_safe
+  - if editable?
+    %button#save{ ng: { click: 'submit()' } }
+      .text
+        = t('teams.save')
+  #worked-with
+    - @resource.worked_with.each do |company|
+      .ww
+        .company-logo{ data:{ toggle:'tooltip', placement:'bottom' }, style:"background-image:url(#{ company.logo_url })",title:"#{company.name}"}
+
+  %button#apply{:href => "#", :onclick => "ga('send', 'event', 'button', 'click', 'apply #{@resource.class.to_s}', 4); open_application_dialog(); return false;"}
+    .text 
+      = t('teams.apply')
+.hidden
+  #application-dialog(title="#{ t('accelerator.application.title') }" width='400')
+    %h4= t('accelerator.application.question')
+    = semantic_form_for AcceleratorApplication.new, html: { id: 'target'} do |f|
+      %b= f.label t('acceletator.application.email')
+      %br
+      = f.text_field :email, placeholder: 'email@mail.com'
+      %p
+      %b= f.label t('acceletator.application.application_label')
+      %br
+      = f.text_area :description, placeholder: "#{t('accelerator.application.placeholder')}"
+      .hidden= f.text_field @resource.class.name.underscore.to_sym, value: @resource.id
+      .clearfix= f.submit t('accelerator.apply'), {:class => "btn btn-success btn-lg"}
+#page

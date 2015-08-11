@@ -20,7 +20,9 @@ class Course < ActiveRecord::Base
   validates_presence_of :name
 
   attr_accessible :name, :key, :price,
-    :description, :teacher,
+    :description,
+    :teacher,
+    :teacher_ids,
     :filename, :content_type,
     :binary_data, :picture,
     :subjects, :subject,
@@ -33,8 +35,7 @@ class Course < ActiveRecord::Base
   has_paper_trail ignore: [:slug]
   acts_as_paranoid
 
-  has_many :teachers
-  has_many :students
+  has_and_belongs_to_many :teachers
   has_and_belongs_to_many :users
   has_and_belongs_to_many :carts
   has_and_belongs_to_many :skills
@@ -42,6 +43,10 @@ class Course < ActiveRecord::Base
   has_one :canvas_course
 
   has_one :rank, class_name: 'CourseRanking'
+
+  def course_teacher? cu
+    !teachers.select { |teacher| teacher == cu }.empty?
+  end
 
   def name
     display_name = read_attribute(:name)

@@ -1,0 +1,81 @@
+nl:
+  devise:
+    confirmations:
+      confirmed: "Gebruiker is geverifieerd"
+      confirmed_and_signed_in: "Je gebruikers is geverifieerd. Je bent nu ingelogd."
+      send_instructions: "Je ontvangt binnen enkele minuten instructies om je gebruiker te verifiëren."
+      send_paranoid_instructions: "Als je email adres in ons bestand staat zul je binnen enkele minuten instructies ontvangen on deze te verifiëren."
+      resend_confirm: "Verstuur verificatie opnieuw"
+      no_confirmation: "Geen verificatie instructies gekregen?"
+    failure:
+      already_authenticated: "Je bent al ingelogd"
+      inactive: "Je gebruiker is nog niet geactiveerd"
+      invalid: "Verkeerd email adres of wachtwoord"
+      invalid_token: "Fout Authenticatie Code"
+      locked: "Je gebruiker is gedeactiveerd"
+      not_found_in_database: "Fout email adres of wachtwoord"
+      timeout: "Voor jou veiligheid is je sessie beëindigd. Log opnieuw in om verder te gaan."
+      unauthenticated: "Je moet een gebruiker aanmaken of inloggen om verder te gaan."
+      unconfirmed: "Je moet je gebruiker verefieeren om verder te gaan"
+    mailer:
+      confirmation_instructions:
+        subject: "Oplerno: Verificatie Instructies"
+        instructions: "Je kunt je gebruiker verifiëren met deze link:"
+        confirm: "Verifieer mijn gebruiker"
+      reset_password_instructions:
+        subject: "Oplerno: Instructies voor het Herstellen van je Wachtwoord"
+      unlock_instructions:
+        subject: "Oplerno: Instructies voor Gebruiker Deblokkeren"
+      broken_link: 'Link gebroken? Kopieer en plak de onderstaande link in je browser:'
+    omniauth_callbacks:
+      failure: "Het was niet mogelijk om je te authenticeren vanaf %{kind} vanwege: \"%{reason}\"."
+      success: "Succesvolle authenticatie vanaf %{kind} gebruiker."
+    passwords:
+      no_token: "Je kun alleen deze pagina benaderen met een wachtwoord herstel email. Als je vanaf een herstel mail komt is het belangrijk de volle URL te gebruiken"
+      send_instructions: "Je ontvangt per mail binnen enkele minuten instructies om je wachtwoord te herstellen."
+      send_paranoid_instructions: "Als je email adres in ons bestand staat zul je binnen enkele minuten instructies ontvangen om je wachtwoord te herstellen."
+      updated: "Je wachtwoord is aangepast. Je bent nu ingelogd."
+      updated_not_active: "Je wachtwoord is aangepast."
+      send: "Stuur mij instructies voor het herstellen van mijn wachtwoord"
+      forgot: "Herstel je wachtwoord?"
+      new:
+        password: "Nieuw wachtwoord"
+        confirm: "Verificeer je nieuwe wachtwoord"
+        button: "Verander mijn wachtwoord"
+        change: "Verander jou wachtwoord"
+    registrations:
+      destroyed: "Tot ziens. Je gebruiker is succesvol gedeactiveerd. Jammer dat je weg gaat!"
+      signed_up: "Welkom! Je hebt je aangemeld bij Oplerno."
+      signed_up_but_inactive: "Je bent aangemeld. Echter konden we je nog niet inloggen, omdat je account nog niet geactiveerd is."
+      signed_up_but_locked: "Je bent aangemeld. Echter konden we je nog niet inloggen, omdat je account geblokkeerd is."
+      signed_up_but_unconfirmed: "Er is een bericht naar je verstuurt met een link om je gebruiker te activeren. Na activatie kun je gebruik maken van deze dienst."
+      update_needs_confirmation: "Je email is aangepast, ter verificatie sturen we een link naar nieuwe email adres."
+      updated: "Je gebruiker is aangepast."
+      cancel: "Sluit mijn account"
+      update: "Aanpassen"
+    sessions:
+      signed_in: "Je bent ingelogd."
+      signed_out: "Je bent uitgelogd."
+      new:
+        email: 'Email'
+        password: 'Wachtwoord'
+        sign_in: 'Log In'
+        sign_out: 'Log Uit'
+    unlocks:
+      send_instructions: "Je ontvangt binnen enkele minuten instructies om je gebruiker te deblokkeren."
+      send_paranoid_instructions: "Als je email adres in ons bestand staat zul je binnen enkele minuten instructies ontvangen on deze te deblokkeren."
+      unlocked: "Je gebruiker is gedeblokkeerd. Login om verder te gaan."
+      resend_unlock: "Verstuur deblokkade instructies opnieuw"
+      no_unlock: "Heb je geen deblokkeer instructies gekregen?"
+    user:
+      sign_up: "Registreer"
+  errors:
+    messages:
+      already_confirmed: "al geverifieerd, probeer in te loggen"
+      confirmation_period_expired: "moet binnen %{period} worden geverifieerd, vraag een nieuwe aan"
+      expired: "is verlopen, vraag een nieuwe aan"
+      not_found: "niet gevonden"
+      not_locked: "was niet geblokkeerd"
+      not_saved:
+        one: "Door %{count} problemen was het niet mogelijk %{resource} op te slaan:"
+        other: "Door %{count} problemen was het niet mogelijk %{resource} op te slaan:"

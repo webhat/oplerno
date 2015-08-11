@@ -21,10 +21,19 @@ Oplerno::Application.routes.draw do
   constraint = lambda do |request|
                  request.env['warden'].authenticate!({ scope: :admin_user })
                end
+
   constraints constraint do
     mount Sidekiq::Web, at: '/admin/sidekiq'
   end
-
+  # Accelerator
+  resources :teams, only: [:show, :update] do
+    resource :tags, only: [:show]
+  end
+  resources :mentors, only: [:create, :show, :update] do
+    resources :tags, only: [:create, :show, :update, :destroy, :index]
+  end
+  resources :accelerator_applications, only: [:index, :update, :create]
+  resources :tags, only: :show
 
   devise_scope :user do
     get '/courses/me' => 'courses#me'
@@ -34,7 +43,9 @@ Oplerno::Application.routes.draw do
       resources :courses, only: [:show]
     end
     resource :invites, only: [:new, :create, :edit, :update]
-    resources :courses, except: [:new]
+    resources :courses, except: [:new, :create] do
+      resources :subjects, only: :show
+    end
     resources :teachers, only: [:edit, :show, :index]
     resources :users, only: [:edit, :show, :update]
     resources :subjects, only: [:index, :show]
@@ -42,6 +53,7 @@ Oplerno::Application.routes.draw do
     resources :orders, except: [:edit, :destroy, :show, :update, :index]
     resources :searches, only: [:index, :create]
     resources :certificates, only: [:show, :index, :create]
+
 
     post '/teachers/:id/contact' => 'teachers#contact'
     get '/teachers/:id/contact' => 'teachers#contact'
@@ -58,6 +70,8 @@ Oplerno::Application.routes.draw do
 
     post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
   end
+
+  get '/mentors/' => 'mentors#signup'
 
   mount Paperclip::Storage::Redis::App.new => '/dynamic'
 end

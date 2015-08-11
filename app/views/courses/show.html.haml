@@ -14,7 +14,7 @@
     .well.hide_name.magic_course
       .well
         = render @course
-    - teacher = Teacher.find(@course.teacher) unless @course.teacher.nil? or @course.teacher.empty?
+    - teacher = @course.teachers.first
     - unless teacher.nil?
       .well
         .well.hide_name
@@ -61,7 +61,7 @@
       - begin
         - @course.subjects.each { |subject|
         %span
-          = subject.subject
+          = link_to subject.subject, [@course, subject]
           ,
         - }
       - rescue
@@ -73,6 +73,7 @@
         - @course.skills.each { |skill|
         %span
           = skill.skill
+          ,
         - }
       - rescue
         = t('courses.skills.not_set')

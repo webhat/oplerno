@@ -14,6 +14,7 @@ SimpleCov.start 'rails' do
   add_group 'Models', 'app/models'
   add_group 'Helpers', 'app/helpers'
   add_group 'Mailers', 'app/mailers'
+  add_group 'Observers', 'app/observers'
   add_group 'Views', 'app/views'
   add_group 'Workers', 'app/workers'
 end
@@ -34,6 +35,9 @@ require 'cucumber'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
+
+  # TODO: fix factory girl to use let(:team) { create :team } syntax
+  config.include FactoryGirl::Syntax::Methods
 
   # config.infer_spec_type_from_file_location!
   config.filter_run focus: true
@@ -59,6 +63,14 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseCleaner.clean
+  end
+
+  # Capybara
+  config.before(:each, js: true) do
+    page.driver.browser.url_blacklist = ['https://cdn.supportkit.io/',
+                                         'jsdelivr-cb7.kxcdn.com',
+                                         'http://rum-collector.pingdom.net/',
+                                         'http://insights.hotjar.com/']
   end
 
 

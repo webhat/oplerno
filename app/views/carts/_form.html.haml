@@ -3,7 +3,7 @@
     #error_explanation
       %h2
         = pluralize(@cart.errors.count, "error")
-        prohibited this cart from being saved:
+        <%= t('cart.error.save_failed') %>
       %ul
         - @cart.errors.full_messages.each do |msg|
           %li= msg

@@ -1,158 +1,209 @@
+---
 en:
-  social:
-    top_courses: 'Popular Courses'
-    top_courses_description: "Today's most visited courses"
+  accelerator:
+    application:
+      placeholder: Write your application here
+      question: What are the things you need to be able to consider an application?
+      title: Apply
+    apply: Submit Application
+  acceletator:
+    application:
+      application_label: Full Application
+      email: How can we contact you?
+  active_admin:
+    dashboard: Dashboard
+    dashboard_welcome:
+      call_to_action: Come and look around!
+      welcome: Welcome
+    versions: Recent Changes
+  browse:
+    about: About
+    by_course_title: By Course Title
+    by_instructor: By Instructor
+    by_subject: By Subject
+    canvas: Canvas
+    contact: Contact
+    nav:
+      help: Help
+      inbox: Inbox
+    register: Register
+    settings: Settings
+  cart:
+    add_something: Your Cart is empty. Add a course to you cart to continue.
+    error:
+      save_failed: 'prohibited this cart from being saved:'
+    mycart: My Cart
+    pay: Complete Purchase
+    remove: Remove
+    removed: Removed "%{course}" from Order
+  contact_teacher:
+    mail:
+      from: 'From: %{from}'
+      from_student: One of your future students has a question for you.
+      to: Dear %{to},
+  courses:
+    contact: Contact Instructor
+    date:
+      end: End Date
+      not_set: Coming soon
+      start: Start Date
+    fail:
+      already_in: You are already taking this course
+      inactive: This course can not be added
+      no_check_out: You need to sign in to complete this transaction
+      own_course: You can only edit your own courses
+      too_many: This course has reached its limit
+    graduate:
+      hint: 'Please select if your course is at the graduate or undergraduate level:'
+      name: Level
+    mine: Your Courses
+    new: New Course
+    new_teacher: You have been added as a Teacher to %{display_name}
+    register: Take This Course
+    skill:
+      hint: 'Please select the skills that your course offers:'
+      name: Skill
+    subject:
+      hint: 'Please select the most appropriate discipline under which your course
+        should be listed:'
+      name: Discipline
+    success:
+      add_to_cart: Course was added to cart <a class="col-md-offset-4 offset2 btn
+        btn-warning" href="/carts/mycart">Checkout Now</a>
+      added_to_cart: The course was added to your cart
+      check_out: Checkout Now
+      create: Course was successfully created
+      update: Course was successfully updated
+    title: Courses Open For Enrollment
+    update: Update Course
+    view: View
   date:
     formats:
-      default: "%d %B %Y"
-      google: "%Y-%m-%d"
-  search:
-    search: 'Search'
-    term: 'Search Term'
-    not_found: 'Not Found: "%{term}"'
-  name: 'Name'
-  price: 'Fee'
-  students:
-    success:
-      create: 'Student was successfully created'
-      update: 'Student was successfully updated'
-  teachers:
-    teachers: 'Instructors'
-    teacher: 'Instructor'
-    success:
-      create: 'Teacher was successfully created'
-      update: 'Teacher was successfully updated'
-    mail:
-      welcome: 'Your Oplerno Account and Faculty Orientation'
-    view: 'View'
-    complete: 'Having your information up to date will improve your ranking in the marketplace.'
-  users:
-    mail:
-      notification: 'New user account was created "%{user}"'
-      order: 'Somebody place and order, not yet paid'
-      order_transaction: 'Somebody paid'
-    update: 'Update User'
-    view: 'View details'
-    change_password_notice: 'You can <a href="/users/edit">change your password here</a>.'
-    messages:
-      extra_security: 'Additional Security Features'
-      authy_description: '<a href="%{url}" target="_new">Click here to enter your phone number</a>'
-    links: 'Links'
-    link:
-      name: 'Link Description'
-      url: 'URL'
-    fail:
-      user_record: 'You can only edit your own user record'
-      no_description: 'You need to provide a description for your links'
-    fields:
-      authy_enabled: 'Enable Two Factor Authentication'
-      hidden: 'Hide user from view and search'
-      avatar: "Avatar"
-      title: "Title"
-      first_name: "First Name"
-      last_name: "Last Name"
-      description: "Description"
-      email: "Email"
-  orders:
-    success: 'Success'
-    summary: 'Courses Summary'
-    total: 'Total'
-    description: 'Enrolling at Oplerno'
-  cart:
-    add_something: 'Your Cart is empty. Add a course to you cart to continue.'
-    removed: 'Removed "%{course}" from Order'
-    remove: 'Remove'
-    mycart: 'My Cart'
-    pay: 'Complete Purchase'
-  payments:
-    description: 'Course(s) with Oplerno LLC. %{courses}'
-  courses:
-    mine: 'Your Courses'
-    title: 'Courses Open For Enrollment'
-    register: 'Take This Course'
-    view: 'View'
-    contact: 'Contact Instructor'
-    date:
-      start: 'Start Date'
-      end: 'End Date'
-      not_set: 'Coming soon'
-    new: 'New Course'
-    new_teacher: "You have been added as a Teacher to %{display_name}"
-    update: 'Update Course'
-    skill:
-      name: 'Skill'
-      hint: 'Please select the skills that your course offers:'
-    subject:
-      name: 'Discipline'
-      hint: 'Please select the most appropriate discipline under which your course should be listed:'
-    graduate:
-      name: 'Level'
-      hint: 'Please select if your course is at the graduate or undergraduate level:'
-    success:
-      create: 'Course was successfully created'
-      update: 'Course was successfully updated'
-      add_to_cart: 'Course was added to cart <a class="col-md-offset-4 offset2 btn btn-warning" href="/carts/mycart">Checkout Now</a>'
-      added_to_cart: 'The course was added to your cart'
-      check_out: 'Checkout Now'
-    fail:
-      own_course: 'You can only edit your own courses'
-      inactive: 'This course can not be added'
-      already_in: 'You are already taking this course'
-      too_many: 'This course has reached its limit'
-      no_check_out: 'You need to sign in to complete this transaction'
+      default: '%d %B %Y'
+      google: '%Y-%m-%d'
   generic:
-    back: 'Back'
-    edit: 'Edit'
-  active_admin:
-    dashboard: "Dashboard"
-    dashboard_welcome:
-      welcome: "Welcome"
-      call_to_action: "Come and look around!"
-    versions: 'Recent Changes'
+    back: Back
+    edit: Edit
+  invites:
+    accept:
+      not_us: Accept
+      us: Accept as a US National
+    applied: The credit will be applied onec you've completed 30% of the course
+    claim:
+      email: Fill in your email address below to create your account.
+      text: To be able to register for your free class you need to create a user account.
+        After that you can register for a course.
+      title: Earn A Free Class
+    create_user: Accept and Create User
+    created: Created your invite URL
+    cta:
+      free_classes: Take Free Classes
+      free_courses: Take Free Courses
+      refer_a_friend: Refer a Friend
+      tell_a_friend: Tell a Friend
+    invite:
+      accepted: You create an invite URL
+    invite_credit:
+      accepted: You're one step closer to $%{amount} at Oplerno!
+      notification: You have $%{amount} to use toward an Oplerno course!
+    no_invite: Sorry, we couldn't find that invite
+    not_applied: You need to create a user first
+  login:
+    button: Login
+    canvas:
+      fail: Cannot login in to Canvas using the Marketplace
+      fail_info: If you have a Canvas account you can login in directly below
+    canvas_html: Login with your Marketplace credentials
+    canvas_info_html: If you are coming from Canvas and only have an account on Canvas
+      please use <a href='%{link}'>direct login</a>.
+  mentors:
+    email_changed: You've been added as a Mentor %{display_name}
+    wizard:
+      dialog:
+        form:
+          angellist: 'AngelList ID:'
+          angellist_placeholder: mentor
+          email: 'Email:'
+          email_placeholder: mentor@example.com
+          finish: Finish
+          fullname: 'Fullname:'
+          fullname_placeholder: What you are known by
+        thank_you:
+          message: Thank you for signing up, you will recieve a mail to set your password
+            and sign in to your account.
+          title: Mentor Wizard Completed
+        error:
+          message: An error occured, we are looking into it.
+          title: Mentor Wizard Error
+        title: Mentor Wizard
   modal:
     popup:
-      sure: "Are you sure?"
-      discard: "Do you want to discard changes?"
-      ok: "OK"
-      cancel: "Cancel"
-  browse:
-    by_subject: "By Subject"
-    by_course_title: "By Course Title"
-    by_instructor: "By Instructor"
-    about: "About"
-    contact: "Contact"
-    register: "Register"
-    canvas: "Canvas"
-    settings: "Settings"
-    nav:
-      inbox: "Inbox"
-      help: "Help"
-  login:
-    canvas_html: "Login with your Marketplace credentials"
-    canvas_info_html: "If you are coming from Canvas and only have an account on Canvas please use <a href='%{link}'>direct login</a>."
-    canvas:
-      fail: "Cannot login in to Canvas using the Marketplace"
-      fail_info: "If you have a Canvas account you can login in directly below"
-  invites:
-    no_invite: "Sorry, we couldn't find that invite"
-    invite:
-      accepted: 'You create an invite URL'
-    accept:
-      us: 'Accept as a US National'
-      not_us: 'Accept'
-    created: 'Created your invite URL'
-    create_user: 'Accept and Create User'
-    applied: "The credit will be applied onec you've completed 30% of the course"
-    not_applied: 'You need to create a user first'
-    claim:
-      title: 'Earn A Free Class'
-      text: 'To be able to register for your free class you need to create a user account. After that you can register for a course.'
-      email: 'Fill in your email address below to create your account.'
-    cta:
-      free_courses: 'Take Free Courses'
-      free_classes: 'Take Free Classes'
-      tell_a_friend: 'Tell a Friend'
-      refer_a_friend: 'Refer a Friend'
-    invite_credit:
-      accepted: "You're one step closer to $%{amount} at Oplerno!"
-      notification: "You have $%{amount} to use toward an Oplerno course!"
+      cancel: Cancel
+      discard: Do you want to discard changes?
+      ok: OK
+      sure: Are you sure?
+  name: Name
+  orders:
+    description: Enrolling at Oplerno
+    success: Success
+    summary: Courses Summary
+    total: Total
+  payments:
+    description: Course(s) with Oplerno LLC. %{courses}
+  price: Fee
+  search:
+    not_found: 'Not Found: "%{term}"'
+    search: Search
+    term: I want to learn
+  social:
+    top_courses: Popular Courses
+    top_courses_description: Today's most visited courses
+  students:
+    success:
+      create: Student was successfully created
+      update: Student was successfully updated
+  tags:
+    mentors: Mentors
+    teams: Teams
+  teachers:
+    complete: Having your information up to date will improve your ranking in the
+      marketplace.
+    mail:
+      welcome: Your Oplerno Account and Faculty Orientation
+    success:
+      create: Teacher was successfully created
+      update: Teacher was successfully updated
+    teacher: Instructor
+    teachers: Instructors
+    view: View
+  teams:
+    apply: Apply
+    save: Save Description
+  users:
+    change_password_notice: You can <a href="/users/edit">change your password here</a>.
+    fail:
+      no_description: You need to provide a description for your links
+      user_record: You can only edit your own user record
+    fields:
+      authy_enabled: Enable Two Factor Authentication
+      avatar: Avatar
+      description: Description
+      email: Email
+      first_name: First Name
+      hidden: Hide user from view and search
+      last_name: Last Name
+      title: Title
+    link:
+      name: Link Description
+      url: URL
+    links: Links
+    mail:
+      notification: New user account was created "%{user}"
+      order: Somebody placed an order, not yet paid
+      order_transaction: Somebody paid
+    messages:
+      authy_description: <a href="%{url}" target="_new">Click here to enter your phone
+        number</a>
+      extra_security: Additional Security Features
+    update: Update User
+    view: View details

@@ -13,7 +13,7 @@ ActiveAdmin.register User do
       end
       link_to "#{name} (#{user.id})", [user]
     end
-    column 'Courses' do |user|
+    column 'Courses (incorrect)' do |user|
       render 'admin/courses_panel', data: Course.find(:all, conditions: ["teacher = ?", user.id])
     end
     column :email do |user|
@@ -29,10 +29,10 @@ ActiveAdmin.register User do
     default_actions
   end
 
-  filter :email
-  filter :current_sign_in_at
-  filter :last_sign_in_at
-  filter :sign_in_count
+  #filter :email
+  #filter :current_sign_in_at
+  #filter :last_sign_in_at
+  #filter :sign_in_count
 
   show do |user|
     columns do
@@ -165,7 +165,6 @@ ActiveAdmin.register User do
       f.input :description
       f.input :email
       if f.object.new_record?
-        f.input :mailpass unless user.is_teacher?
         f.input :privateemail unless user.is_teacher?
       end
       f.input :password

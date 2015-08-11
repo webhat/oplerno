@@ -165,6 +165,7 @@ gem 'sinatra', require: false
 gem 'slim'
 gem 'bullet', group: 'development'
 
+gem 'angellist_api'
 gem 'podio', git: 'https://github.com/webhat/podio-rb.git'
 gem 'podiocrm', git: 'https://github.com/webhat/podiocrm.git'
 # gem 'podiocrm', path: '../podiocrm'

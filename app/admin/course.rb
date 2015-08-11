@@ -11,7 +11,7 @@ ActiveAdmin.register Course do
     column :start_date
     column :price
     column 'Instructor' do |course|
-      course_teacher = course.teacher
+      course_teacher = course.teachers.first
       unless course_teacher.blank?
         teacher = Teacher.find(course_teacher)
         begin
@@ -89,12 +89,13 @@ ActiveAdmin.register Course do
           end
         end
       end
-      unless course.teacher.blank?
-        teacher = Teacher.find(course.teacher)
-        column do
-          render 'admin/ranking_panel', data: teacher
-          render 'admin/teacher_panel', data: teacher
-          render 'admin/more_courses_panel', data: teacher
+      unless course.teachers.empty?
+        course.teachers.each do |teacher|
+          column do
+            render 'admin/ranking_panel', data: teacher
+            render 'admin/teacher_panel', data: teacher
+            render 'admin/more_courses_panel', data: teacher
+          end
         end
       end
     end
@@ -103,9 +104,10 @@ ActiveAdmin.register Course do
 
   filter :name
   filter :start_date
-  # filter :teacher, :collection => User.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
+  #filter :teachers, :collection => Teacher.all.map { |x| ["#{x.first_name} #{x.last_name}", x.id] }
 
   form do |f|
+    f.actions
     f.inputs 'Course Details' do
       f.input :name
       f.input :slug
@@ -114,7 +116,7 @@ ActiveAdmin.register Course do
       f.input :syllabus
       f.input :hidden
       f.input :start_date
-      f.input :teacher, collection: Teacher.all.map { |x| [x.display_name.force_encoding('UTF-8'), x.id] }
+      f.input :teachers, as: :select, input_html: { multiple: true }
       f.input :avatar, as: :file, required: false
     end
     f.actions

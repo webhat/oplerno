@@ -7,7 +7,7 @@ class TeachersController < UsersController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Kaminari.paginate_array( Teacher.all ).page(params[:page])
+    @teachers = Kaminari.paginate_array( Teacher.includes(:rank).order("teacher_rankings.ranking desc") ).page(params[:page])
   end
 
   # GET /teachers/1

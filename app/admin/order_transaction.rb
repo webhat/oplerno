@@ -39,5 +39,16 @@ ActiveAdmin.register OrderTransaction do
         link_to user.email, [:admin, user] unless user.nil?
       end
     end
+    column 'PayPal ID' do |order_transaction|
+      val = order_transaction.params.decrypt Devise.secret_key
+      JSON.parse(val)['payer']
+    end
+  end
+  form do |f|
+    f.inputs 'Course Details' do
+      f.input :order, :collection => Order.all.map do |x|
+        ["#{x.display_name}", x.id]
+      end
+    end
   end
 end
