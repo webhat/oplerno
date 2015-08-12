@@ -24,8 +24,7 @@ SimpleCov.use_merging true
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'rspec/autorun'
-require 'cadre/rspec'
+#require 'cadre/rspec'
 require 'factory_girl_rails'
 require 'faker'
 require 'cucumber'
@@ -38,10 +37,7 @@ RSpec.configure do |config|
 
   # TODO: fix factory girl to use let(:team) { create :team } syntax
   config.include FactoryGirl::Syntax::Methods
-
   config.infer_spec_type_from_file_location!
-
-  # config.infer_spec_type_from_file_location!
   config.filter_run focus: true
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -107,7 +103,8 @@ RSpec.configure do |config|
     #but do consider:
     #config.add_formatter(Cadre::RSpec::TrueFeelingsFormatter)
   end
-  config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
-  config.add_formatter(Cadre::RSpec::QuickfixFormatter)
-end
+#  config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
+#  config.add_formatter(Cadre::RSpec::QuickfixFormatter)
 
+  # config.raise_errors_for_deprecations!
+end

@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe Admin::CoursesController do
   render_views
   login_admin
