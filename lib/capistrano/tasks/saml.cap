@@ -1,0 +1,22 @@
+require 'sshkit/dsl'
+
+# Run `cap saml:archive` when you re-key, otherwise `cap saml:upload` to deploy keys.
+namespace :saml do
+  desc 'Create saml archive'
+  task :archive do
+    sh 'touch archive.tgz && rm archive.tgz'
+    sh 'touch config/saml/archive.tgz && rm config/saml/archive.tgz'
+    sh 'tar zcvf archive.tgz -C config/ ./saml/'
+    sh 'mv archive.tgz config/saml/'
+  end
+
+  desc 'Upload saml keys'
+  task :upload do
+    on roles(:app, :db), in: :sequence, wait: 5 do
+      upload! "config/saml/archive.tgz", "archive.tgz"
+      execute 'tar zpxvf archive.tgz; rm archive.tgz'
+      execute "rm -rf #{shared_path}/config/saml"
+      execute "mv -f ~/saml/ #{shared_path}/config/"
+    end
+  end
+end

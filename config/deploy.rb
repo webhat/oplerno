@@ -19,6 +19,7 @@ set :linked_dirs, %w{
   vendor/bundle
   public/system
   config/strongbox
+  config/saml
 }
 
 set :format, :pretty
