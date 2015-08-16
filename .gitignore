@@ -38,3 +38,4 @@ errors.err
 
 dump.rdb
 app/assets/images/accel
+config/saml
