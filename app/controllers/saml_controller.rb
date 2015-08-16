@@ -24,10 +24,10 @@ class SamlController < ApplicationController
     settings.assertion_consumer_service_url = "http://#{request.host}/saml/consume"
     settings.issuer                         = request.host
     settings.idp_sso_target_url             = "https://localhost:3000/saml/auth/#{OneLoginAppId}"
-    settings.idp_cert_fingerprint           = OneLoginAppCertFingerPrint
-    settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
-    # Optional for most SAML IdPs
-    settings.authn_context = "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
+    settings.idp_cert_fingerprint = "BC:E7:93:9F:0B:D4:C2:49:53:64:88:70:7E:EA:3F:48:6E:92:B7:34"
+    settings.name_identifier_format = SamlIdp::Default::NAME_ID_FORMAT
+    settings.certificate = SamlIdp.config.x509_certificate
+    settings.private_key = SamlIdp.config.secret_key
 
     settings
   end

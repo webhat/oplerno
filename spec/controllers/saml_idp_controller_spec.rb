@@ -38,7 +38,7 @@ describe SamlIdpController do
         response.name_id.should == "foo@oplerno.com"
         response.issuer.should == "http://oplerno.com"
         response.settings = saml_settings
-        response.is_valid?.should be_true
+        expect(response).to be_is_valid
       end
     end
   end
@@ -55,7 +55,7 @@ describe SamlIdpController do
         expect(response.status).to eq(200)
       end
       it 'should not authenticate with existing user from bad domain' do
-        user = FactoryGirl.build(:user, password: 'testme')
+        FactoryGirl.build(:user, password: 'testme')
         requested_saml_acs_url = "https://example.com/"
         params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
         post :create, params
@@ -97,8 +97,11 @@ describe SamlIdpController do
     settings.assertion_consumer_service_url = saml_acs_url
     settings.issuer = "http://oplerno.com/issuer"
     settings.idp_sso_target_url = "http://idp.com/saml/idp"
-    settings.idp_cert_fingerprint = SamlIdp::Default::FINGERPRINT
+    #settings.idp_cert_fingerprint = SamlIdp::Default::FINGERPRINT
+    settings.idp_cert_fingerprint = "BC:E7:93:9F:0B:D4:C2:49:53:64:88:70:7E:EA:3F:48:6E:92:B7:34"
     settings.name_identifier_format = SamlIdp::Default::NAME_ID_FORMAT
+    settings.certificate = SamlIdp.config.x509_certificate
+    settings.private_key = SamlIdp.config.secret_key
     settings
   end
 
