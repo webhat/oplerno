@@ -1,6 +1,6 @@
 class Mentor < User
   has_and_belongs_to_many :teams
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, join_table: 'mentors_tags'
   has_one :angel
 
   attr_accessible :team_ids, :angel, :slug, :display_name

@@ -10,7 +10,6 @@ describe Mentor do
 
   context 'methods' do
     it ':tags' do
-      expect(mentor.tags).to be_kind_of(Array)
       expect(mentor.tags).to be_empty
     end
     it ':angellist_url fail' do

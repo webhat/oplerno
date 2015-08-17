@@ -14,7 +14,7 @@ Oplerno::Application.routes.draw do
   }
 
   devise_scope :admin_users do
-    match 'admin/mailer(/:mailer(/:method(.:format)))' => 'mailpreview#show'
+    get 'admin/mailer(/:mailer(/:method(.:format)))' => 'mailpreview#show'
   end
 
   # Protect SideKiq

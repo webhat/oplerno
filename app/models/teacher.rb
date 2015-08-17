@@ -15,9 +15,9 @@ class Teacher < User
   has_one :rank, class_name: 'TeacherRanking'
   has_one :podio_teacher
   has_many :certificates
-  has_and_belongs_to_many :courses
+  has_and_belongs_to_many :courses, join_table: 'courses_teachers'
 
-  def self.all(*args)
-    find(:all, *args, conditions: [ "email like ?", "%oplerno.com"])
-  end
+#   def self.all(*args)
+#     find(:all, *args, conditions: [ "email like ?", "%oplerno.com"])
+#   end
 end

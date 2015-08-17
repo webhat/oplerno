@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :cart
   has_many :transactions, :class_name => 'OrderTransaction'
 
-  default_scope :order => 'created_at DESC'
+  default_scope { order(:created_at => :desc) }
 
   attr_accessible :ip, :transactions #, :cart_id, :user_id
 

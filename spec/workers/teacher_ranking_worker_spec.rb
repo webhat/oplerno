@@ -9,6 +9,6 @@ RSpec.describe TeacherRankingWorker, :type => :worker do
 
     teacher_ranking = Teacher::find(user.id).rank
 
-    teacher_ranking.should_not be_nil
+    expect(teacher_ranking).to_not be_nil
   end
 end

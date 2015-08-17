@@ -18,7 +18,7 @@ describe OrdersController do
   describe 'GET new' do
     it 'assigns a new order as @order' do
       get :new, {}
-      assigns(:order).should be_a_new(Order)
+      expect(assigns(:order)).to be_a_new(Order)
     end
   end
 
@@ -33,29 +33,29 @@ describe OrdersController do
 
       it 'assigns a newly created order as @order' do
         post :create, {:order => valid_attributes}
-        assigns(:order).should be_a(Order)
-        assigns(:order).should be_persisted
+        expect(assigns(:order)).to be_a(Order)
+        expect(assigns(:order)).to be_persisted
       end
 
       it 'redirects to the created order' do
         post :create, {:order => valid_attributes}
-        response.status.should eq 302
+        expect(response.status).to eq 302
       end
     end
 
     describe 'with invalid params' do
       it 'assigns a newly created but unsaved order as @order' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
+        expect_any_instance_of(Order).to receive(:save).and_return(false)
         post :create, {:order => {}}
-        assigns(:order).should be_a_new(Order)
+        expect(assigns(:order)).to be_a_new(Order)
       end
 
       it 're-renders the "new" template' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
+        expect_any_instance_of(Order).to receive(:save).and_return(false)
         post :create, {:order => {}}
-        response.should render_template('new')
+        expect(response).to render_template('new')
       end
     end
   end
@@ -73,18 +73,17 @@ describe OrdersController do
     vcr_options = {:record => :once, :allow_playback_repeats => true}
     context 'Something', vcr: vcr_options do
       before :each do
-        Order.any_instance.stub(:price_in_cents).and_return(1000*100)
+        expect_any_instance_of(Order).to receive(:price_in_cents).and_return(1000*100)
         @cart = Cart.create!
         @cart.user = FactoryGirl.create(:user)
         order = @cart.build_order
         order.save
         valid_params[:id] = order.id
-        OrdersController.any_instance.stub(:current_cart).and_return(@cart)
+        expect_any_instance_of(OrdersController).to receive(:current_cart).at_least(1).and_return(@cart)
       end
       it 'create any error state' do
         err = ActiveMerchant::Billing::PaypalExpressResponse.new false, 'Error'
-        ActiveMerchant::Billing::PaypalExpressGateway.
-          any_instance.stub(:details_for).and_return(err)
+        expect_any_instance_of(ActiveMerchant::Billing::PaypalExpressGateway).to receive(:details_for).and_return(err)
         get :confirm, valid_params
         @cart.reload
         expect(@cart.order).to be_a Order
@@ -105,27 +104,27 @@ describe OrdersController do
     vcr_options = {:record => :once}
     context 'with vcr and', vcr: vcr_options do
       it 'should set a cart without params' do
-        OrdersController.any_instance.stub(:purchase)
+        expect_any_instance_of(OrdersController).to receive(:purchase)
         controller.send(:set_order)
-        assigns(:order).should be_a Order
+        expect(assigns(:order)).to be_a Order
       end
       it 'should set a cart with params' do
-        OrdersController.any_instance.stub(:purchase)
+        expect_any_instance_of(OrdersController).to receive(:purchase)
         controller.params[:order] = {  }
         controller.send(:set_order)
-        assigns(:order).should be_a Order
+        expect(assigns(:order)).to be_a Order
       end
       it 'should not set a cart based on current_cart is nil' do
-        OrdersController.any_instance.stub(:current_cart).and_return(nil)
-        OrdersController.any_instance.stub(:purchase)
+        expect_any_instance_of(OrdersController).to receive(:current_cart).and_return(nil)
+        #expect_any_instance_of(OrdersController).to receive(:purchase)
         expect {
           controller.send(:set_order)
-        }.to raise_error
+        }.to raise_error NoMethodError
       end
       it 'should set the current_user' do
-        OrdersController.any_instance.stub(:purchase)
+        expect_any_instance_of(OrdersController).to receive(:purchase)
         controller.send(:set_order)
-        assigns(:order).user.should eq current_user
+        expect(assigns(:order).user).to eq current_user
       end
     end
   end
@@ -150,7 +149,7 @@ describe OrdersController do
       cart.save!
       cart.build_order.save
       valid_params[:id] = cart.order.id
-      OrdersController.any_instance.stub(:current_cart).and_return(cart)
+      expect_any_instance_of(OrdersController).to receive(:current_cart).at_least(1).and_return(cart)
     end
 
     it ':confirm success' do

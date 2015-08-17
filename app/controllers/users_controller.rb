@@ -64,9 +64,9 @@ class UsersController  < ApplicationController #< InheritedResources::Base #
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     unless params[:id].nil?
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
     else
-      @user = User.find(current_user.id)
+      @user = User.friendly.find(current_user.id)
     end
   end
 

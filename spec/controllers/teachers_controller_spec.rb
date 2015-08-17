@@ -24,7 +24,7 @@ describe TeachersController do
     it "assigns the requested user as @user" do
       teacher = Teacher.create! valid_attributes
       get :show, {:id => teacher.to_param}, valid_session
-      assigns(:teacher).should eq(teacher)
+      expect(assigns(:teacher)).to eq(teacher)
     end
   end
 
@@ -36,7 +36,7 @@ describe TeachersController do
 
     it 'sends an email to the teacher' do
       post :contact, {id: @teacher.id, format: 'json', question: { from: 'example@oplerno.com', course_id: @course.id, question: 'Do you know stuff?'}}
-      assigns(:teacher).should eq(@teacher)
+      expect(assigns(:teacher)).to eq(@teacher)
     end
 
     it 'shouldn\'t use other than json' do
@@ -78,7 +78,7 @@ describe TeachersController do
       end
       it 'responds successfully redirects to new user session' do
         get :edit, {id: @user.id}
-        response.should redirect_to(new_user_session_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end

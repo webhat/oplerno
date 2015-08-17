@@ -12,6 +12,6 @@ describe CourseMailer do
     expect(course_mail.to[0]).to eq(teacher.email)
 
     course_mail.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
 end

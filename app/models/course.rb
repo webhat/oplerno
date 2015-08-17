@@ -35,7 +35,7 @@ class Course < ActiveRecord::Base
   has_paper_trail ignore: [:slug]
   acts_as_paranoid
 
-  has_and_belongs_to_many :teachers
+  has_and_belongs_to_many :teachers, join_table: 'courses_teachers'
   has_and_belongs_to_many :users
   has_and_belongs_to_many :carts
   has_and_belongs_to_many :skills

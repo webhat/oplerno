@@ -5,6 +5,6 @@ describe MentorMailer do
   it 'should send mail' do
     mentor_mailer = described_class.email_changed mentor
     mentor_mailer.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
 end

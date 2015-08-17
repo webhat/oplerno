@@ -96,7 +96,6 @@ class CoursesController < ApplicationController
     return unless current_user?
 
     avatar = Course.find(params['image-picker']).avatar
-    p "#{url_prefix request}#{avatar.url(:medium)}"
     @course.avatar = avatar
     @course.save
     render layout: false
@@ -121,7 +120,7 @@ class CoursesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = Course.find(params[:id])
+    @course = Course.friendly.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white

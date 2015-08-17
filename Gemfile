@@ -10,14 +10,14 @@ end
 gem 'libnotify', require: RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', require: RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '~> 3.2.21'
+gem 'rails', '~> 4.0.0'
 gem 'jquery-rails', '< 3.0.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '>= 2.2.1'
+gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0.5'
+gem 'jbuilder'
 gem 'jpbuilder'
 
 group :doc do
@@ -25,12 +25,12 @@ group :doc do
   gem 'yard', require: false
   gem 'guard-rspec'
   gem 'guard-yard'
-  gem 'guard-jasmine', '~> 2.0.1'
+  gem 'guard-jasmine'
   gem 'guard-coffeescript', github: 'guard/guard-coffeescript'
-  gem 'guard-cucumber', '~> 1.5.0'
+  gem 'guard-cucumber'
   gem 'guard-rubocop'
-  gem 'brakeman', '~> 2.6.3'
-  gem 'guard-brakeman', '~> 0.8.2'
+#   gem 'brakeman', '~> 2.6.3'
+#   gem 'guard-brakeman', '~> 0.8.2'
   gem 'redcarpet'
 
   # metrics
@@ -43,11 +43,11 @@ group :doc do
   gem 'cadre', require: false
 end
 
-gem 'activeadmin', '>= 0.6.3'
+gem 'activeadmin', github: 'activeadmin'
 gem 'paper_trail'
-gem 'paranoia', '~> 1.0'
-gem 'activemerchant', '>= 1.42.7'
-gem 'devise', '~> 3.5'
+gem 'paranoia'
+gem 'activemerchant'
+gem 'devise'
 gem 'devise-i18n', '>= 0.10.3'
 gem 'devise-authy', '>= 1.5.0'
 # FIXME: What's wrong here?
@@ -60,7 +60,7 @@ gem 'ruby-saml', '>= 0.8.2'
 gem 'ruby-saml-idp'
 gem 'newrelic_rpm', '>= 3.7.3.204'
 gem 'coveralls', require: false
-gem 'kaminari', '>= 0.15.1'
+gem 'kaminari'
 
 gem 'canvas-api', '>= 1.0'
 
@@ -70,11 +70,11 @@ gem 'paperclip', '~> 4.1.1'
 gem 'tinymce-rails'
 
 gem 'haml'
-gem 'haml-rails', '~> 0.4'
+gem 'haml-rails'
 
 group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'chardinjs-rails', '>= 0.1.3'
   gem 'rails-assets-jquery-ui'
@@ -122,7 +122,7 @@ end
 group :test do
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'capybara', '>= 2.2.0'
+  gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
   gem 'timecop'
@@ -138,7 +138,7 @@ end
 gem 'icalendar'
 
 gem 'nokogiri', '= 1.6.3.1'
-gem 'redis', '~> 3.0.4'
+gem 'redis'
 gem 'redis-rails'
 gem 'redis-store'
 gem 'redis-rack-cache'
@@ -173,5 +173,9 @@ gem 'paperclip_redis', '~> 0.1.1'
 # gem 'paperclip_redis', path: '../paperclip_redis'
 
 
+# UPGRADE
+gem 'protected_attributes'
+gem 'rails-observers'
+
 # SECURITY UPDATES
-gem 'rack', '=1.4.5'
+#gem 'rack', '>=1.5.4'

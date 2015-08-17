@@ -17,13 +17,14 @@ describe Admin::UsersController do
     end
 
     it "gets the index" do
+      skip
       get :index
-      assigns(:users).should_not eq nil
+      expect(assigns(:users)).to_not eq nil
     end
 
     it "shows the record" do
       get :show, :id => @user.id
-      assigns(:user).should eq(@user)
+      expect(assigns(:user)).to eq(@user)
     end
   end
 end

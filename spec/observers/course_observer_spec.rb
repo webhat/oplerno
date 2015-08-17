@@ -5,7 +5,7 @@ describe CourseObserver, :type => :observer  do
 
   context 'Create Course' do
     it 'should call after_create on observer' do
-      subject.should_receive(:after_create)
+      expect( subject ).to receive(:after_create)
 
       Course.observers.enable :course_observer do
         FactoryGirl.create(:course)
@@ -13,7 +13,7 @@ describe CourseObserver, :type => :observer  do
     end
 
     it 'should call after_create on observer' do
-      CourseObserver.any_instance.should_receive(:after_create).once
+      expect_any_instance_of(described_class).to receive(:after_create).once
 
       Course.observers.enable :course_observer do
         FactoryGirl.create(:course)
@@ -26,14 +26,14 @@ describe CourseObserver, :type => :observer  do
       Course.observers.enable :course_observer do
         course = FactoryGirl.create(:course)
       end
-      course.should respond_to(:rank)
-      course.rank.should respond_to(:course)
-      course.should eq course.rank.course
+      expect( course ).to respond_to(:rank)
+      expect( course.rank ).to respond_to(:course)
+      expect( course ).to eq course.rank.course
     end
   end
   context 'Save Course' do
     it 'should call after_save on observer' do
-      subject.should_receive(:after_save)
+      expect( subject ).to receive(:after_save)
       course = FactoryGirl.create(:course)
 
       Course.observers.enable :course_observer do
@@ -42,7 +42,7 @@ describe CourseObserver, :type => :observer  do
     end
 
     it 'should call after_save on observer' do
-      CourseObserver.any_instance.should_receive(:after_save).once
+      expect_any_instance_of(described_class).to receive(:after_save).once
       course = FactoryGirl.create(:course)
 
       Course.observers.enable :course_observer do
@@ -56,9 +56,9 @@ describe CourseObserver, :type => :observer  do
       Course.observers.enable :course_observer do
         course.save
       end
-      course.rank.should respond_to(:rank)
-      course.should eq course.rank.course
-      course.rank.ranking.should eq 15
+      expect( course.rank ).to respond_to(:rank)
+      expect( course ).to eq course.rank.course
+      expect( course.rank.ranking ).to eq 15
     end
 
     it 'should send a mail if a teacher is added to a course' do

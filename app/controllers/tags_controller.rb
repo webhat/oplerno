@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @resource = Tag.includes(:mentors, :teams).find(params[:id])
+    @resource = Tag.includes(:mentors, :teams).friendly.find(params[:id])
   end
 
   def update
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
   end
 
   def set_tag
-    @tag = Tag.find(params[:id])
+    @tag = Tag.friendly.find(params[:id])
   end
 
   def mentor_id

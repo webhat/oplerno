@@ -12,7 +12,7 @@ describe SamlIdpController do
     requested_saml_acs_url = "https://oplerno.com/saml/consume"
     params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
     validate_saml_request
-    saml_acs_url.should == requested_saml_acs_url
+    expect(saml_acs_url).to eq requested_saml_acs_url
   end
 
   context "SAML Responses" do
@@ -24,10 +24,10 @@ describe SamlIdpController do
     it "should create a SAML Response" do
       saml_response = encode_SAMLResponse("foo@oplerno.com")
       response = OneLogin::RubySaml::Response.new(saml_response)
-      response.name_id.should == "foo@oplerno.com"
-      response.issuer.should == "http://oplerno.com"
+      expect(response.name_id).to eq "foo@oplerno.com"
+      expect(response.issuer).to eq "http://oplerno.com"
       response.settings = saml_settings
-      response.is_valid?.should be_truthy
+      expect(response).to be_is_valid
     end
 
     [:sha1, :sha256, :sha384, :sha512].each do |algorithm_name|
@@ -35,8 +35,8 @@ describe SamlIdpController do
         self.algorithm = algorithm_name
         saml_response = encode_SAMLResponse("foo@oplerno.com")
         response = OneLogin::RubySaml::Response.new(saml_response)
-        response.name_id.should == "foo@oplerno.com"
-        response.issuer.should == "http://oplerno.com"
+        expect(response.name_id).to eq "foo@oplerno.com"
+        expect(response.issuer).to eq "http://oplerno.com"
         response.settings = saml_settings
         expect(response).to be_is_valid
       end
@@ -77,7 +77,7 @@ describe SamlIdpController do
         requested_saml_acs_url = "https://oplerno.test.instructure.com/"
         params[:SAMLRequest] = make_saml_request(requested_saml_acs_url)
         post :create, params, {}
-        response.should redirect_to(new_user_session_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end

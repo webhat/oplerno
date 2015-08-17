@@ -4,8 +4,8 @@ ActiveAdmin.register_page 'Dashboard' do
   content title: proc { I18n.t('active_admin.dashboard') } do
     columns do
       column do
-        panel "New Courses (#{Course.all.count})" do
-          table_for Course.all(limit: 10, order: 'created_at DESC') do
+        panel "New Courses (#{Course.count})" do
+          table_for Course.order( 'created_at DESC' ).limit ( 10 ) do
             column do |course|
               link_to course.name, [:admin, course]
             end
@@ -13,8 +13,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recently Active Courses (#{Course.all.count})" do
-          table_for Course.all(limit: 10, order: 'updated_at DESC') do
+        panel "Recently Active Courses (#{Course.count})" do
+          table_for Course.order( 'updated_at DESC' ).limit ( 10 ) do
             column do |course|
               link_to course.name, [:admin, course]
             end
@@ -22,8 +22,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "New Users (#{User.all.count})" do
-          table_for User.all(limit: 10, order: 'created_at DESC') do
+        panel "New Users (#{User.count})" do
+          table_for User.where('email NOT like "%localhost"').order( 'created_at DESC' ).limit ( 10 ) do
             column do |user|
               link_to user.display_name.force_encoding('UTF-8'), [:admin, user]
             end
@@ -34,8 +34,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recently Active Users (#{User.all.count})" do
-          table_for User.all(limit: 10, order: 'last_sign_in_at DESC') do
+        panel "Recently Active Users (#{User.count})" do
+          table_for User.where('email NOT like "%localhost"').order( 'updated_at DESC' ).limit ( 10 ) do
             column do |user|
               link_to user.display_name.force_encoding('UTF-8'), [:admin, user]
             end
@@ -43,10 +43,10 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recently Active Teachers (#{Teacher.all.count})" do
-          table_for Teacher.all(limit: 10, order: 'last_sign_in_at DESC') do
+        panel "Recently Active Teachers (#{Teacher.count})" do
+          table_for Teacher.limit(10).order('last_sign_in_at DESC') do
             column do |teacher|
-              teacher.rank.ranking
+              #teacher.rank.ranking
             end
             column do |teacher|
               link_to teacher.display_name.force_encoding('UTF-8'), [:admin, User.find(teacher.id)]
@@ -57,8 +57,8 @@ ActiveAdmin.register_page 'Dashboard' do
     end
     columns do
       column do
-        panel "Ranking Teachers (#{TeacherRanking.all.count})" do
-          table_for TeacherRanking.all(limit: 10, order: 'ranking DESC') do
+        panel "Ranking Teachers (#{TeacherRanking.count})" do
+          table_for TeacherRanking.limit(10).order('ranking DESC') do
             column &:ranking
             column do |rank|
               link_to rank.teacher.display_name.force_encoding('UTF-8'), [:admin, User.find(rank.teacher.id)]
@@ -67,8 +67,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Ranking Courses (#{CourseRanking.all.count})" do
-          table_for CourseRanking.all(limit: 10, order: 'ranking DESC') do
+        panel "Ranking Courses (#{CourseRanking.count})" do
+          table_for CourseRanking.limit( 10).order( 'ranking DESC') do
             column &:ranking
             column do |rank|
               link_to rank.course.name.force_encoding('UTF-8'), [:admin, rank.course]
@@ -79,7 +79,7 @@ ActiveAdmin.register_page 'Dashboard' do
     end
     columns do
       column do
-        panel "Popular Searches (#{Search.all.count})" do
+        panel "Popular Searches (#{Search.count})" do
           table_for Search.select('term, count(id) as count_id').group('term').limit(10).order('count_id desc') do
             column 'Term' do |search|
               search.term
@@ -91,8 +91,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recent Searches (#{Search.all.count})" do
-          table_for Search.all(limit: 10, order: 'created_at DESC') do
+        panel "Recent Searches (#{Search.count})" do
+          table_for Search.limit( 10).order( 'created_at DESC') do
             column 'Term' do |search|
               search.term
             end
@@ -100,9 +100,9 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recent Orders (#{Order.all.count})" do
+        panel "Recent Orders (#{Order.count})" do
           ul do
-            table_for Order.all(limit: 10).map do
+            table_for Order.limit( 10).map do
               column do |order|
                 link_to order.cart_id, [:admin, order]
               end
@@ -111,9 +111,9 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Recent Cart (#{Cart.all.count})" do
+        panel "Recent Cart (#{Cart.count})" do
           ul do
-            table_for Cart.all(limit: 10).map do
+            table_for Cart.limit( 10).map do
               column do |cart|
                 begin
                   link_to cart.total_price, [:admin, cart]

@@ -38,10 +38,10 @@ describe CanvasCourses do
 
   context 'Factory' do
     it 'has a valid factory' do
-      FactoryGirl.create(:canvas_course).should be_valid
+     expect(FactoryGirl.create(:canvas_course)).to be_valid
     end
     it 'is valid with a course' do
-      FactoryGirl.build(:canvas_course, course: FactoryGirl.create(:course)).should be_valid
+      expect(FactoryGirl.build(:canvas_course, course: FactoryGirl.create(:course))).to be_valid
     end
   end
 

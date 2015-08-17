@@ -106,5 +106,5 @@ RSpec.configure do |config|
 #  config.add_formatter(Cadre::RSpec::NotifyOnCompleteFormatter)
 #  config.add_formatter(Cadre::RSpec::QuickfixFormatter)
 
-  # config.raise_errors_for_deprecations!
+   config.raise_errors_for_deprecations!
 end

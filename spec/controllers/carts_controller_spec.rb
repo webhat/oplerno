@@ -21,8 +21,8 @@ describe CartsController do
 
         it 'assigns a newly created cart as @cart' do
           post :create, {:cart => valid_cart}
-          assigns(:cart).should be_a(Cart)
-          assigns(:cart).should be_persisted
+          expect(assigns(:cart)).to be_a(Cart)
+          expect(assigns(:cart)).to be_persisted
         end
 
         it 'should add the course to the cart' do
@@ -47,14 +47,14 @@ describe CartsController do
           end
 
           post :create, {}, valid_session
-          session[:course_id].should be(nil)
-          flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-          flash[:alert].should be nil
+          expect(session[:course_id]).to be(nil)
+          expect(flash[:notice]).to eq (I18n.t 'courses.success.add_to_cart')
+          expect(flash[:alert]).to be nil
 
           post :create, {}, valid_session
-          session[:course_id].should be(nil)
-          flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-          flash[:alert].should be nil
+          expect(session[:course_id]).to be(nil)
+          expect(flash[:notice]).to eq (I18n.t 'courses.success.add_to_cart')
+          expect(flash[:alert]).to be nil
         end
 
         it 'can\'t add the course to the cart if the class is full' do
@@ -68,8 +68,8 @@ describe CartsController do
           end
 
           post :create, {}, valid_session
-          flash[:notice].should be nil
-          flash[:alert].should eq (I18n.t 'courses.fail.too_many')
+          expect(flash[:notice]).to be nil
+          expect(flash[:alert]).to eq (I18n.t 'courses.fail.too_many')
         end
       end
     end
@@ -96,7 +96,7 @@ describe CartsController do
     describe 'GET show' do
       it 'assigns the requested cart as @cart' do
         get :show, {:id => @cart.to_param}
-        assigns(:cart).should eq(@cart)
+        expect(assigns(:cart)).to eq(@cart)
       end
     end
 
@@ -114,8 +114,8 @@ describe CartsController do
 
         it 'assigns a newly created cart as @cart' do
           post :create, {:cart => valid_cart}
-          assigns(:cart).should be_a(Cart)
-          assigns(:cart).should be_persisted
+          expect(assigns(:cart)).to be_a(Cart)
+          expect(assigns(:cart)).to be_persisted
         end
 
         it 'should add the course to the cart' do
@@ -128,7 +128,7 @@ describe CartsController do
 
           post :create, {}, valid_session
 
-          session[:course_id].should be(nil)
+          expect(session[:course_id]).to be(nil)
         end
 
         it 'can add the course to the cart twice' do
@@ -140,14 +140,14 @@ describe CartsController do
           end
 
           post :create, {}, valid_session
-          session[:course_id].should be(nil)
-          flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-          flash[:alert].should be nil
+          expect(session[:course_id]).to be(nil)
+          expect(flash[:notice]).to eq (I18n.t 'courses.success.add_to_cart')
+          expect(flash[:alert]).to be nil
 
           post :create, {}, valid_session
-          session[:course_id].should be(nil)
-          flash[:notice].should eq (I18n.t 'courses.success.add_to_cart')
-          flash[:alert].should be nil
+          expect(session[:course_id]).to be(nil)
+          expect(flash[:notice]).to eq (I18n.t 'courses.success.add_to_cart')
+          expect(flash[:alert]).to be nil
         end
 
         it 'can\'t add the course to the cart if you are taking it' do
@@ -161,8 +161,8 @@ describe CartsController do
           current_user.courses << @course
 
           post :create, {}, valid_session
-          flash[:notice].should be nil
-          flash[:alert].should eq (I18n.t 'courses.fail.already_in')
+          expect(flash[:notice]).to be nil
+          expect(flash[:alert]).to eq (I18n.t 'courses.fail.already_in')
         end
 
         it 'can\'t add the course to the cart if the class is full' do
@@ -176,17 +176,17 @@ describe CartsController do
           end
 
           post :create, {}, valid_session
-          flash[:notice].should be nil
-          flash[:alert].should eq (I18n.t 'courses.fail.too_many')
+          expect(flash[:notice]).to be nil
+          expect(flash[:alert]).to eq (I18n.t 'courses.fail.too_many')
         end
       end
 
       describe 'with invalid params' do
         it 'assigns a newly created but unsaved cart as @cart' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Cart.any_instance.stub(:save).and_return(false)
+          expect_any_instance_of(Cart).to receive(:save).and_return(false)
           post :create, {:cart => {}}
-          assigns(:cart).should be_a(Cart)
+          expect(assigns(:cart)).to be_a(Cart)
         end
       end
     end
@@ -200,7 +200,7 @@ describe CartsController do
 
       it 'redirects to the carts list' do
         delete :destroy, {:id => @cart.to_param}
-        response.should redirect_to(courses_url)
+        expect(response).to redirect_to(courses_url)
       end
     end
 
@@ -210,8 +210,8 @@ describe CartsController do
         expect {
           post :remove_course_from_cart, {cart: @cart.id, course: course.id}
         }.to change(@cart.courses, :count).by(-1)
-        response.should redirect_to(@cart)
-        flash[:notice].should eq (I18n.t 'cart.removed', {course: course.name})
+        expect(response).to redirect_to(@cart)
+        expect(flash[:notice]).to eq (I18n.t 'cart.removed', {course: course.name})
       end
     end
   end

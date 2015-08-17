@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OrderTransaction do
   it 'has a valid factory' do
-    FactoryGirl.create(:order_transaction).should be_valid
+    expect(FactoryGirl.create(:order_transaction)).to be_valid
   end
 
   context 'Strongbox' do
@@ -35,9 +35,6 @@ describe OrderTransaction do
     end
     # Don't change the names or cassettes or this will fail
     it 'throws an error', :vcr => vcr_options do
-      GATEWAY.stub(:purchase).and_return(nil)
-      expect(GATEWAY).to_not have_received(:purchase)
-
       order_transaction = FactoryGirl.create(:order_transaction)
       response = GATEWAY.details_for('EC-2OPN7UJGFWK9OYFV')
       expect(response).to_not eq nil

@@ -10,9 +10,9 @@ describe VersionsController do
         email = user.email
         user.update_attributes!(:email => 'x@example.com')
         user.update_attributes!(:email => 'y@example.com')
-        user.should be_versioned
+        expect(user).to be_versioned
         post :revert, {id: user.versions.first.id }
-        user.reload.email.should eq email
+        expect(user.reload.email).to eq email
       end
     end
   end

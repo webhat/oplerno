@@ -17,7 +17,7 @@ describe AngelObserver do
     end
   end
   it 'should fetch angellist profile before_save on observer' do
-    Mentor.any_instance.stub(:update_avatar)
+    expect_any_instance_of(Mentor).not_to receive(:update_avatar)
     mentor = FactoryGirl.create(:mentor)
     angel = mentor.create_angel
 
@@ -27,7 +27,7 @@ describe AngelObserver do
     end
   end
   it 'should fetch angellist profile before_save on observer', vcr: {record: :once} do
-    Mentor.any_instance.stub(:update_avatar)
+    expect_any_instance_of(Mentor).to receive(:update_avatar)
     mentor = FactoryGirl.create(:mentor)
     angel = mentor.build_angel angelslug: 'joshuaxls'
 

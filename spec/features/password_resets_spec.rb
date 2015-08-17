@@ -5,7 +5,7 @@ describe "PasswordResets" do
     it "works!" do
       visit '/users/password/new'
 
-      page.status_code.should == 200
+      expect(page.status_code).to eq 200
     end
 
     it "emails user when requesting password reset" do

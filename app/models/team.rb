@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
 
   attr_accessible :description, :name, :slug
   attr_accessible :mentor_ids
-  has_and_belongs_to_many :mentors
+  has_and_belongs_to_many :mentors, join_table: 'mentors_teams'
   has_and_belongs_to_many :tags
 
   alias_attribute :display_name, :name

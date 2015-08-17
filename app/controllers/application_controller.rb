@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def undo_link model
-    unless instance_variable_get("@#{model}").versions.scoped.last.nil?
-      view_context.link_to("undo", revert_version_path(instance_variable_get("@#{model}").versions.scoped.last), :method => :post)
+    unless instance_variable_get("@#{model}").versions.last.nil?
+      view_context.link_to("undo", revert_version_path(instance_variable_get("@#{model}").versions.last), :method => :post)
     end
   end
 

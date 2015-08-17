@@ -5,7 +5,7 @@ describe Notification, :type => :mailer do
 
   it 'should accept a user model' do
     Notification.new_user(FactoryGirl.create(:user)).deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
   it 'should send an email to a faculty member' do
     user = FactoryGirl.create(:user)
@@ -14,7 +14,7 @@ describe Notification, :type => :mailer do
     expect(faculty_mail.to[0]).to eq(user.privateemail)
 
     faculty_mail.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
   it 'should send an email to the admin' do
     user = FactoryGirl.create(:user)
@@ -23,7 +23,7 @@ describe Notification, :type => :mailer do
     expect(faculty_mail.to[0]).to eq('webmaster@oplerno.com')
 
     faculty_mail.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
   it 'should send an email to the admin' do
     user = FactoryGirl.create(:user)
@@ -32,7 +32,7 @@ describe Notification, :type => :mailer do
     expect(transactor.to[0]).to eq('webmaster@oplerno.com')
 
     transactor.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
   it 'should send an email to the admin' do
     user = FactoryGirl.create(:user)
@@ -41,6 +41,6 @@ describe Notification, :type => :mailer do
     expect(transactor.to[0]).to eq('webmaster@oplerno.com')
 
     transactor.deliver
-    ActionMailer::Base.deliveries.should_not be_empty
+    expect(ActionMailer::Base.deliveries).to_not be_empty
   end
 end

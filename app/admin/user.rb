@@ -14,7 +14,7 @@ ActiveAdmin.register User do
       link_to "#{name} (#{user.id})", [user]
     end
     column 'Courses (incorrect)' do |user|
-      render 'admin/courses_panel', data: Course.find(:all, conditions: ["teacher = ?", user.id])
+      render 'admin/courses_panel', data: Course.where("teacher = #{ user.id }")
     end
     column :email do |user|
       if user.unconfirmed_email.nil?
@@ -63,7 +63,7 @@ ActiveAdmin.register User do
       column do
         render 'admin/ranking_panel', resource: Teacher.find(user.id) if user.is_teacher?
         panel 'Courses' do
-          courses = Course.find(:all, conditions: ["teacher = ?", user.id])
+          courses = Course.where("teacher = #{ user.id }")
           courses.each do |course|
             columns title: 'Courses' do
               column do

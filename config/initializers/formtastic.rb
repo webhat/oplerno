@@ -46,8 +46,8 @@
 # for the text inside each @<option>@ tag or alongside each radio @<input>@. The first method
 # that is found on the object will be used.
 # Defaults to ["to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
-Formtastic::FormBuilder.collection_label_methods = [
-  "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
+# Formtastic::FormBuilder.collection_label_methods = [
+#   "to_label", "display_name", "full_name", "name", "title", "username", "login", "value", "to_s"]
 
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: true. Overridden for specific fields by setting value to true,
@@ -64,13 +64,47 @@ Formtastic::FormBuilder.collection_label_methods = [
 
 # You can add custom inputs or override parts of Formtastic by subclassing Formtastic::FormBuilder and
 # specifying that class here.  Defaults to Formtastic::FormBuilder.
-# Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder
+# Formtastic::Helpers::FormHelper.builder = MyCustomBuilder
+
+# All formtastic forms have a class that indicates that they are just that. You
+# can change it to any class you want.
+# Formtastic::Helpers::FormHelper.default_form_class = 'formtastic'
+
+# Formtastic will infer a class name from the model, array, string ot symbol you pass to the
+# form builder. You can customize the way that class is presented by overriding
+# this proc.
+# Formtastic::Helpers::FormHelper.default_form_model_class_proc = proc { |model_class_name| model_class_name }
+
+# Allows to set a custom field_error_proc wrapper. By default this wrapper
+# is disabled since `formtastic` already adds an error class to the LI tag
+# containing the input.
+# Formtastic::Helpers::FormHelper.formtastic_field_error_proc = proc { |html_tag, instance_tag| html_tag }
 
 # You can opt-in to Formtastic's use of the HTML5 `required` attribute on `<input>`, `<select>`
-# and `<textarea>` tags by setting this to false (defaults to true).
-# Formtastic::FormBuilder.use_required_attribute = true
+# and `<textarea>` tags by setting this to true (defaults to false).
+# Formtastic::FormBuilder.use_required_attribute = false
 
 # You can opt-in to new HTML5 browser validations (for things like email and url inputs) by setting
-# this to false. Doing so will add a `novalidate` attribute to the `<form>` tag.
+# this to true. Doing so will add a `novalidate` attribute to the `<form>` tag.
 # See http://diveintohtml5.org/forms.html#validation for more info.
 # Formtastic::FormBuilder.perform_browser_validations = true
+
+# By creating custom input class finder, you can change how input classes  are looked up.
+# For example you can make it to search for TextInputFilter instead of TextInput.
+# See # TODO: add link # for more information
+# NOTE: this behavior will be default from Formtastic 4.0
+Formtastic::FormBuilder.input_class_finder = Formtastic::InputClassFinder
+
+# Define custom namespaces in which to look up your Input classes. Default is
+# to look up in the global scope and in Formtastic::Inputs.
+# Formtastic::FormBuilder.input_namespaces = [ ::Object, ::MyInputsModule, ::Formtastic::Inputs ]
+
+# By creating custom action class finder, you can change how action classes are looked up.
+# For example you can make it to search for MyButtonAction instead of ButtonAction.
+# See # TODO: add link # for more information
+# NOTE: this behavior will be default from Formtastic 4.0
+Formtastic::FormBuilder.action_class_finder = Formtastic::ActionClassFinder
+
+# Define custom namespaces in which to look up your Action classes. Default is
+# to look up in the global scope and in Formtastic::Actions.
+# Formtastic::FormBuilder.action_namespaces = [ ::Object, ::MyActionsModule, ::Formtastic::Actions ]

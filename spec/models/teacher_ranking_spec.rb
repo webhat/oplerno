@@ -6,13 +6,13 @@ describe TeacherRanking do
   end
 
   it 'has a valid factory' do
-    FactoryGirl.create(:teacher_ranking).should be_valid
+    expect(FactoryGirl.create(:teacher_ranking)).to be_valid
   end
 
   it 'accepts a Teacher' do
     teacher_ranking = FactoryGirl.build(:teacher_ranking, {teacher: @teacher})
     teacher_ranking.save
-    teacher_ranking.should be_valid
+    expect(teacher_ranking).to be_valid
   end
 
   context 'Rank Elements' do
@@ -32,7 +32,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 10
+      expect(@teacher.rank.ranking).to eq 10
     end
     it 'should rank empty first name as 0' do
       @teacher.first_name = ''
@@ -40,7 +40,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 0
+      expect(@teacher.rank.ranking).to eq 0
     end
     it 'should rank no first name as 0' do
       @teacher.first_name = nil
@@ -48,7 +48,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 0
+      expect(@teacher.rank.ranking).to eq 0
     end
     it 'should rank last name' do
       @teacher.last_name = Faker::Name.last_name
@@ -56,7 +56,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 10
+      expect(@teacher.rank.ranking).to eq 10
     end
     it 'should rank title' do
       @teacher.title = 'Dr'
@@ -64,7 +64,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 5
+      expect(@teacher.rank.ranking).to eq 5
     end
     it 'should rank avatar' do
       skip 'Error accessing member teacher[:avatar]'
@@ -73,7 +73,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 30
+      expect(@teacher.rank.ranking).to eq 30
     end
 
     it 'should rank last sign in' do
@@ -83,7 +83,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 10
+      expect(@teacher.rank.ranking).to eq 10
     end
 
     [0, 10, 20, 30, 40, 50, 80, 100, 200].each do |cnt|
@@ -93,7 +93,7 @@ describe TeacherRanking do
 
         @teacher.rank.rank
 
-        @teacher.rank.ranking.should eq cnt/10
+        expect(@teacher.rank.ranking).to eq cnt/10
       end
     end
 
@@ -103,7 +103,7 @@ describe TeacherRanking do
 
       @teacher.rank.rank
 
-      @teacher.rank.ranking.should eq 40
+      expect(@teacher.rank.ranking).to eq 40
     end
   end
 end

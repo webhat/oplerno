@@ -56,6 +56,5 @@ describe 'Visiting URLs' do
 
       expect(page).to have_content valid_course[:name]
     end
-    it 'should create a new subject'
   end
 end

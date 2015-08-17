@@ -25,11 +25,11 @@ describe UsersController do
         user.save
 
         get :edit, {id: current_user_id}
-        assigns(:user).encrypted_first_name.should eq current_user.encrypted_first_name
+        expect(assigns(:user).encrypted_first_name).to eq current_user.encrypted_first_name
       end
       it 'should show email' do
         get :edit, {id: current_user_id}
-        assigns(:user).email.should eq current_user.email
+        expect(assigns(:user).email).to eq current_user.email
       end
     end
     context 'while signed out' do
@@ -38,7 +38,7 @@ describe UsersController do
       end
       it 'should show email' do
         get :edit, {id: @user.id}
-        assigns(:user).email.should eq @user.email
+        expect(assigns(:user).email).to eq @user.email
       end
     end
   end
@@ -53,14 +53,14 @@ describe UsersController do
 
         put :update, {id: user.to_param, user: {first_name: 'Other Name'}}
         user.reload
-        assigns(:user).encrypted_first_name.should eq user.encrypted_first_name
+        expect(assigns(:user).encrypted_first_name).to eq user.encrypted_first_name
       end
       it 'should update email' do
         user = current_user
 
         put :update, {id: user.to_param, user: {email: 'test_user_controller@oplerno.com'}}
         user.reload
-        assigns(:user).email.should eq user.email
+        expect(assigns(:user).email).to eq user.email
       end
     end
     context 'while signed out'
@@ -76,11 +76,11 @@ describe UsersController do
         user.save
 
         get :show, {id: current_user_id}
-        assigns(:user).encrypted_first_name.should eq current_user.encrypted_first_name
+        expect(assigns(:user).encrypted_first_name).to eq current_user.encrypted_first_name
       end
       it 'should show email' do
         get :show, {id: current_user_id}
-        assigns(:user).email.should eq current_user.email
+        expect(assigns(:user).email).to eq current_user.email
       end
     end
     context 'while signed out'
