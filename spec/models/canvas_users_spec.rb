@@ -112,9 +112,6 @@ describe CanvasUsers do
     end
     it '#update'
     it '#canvas'
-    it '#update_all' do
-      pending 'Errors out on occasion'
-      CanvasUsers.update_all
-    end
+    it '#update_all'
   end
 end

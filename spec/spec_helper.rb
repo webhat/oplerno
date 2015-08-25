@@ -39,6 +39,8 @@ RSpec.configure do |config|
   # TODO: fix factory girl to use let(:team) { create :team } syntax
   config.include FactoryGirl::Syntax::Methods
 
+  config.infer_spec_type_from_file_location!
+
   # config.infer_spec_type_from_file_location!
   config.filter_run focus: true
 

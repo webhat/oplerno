@@ -27,7 +27,7 @@ describe SamlIdpController do
       response.name_id.should == "foo@oplerno.com"
       response.issuer.should == "http://oplerno.com"
       response.settings = saml_settings
-      response.is_valid?.should be_true
+      response.is_valid?.should be_truthy
     end
 
     [:sha1, :sha256, :sha384, :sha512].each do |algorithm_name|

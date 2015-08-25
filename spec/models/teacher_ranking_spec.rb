@@ -67,7 +67,7 @@ describe TeacherRanking do
       @teacher.rank.ranking.should eq 5
     end
     it 'should rank avatar' do
-      pending 'Error accessing member teacher[:avatar]'
+      skip 'Error accessing member teacher[:avatar]'
       @teacher.avatar = Rack::Test::UploadedFile.new(Rails.root + 'spec/files/test.jpg', 'image/jpg')
       @teacher.save
 
@@ -77,7 +77,7 @@ describe TeacherRanking do
     end
 
     it 'should rank last sign in' do
-      pending 'Initial failure'
+      skip 'Initial failure'
       @teacher.last_sign_in_at = Faker::Date.between(2.days.ago, Date.today)
       @teacher.save
 

@@ -108,17 +108,5 @@ describe UserObserver, :type => :observer do
       expect( teacher.rank ).to_not be_nil
       expect( teacher.rank.teacher ).to_not be_nil
     end
-
-    it 'should link User to Ranking' do
-      pending 'fix this on next refactor'
-      user = double(User)
-
-      User.observers.enable :user_observer do
-        user = FactoryGirl.create(:user)
-      end
-      expect( user ).to respond_to(:rank)
-      expect( user.rank ).to respond_to(:user)
-      expect( user ).to eq user.rank.user
-    end
   end
 end

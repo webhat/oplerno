@@ -4,10 +4,6 @@ describe Cart do
   it "has a valid factory" do
     FactoryGirl.create(:cart).should be_valid
   end
-  it "is invalid without ..." do
-    pending
-    FactoryGirl.build(:cart, cart: nil).should_not be_valid
-  end
 
   it 'checks the amounts in the basket add up' do
     course1 = FactoryGirl.build(:course, price: 1000, name: 'course1')

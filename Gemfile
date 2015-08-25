@@ -10,7 +10,7 @@ end
 gem 'libnotify', require: RUBY_PLATFORM.include?('linux') && 'rb-inotify'
 gem 'growl', require: RUBY_PLATFORM.include?('darwin') && 'growl'
 
-gem 'rails', '~> 3.2.22'
+gem 'rails', '~> 3.2.21'
 gem 'jquery-rails', '< 3.0.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -110,10 +110,9 @@ group :development, :test do
   gem 'minitest-focus'
 
   gem 'minitest-reporters'
-  gem 'rspec-rails', '~>2.14'
-  gem 'rspec-expectations', '2.14'
+  gem 'rspec-rails', '~>2.99'
   gem 'rspec-mocks'
-  gem 'rspec', '~> 2.14'
+  gem 'rspec', '~> 2.99'
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'jasmine'

@@ -16,7 +16,7 @@ describe InvitesController do
     end
     it 'Invite#active' do
       post :create, {}
-      expect(assigns(:invite).active).to be_true
+      expect(assigns(:invite).active).to be_truthy
     end
     it 'Invite#code' do
       post :create, {}

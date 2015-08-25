@@ -60,41 +60,5 @@ describe CanvasCourses do
       expect(canvas_course.course).not_to eq new_course
       expect(canvas_course.course).to eq course
     end
-    it 'gets an update for all courses' do
-      pending 'you need to run a local redis and sidekiq for this to make any sense'
-      CanvasCourses.update_all
-    end
-    it "should add the user to Canvas when linked" do
-      pending 'doesn\'t work like this any more'
-      Rails.logger.should_receive(:info).exactly(0).times
-
-      canvas_course = CanvasCourses.update valid_canvas_course
-      canvas_course.save
-
-      canvas_user = CanvasUsers.update valid_canvas_user
-      canvas_user.create_user! valid_user
-      canvas_user.save!
-      canvas_user.user.save!
-
-      #$stdout.should_receive(:puts)
-      canvas_course.add_user canvas_user.user
-    end
-    it 'should log an error if it fails' do
-      pending 'doesn\'t work like this any more'
-      mock = double(Canvas::API)
-      mock.stub(:post).and_raise(Canvas::ApiError)
-      CanvasUsers.stub(:canvas).and_return(mock)
-
-      canvas_course = CanvasCourses.update valid_canvas_course
-      canvas_course.save
-
-      canvas_user = CanvasUsers.update valid_canvas_user
-      canvas_user.create_user! valid_user
-      canvas_user.save!
-      canvas_user.user.save!
-
-      #$stdout.should_receive(:puts)
-      canvas_course.add_user canvas_user.user
-    end
   end
 end
