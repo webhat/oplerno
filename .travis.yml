@@ -31,7 +31,7 @@ before_script:
 - mysql -e 'create database oplerno_test'
 - cp config/database.yml.example config/database.yml
 - mkdir config/strongbox && cp config/keypair.pem.example config/strongbox/keypair.pem
-- mkdir config/saml && cp config/saml.pem.example config/saml/saml.pem && cp config/saml.pub.example config/saml/saml.pub
+- mkdir config/saml ; cp config/saml.pem.example config/saml/saml.pem && cp config/saml.pub.example config/saml/saml.pub
 bundler_args: --binstubs=./bundler_stubs
 branches:
   only:
