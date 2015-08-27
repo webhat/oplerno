@@ -1,0 +1,353 @@
+$break-min: 320px;
+$break-small: 768px;
+$break-medium: 1024px;
+$break-large: 1440px;
+$icon-size: 256px;
+
+
+@mixin respond-to($media) {
+  @if $media == mini {
+    @media only screen and (max-width: $break-min) { @content; }
+  }
+  @if $media == handhelds {
+    @media only screen and (min-width: $break-min + 1) and (max-width: $break-small) { @content; }
+  }
+  @else if $media == small-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-medium - 1) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $break-medium + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+@mixin animate{
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+#topbar, #topbar * {
+  @include animate;
+  z-index: 10;
+}
+
+#top-bar-overflow {
+  @include respond-to(mini) {
+    height: 50px;
+  }
+  @include respond-to(handhelds) {
+    height: 50px;
+  }
+  @include respond-to(small-screens) {
+    height: 100px;
+  }  
+  @include respond-to(medium-screens) {
+    height: 100px;
+  }
+  @include respond-to(wide-screens) {
+    height: 100px;
+  }
+}
+
+.course {
+  @include respond-to(mini) {
+    width: $break-min;
+  }
+  @include respond-to(handhelds) {
+    max-width: $break-min;
+  }
+  @include respond-to(small-screens) {
+    max-width: $break-small;
+    //color: red !important;
+    display: block !important;
+  }
+  .course_icon {
+    width: $icon-size !important;
+    height: $icon-size !important;
+    padding: 0 0 0 0;
+    @include respond-to(handhelds) {
+      margin-left: ($break-min/7)
+    }
+    .course_image {
+      width: $icon-size;
+      height: $icon-size;
+      background-size:auto 256px;
+    }
+  }
+  .course_right {
+    @include respond-to(handhelds) {
+      margin-left: 30px;
+    }
+  }
+  .course_title {
+    color: black;
+    font-family: Verdana-Bold;
+    font-size: 24px;
+    color: #262626;
+    line-height: 29px;
+    text-align: center;
+    width: 100%;
+  }
+  .oplerno-cta {
+    width: 112px;
+    background: #C0DC86;
+    border: 1px solid #979797;
+    box-shadow: 0px 1px 2px 0px #1D4975, inset 0px 2px 0px 0px #FFFFFF;
+    border-radius: 6px;
+    font-family: AvenirNext-Heavy;
+    font-size: 14.66px;
+    color: #1D4975;
+    line-height: 20px;
+    text-shadow: -1px -1px 0px rgba(255,254,255,0.50);
+  }
+  .time-ago {
+    font-family: Verdana-Bold;
+    font-size: 24px;
+    color: #262626;
+    line-height: 29px;
+  }
+}
+
+#angular_courses_list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  @include respond-to(mini) {
+    width: $break-min;
+  }
+  @include respond-to(handhelds) {
+    min-width: $break-min;
+    max-width: $break-small;
+  }
+  @include respond-to(small-screens) {
+    min-width: $break-small;
+    max-width: $break-medium;
+  }
+  @include respond-to(medium-screens) {
+    min-width: $break-medium;
+    max-width: $break-large;
+  }
+  min-width: $break-large;
+}
+
+#alert-bar {}
+
+.smallTopbar {
+  @include animate;
+  height: 50px !important;
+  #left-menu, #right-menu {
+    position: absolute;
+    top: -100px !important;
+  }
+  .menu-item {
+    display: none;
+  }
+  a #logo {
+    background-size: 50px 50px !important;
+    height: 50px !important;
+    width: 50px !important;
+  }
+  button#cart {
+    top: 7px !important;    
+    right: 8px !important;
+  }
+  #search form input {
+    @include animate;
+    position: absolute;
+    top: 10px;
+    left: 61px;
+    width: 45%;
+  }
+}
+
+#topbar {
+  position: fixed;
+  width: 100%;
+  @include respond-to(mini) {
+    height: 50px;
+  }
+  @include respond-to(handhelds) {
+    height: 50px;
+  }
+  height: 100px;
+  
+  background: #C0DC86;
+  border: 0px;
+  #logo {
+    background-image: url(https://enroll.oplerno.com/assets/OplernoLogoLarge.png);
+    @include respond-to(handhelds) {
+      background-size: 50px 50px;
+      height: 50px;
+      width: 50px;
+    }
+    @include respond-to(mini) {
+      background-size: 50px 50px;
+      height: 50px;
+      width: 50px;
+    }
+    background-size: 100px 100px;
+    height: 100px;
+    width: 100px;
+    
+    background-color: rgba(0,0,0,0.1);
+    background-position: 0px 0px;
+    display: inline-block;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+  }
+  #cart {    
+    position: absolute;
+    @include respond-to(handhelds) {
+      top: 7px;
+      right: 8px;
+    }
+    @include respond-to(mini) {
+      display: none;
+      visibility: hidden;
+    }      
+    top: 33px;
+    right: 22px;
+    background: #C0DC86;
+    border-radius: 6px;
+    text-shadow: 0px 2px 4px 0px rgba(255,254,255,0.50);
+    text-align: center;
+    height: 34px;
+    display: inline;
+    .cart-number {
+      display: inline;
+      border: 0px solid #C0DC86;
+      font-family: AvenirNext-Heavy;
+      font-size: 14.66px;
+      color: #1D4975;
+      line-height: 20px;
+      text-shadow: -1px -1px 0px rgba(255,254,255,0.50);
+      height: 20px;
+      width: 20px;
+    }
+    .cart-price {
+      display: inline;
+      font-family: AvenirNext-Bold;
+      font-size: 20px;
+      color: #000000;
+      line-height: 27px;
+    }
+  }
+  #left-menu {
+    top: 21px;
+    left: 126px;
+    @include respond-to(handhelds) {
+      top: -100px;
+    }
+    @include respond-to(medium-screens) {
+      top: 39px;
+      left: 123px;
+    }
+    @include respond-to(wide-screens) {
+      top: 39px;
+      left: 123px;
+    }
+  }
+  #right-menu {
+    top: 21px;
+    left: 510px;
+    @include respond-to(handhelds) {
+      top: -100px;
+    }
+    @include respond-to(medium-screens) {
+      top: 39px;
+      left: 609px;
+    }
+    @include respond-to(wide-screens) {
+      top: 39px;
+      left: 816px;
+    }
+  }
+  #left-menu, #right-menu {
+    list-style: none outside none;
+    position: absolute;
+    .menu-item {
+      @include respond-to(small-screens) {
+        display: block;
+      }
+      @include respond-to(handhelds) {
+        display: none;
+      }
+      @include respond-to(mini) {
+        display: none;
+      }
+      display: inline-block;
+      font-family: AvenirNext-Medium;
+      font-size: 20px;
+      color: #4A4A4A;
+      line-height: 27px;
+      text-shadow: 0px 1px 0px #FFFFFF;
+    }
+  }
+}
+
+#search form input {  
+  z-index: 20;
+  @include respond-to(mini) {
+    position: absolute;
+    top: 10px;
+    left: 61px;
+    width: 45%;
+  }
+  @include respond-to(handhelds) {
+    position: absolute;
+    top: 10px;
+    left: 61px;
+    width: 45%;
+  }
+  @include respond-to(small-screens) {
+    top: 32px;
+    left: 293px;
+    width: 20%;
+  }
+  @include respond-to(medium-screens) {
+    top: 32px;
+    left: 379px;
+    width: 18%;
+  }
+  @include respond-to(wide-screens) {
+    top: 32px;
+    left: 379px;
+    width: 18%;
+  }
+  position: absolute;
+  top: 33px;
+  left: 273px;
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+  border-radius: 3px;
+  display: inline-block;
+  font-family: AvenirNext-Regular;
+  font-size: 12px;
+  color: #4A4A4A;
+  line-height: 16px;
+  width: 144px;
+  padding: 6px 25px 6px 6px;
+}
+
+input.editable {
+  display: inline-block;
+  border: 0px solid;
+}
+
+// Tweeks
+.course-price {
+  margin-top: 0px;
+  input.editable {
+    width: 100px;
+  }
+  div {
+    display: inline-block;
+  }
+}

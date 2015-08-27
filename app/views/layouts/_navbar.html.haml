@@ -1,69 +1,20 @@
-%div(class='navbar navbar-fixed-top navbar-inverse')
-  .container
-    .navbar-header
-      =render 'layouts/cart_button'
-      %button.float-right(type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse')
-        %span(class='icon-bar')
-        %span(class='icon-bar')       
-        %span(class='icon-bar')   
-      %a.float-left(href='/' target='_self')
-        .logo
-    .navbar-collapse(class='collapse')
-      %ul(class='btn-group nav navbar-nav nav-bar-browse')
-        %li(class='dropdown')
-          %button(class='btn dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown')
-            %div
-              %span
-                = t('browse.browse')
-                &nbsp;
-              %span(class='caret')>
-          %ul(class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu1')
-            %li(role='presentation')
-              %a(role='menuitem' tabindex='-1' href='/courses' data-no-turbolink)
-                = t('browse.by_course_title')
-            %li(role='presentation')
-              %a(role='menuitem' tabindex='-1' href='/teachers')
-                = t('browse.by_instructor')
-        %li
-          - unless user_signed_in?
-            %a(href='http://www.oplerno.com/')
-              %div
-                = t('browse.about')
-          - else
-            = link_to edit_user_path(current_user), {} do
-              %div
-                = t('browse.settings')
-        %li
-          %a(href='https://#{CANVAS_HOST}/')
-            %div
-              = t('browse.canvas')
-        %li
-          = semantic_form_for Search.new do |f|
-            = f.inputs :searches do
-              .left-inner-addon
-                = f.input :term, require: true, placeholder: t('search.term'), label: false, as: :string, input_html: { class: 'form-control' }
-                %i.glyphicon.glyphicon-search
-      %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
-        - unless user_signed_in?
-          %li
-            = link_to user_session_path, {:class => 'btn active login btn-danger'} do
-              .ph
-                = t('devise.sessions.new.sign_in')
-          %li
-            = link_to new_user_registration_path, {:class => 'btn active login btn-info'} do
-              .ph
-                = t('devise.sessions.new.sign_up')
-        - else
-          %li
-            = link_to destroy_user_session_path, {:class => 'btn active login btn-danger'} do
-              .ph
-                = t('devise.sessions.new.sign_out')
-      %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
-        %li.hidden-xs
-          =render 'layouts/cart_button'
-      - if Setting.get_key('invites', 'false').value == 'true' || admin_user_signed_in?
-        %ul.pull-right(class='btn-group nav navbar-nav nav-bar-browse')
-          %li
-            %a.cart(href='/invites/new' class='btn active btn-warning navbar-toggle referral hidden-xs')
-              %div
-                = t(Setting.get_key('refer', 'invites.cta.refer_a_friend').value)
+%div{ ng: { controller: 'TopBarController' } }
+  %div{ scroll: { position: 'scroll' }, ng: { class: '{smallTopbar: scroll > 50}' }, id: 'topbar' }
+    %a(href="/")
+      #logo
+    #search
+      %form(action= 'https://enroll.oplerno.com/searches' accept-charset='UTF-8' target='_new' method='post')
+        %input(type='text' placeholder='I want to learn ...' name='search[term]')
+        %input(type='hidden')
+    %ul#left-menu
+      %li.menu-item{ ng: { show: 'menu_item'} } Courses
+      %li.menu-item{ ng: { show: 'menu_item' } } Instructors
+    %ul#right-menu
+      %li.menu-item{ ng: { show: 'menu_item' } } Canvas
+      %li.menu-item{ ng: { show: 'menu_item' } } About
+    %button#cart{ ng: { controller: 'CartButtonController' } }
+      .cart-number {{items}}
+      .glyphicon.glyphicon-shopping-cart
+      .cart-price ${{price}}
+#top-bar-overflow
+#alert-bar= alert

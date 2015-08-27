@@ -25,7 +25,6 @@
 
       $scope.update = function() {
         CartsContentIO.query().$promise.then(function(result) {
-          console.log('LEN: '+ result);
           $scope.items = result.length;
           $scope.total = 0;
 
