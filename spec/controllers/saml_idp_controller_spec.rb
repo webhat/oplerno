@@ -97,8 +97,7 @@ describe SamlIdpController do
     settings.assertion_consumer_service_url = saml_acs_url
     settings.issuer = "http://oplerno.com/issuer"
     settings.idp_sso_target_url = "http://idp.com/saml/idp"
-    #settings.idp_cert_fingerprint = SamlIdp::Default::FINGERPRINT
-    settings.idp_cert_fingerprint = "BC:E7:93:9F:0B:D4:C2:49:53:64:88:70:7E:EA:3F:48:6E:92:B7:34"
+    settings.idp_cert_fingerprint = "78:52:BE:BE:5F:4B:D9:8A:72:92:B1:CF:06:B8:52:E1:43:F9:3C:C3"
     settings.name_identifier_format = SamlIdp::Default::NAME_ID_FORMAT
     settings.certificate = SamlIdp.config.x509_certificate
     settings.private_key = SamlIdp.config.secret_key
