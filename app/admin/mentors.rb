@@ -27,9 +27,9 @@ ActiveAdmin.register Mentor do
       angel.input :twitterslug, label: 'Twitter Slug'
     end
 
-    f.inputs 'Teams' do
-      f.input :teams, as: :select, input_html: { multiple: true }
-      f.actions
-    end
+    #f.inputs 'Teams' do
+    #  f.input :teams, as: :select, input_html: { multiple: true }
+    #  f.actions
+    #end
   end
 end
