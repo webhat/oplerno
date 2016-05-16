@@ -43,7 +43,7 @@ module ActiveAdmin
 
       # patching the index method to allow the xlsx format.
       def index_with_ical(options={}, &block)
-        index_without_ical(options) do |format|
+        index_without_ical do |format|
           format.ical do
             ical = active_admin_config.ical_builder.serialize(collection)
             send_data ical, :filename => "#{ical_filename}", :type => Mime::Type.lookup_by_extension(:ical)
