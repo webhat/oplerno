@@ -78,7 +78,7 @@ Oplerno::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mandrillapp.com',
+    address: 'mail.oplerno.com',
     port: 587,
     domain: 'oplerno.com',
     user_name: 'webmaster@oplerno.com',
